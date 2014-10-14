@@ -1,0 +1,16 @@
+ 
+.DS_Store
+*.swp
+*.lock
+profile
+
+#####
+##
+#####
+out/
+bak/
+apprealease/
+Golf/Grunt/out
+Golf/Webapp/dest
+Golf/Webapp/res/data
+Golf/Webapp/res/widget
