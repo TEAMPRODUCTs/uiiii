@@ -1,0 +1,270 @@
+﻿Visitor
+
+Visitor模式先是把一些可复用的行为抽象到一个函数（对象）里，这个函数成为访问者（visitor）。如果另一些对象要调用这个函数，只需把那些对象当作参数传递给这个函数。访问者模式几乎是原生的实现，我们可以利用apply和call毫不费力的使用访问者模式。
+
+	 vararr1=new Array("1","2","3");
+
+	 vararr2=new Array("4","5","6");
+
+	 Array.prototype.push.apply(arr1,arr2);
+
+-----------------------------------------------------------------
+Strategy
+Strategy 支持在运行时选择算法。代码的客户端可以使用同一接口来工作。使用策略模式的其中一个例子是解决表单验证问题。可以创建一个具有validate()方法的验证器对象，无论表单的具体类型是什么，该方法都会被调用，并且总是返回相同的结果，一个未经验证的数据列表以及任意的错误信息。
+但是根据具体的表单形式及待验证的数据，验证器的客户端可以选择不同类型的检查方法，验证器将选择最佳的策略以处理任务，并将具体的数据验证委托给适当的算法。
+
+数据验证示例
+
+假设有以下数据块，它可能来自于网页上的一个表单，而你需要验证它是否有效：
+
+var data = {
+    first_name : "Super",
+    last_name : "Man",
+    age : "unknown",
+    username : "o_0"
+};
+
+在这个具体的例子中，为使验证器知道什么 是最好的策略，首先需要配置该验证器，并且设置认为是有效的且可接受的规则。
+
+validator.config = {
+    first_name : 'isNonEmpty',
+    age : 'isNumber',
+    username : 'isAlphaNum'
+};
+
+validator.validate(data);
+if(validator.hasErrors()) {
+    console.log(validator.messages.join("\n"));
+}
+
+接下来实现validator。首先实现用于检查的可用算法。
+
+validator.types.isNonEmpty = {
+    validate : function(value) {
+        return value !== '';
+    },
+    instructions : "the value cannot be empty."
+};
+ 
+validator.types.isNumber = {
+    validate : function(value) {
+        return !isNaN(value);
+    },
+    instructions : "the value can only be a valid number, e.g. 1, 3.14 or 2010."
+};
+ 
+validator.types.isAlphaNum = {
+    validate : function(value) {
+        return !/[^a-z0-9]/i.test(value);
+    },
+    instructions : "the value can only contain characters and numbers, no special symbols."
+};
+
+最后，核心的validator对象如下所示：
+
+var validator = {
+    // 所有可用的检查
+    types : {},
+ 
+    // 在当前验证会话中的错误信息
+    messages : [],
+ 
+    // 当前验证配置名称：验证类型
+    config : {},
+ 
+    // 接口方法　`data`为key-value对
+    validate : function(data) {
+        var i, msg, type, checker, result_ok;
+ 
+            // 重置所有信息
+        this.messages = [];
+ 
+        for(i in data) {
+            if(data.hasOwnProperty(i)) {
+                type = this.config[i];
+                checker = this.types[type];
+ 
+                if(!type) {
+                    continue;
+                }
+                if(!checker) {
+                    throw {
+                        name : "ValidationError",
+                        message : "No handler to validate type " + type
+                    };
+                }
+ 
+                result_ok = checker.validate(data[i]);
+                if(!result_ok) {
+                    msg = "Invalid value for *" + i + "*, " + checker.instructions;
+                    this.messages.push(msg);
+                }
+            }
+        }
+        return this.hasErrors();
+    },
+ 
+    // 帮助函数
+    hasErrors : function() {
+        return this.messages.length !== 0;
+    }
+};
+
+以上validator对象是通用的，增强validator对象的方法是添加更多的类型检查。若在多个页面中使用它，很快就会有一个优良的特定检查集合，故以后针对每个新的用例，所需做的就是配置该验证器并运行validate()方法。
+
+---------------------------------------------------------------------------
+Template
+Template模式是预先定义一组算法，先把算法的不变部分抽象到父类，再将另外一些可变的步骤延迟到子类去实现。
+
+Factory模式&Template模式
+Factory模式的意图是根据子类的实现最终获得一种对象. 而Template模式着重于父类对子类的控制.
+
+-------------------------proxy一起-----------------------------------
+Mediator
+中介者对象可以使各个对象之间不需要显式的相互引用，从而使其耦合松散。而且可以对立改变他们之间的交互。
+附图1
+拿backbone举例. 一个mode里的数据并不确定最后被哪些view使用. view需要的数据也可以来自任意一个mode. 所有的绑定关系都是在controler里决定. 中介者把复杂的多对多关系, 变成了2个相对简单的1对多
+附图2
+
+----------------------------------------------------------------------
+Iterator
+迭代器模式提供一种方法顺序访问一个聚合对象中各个元素，而又不需要暴露该方法中的内部表示。
+
+js中我们经常会封装一个each函数用来实现迭代器。
+
+    //array的迭代器
+    forEach = function (ary, fn) {
+        for (var i = 0, l = ary.length; i < l; i++) {
+            var c = ary[ i ];
+            if (fn.call(c, i, c) === false) {
+                return false;
+            }
+        }
+    }
+
+//obejct的迭代器:
+    forEach = function (obj, fn) {
+        for (var i in obj) {
+            var c = obj[ i ];
+            if (fn.call(c, i, c) === false) {
+                return false;
+            }
+        }
+    }
+
+-------------------------------------------------------------
+Memento
+备忘录模式在Js中常用于数据缓存。 比如一个分页控件, 从服务器获得某一页的数据后可以存入缓存。以后再翻回这一页的时候，可以直接使用缓存里的数据而无需再次请求服务器。
+
+实现比较简单，伪代码：
+
+    var Page = function () {
+        var page = 1, cache = {}, data;
+        return function (page) {
+            if (cache[ page ]) {
+                data = cache[ page ];
+                render(data);
+            } else {
+                Ajax.send('cgi.xx.com/xxx', function (data) {
+                    cache[ page ] = data;
+                    render(data);
+                })
+            }
+        }
+    }();
+
+----------------------------------------------------------------
+Chain of Responsibility
+职责链模式是一个对象A向另一个对象B发起请求，如果B不处理，可以把请求转给C，如果C不处理，又可以把请求转给D。一直到有一个对象愿意处理这个请求为止。
+
+打个比方，客户让老板写个php程序。老板肯定不写，然后老板交给了部门经理。部门经理不愿意写，又交给项目经理。项目经理不会写，又交给程序员。最后由码农来完成。
+
+在这个假设里， 有几条职责链模式的特点。
+
+1 老板只跟部门经理打交道，部门经理只联系项目经理，项目经理只找码农的麻烦。
+
+2 如果码农也不写，这个项目将会流产。
+
+3 客户并不清楚这个程序最后是由谁写出来的。
+
+js中的事件冒泡就是作为一个职责链来实现的。一个事件在某个节点上被触发，然后向根节点传递， 直到被节点捕获。
+--------------------------------------------------------------------
+Flyweight
+享元模式主要用来减少程序所需的对象个数。
+
+在webqq里面, 打开QQ好友列表往下拉的时候，会为每个好友创建一个div( 如果算上div中的子节点, 还远不只1个元素 ).
+如果有1000个QQ好友, 意味着如果从头拉到尾, 会创建1000个div, 这时候有些浏览器也许已经假死了. 这还只是一个随便翻翻好友列表的操作.
+
+所以我们想到了一种解决办法, 当滚动条滚动的时候, 把已经消失在视线外的div都删除掉. 这样页面可以保持只有一定数量的节点. 问题是这样频繁的添加与删除节点, 也会造成很大的性能开销, 而且这种感觉很不对味.
+
+现在享元模式可以登场了. 顾名思义, 享元模式可以提供一些共享的对象以便重复利用. 其实我们一共只需要10几个div来显示好友信息,也就是出现在用户视线中的10个div.这10几个div就可以写成享元.
+
+    var getDiv = (function () {
+        var created = [];
+        var create = function () {
+            return document.body.appendChild(document.createElement('div'));
+        }
+        var get = function () {
+            if (created.length) {
+                return created.shift();
+            } else {
+                return create();
+            }
+        }
+        /* 一个假设的事件，用来监听刚消失在视线外的div，实际上可以通过监听滚                                     动条位置来实现 */
+        userInfoContainer.disappear(function (div) {
+            created.push(div);
+        })
+    })()
+    var div = getDiv();
+    div.innerHTML = "${userinfo}";
+
+原理其实很简单, 把刚隐藏起来的div放到一个数组中, 当需要div的时候, 先从该数组中取, 如果数组中已经没有了, 再重新创建一个. 这个数组里的div就是享元, 它们每一个都可以当作任何用户信息的载体.
+
+当然这只是个示例,实际的情况要复杂一些, 比如快速拖动的时候, 我们可能还得为节点设置一个缓冲区.
+
+---------------------------------------------------------------
+State
+状态模式主要用于以下场景：
+1）一个对象的行为取决于它的状态
+2）一个操作中含有庞大的条件分支语句
+回想下街头霸王的游戏。
+
+有走动，攻击，防御，跌倒，跳跃等等多种状态，而这些状态之间既有联系又互相约束。比如跳跃的时候是不能攻击和防御的。跌倒的时候既不能攻击又不能防御，而走动的时候既可以攻击也可以跳跃。
+
+要完成这样一系列逻辑, 常理下if else是少不了的. 而且数量无法估计, 特别是增加一种新状态的时候, 可能要从代码的第10行一直改到900行.
+ if (state === 'jump') {
+        if (currState === 'attack' || currState === 'defense') {
+            return false;
+        }
+    } else if (state === 'wait') {
+        if (currState === 'attack' || currState === 'defense') {
+            return true;
+        }
+    }
+
+为了消灭这些if else,并且方便修改和维护，我们引入状态模式
+
+
+var StateManager = function () {
+        var currState = 'wait';
+        var states = {
+            jump: function (state) {
+            }, wait: function (state) {
+            }, attack: function (state) {
+            }, crouch: function (state) {
+            }, defense: function (state) {
+                if (currState === 'jump') {
+                    return false;  //不成功，跳跃的时候不能防御     
+                }     //do something;     //防御的真正逻辑代码, 为了防止状态类的代码过多, 应该把这些逻辑继续扔给真正的fight类来执行.    
+                currState = 'defense'; //  切换状态    
+            }
+        }
+        var changeState = function (state) {
+            states[ state ] && states[ state ]();
+        }
+        return {       changeState: changeState   }
+    }
+    var stateManager = StateManager();
+    stateManager.changeState('defense');
+

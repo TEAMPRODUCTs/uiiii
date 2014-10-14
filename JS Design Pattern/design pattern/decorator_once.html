@@ -1,0 +1,20 @@
+<html>
+<body>
+<script>
+function once(fn){
+	var done = false;
+	return function(){
+		return done ? void 0 : ((done = true), fn.apply(this, arguments))
+	}
+}
+
+var askedOnBlindDate = once(function(){
+	return 'sure, why not?';
+});
+
+console.log("1 " + askedOnBlindDate());
+console.log("2 " +  askedOnBlindDate());
+
+</script>
+</body>
+</html>

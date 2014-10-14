@@ -1,0 +1,26 @@
+<html>
+<body>
+<script>
+function not (fn) {
+   return function (argument) {
+     return !fn(argument)
+   }
+}
+
+
+function something (x){
+	return x != null;
+}
+
+function nothing(x) {
+	return !something(x);
+}
+
+var nothing1 = not(something);
+
+console.log("nothing " + nothing());
+console.log("nothing1 " + nothing1(21))
+
+</script>
+</body>
+</html>

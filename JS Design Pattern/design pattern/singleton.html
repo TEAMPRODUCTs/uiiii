@@ -1,0 +1,18 @@
+<html>
+<body>
+<script>
+var mask; 
+var createMask = function(){ 
+if ( mask ) return mask; 
+  else{ 
+  mask = document.body.appendChild(  document.createElement("div")  ); 
+  return mask; 
+  } 
+} 
+
+createMask();
+//mask = null;
+createMask();
+</script>
+</body>
+</html>

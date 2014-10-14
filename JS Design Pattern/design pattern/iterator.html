@@ -1,0 +1,54 @@
+﻿<html>
+<body>
+<script>
+    //array的迭代器
+    forEach = function (ary, fn) {
+        for (var i = 0, l = ary.length; i < l; i++) {
+            var c = ary[ i ];
+            if (fn.call(c, i, c) === false) {
+                return false;
+            }
+        }
+    }
+    forEach([ 1, 2, 3 ], function (i, n) {
+        alert(i);
+    });
+
+    //obejct的迭代器:
+    forEach = function (obj, fn) {
+        for (var i in obj) {
+            var c = obj[ i ];
+            if (fn.call(c, i, c) === false) {
+                return false;
+            }
+        }
+    }
+    forEach({"a": 1, "b": 2}, function (i, n) {
+        alert(i);
+    })
+
+
+    var StateManager = function () {
+        var currState = 'wait';
+        var states = {
+            jump: function (state) {
+            }, wait: function (state) {
+            }, attack: function (state) {
+            }, crouch: function (state) {
+            }, defense: function (state) {
+                if (currState === 'jump') {
+                    return false;  //不成功，跳跃的时候不能防御
+                }     //do something;     //防御的真正逻辑代码, 为了防止状态类的代码过多, 应该把这些逻辑继续扔给真正的fight类来执行.
+                currState = 'defense'; //  切换状态
+            }
+        }
+        var changeState = function (state) {
+            states[ state ] && states[ state ]();
+        }
+        return {       changeState: changeState   }
+    }
+    var stateManager = StateManager();
+    stateManager.changeState('defense');
+</script>
+</body>
+</html>

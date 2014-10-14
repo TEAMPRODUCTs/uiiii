@@ -1,0 +1,92 @@
+﻿<html>
+<body>
+<script>
+var validator = {
+    // 所有可用的检查
+    types : {},
+ 
+    // 在当前验证会话中的错误信息
+    messages : [],
+ 
+    // 当前验证配置名称：验证类型
+    config : {},
+ 
+    // 接口方法　`data`为key-value对
+    validate : function(data) {
+        var i, msg, type, checker, result_ok;
+ 
+            // 重置所有信息
+        this.messages = [];
+ 
+        for(i in data) {
+            if(data.hasOwnProperty(i)) {
+                type = this.config[i];
+                checker = this.types[type];
+ 
+                if(!type) {
+                    continue;
+                }
+                if(!checker) {
+                    throw {
+                        name : "ValidationError",
+                        message : "No handler to validate type " + type
+                    };
+                }
+ 
+                result_ok = checker.validate(data[i]);
+                if(!result_ok) {
+                    msg = "Invalid value for *" + i + "*, " + checker.instructions;
+                    this.messages.push(msg);
+                }
+            }
+        }
+        return this.hasErrors();
+    },
+ 
+    // 帮助函数
+    hasErrors : function() {
+        return this.messages.length !== 0;
+    }
+};
+ 
+validator.types.isNonEmpty = {
+    validate : function(value) {
+        return value !== '';
+    },
+    instructions : "the value cannot be empty."
+};
+ 
+validator.types.isNumber = {
+    validate : function(value) {
+        return !isNaN(value);
+    },
+    instructions : "the value can only be a valid number, e.g. 1, 3.14 or 2010."
+};
+ 
+validator.types.isAlphaNum = {
+    validate : function(value) {
+        return !/[^a-z0-9]/i.test(value);
+    },
+    instructions : "the value can only contain characters and numbers, no special symbols."
+};
+ 
+var data = {
+    first_name : "Super",
+    last_name : "Man",
+    age : "unknown",
+    username : "o_0"
+};
+ 
+validator.config = {
+    first_name : 'isNonEmpty',
+    age : 'isNumber',
+    username : 'isAlphaNum'
+};
+ 
+validator.validate(data);
+if(validator.hasErrors()) {
+    console.log(validator.messages.join("\n"));
+}
+</script>
+</body>
+</html>

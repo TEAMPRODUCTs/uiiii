@@ -1,0 +1,29 @@
+<html>
+<body>
+<script>
+	function A( name ){ 
+              this.name = name; 
+   } 
+
+   function B(id, price){
+   	this.id  = id;
+   	this.price = price;
+   }
+
+   function ObjectFactory(){ 
+          var obj = {}, 
+              Constructor = Array.prototype.shift.call( arguments ); 
+              obj.__proto__ =  typeof Constructor .prototype === 'number'  ? Object.prototype 
+                           :  Constructor .prototype;  
+          var ret = Constructor.apply( obj, arguments ); 
+          return typeof ret === 'object' ? ret : obj; 
+   } 
+
+   var a = ObjectFactory( A, 'svenzeng' ); 
+   alert ( a.name );  //svenzeng 
+
+   var b = ObjectFactory(B, "1", "3.2","55");
+   alert(JSON.stringify(b));
+</script>
+</body>
+</html>

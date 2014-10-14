@@ -1,0 +1,30 @@
+<html>
+<body>
+<script>
+function compose(a, b){
+	return function(c){
+		return a(b(c));
+	}
+}
+
+function addOne (number){
+	return number + 1;
+}
+
+function doubleOf (number){
+	return number * 2;
+}
+
+function doubleOfAddOne(number){
+	return doubleOf(addOne(number));
+}
+
+var doubleOfAddOne1 = compose(doubleOf, addOne);
+
+console.log(doubleOfAddOne(3));
+
+console.log(doubleOfAddOne1(3));
+
+</script>
+</body>
+</html>
