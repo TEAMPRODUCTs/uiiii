@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        function Person(name, age){
+            this.name = name||'ren';
+            this.age = age||0;
+        }
+
+        Person.prototype = {
+            constructor : Person,
+            say : function(){
+                console.log(this.name + ' say something!');
+            }
+        }
+
+        function Student(name, age, work){
+            Person.call(this, name, age);
+            this.work = work;
+        }
+
+        // 继承稍做修改
+        Student.prototype = Object.create(Person.prototype);
+        // constructor重新指向Student
+        Student.prototype.constructor = Student;
+
+        var p = new Person('Lucy', 26);
+        p.say();
+
+        var st = new Student('Tom', 15, 'study');
+        st.say();
+
+
+        // 验证一下
+        console.log(p instanceof Person);
+        console.log(st instanceof Person);
+        console.log(st instanceof Student);
+    </script>
+</body>
+</html>

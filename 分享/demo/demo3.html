@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>js面向对象编程--极简主义</title>
+</head>
+<body>
+    <script>
+        // 定义一个对象
+        var Animal = {
+            createNew: function (){
+                var animal = {};
+                animal.sleep = function (){ console.log("睡懒觉"); };
+                return animal;
+            }
+        };
+
+        var a = Animal.createNew();
+        a.sleep();
+        console.log(a instanceof Animal); // 报错 Uncaught TypeError: Expecting a function in instanceof check, but got #<Object>
+
+        // 定义一个对象
+        var Cat = {
+            createNew: function (){
+                var cat = Animal.createNew();
+                cat.name = "大毛";
+                cat.makeSound = function (){ console.log("喵喵喵"); };
+                return cat;
+            }
+        };
+
+        // 生成实例
+        var c = Cat.createNew();
+        c.makeSound();
+        c.sleep();
+
+        console.log(c instanceof Animal);// 报错 Uncaught TypeError: Expecting a function in instanceof check, but got #<Object>
+        console.log(c instanceof Cat);// 报错 Uncaught TypeError: Expecting a function in instanceof check, but got #<Object>
+    </script>
+</body>
+</html>

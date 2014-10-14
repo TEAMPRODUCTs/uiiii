@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>js面向对象编程</title>
+</head>
+<body>
+<script>
+    function Car(){
+        var car = {};
+        car.name = '奔驰';
+        car.color = 'yellow';
+        car.run = function(){
+            console.log(this.color + ' 的 ' + this.name + ' 跑的快！');
+        }
+        return car;
+    }
+
+    var c = Car();
+    c.run();
+    console.log(c instanceof Car);
+
+    // 当然还可以传参定制
+    function CustomCar(name, color){
+        var car = {};
+        car.name = name;
+        car.color = color;
+        car.run = function(){
+            console.log(this.color + ' 的 ' + this.name + ' 跑的快！');
+        }
+        return car;
+    }
+
+    var cc = CustomCar('大众', 'black');
+
+    cc.run();
+
+    console.log(cc instanceof CustomCar)
+</script>
+</body>
+</html>

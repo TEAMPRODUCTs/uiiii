@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        (function(WIN){
+            var APP = {};
+
+            APP.HTTP = Class();
+
+            APP.TMPL = function(){};
+
+            APP.VIEW = Class();
+
+            APP.CONTROLLER = Class();
+
+            APP.DOM = {};
+
+            APP.DOM.$ = Class();
+
+            // .......
+
+            // 最后到全局
+            WIN.APP = APP;
+        }(window));
+
+
+
+        // 当然也可以模块化开发
+        //  http.js
+        (function(WIN, APP){
+            APP = APP || {};
+            // ......
+            APP.HTTP = Class();
+            // .....
+            WIN.APP = APP;
+        }(window, APP));
+
+        // view.js
+        (function(WIN, APP){
+            APP = APP || {};
+
+            APP.VIEW = Class();
+
+            WIN.APP = APP;
+        }(window, APP));
+
+        // 等等......
+
+
+        // 当然也可以最后发布的时候打包压缩到一个文件里
+    </script>
+</body>
+</html>

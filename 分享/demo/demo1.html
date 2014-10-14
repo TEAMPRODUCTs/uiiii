@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>javascript面向对象</title>
+</head>
+<body>
+    <script>
+        var person = new Object();
+        person.name = "Tom";
+        person.age = 28;
+        person.colors = ['red', 'black', 'yellow'];
+        person.say = function(){
+            console.log(this.name + ' say:i like the color is ' + this.colors);
+        }
+
+        person.say();
+
+
+        var dog = {
+            name : 'beibei',
+            age : 8,
+            color : 'black',
+            say : function(){
+                console.log(this.name + ' say: wang wang!');
+            }
+        }
+
+        dog.say();
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>javascript面向对象编程</title>
+</head>
+<body>
+    <script>
+        function Person(name, age, colors){
+            this.name = name;
+            this.age = age;
+            this.colors = colors;
+        }
+
+//        Person.prototype.say = function(){
+//            console.log(this.name + ' say:I am '+this.age+' years old, i like the color is ' + this.colors);
+//        }
+
+        Person.prototype = {
+            say : function(){
+                console.log(this.name + ' say:I am '+this.age+' years old, i like the color is ' + this.colors);
+            }
+        }
+
+        var p1 = new Person('Tim', 28, ['red', 'black', 'yellow']);
+        var p2 = new Person('Lucy', 26, ['red', 'blue', 'yellow']);
+
+        p1.say();
+        p2.say();
+
+        console.log(p1.say === p2.say);
+        console.log(p1 instanceof Person);
+
+
+        // 分开写不直观的话可以这样
+        function Person1(name, age, colors){
+            this.name = name;
+            this.age = age;
+            this.colors = colors;
+            if (!Person1.prototype.say){
+                Person1.prototype.say = function(){
+                    console.log(this.name + ' say:I am '+this.age+' years old, i like the color is ' + this.colors);
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

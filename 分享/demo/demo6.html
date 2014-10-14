@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>javascript面向对象编程</title>
+</head>
+<body>
+<script>
+    function Person(name, age, colors){
+        this.name = name;
+        this.age = age;
+        this.colors = colors;
+        this.say = function(){
+            console.log(this.name + ' say:I am '+this.age+' years old, i like the color is ' + this.colors);
+        }
+    }
+
+    // 简单重现一下new操作符
+    function New(fn, args) {
+        var o = {};
+        fn.apply(o, args);
+        //o.__proto__ = Person.prototype;  //新对象的[[prototype]]指向构造函数的原型
+        return o;
+    }
+
+    var p = New(Person,['Lucy', 26, ['red', 'green']]);
+    p.say();
+
+    // 能在实例的原型对象链中找到该构造函数的prototype属性所指向的原型对象，就返回true
+    console.log(p instanceof Person);
+</script>
+</body>
+</html>
