@@ -1,3 +1,3 @@
-======10/14/2015============
-jsÃæÏò¶ÔÏó±à³Ì --- JSObject_Share
-jsÉè¼ÆÄ£Ê½  ====JS Design Pattern
+ï»¿======10/14/2015============
+jsé¢å‘å¯¹è±¡ç¼–ç¨‹ --- JSObject_Share
+jsè®¾è®¡æ¨¡å¼  ====JS Design Pattern
