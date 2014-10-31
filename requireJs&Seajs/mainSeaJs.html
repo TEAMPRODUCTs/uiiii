@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Sample Project</title>
+        <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+              <script src="./libs/sea.js"></script>
+    </head>
+    <body>
+        <h1>My Sample Project</h1>
+    </body>
+   
+    <script type="text/javascript">
+    // seajs 的简单配置
+	seajs.config({
+	  base: "./libs/",
+	  alias: {
+	   
+	  }
+	})
+
+	// 加载入口模块
+	seajs.use("./scripts/mainSeaJs")
+    </script>
+</html>

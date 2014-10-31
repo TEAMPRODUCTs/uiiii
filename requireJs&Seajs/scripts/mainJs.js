@@ -1,8 +1,12 @@
+//AMD 依赖前置
 define("mainJs", ["mod1", "mod2"],function(mod1,mod2){
-	// var mod1 = require('./mod1');
+	console.log("require module: main");
     mod1.hello();
-   // var mod2 = require('./mod2');
-   console.log("test");
+    console.log("test");
     mod2.hello();
-
+    return{
+    	hello: function(){
+    		console.log("hello main");
+    	}
+    }
 });
