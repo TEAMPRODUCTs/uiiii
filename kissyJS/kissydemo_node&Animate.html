@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--中文乱码问题-->
+		<script src="http://g.alicdn.com/kissy/k/5.0.0/seed.js" data-config="{combine:true}"></script>
+		<!--<script src="./kissy/build/seed.js" data-config="{combine:true}"></script>-->
+		<style type="text/css">
+			.highlight{
+				color:red;
+			}
+
+			#anim-el{
+				width: 50px;
+				height: 50px;
+				background-color: green;	
+				border: 1px;
+				border-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="foo" class="bar">test</div>
+
+		<input type="button" value="close" id="close-button">
+
+
+		<div id="anim-el" ></div>
+	</body>
+	<script type="text/javascript">
+		// 使用模块
+		require(['dom'], function(Dom){
+		    //装载了 dom 模块，并处于可用状态，可以通过 Dom 调用这个模块提供的api
+		    //Your Code here...
+		});
+
+		/**
+		node 模块对 dom 模块做了封装和扩展，你可以方便查找、创建、删除、修改元素，绑定事件等。node 模块依赖 dom , util, event-dom , anim 模块，并对这些模块进行了封装和拓展。模块的接口用法绝大部分都兼容了jQuery的用法，可直接当做jQuery使用
+		*/
+		require(['node'], function ($) {
+		    // 查找 DOM 节点.
+		    var oneElementById     = $('#foo'),
+		        oneElementByName   = $('body'),
+		        allElementsByClass = $('.bar');
+
+		    // 创建 DOM 节点.
+		    var contentNode$ = $('<div>'),
+		        listNode    = $('<ul>'),
+		        footerNode  = $('<footer>');
+
+		    // 操作节点，支持链式调用
+		    contentNode$.html('Hello Kissy!')
+		                .append('<p>touch me</p>')
+		                .addClass('highlight')
+		                .appendTo('body');
+
+		    // 绑定事件
+		    $('#close-button').on('click', function (e) {
+		        contentNode$.hide();
+		    });
+
+		    $('#anim-el').animate (//node模块anim  可以直接使用动画 （相当于 section#1）
+		        {
+		            'background-color':'#fcc', // 动画目标样式
+		            'border':'1px',
+		            'border-color':'green'
+		        },
+		        {
+		            duration : 5,            // 动画时长，秒
+		            easing : 'bounceOut',     // 动画特效
+		            complete : function(){   // 动画结束的回调
+		                alert('动画结束');
+		            }
+		        });
+		});
+
+/* section#1
+		require(["anim"],function(Anim){
+		    // 初始化动画实例
+		    var animIns = new Anim('#anim-el',
+		        // 动画目标样式
+		        {
+		            'background-color':'#fcc',
+		            'border':'1px',
+		            'border-color':'green'
+		        },
+		        {
+		            duration : 5,            // 动画时长，秒
+		            easing : 'bounceOut',     // 动画特效
+		            complete : function(){   // 动画结束的回调
+		                alert('动画结束');
+		            }
+		        });
+
+		    // 开始执行动画
+		    animIns.run();
+		});*/
+	</script>
+</html>

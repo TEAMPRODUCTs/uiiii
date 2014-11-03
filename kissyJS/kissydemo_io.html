@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--中文乱码问题-->
+		<script src="http://g.alicdn.com/kissy/k/5.0.0/seed.js" data-config="{combine:true}"></script>
+		<!--<script src="./kissy/build/seed.js" data-config="{combine:true}"></script>-->
+		<style type="text/css">
+			.highlight{
+				color:red;
+			}
+
+			#anim-el{
+				width: 50px;
+				height: 50px;
+				background-color: green;	
+				border: 1px;
+				border-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="foo" class="bar">test</div>
+
+		<input type="button" value="close" id="close-button">
+
+
+		<div id="anim-el" ></div>
+	</body>
+	<script type="text/javascript">
+		/*注： io_test.js json最后加了个; 导致半天没读出数据来 TT*/
+		require(['node','io'], function ($ , IO) {
+			var io_op = new IO({
+				url:"./data/io_test.js",
+				dataType:'json', //it's necessary
+				complete:function(d){
+					alert(d.user + "& " + d.email)
+				}
+			});
+
+			IO.getJSON("./data/kissy.js", function(d){
+				alert(d.user + "& " + d.email)
+			});
+
+			IO.getJSON("./data/io_test.js", function(d){
+				alert(d.user + "& " + d.email)
+			});
+		});
+
+	</script>
+</html>
