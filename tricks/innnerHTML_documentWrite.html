@@ -1,0 +1,22 @@
+<html>
+	<head></head>
+	<body>
+		<div id='content'>
+			<script language="javascript">
+				var str = "<style>#MyLi{width:310px;margin:0px;color:#ff0000;}</style><div><ul id='MyUl'><li id='MyLi'>dfsdfsfs</li></ul></div>";
+				document.write(str);
+				alert(str);
+				alert(document.getElementById("content").innerHTML);
+			</script>
+		</div>
+
+
+		<div id='contentInnerHtml'></div>
+		<script language="javascript">
+			var str = "<style>#MyLi{width:310px;margin:0px;color:#ff0000;}</style><div><ul id='MyUl'><li id='MyLi'>dfsdfsfs</li></ul></div>";
+			document.getElementById("contentInnerHtml").innerHTML = str;
+			alert("innerHTML" + str);
+			alert("innerHTML" + document.getElementById("contentInnerHtml").innerHTML);
+		</script>
+	</body>	
+</html>
