@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<script type="text/javascript" src="./libs/underscore.js"></script>
+		<script type="text/javascript" src="./libs/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="./libs/backbone.js"></script>
+	</head>
+	<body>
+		<div id="body">
+			<script type="text/template" id="backbone_tmp">
+				<div id='father' style="width:50px;height:50px;background-color:red;">
+					<div id="clild" style="width:30px;height:30px;background-color:green;"></div>	
+				</div>
+		    </script>
+		</div>
+		<!-- <div id='father' style="width:50px;height:50px;background-color:red;">
+			<div id="clild" style="width:30px;height:30px;background-color:green;"></div>	
+		</div> -->
+	</body>	
+	<script type="text/javascript">
+		var TestView = Backbone.View.extend({  //  创建一个view，其实就是一个HTML的DOM节点
+			events: {
+				"click #clild": "clildAction",
+				"click #father": "fatherAction"
+				
+			},
+
+		    initialize: function() {  
+		        this.render();  
+		    },
+		    render: function() {  // 渲染方法
+		    	var tpl = '<div id="father" style="width:50px;height:50px;background-color:red;">'+
+					'<div id="clild" style="width:30px;height:30px;background-color:green;"></div></div>';
+		        this.$el.html(tpl/*this.$el.find("#backbone_tmp")*/);  //  this.el就是HTML节点，通过jQuery的html方法填充内容
+		        return this;
+		    },
+
+		    fatherAction : function(e){
+		    	alert("father");
+		    },
+
+		    clildAction : function(e){
+		    	alert("clild");
+		    	e.stopPropagation();
+           		e.preventDefault();//阻止冒泡
+		    }
+
+		});
+
+		$(function () {
+		    var v = new TestView({el: $('#body')});  //  以目标节点（一个 <div id="body" />）为el参数，创建一个view的实例，render函数将会被自动调用并将渲染结果填充到el中
+		    //v.render(); // 如果没在 initialize 里调用 render 的话，就需要在这里调用一次
+		});
+	</script>
+
+
+</html>
