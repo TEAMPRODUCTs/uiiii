@@ -6,11 +6,14 @@
 		</div>
 	</body>	
 	<script type="text/javascript">
+		document.getElementById("clild").addEventListener('click', function(e){alert("clild"); e.stopPropagation();e.preventDefault();}, false);
+		document.getElementById("father").addEventListener('click', function(e){alert("111")}, false);
+/*
 		document.getElementById("father").onclick = function(e){alert("111")}
 		document.getElementById("clild").onclick = function(e){
 			alert("211");
 			e.stopPropagation();
-            e.preventDefault();//阻止冒泡
-		}
+            e.preventDefault();//
+		}*/
 	</script>
 </html>
