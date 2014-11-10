@@ -112,6 +112,8 @@
 			context[methods[i]] = bind(context[methods[i]], context);
 		}
 
+		alert("test")
+
 		// Set up event handlers as required
 		if (deviceIsAndroid) {
 			layer.addEventListener('mouseover', this.onMouse, true);
