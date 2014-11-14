@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+		<style>
+	
+		body
+		{
+			font-style:italic;
+			color:black;
+			font-size:120%;
+		    font-weight:bold;	/*2） 在quirks模式下 table单元格中的font-siza , font-weight, font-style属性都不会继承，只有font-family 和color会被继承*/
+			font-family: fantasy;
+		}
+
+		tr{
+			height: 50px;
+		}
+
+		td.a
+		{
+			border-style:solid;
+			border-color:blue;
+		}
+
+		img.c
+		{
+			width:200px;
+			height:200px;
+			border-style:solid;
+			border-color:orange;
+		}
+
+		th, td, .blockdiv{
+			border-color:blue;
+			border:1px;
+			background-color: red;
+
+			
+		}
+		.blockdiv{
+			line-height: 50px;
+			vertical-align: middle;
+		}
+
+		.none_replace{
+			width: 100px;
+			height: 50px;
+			background-color: yellow;
+		}
+
+		.parent{
+			height: 500px;
+			background-color: pink;
+		}
+
+		.clild{
+			width: 300px;
+			height: 90%;
+			background-color: green;
+			display: block;
+		}
+
+		.grandson{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+
+		.overflow_parents{
+			height: 200px;
+			width: 300px;
+			background-color: green;
+			margin: 150px 0 ;
+		}
+
+		.overflow_child{
+			height: 300px;
+			width: 200px;
+			background-color: yellow;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="blockdiv">2) 块级元素文字垂直居中对齐</div><!--块级元素文字垂直居中对齐-->
+		<span class="none_replace">3)在 IE Standards Mode 下，non-replaced inline 元素无法自定义大小，而在 IE Quirks Mode 下，定义这些元素的 width 和 height 属性，能够影响该元素显示的大小尺寸。</span>
+
+		<div class="overflow_parents">
+			<div class="overflow_child">在 IE Standard Mode 下，overflow 取默认值 visible，即溢出可见，这种情况下，溢出内容不会被裁剪，呈现在元素框外。而在 Quirks Mode 下，该溢出被当做扩展 box 来对待，即元素的大小由其内容决定，溢出不会被裁剪，元素框自动调整，包含溢出内容。</div>
+		</div>
+
+		<table>
+			 <tr>
+			 	<th>month</th>
+			 	<th>Savings</th>
+			 </tr>
+			 <tr>
+			 	<td>January</td>
+			 	<td>$100</td>
+			 </tr>
+
+			<tr>
+				<!--1) inline元素在standard模式下默认baseline对齐， 在quirks mode下默认bottomline对齐-->
+			 	<td><a><img src="demo.jpg"></a></td>
+			 	<td><a><img src="demo.jpg"></a></td>
+			 </tr>
+
+			 <tr>
+			 	<td><span>1) inline元素在不同浏览器解析模式下默认垂直对齐方式</span></td>
+			 	<td><span>4) 在quirks模式下 table单元格中的font-size , font-weight, font-style属性都不会继承，只有font-family 和color会被继承</span></td>
+			 </tr>
+
+			 <tr  class="parent">
+			 	<td>
+			 		<div class="clild">
+						<div class="grandson">当一个元素使用百分比高度时，在 IE Standards Mode 下，高度取决于内容的变化，而在 Quirks Mode 下，百分比高度则被正确应用。</div>
+					</div>
+			 	</td>
+
+			 <tr>
+
+		</table>
+
+		<div class="parent">
+			<div class="clild">
+				<div class="grandson"></div>
+			</div>
+		</div>
+	</body>
+</html>
