@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--中文乱码问题-->
+    <title>Untitled Page</title>
+</head>
+<body>
+<h2>动态创建脚本并加入参数 innerHTML跟document.write方式对比</h2>
+<h2>为什么例2会加载了JS但请求不了？</h2>
+<h3>div1 innerHTML 成功(未加载相关js)</h3>
+<div id="div1"></div>
+<h3>div2 innerHTML + Math.random()随机数 失效（未加载js）</h3>
+<div id="div2"></div>
+<h3>div3 document.write 成功 (加载js)</h3>
+<div id="div3">
+<script type="text/javascript">
+//sample3 Succeed
+document.write(unescape("%3Cscript src='http://www.google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+<h3>div4 document.write + Math.random()随机数 成功(加载js)</h3>
+<div id="div4">
+<script type="text/javascript">
+//sample4 Succeed
+document.write(unescape("%3Cscript src='http://www.google-analytics.com/ga.js?rnd="+Math.random()+"' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</body>
+<script type="text/javascript">
+//sample1 Succeed
+document.getElementById("div1").innerHTML = unescape("%3Cscript src='http://www.google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E");
+
+document.getElementById("div1").innerHTML = unescape("%3Cscript type='text/javascript'%3E alert(111) %3C/script%3E");
+//sample2 fail
+document.getElementById("div2").innerHTML = unescape("%3Cscript src='http://www.google-analytics.com/ga.js?rnd="+Math.random()+"' type='text/javascript'%3E%3C/script%3E");
+
+
+</script>
+</html>

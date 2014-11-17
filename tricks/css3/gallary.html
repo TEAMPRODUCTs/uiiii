@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset="utf-8">
+   <link href="style.css" rel="stylesheet" />
+   <title>My Great Presentation</title>
+   <style type="text/css">
+   .wrap {
+	   margin: auto;
+	   width: 1180px;
+	   overflow: hidden; /* because children will be floated */
+	}
+
+	#slides {
+		width: 999999px;
+	}
+
+
+	#slides > div {
+		height: 600px;
+		width: 1180px;
+		float: left;
+		margin-right: 200px;
+		text-align: center;
+	}
+
+	#slides > div {
+		height: 600px;
+		width: 1180px;
+		float: left;
+		margin-right: 200px;
+		text-align: center;
+	        /* Flexible Box Model */
+	        display: -webkit-box;
+		-webkit-box-align: center;
+		-webkit-box-orient: horizontal;
+		-webkit-box-pack: center;
+		display: box;
+		box-align: center;
+		box-orient: horizontal;
+		box-pack: center;
+	}
+
+	body {
+	background-image: -webkit-gradient(
+		radial,
+		50% 50%, 0,
+		50% 50%, 1000,
+		from(rgba(245,245,245,1)),
+		to(rgba(100,100,100,1))
+	);
+}
+
+
+#slides h1,
+#slides h2,
+#slides h3,
+#slides h4,
+#slides h5 {
+	color: #292929;
+	font-family: 'League Gothic', sans-serif;
+	letter-spacing: -5px;
+	margin-top: 0;
+	text-shadow: 5px 3px 0 white;
+}
+#slides > div h2 {
+	font-size: 180px;
+	line-height: 1em;
+	margin: 0;
+}
+
+   </style>
+</head>
+<body>
+ <div class="wrap">
+	<div>
+	   <h3> About Me</h3>
+	   <ul>
+	      <li> Nettuts+ Editor</li>
+	      <li> Envato Marketplaces Manager</li>
+	      <li>Wicked WordPress Themes</li>
+	      <li>Theme Tumblr Like a Pro</li>
+	   </ul>
+	</div>
+
+   <div id="slides">
+      <!-- load in slides -->
+      <div id="#slide-0"></div>
+   </div>
+ </div>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>
+$(document.body).keydown(function(e) {  
+         // if left or right arrow key is pressed  
+         if ( e.keyCode === 39 || e.keyCode === 37 ) {  
+            e.preventDefault();  
+            ( e.keyCode === 39 ) ? Slides.next() : Slides.prev();  //TODO
+         }  
+      });  
+</script>
+</body>
+</html>

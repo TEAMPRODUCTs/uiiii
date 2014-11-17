@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   </head>
+   <body>
+   <div id="xss"></div>
+   	<div>
+   	<script>alert(11)</script>
+   	&lt;script&gt; alert(12)&lt;/script&gt;
+   	作为第一个参数的函数将会在全局作用域中执行，因此函数内的 this 将会指向这个全局对象。(ps:感觉不是吗。。。)
+   	</div>
+
+   	<div>
+   		setTimeout 只会执行回调函数一次，不过 setInterval - 正如名字建议的 - 会每隔 X 毫秒执行函数一次。 但是却不鼓励使用这个函数。
+<p>
+当回调函数的执行被阻塞时，setInterval 仍然会发布更多的回调指令。在很小的定时间隔情况下，这会导致回调函数被堆积起来。
+   	</div>
+   </body>
+   <script type="text/javascript">
+   document.getElementById("xss").innerHTML = unescape('&lt;script&gt; alert(22)&lt;//script&gt;');
+   function method(){
+   	console.log("method in global");
+   }
+
+   	function foo(){
+   		this.value = 22;//foo 不是new 出来的 所以this是全局this
+   		this.method = function(){
+   			console.log(this.value);
+   		}
+   		function foo4(){
+   			console.log(this.value);
+   		}
+   		method();
+
+   		/***
+   		但是 eval 只在被直接调用并且调用函数就是 eval 本身时，才在当前作用域中执行。
+   		*/
+   		eval("this.method()");
+   		var bar11 = eval;
+   		bar11("this.method()");
+
+
+   		setTimeout('this.method()',400);/**能访问到。不是全局执行。。奇怪。。。TTTTTT**/
+   	}
+
+   	//alert(this.value);
+   	//eval("(new foo()).method()")
+   	new foo();//放开使用 new 不是new 出来的 所以this是全局this
+   	//foo();
+    //alert(this.value);
+/**
+隐藏使用 eval
+
+应该避免使用 setInterval，因为它的定时执行不会被 JavaScript 阻塞。
+
+setTimeout 和 setInterval 也接受第一个参数为字符串的情况。 这个特性绝对不要使用，因为它在内部使用了 eval。
+*/
+
+function foo4() {
+    // 将会被调用
+    console.log("foo4 in global");
+}
+
+function bar() {
+    function foo4() {
+        // 不会被调用
+        console.log("foo4 in bar");
+    }
+    setTimeout(this.foo4(), 1000);
+}
+bar();
+
+
+
+/**
+在 foo 被阻塞的时候，setInterval 仍然在组织将来对回调函数的调用。 因此，当第一次 foo 函数调用结束时，已经有 10 次函数调用在等待执行。
+*/
+   	function foo1(){
+    // 阻塞执行 1 秒
+   // debugger;
+   alert("setInterval");
+   clearTimeout(id);
+
+}
+var id = setInterval(foo1, 100);
+
+
+/**
+这样不仅封装了 setTimeout 回调函数，而且阻止了调用指令的堆积，可以有更多的控制。 foo 函数现在可以控制是否继续执行还是终止执行。
+*/
+function foo5(){
+    // 阻塞执行 1 秒
+    setTimeout(foo5, 100);
+}
+foo5();
+
+   </script>
+</html>

@@ -132,4 +132,43 @@ QuirksMode_StandardsMode/baseline_bottomnline.html
 2） inline元素和table-cell元素默认对齐方式 （standard mode: baseline）(quirks mode: bottomline)
 
 
+************link和@import区别********
+区别1：link是xhtml标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS
+区别2: link引用css时，在页面载入时同时加载； @import需要页面网页加载入以后加载（会闪现）
+区别3：link是XHTML标签，无兼容问题； @import是在css2.1提出，低版本的浏览器不支持
+区别4: link支持使用javascript控制dom去改变样式 ； @import不支持
+
+@import 'style.css' //Windows IE4/ NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别
+@import "style.css" //Windows IE4/ NS4, Macintosh IE4/NS4不识别
+@import url(style.css) //Windows NS4, Macintosh NS4不识别
+@import url('style.css') //Windows NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别
+@import url("style.css") //Windows NS4, Macintosh NS4不识别
+
+
+********Document.write和innerHTML方法******
+document.write 指向窗口输出
+dom.innerHTML 则是改变窗口中HTML代码
+
+在载入页面后，浏览器输出流自动关闭，在此之后，任何一个对当前页面进行操作的
+document.write()方法将打开一个新的输出流。它将清除当前页面内容（包括原文档的任何变量或值）。
+因此希望用脚本生成的html替换当前页面， 使用document.write()方法完成写操作。不必清除文档并打开一个新数据流。
+
+如何选择？
+如果加载时就要用脚本输出,用document.write好一点.
+如果网页已经加载完毕,用innerHTML会更安全一点,用document.write会出错
+
+document.write插入代码会运行
+dom.innerHTML 插入代码不会运行
+
+
 =====11/14/2014 ============
+
+=====11/15/2014 tricks============
+setTimeout setInterval
+with
+global var
+event mechanism
+call & apply
+IIFE
+Closure
+=====11/17/2014 ============

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		 *{
+          margin:0;
+          padding:0;
+        }
+       
+        body{
+        	background: #000;
+        	font: 15px/400 Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+        	color: #aa3e03;
+        	overflow-y: scroll;/*这个很重要*/
+        	overflow-x: hidden;/*这个很重要*/
+        }
+        .cb-slideshow,
+        .cb-slideshow:after {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top:0;
+          left:0;
+          z-index:0;
+        }
+        .cb-slideshow:after {
+          content:"";
+          /*background: url("images/pattern.png") repeat left top;*/
+        }
+
+
+
+
+         .cb-slideshow li {
+        position: absolute;
+        width:100%;/*这个很重要*/
+        height: 100%;/*这个很重要*/
+        top:0;
+        left:0;
+        color: transparent;
+        /*===放大背景图片==*/
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;        
+        background-position: center;/*背景图片居中显示*/
+        background-repeat: none;/*背景图片不平铺*/
+        opacity:0;/*载入时为透明*/
+        z-index:0;      
+
+           -webkit-backface-visibility: hidden;/*调用动画*/
+          -webkit-animation: imageAnimation 36s linear infinite 0s;
+          -moz-animation: imageAnimation 36s linear infinite 0s;
+          -o-animation: imageAnimation 36s linear infinite 0s;
+          -ms-animation: imageAnimation 36s linear infinite 0s;
+          animation: imageAnimation 36s linear infinite 0s;
+
+      }
+      /*====设置不同的背景图片===*/
+      .cb-slideshow li:nth-child(1) { 
+          background-image: url("images/1.jpg"); 
+      }
+      .cb-slideshow li:nth-child(2){ 
+          background-image: url("images/2.jpg");  
+           -webkit-animation-delay: 6s;
+            -moz-animation-delay: 6s;
+            -o-animation-delay: 6s;
+            -ms-animation-delay: 6s;
+            animation-delay: 6s;        
+      }
+      .cb-slideshow li:nth-child(3) { 
+          background-image: url("images/3.jpg");    
+          -webkit-animation-delay: 12s;
+            -moz-animation-delay: 12s;
+            -o-animation-delay: 12s;
+            -ms-animation-delay: 12s;
+            animation-delay: 12s;       
+      }
+      .cb-slideshow li:nth-child(4){ 
+          background-image: url("images/4.jpg");  
+          -webkit-animation-delay: 18s;
+            -moz-animation-delay: 18s;
+            -o-animation-delay: 18s;
+            -ms-animation-delay: 18s;
+            animation-delay: 18s;         
+      }
+      .cb-slideshow li:nth-child(5){ 
+          background-image: url("images/5.jpg");   
+           -webkit-animation-delay: 24s;
+            -moz-animation-delay: 24s;
+            -o-animation-delay: 24s;
+            -ms-animation-delay: 24s;
+            animation-delay: 24s;        
+      }
+      .cb-slideshow li:nth-child(6){ 
+          background-image: url("images/6.jpg");  
+          -webkit-animation-delay: 30s;
+            -moz-animation-delay: 30s;
+            -o-animation-delay: 30s;
+            -ms-animation-delay: 30s;
+            animation-delay: 30s;         
+      }
+
+
+
+
+        @keyframes imageAnimation {/*==定义了一个imageAimation的动画==*/
+      	0% {/*==开始效果==*/
+      		opacity: 0;
+      		transform: translateY(2000px);
+      		animation-timing-function: ease-in;    		
+      	}
+
+      	8% {/*==8％位置处的效果==*/
+      		opacity: 1;
+      		transform: translateY(-30px);
+      		animation-timing-function: ease-out;
+      	}
+        17% {/*＝17％处的效果＝＝*/
+      		opacity: 1;
+      	}
+      	25% {/*==25％处效果==*/
+      	  opacity:0;
+      		transform: translateY(10px);
+      	}
+
+      	100% {/*==结束时效果==*/
+      	  opacity:1;
+      		transform: translateY(0);
+      	}
+      }
+    
+
+    #wrapper {
+          width: 960px;
+          background: rgba(255,255,255,0.8);
+          margin: 0 auto;
+          position: relative;
+          z-index:99999;
+        }
+    
+    
+	</style>
+</head>
+<body>
+
+	<ul class="cb-slideshow">
+        <li>image1</li>
+        <li>image2</li>
+        <li>image3</li>
+        <li>image4</li>
+        <li>image5</li>
+        <li>image6</li>
+      </ul>
+      <div id="wrapper" style="color:red;">
+        <!-- Page Content here-->
+        page content
+      </div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   </head>
+    <body>
+	<a href="http://www.baidu.com" id="btn">click me</a>
+
+	<button id="Button1">事件监听测试</button>
+    </body>
+    <script type="text/javascript">
+	document.getElementById("btn").onclick = function(e){
+		alert("a click");
+		e.stopPropagation();
+		e.preventDefault();
+	}
+
+	//上面事件函数被覆盖
+	document.getElementById("btn").onclick= function(e){
+		alert("b click");
+		e.stopPropagation();//阻止冒泡
+		e.preventDefault();
+	}
+
+	document.onclick = function(){
+		//alert("document.click");
+		//return false;
+	}
+
+    function addEventHandler(target, type, func){
+		/*if(target.addEventListener){ 
+			target.addEventListener(type, func, false);
+		}else if(target.attachEvent){
+			target.attachEvent("on"+ type, func);
+		}else*/{
+			target["on" + type] = func;
+		}
+	 }
+
+	function removeEventHandler(target, type, func){
+		/*if(target.removeEventListener){
+			target.removeEventListener(type,func,false);
+		}else if(target.detachEvent){
+			target.detachEvent("on" + type, func);
+		}else*/{
+			delete target["on" + type];
+		}
+	}
+
+	(function foo(){alert("IIFE") ;})();
+	(function foo(){alert("IIFE——推荐") ;}());//推荐
+	function foo(){alert("IIFE_test") ;}(1);//一个function声明后面，又声明了一个毫无关系的表达式：
+
+
+	// 由于括弧()和JS的&&，异或，逗号等操作符是在函数表达式和函数声明上消除歧义的
+// 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了
+// 不过，请注意下一章节的内容解释 
+//function () { alert("IIFE其中一个是表达式其他也是表达式啦！！！") } () 这只是申明
+	!function () { alert("IIFE其中一个是表达式其他也是表达式啦！！！") } ();
+	var i = function () {alert("IIFE其中一个是表达式其他也是表达式啦111！！！")  } ();
+
+	//// 还有一个情况，使用new关键字,也可以用，但我不确定它的效率
+	new function foo(a){alert("使用new关键字,也可以用，但我不确定它的效率" + a) ;}(1);
+
+
+	(function(){alert("IIFE11");})();
+	var button1 = document.getElementById("Button1");
+	function test1() {alert("test1");}
+	function test2() {alert("test2");
+	    removeEventHandler(button1,"click", test1);
+    removeEventHandler(button1,"click", test2);
+    removeEventHandler(button1,"click",function(){alert(1);});
+
+}
+	addEventHandler(button1, "click", test1);
+	addEventHandler(button1, "click", test2);
+	addEventHandler(button1, "click", function(){alert(1);})
+	addEventHandler(button1, "click", function(){alert(2);})
+
+	var hhh ;
+	console.log(typeof hhh);
+	if(typeof hhh == "undefined"){
+		console.log("hhh is undefined");
+	}else{
+		console.log("hhh is defined");
+	}
+	undefined = "test";
+	if(typeof hhh == 'undefined'){
+		console.log("hhh is undefined");
+	}else{
+		console.log("hhh is defined");
+	}
+
+
+    </script>
+</html>

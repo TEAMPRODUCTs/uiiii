@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   </head>
+   <body>
+   </body>
+   <script type="text/javascript">
+
+   	function a(){
+   		this.msg ="";
+   		this.test = function(){
+   			console.log(this.msg);
+   		}
+
+   		function test1(msg1){
+   			console.log(msg1);
+   		}
+   		console.log(this.msg)
+   	}
+
+   	function b(msg){
+   		this.msg = msg;
+   	}
+
+  // var b =	a.apply(new b("hello"),[]);
+  // console.log(b.test());
+  var test111 = new a();
+  test111.test();
+  (new a()).test.apply(new b("hello111"),[]);
+
+   </script>
+
+</html>

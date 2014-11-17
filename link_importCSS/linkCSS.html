@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div>
+			<p>************link和@import区别********</p>
+			<p>区别1：link是xhtml标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS</p>
+			<p>区别2: link引用css时，在页面载入时同时加载； @import需要页面网页加载入以后加载（会闪现）</p>
+			<p>区别3：link是XHTML标签，无兼容问题； @import是在css2.1提出，低版本的浏览器不支持</p>
+			<p>区别4: link支持使用javascript控制dom去改变样式 ； @import不支持</p>
+
+			<p>@import 'style.css' //Windows IE4/ NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别</p>
+			<p>@import "style.css" //Windows IE4/ NS4, Macintosh IE4/NS4不识别</p>
+			<p>@import url(style.css) //Windows NS4, Macintosh NS4不识别</p>
+			<p>@import url('style.css') //Windows NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别</p>
+			<p>@import url("style.css") //Windows NS4, Macintosh NS4不识别</p>
+		</div>
+
+		<div class="blockdiv">2) 块级元素文字垂直居中对齐</div><!--块级元素文字垂直居中对齐-->
+		<span class="none_replace">3)在 IE Standards Mode 下，non-replaced inline 元素无法自定义大小，而在 IE Quirks Mode 下，定义这些元素的 width 和 height 属性，能够影响该元素显示的大小尺寸。</span>
+
+		<div class="overflow_parents">
+			<div class="overflow_child">在 IE Standard Mode 下，overflow 取默认值 visible，即溢出可见，这种情况下，溢出内容不会被裁剪，呈现在元素框外。而在 Quirks Mode 下，该溢出被当做扩展 box 来对待，即元素的大小由其内容决定，溢出不会被裁剪，元素框自动调整，包含溢出内容。</div>
+		</div>
+
+		<table>
+			 <tr>
+			 	<th>month</th>
+			 	<th>Savings</th>
+			 </tr>
+			 <tr>
+			 	<td>January</td>
+			 	<td>$100</td>
+			 </tr>
+
+			<tr>
+				<!--1) inline元素在standard模式下默认baseline对齐， 在quirks mode下默认bottomline对齐-->
+			 	<td><a><img src="demo.jpg"></a></td>
+			 	<td><a><img src="demo.jpg"></a></td>
+			 </tr>
+
+			 <tr>
+			 	<td><span>1) inline元素在不同浏览器解析模式下默认垂直对齐方式</span></td>
+			 	<td><span>4) 在quirks模式下 table单元格中的font-size , font-weight, font-style属性都不会继承，只有font-family 和color会被继承</span></td>
+			 </tr>
+
+			 <tr  class="parent">
+			 	<td>
+			 		<div class="clild">
+						<div class="grandson">当一个元素使用百分比高度时，在 IE Standards Mode 下，高度取决于内容的变化，而在 Quirks Mode 下，百分比高度则被正确应用。</div>
+					</div>
+			 	</td>
+
+			 <tr>
+
+		</table>
+
+		<div class="parent">
+			<div class="clild">
+				<div class="grandson"></div>
+			</div>
+		</div>
+	</body>
+</html>

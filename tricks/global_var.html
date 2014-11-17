@@ -1,0 +1,110 @@
+<html>
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   </head>
+   <body>
+   	<div>
+   		隐式全局变量和明确定义的全局变量间有些小的差异，就是通过delete操作符让变量未定义的能力。<br/>
+
+通过var创建的全局变量（任何函数之外的程序中创建）是不能被删除的。<br/>
+无var创建的隐式全局变量（无视是否在函数中创建）是能被删除的。<br/>
+这表明，在技术上，隐式全局变量并不是真正的全局变量，但它们是全局对象的属性。属性是可以通过delete操作符删除的，而变量是不能的：
+<p>
+JavaScript中，你可以在函数的任何位置声明多个var语句，并且它们就好像是在函数顶部声明一样发挥作用，这种行为称为 
+<br/>hoisting（悬置/置顶解析/预解析）。当你使用了一个变量，然后不久在函数中又重新声明的话，就可能产生逻辑错误。对于JavaScript，只 <br/>要你的变量是在同一个作用域中（同一函数），它都被当做是声明的，即使是它在var声明前使用的时候。<br/>
+   	</div>
+   </body>
+   <script type="text/javascript">
+   var global_var = 1;
+   global_novar = 2;
+   (function(){
+   		global_formvar = 3;//反面教材
+   }());
+
+   //试图删除
+   delete global_var;
+   delete global_novar;
+   delete global_formvar;
+
+   console.log(typeof global_var);
+   console.log(global_var);
+   console.log(typeof global_novar);
+   console.log(typeof global_formvar);
+
+
+   // 反例  （悬置/置顶解析/预解析）
+var myname = "global"; // 全局变量
+function func() {
+    alert(myname); // "undefined"
+    var myname = "local";
+    alert(myname); // "local"
+}
+func();
+
+//eval
+console.log(typeof un);    // "undefined"
+console.log(typeof deux); // "undefined"
+console.log(typeof trois); // "undefined"
+
+var jsstring = "var un = 1; console.log(un);";
+eval(jsstring); // logs "1"
+
+jsstring = "var deux = 2; console.log(deux);";
+new Function(jsstring)(); // logs "2"
+
+new Function("alert(typeof un);")();
+
+jsstring = "var trois = 3; console.log(trois);";
+(function () {
+   eval(jsstring);
+}()); // logs "3"
+
+console.log(typeof un); // number
+console.log(un);
+console.log(typeof deux); // "undefined"
+console.log(typeof trois); // "undefined"
+
+
+//eval function
+/*
+另一间eval()和Function构造不同的是eval()可以干扰作用域链，而Function()更安分守己些。不管你在哪里执行 Function()，它只看到全局作用域。所以其能很好的避免本地变量污染。
+*/
+(function () {
+   var local = 1;
+   eval("local = 3; console.log(local)"); // logs "3"
+   console.log(local); // logs "3"
+}());
+
+(function () {
+   var local = 1;
+   Function("console.log(typeof local);")(); // logs undefined
+}());
+
+
+/***
+*parseInt()下的数值转换(Number Conversions with parseInt())
+*/
+var month = "06",
+    year = "09";
+var month1 = parseInt(month, 10);
+var year1 = parseInt(year, 10);
+console.log("month1: " + month1 + "; year1: " + year1 );
+
+var month2 = parseInt(month);
+var year2 = parseInt(year);
+console.log("month2: " + month2 + "; year2: " + year2 );
+
+var month3 = month;
+var year3  = year;
+console.log("month3: " + month3 + "; year3: " + year3 );
+
+console.log("month4: " + Number(month) + "; year4: " + Number(year) );
+
+var test= "08hello";
+console.log("08hello " + parseInt(test,10));
+console.log("parseInt('010');" + parseInt("010"))
+
+/**js分号插入机制*/
+
+   </script>
+</html>

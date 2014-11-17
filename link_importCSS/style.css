@@ -1,0 +1,75 @@
+body
+		{
+			font-style:italic;
+			color:black;
+			font-size:120%;
+		    font-weight:bold;	/*2） 在quirks模式下 table单元格中的font-siza , font-weight, font-style属性都不会继承，只有font-family 和color会被继承*/
+			font-family: fantasy;
+		}
+
+		tr{
+			height: 50px;
+		}
+
+		td.a
+		{
+			border-style:solid;
+			border-color:blue;
+		}
+
+		img.c
+		{
+			width:200px;
+			height:200px;
+			border-style:solid;
+			border-color:orange;
+		}
+
+		th, td, .blockdiv{
+			border-color:blue;
+			border:1px;
+			background-color: red;
+
+			
+		}
+		.blockdiv{
+			line-height: 50px;
+			vertical-align: middle;
+		}
+
+		.none_replace{
+			width: 100px;
+			height: 50px;
+			background-color: yellow;
+		}
+
+		.parent{
+			height: 500px;
+			background-color: pink;
+		}
+
+		.clild{
+			width: 300px;
+			height: 90%;
+			background-color: green;
+			display: block;
+		}
+
+		.grandson{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+
+		.overflow_parents{
+			height: 200px;
+			width: 300px;
+			background-color: green;
+			margin: 150px 0 ;
+		}
+
+		.overflow_child{
+			height: 300px;
+			width: 200px;
+			background-color: yellow;
+		}
