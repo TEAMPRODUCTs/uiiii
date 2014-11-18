@@ -174,5 +174,7 @@ Closure
 =====11/17/2014 ============
 
 =====11/18/201422============
+git@github.com:shuiqin/jsShare.git
 
+git@github.com:shuiqin/jsShare.gitss
 =====11/18/2014============
