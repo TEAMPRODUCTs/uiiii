@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+     <style type="text/css">
+     	#test{
+     		overflow:hidden;/**ie6 quirks模式下定义小高度的容器*/
+     		height:1px;
+     		font-size:0;
+     		line-height:0;
+     		background-color: red;
+     		margin-bottom: 15px;
+     	}
+     	.minheight{
+     		height: 1px;
+     		background-color: green;
+     	}
+
+     	.miniheight{
+     		min-height: 300px;
+     		background-color: yellow;
+     		_height:300px; /*模拟ie6及更早浏览器下min-height效果**/
+     	}
+
+     	button{
+     		*overflow: visible; /**解决ie7及更早浏览器下随着value增多两边留白也随着增加的问题*/
+     	}
+
+     	.float{
+     		float: left;
+     	}
+
+     	.test{zoom:1;overflow:hidden;width:500px;}
+		.box1{float:left;width:100px;}
+		.box2{float:right;width:400px;}
+     </style>
+   </head>
+   <body>
+   		<div id="test">ie6 quirks模式下定义小高度的容器</div>
+   		<div class="minheight"></div>
+   		<div class="miniheight">模拟ie6及更早浏览器下min-height效果</div>
+   		<div>
+   			<input value="testt_ewrwuriwuriwwueriuewjfjfjdfjdfjjd">
+   			<button>解决ie7及更早浏览器下随着value增多两边留白也随着增加的问题</button>
+   		</div>
+
+   		<div>
+   			<ul>
+   				<li >
+   					<div class="float">浮动1</div>
+   					<div class="float">浮动2</div> 
+   				</li>
+   				<li class="">
+   					<div class="float">浮动1</div>
+   					<div class="float">浮动2</div>  
+   				</li>
+   				<li>
+   					<div>浮动3</div> 
+   				</li>
+   			</ul>
+   		</div>
+
+   		<div style="clear:both;"></div>
+   		<h3>
+   			运行如上代码，你会发现文字发生了溢出，在IE6下会多出一只“猪”。造成此BUG的原因可能是多重混合的，如浮动，注释，宽高定义等等。并且注释条数越多，溢出的文本也会随之增多。
+			列举几个解决方法： 
+			　删除box1和box2之间所有的注释； 
+			　不设置浮动； 
+			　调整box1或box2的宽度，比如将box的宽度调整为90px
+   		</h3>
+   		<div class="test">
+		    <div class="box1"></div>
+		    <!-- 注释 注释越多，溢出的文本也越多-->
+		    <div class="box2">↓这就是多出来的那只猪值</div>
+		</div>
+   </body>
+</html>
