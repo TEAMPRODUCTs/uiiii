@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <script type="text/javascript" src="../../common/libs/jquery-2.1.1.js"></script>
+       <style type="text/css">
+       	.pseudo p::first-letter{
+       		color: red;
+       	}
+
+        .pseudo_listener p::first-letter{
+       		color: green;
+       	}
+
+       	#mything{
+       		width: 100px;
+       		height: 100px;
+       		position: relative;
+       		background: blue;
+       	}
+
+       	#mything:after{
+       		content: "x";
+       		font-size: 10px;
+       		position: absolute;
+       		top: 0;
+       		right: 0;
+       		background: red;
+       		width: 10px;
+       		height: 10px;
+       	}
+       </style>
+    </head>
+    <body>
+    	<article>
+    		<h2>伪元素和伪类的区别</h2>
+    		<p>伪类表示某一种“状态”，伪元素表示文档某个确定部分的表现， ::first-line伪元素只作用与前面元素确定的一个元素的第一行</p>
+    		<p>伪元素选择出来的部分不在dom里， 也不能对其绑定事件，若对伪元素前面的选择器定义的元素绑定了事件，伪元素同样会失效。“伪元素只是表现”</p>
+    	</article>
+
+    	<div class="pseudo">
+    		<p>::after ::before ::first-letter ::first-line ::selection</p>
+    	</div>
+
+    	<div class="pseudo_listener">
+    		<p>::after ::before ::first-letter ::first-line ::selection</p>
+    	</div>
+
+    	<div id="mything">
+    		通过坐标模拟伪元素添加事件
+    	</div>
+    </body>
+    <script type="text/javascript">
+    	$(".pseudo_listener p").click(function(e){
+    		alert("伪元素点击事件");
+    	});
+
+    	$("#mything").click(function(e){
+    		if(e.clientX > $(this).offset().left + 90 && 
+    			e.clientY < $(this).offset().top + 10 ){
+    			alert("模拟伪元素添加事件成功！！！");
+    		}
+    	});
+    </script>
+</html>

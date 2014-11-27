@@ -34,6 +34,80 @@
      	.test{zoom:1;overflow:hidden;width:500px;}
 		.box1{float:left;width:100px;}
 		.box2{float:right;width:400px;}
+
+    .a{color:#f00;}
+    .main{
+      width:950px;
+      background:#eee;
+    }
+    .content{
+      float:left;
+      width:750px;
+      height:100px;
+      background:#ccc;
+      _margin-right:-3px;/*IE6 3px像素问题*/
+      }
+    .aside{
+      height:100px;
+      background:#aaa;
+    }
+
+    .first_letter:first-letter{
+        float:left;
+        font-size:40px;
+        font-weight:bold;
+        color:#f00!important;
+        color:#090;
+    }
+
+    .ie6_important{
+      color:#f00!important;
+      /*color:#090;、important被ie6忽略啦 如果两条规则放在一个css块里，解决办法，分成两块**/
+    }
+
+    .ie6_important{
+        color:#090;
+    }
+
+    .ie6_li_block_space a,.ie6_li_block_space span{
+      display:block;
+      background:#ddd;
+      zoom:1;
+    }
+
+
+    #test{
+      zoom:1;
+      overflow:hidden;
+      border:1px solid #ddd;
+      background:#eee;
+    }
+    #test h1{float:left;}
+    #test .nav{
+      float:right;
+      background:#aaa;}
+    #test .nav ul{
+      zoom:1;
+      overflow:hidden;
+      margin:0;
+      padding:0;
+      list-style:none;}
+    #test .nav li{
+      float:left;
+      margin:0 5px;}
+
+      .ie7_overflow_relativeChild{
+        overflow:auto;
+        width:260px;
+        height:80px;
+        border:1px solid #ddd;
+        position: relative;/*子元素相对定位后，父元素的overflow在ie7就没用啦 解决办法 父元素也设position: relative; */
+      }
+
+       .ie7_overflow_relativeChild p{
+        position:relative;margin:0;
+      }
+
      </style>
    </head>
    <body>
@@ -74,5 +148,43 @@
 		    <!-- 注释 注释越多，溢出的文本也越多-->
 		    <div class="box2">↓这就是多出来的那只猪值</div>
 		</div>
+
+    <div class="main">
+      <div class="content">content</div>
+      <div class="aside">aside</div>
+    </div>
+
+
+    <p class="first_letter">在IE8下color定义都会失效(ie8里两个颜色都不起作用，ie6后面的颜色起作用)，原因就是因为有color使用了!important规则。鉴于此，请尽量不要在:first-letter/:first-line里使用!important规则。</p>
+
+      <p class="ie6_important">
+        IE6及以下浏览器div的文本颜色为#000，!important并没有覆盖后面的规则，也就是说!important被忽略了。解决方案是将该样式拆分为2条</p>
+
+        <p>
+        <ul class="ie6_li_block_space">
+          <li><a href="../">CSS参考手册</a></li>
+          <li><a href="../">CSS探索之旅</a></li>
+          <li><a href="../">web前端实验室</a></li>
+          <li><span>测试li内部元素为设置了display:block的内联元素时底部产生空白</span></li>
+        </ul>
+
+
+        <p><p>
+
+          <div id="test">
+            <h1>Doyoe</h1>
+            <div class="nav">
+              <ul>
+                <li><a href="../">CSS参考手册</a></li>
+                <li><a href="../">CSS探索之旅</a></li>
+                <li><a href="../">web前端实验室</a></li>
+              </ul>
+            </div>
+          </div>
+
+        <div class="ie7_overflow_relativeChild">
+          <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+          <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+        </div>
    </body>
 </html>
