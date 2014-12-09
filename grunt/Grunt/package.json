@@ -1,0 +1,508 @@
+{
+  "name": "ctrip-h5-lizart-ant",
+  "defaultApplication": "app",
+  "applications": {
+    "app": {
+      "defaultPath": "1.0",
+      "paths": {
+        "1.0": "../Lizard"
+      }
+    },
+    "res": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../Resource/dev/webapp-v2.3.sp2.1"
+      }
+    },
+    "car": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../car/dev/webapp-v2.3.sp2.1",
+        "v2.0": "../car/dev/Hybrid-v5.4.sp2.0",
+        "vwpfix": "../car/dev/CarWebApp-v5.4-WPFix"
+      }
+    },
+    "flight": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../flight/dev/m.ctrip.com-v2.3.sp1.3",
+        "v2.3.2": "../flight/dev/m.ctrip.com-v2.3.sp2.1",
+        "v2.3.3": "../flight/dev/WebApp-v2.3.sp3",
+        "v2.4.1": "../flight/dev/WebApp-v2.4",
+        "v2.4.2": "../flight/dev/WebApp-v2.4.2"
+      }
+    },
+    "fltintl": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../flightintl/dev/WebApp-v2.3.sp1.3",
+        "v2.3.2": "../flightintl/dev/WebApp-v2.3.sp2.2",
+        "v2.4.1": "../flightintl/dev/WebApp-v2.4",
+        "v2.4.2": "../flightintl/dev/WebApp-v2.4.2"
+      }
+    },
+    "fpage": {
+      "defaultPath": "v2.4.1",
+      "paths": {
+        "v2.4.1": "../FlightCommon/dev/WebApp-v2.4.sp1"
+      }
+    },
+    "train": {
+      "defaultPath": "v2.3",
+      "task": "",
+      "paths": {
+        "v2.3": "../train/dev/webapp-v2.3.sp2.1"
+      }
+    },
+    "hotel": {
+      "defaultPath": "v2.3.3",
+      "paths": {
+        "v2.3.3": "E:\\document\\Hotel-compress\\WebApp",
+        "hyv5.7": "../hotel/dev/WebApp-v2.3.sp4.1_Hybird_For_App.v5.7"
+      }
+    },
+    "vip": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../HotelMisc/dev/webapp-v1"
+      }
+    },
+    "grab": {
+      "defaultPath": "v2.3.1",
+      "paths": {
+        "v2.3.1": "../grab/dev/WebApp-hotel-Wechat"
+      }
+    },
+    "hotelgrab": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../HotelGrab/Dev/WebAppV5.5"
+      }
+    },
+    "rewards": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../Rewards/dev/WebApp-rewards"
+      }
+    },
+    "tuan": {
+      "defaultPath": "v5.9",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "E:/CtripDev/Group/Branch/WebApp5.7-cxw",
+        "v2.4": "E:/CtripDev/Group/Release/164_0826",
+        "bugfix": "../tuan/dev/WebApp-bugfix",
+        "v5.8": "E:/CtripDev/Group/Branch/WebApp5.8-cxw",
+        "v5.9": "E:/CtripDev/Group/Branch/WebApp-Lizard2.0/TuanApp/WebApp",
+        "v2.3.3": "E:/CtripDev/Group/Branch/WebApp5.6sp1-cxw",
+        "v5.71": "E:/CtripDev/Group/Release/160_0729",
+        "v5.61": "E:/CtripMobile/WAP/H5/Tuan/DEV/WebApp-v2.3.3"
+      }
+    },
+    "hoteljoin": {
+      "defaultPath": "v1.0",
+      "task": "noHtmlMin",
+      "paths": {
+        "v1.0": "E:/WirelessH5/Release/163_0819/HotelJoin/HotelJoin"
+      }
+    },
+    "tour": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "D:\\source\\UISolution\\website\\_webresource_\\code\\lizard\\2.0\\Dev\\tour_seo\\Tour\\Tour"
+      }
+    },
+    "ticket": {
+      "defaultPath": "test",
+      "paths": {
+        "test": "D:\\Work\\Ticket"
+      }
+    },
+    "myctrip": {
+      "defaultPath": "v5.7",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "../myctrip/dev/webapp-v2.3.sp2.2",
+        "v5.7": "../myctrip/dev/WebApp-5.7-LatestVersion",
+        "m": "../myctrip/mainline/WebApp-mainline"
+      }
+    },
+    "cpage": {
+      "defaultPath": "v5.6",
+      "paths": {
+        "v2.3": "../cpage/dev/webapp-v2.3.sp2.1",
+        "v2.3.2": "../cpage/dev/WebApp-v2.3.sp2.2",
+        "v5.6": "../cpage/dev/WebApp-crm"
+      }
+    },
+    "lipin": {
+      "defaultPath": "v1.0",
+      "paths": {
+        "v1.0": "../lipin/dev/webapp-v1.0",
+        "v1.2": "../lipin/dev/webapp-v1.2"
+      }
+    },
+    "cruise": {
+      "defaultPath": "v1.0",
+      "paths": {
+        "v1.0": "../cruise"
+      }
+    },
+    "payment": {
+      "defaultPath": "v6.1",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "../payment/dev/webapp-v2.3.sp2.1",
+        "v2.4": "../payment/dev/WebApp-v2.3.sp2.2",
+        "v2.5": "../payment/dev/WebApp-v2.3.sp2.2-vacations",
+        "v2.7": "../payment/dev/WebApp-v2.3.sp2.2-oversea",
+        "v3.0": "../Payment2.0/DEV/WebApp-v5.7.sp1.0",
+        "v2.6": "../payment/dev/WebApp-v2.3.sp2.2-vacations-branch",
+        "v2.1": "../payment/dev/WebApp-v2.3.sp2.2-vacations-debug",
+        "v2.9": "../payment/dev/WebApp-v5.6.sp1.0",
+        "v3.1": "../Payment2.0/DEV/WebApp-v5.7.sp1.1",
+        "v3.2": "../Payment2.0/DEV/WebApp-hybrid-v5.7.sp1.0",
+        "v6.1": "E:/workspace_git/Payment_WebApp/WebApp/Payment"
+      }
+    },
+    "payment2": {
+      "defaultPath": "v6.1",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "../payment/dev/webapp-v2.3.sp2.1",
+        "v2.4": "../payment/dev/WebApp-v2.3.sp2.2",
+        "v2.5": "../payment/dev/WebApp-v2.3.sp2.2-vacations",
+        "v2.7": "../payment/dev/WebApp-v2.3.sp2.2-oversea",
+        "v3.0": "../Payment2.0/DEV/WebApp-v5.7.sp1.0",
+        "v2.6": "../payment/dev/WebApp-v2.3.sp2.2-vacations-branch",
+        "v2.1": "../payment/dev/WebApp-v2.3.sp2.2-vacations-debug",
+        "v2.9": "../payment/dev/WebApp-v5.6.sp1.0",
+        "v3.1": "../Payment2.0/DEV/WebApp-v5.7.sp1.1",
+        "v3.3": "../Payment2.0/DEV/WebApp-hybrid-v5.7.sp1.0-debug",
+        "v3.2": "../Payment2.0/DEV/WebApp-hybrid-v5.7.sp1.0",
+        "v3.5": "E:/workspace/IFinance/Dev/Payment_WebApp/Payment_WebApp_V5.10",
+        "v4.5": "E:/workspace/IFinance/Mainline/code/Payment_WebApp/Payment_WebApp_V5.10",
+        "v6.0": "E:/workspace/IFinance/Mainline/code/Payment_WebApp/Payment_WebApp_V6.0_Test",
+        "v6.1": "E:/workspace_git/Payment_WebApp/WebApp/Payment"
+      }
+    },
+    "market": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../market/dev/webapp-v2.3.sp2.1"
+      }
+    },
+    "promocode": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "../promocode/dev/webapp-v1.0"
+      }
+    },
+    "schedule": {
+      "defaultPath": "v5.8",
+      "paths": {
+        "v5.8": "D:\\Schedule\\Branches\\DEV-5.8"
+      }
+    },
+    "youth": {
+      "defaultPath": "v5.7",
+      "paths": {
+        "vdemo": "D:\\Youth\\Branches\\DEV-5.7",
+        "v5.7": "../../../Youth/Branches/DEV-5.7"
+      }
+    },
+    "favorite": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "D:\\work\\app\\SPS\\Branches\\Code\\H5\\favorite"
+      }
+    },
+    "invoice": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "D:\\work\\app\\SPS\\Branches\\Code\\H5\\invoice"
+      }
+    },
+    "invoicemgr": {
+      "defaultPath": "v2.3",
+      "paths": {
+        "v2.3": "D:\\work\\app\\SPS\\Branches\\Code\\H5\\invoicemgr"
+      }
+    },
+    "topshop": {
+      "defaultPath": "v5.8",
+      "paths": {
+        "v5.8": "../TopShop/dev/5.8/WebApp-v5.8",
+        "v5.7": "../TopShop/dev/5.7/WebApp-v5.7",
+        "v5.7.3": "../TopShop/dev/5.7/WebApp-v5.7.3"
+      }
+    },
+    "balance": {
+      "defaultPath": "v2.4",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "../iFinance/Balance/DEV/WebApp-v5.7.sp1.0",
+        "v2.4": "../iFinance/Balance/DEV/WebApp-hybrid-v5.7.sp1.0"
+      }
+    },
+    "account": {
+      "defaultPath": "v2.4",
+      "task": "noHtmlMin",
+      "paths": {
+        "v2.3": "../iFinance/Account/DEV/WebApp-v5.7.sp1.0",
+        "v2.4": "../iFinance/Account/DEV/WebApp-hybrid-v5.7.sp1.0"
+      }
+    },
+    "destination": {
+      "defaultPath": "v5.6",
+      "paths": {
+        "v5.6": "../destination"
+      },
+      "task": "donwload"
+    },
+    "ifinance": {
+      "defaultPath": "v5.6",
+      "paths": {
+        "v5.6": "../Payment/DEV/apprelease"
+      },
+      "task": "donwload"
+    },
+    "lizard": {
+      "defaultPath": "v5.6",
+      "paths": {
+        "v5.6": "../Payment/DEV/apprelease"
+      }
+    }
+  },
+  "tasks": {
+    "web": {
+      "default": [
+        "clean",
+        "copy:web_sbu",
+        "uglify",
+        "htmlmin:web",
+        "cssmin:minify",
+        "replace:web_app_css",
+        "requirejs",
+        "replace:templates",
+        "strip",
+        "compress:web"
+      ],
+      "noHtmlMin": [
+        "clean",
+        "copy:web_sbu",
+        "uglify",
+        "cssmin:minify",
+        "replace:web_app_css",
+        "requirejs",
+        "replace:templates",
+        "strip",
+        "compress:web"
+      ],
+      "payment": [
+        "clean",
+        "copy:web_sbu",
+        "uglify",
+        "htmlmin:web",
+        "cssmin:minify",
+        "requirejs",
+        "replace:templates",
+        "strip",
+        "compress:web"
+      ],
+      "app": [
+        "clean",
+        "uglify",
+        "requirejs",
+        "strip",
+        "compress:web"
+      ],
+      "res": [
+        "clean",
+        "copy:web_sbu",
+        "uglify",
+        "cssmin",
+        "replace:web_res_css",
+        "requirejs",
+        "compress:web"
+      ]
+    },
+    "app": {
+      "default": [
+        "clean",
+        "requirejs",
+        "addBuildVersion",
+        "addVersion",
+        "copy:app_sbu",
+        "htmlmin:app",
+        "replace:templates",
+        "strip",
+        "curl",
+        "unzip",
+        "compress:app",
+        "compress:com_app",
+        "compress:com_res",
+        "compress:com_webapp",
+        "hashify",
+        "formatMD5"
+      ],
+      "noHtmlMin": [
+        "clean",
+        "requirejs",
+        "addBuildVersion",
+        "addVersion",
+        "copy:app_sbu",
+        "htmlmin:app",
+        "replace:templates",
+        "strip",
+        "curl",
+        "unzip",
+        "compress:app",
+        "compress:com_app",
+        "compress:com_res",
+        "hashify",
+        "formatMD5"
+      ],
+      "payment": [
+        "clean",
+        "requirejs",
+        "addBuildVersion",
+        "addVersion",
+        "copy:app_sbu",
+        "htmlmin:app",
+        "replace:templates",
+        "strip",
+        "compress:app",
+        "hashify",
+        "formatMD5"
+      ],
+      "app": [
+        "clean",
+        "curl",
+        "unzip",
+        "compress:app",
+        "hashify",
+        "formatMD5"
+      ],
+      "res": [
+        "clean",
+        "curl",
+        "unzip",
+        "compress:app",
+        "hashify",
+        "formatMD5"
+      ],
+      "donwload": [
+        "copy:zip",
+        "hashify",
+        "formatMD5"
+      ]
+    }
+  },
+  "tasks2": {
+    "app": {
+      "default": [
+        "shell",
+        "compress:app",
+        "hashify",
+        "formatMD5"
+      ]
+    },
+    "web": {}
+  },
+  "appOutDir": "./out/hybrid",
+  "webOutDir": "./out/web",
+  "frameworkInclude": [
+    "cPageView",
+    "cUILoadingLayer",
+    "cUILoading",
+    "cUIToast",
+    "cUIAlert",
+    "cWidgetFactory",
+    "cWidgetHeaderView",
+    "AbstractAPP",
+    "App",
+    "libs",
+    "c",
+    "cUICore",
+    "cUIBase",
+    "cUI",
+    "cHistory",
+    "cUIScrollList",
+    "cUIAnimation",
+    "cUtility",
+    "cBase",
+    "cView",
+    "cAbstractModel",
+    "cModel",
+    "cStore",
+    "cStorage",
+    "cAjax",
+    "cLog",
+    "cDataSource",
+    "CommonStore",
+    "cSales",
+    "cMultipleDate",
+    "cLazyload",
+    "cListAdapter",
+    "cBasePageView",
+    "cCommonPageFactory",
+    "cWidgetFactory",
+    "cWidgetGuider",
+    "cSessionStore",
+    "cCommonListPage",
+    "cGeoService",
+    "cUIAbstractView",
+    "cUIScroll",
+    "cUIHashObserve",
+    "cImgLazyload",
+    "cUIMask",
+    "cUIScrollRadioList",
+    "cWidgetSlide",
+    "cCoreInherit",
+    "cWidgetAbstractCalendar",
+    "cAbstractStore",
+    "cAbstractStorage",
+    "cHybridFacade",
+    "cUIBusinessGroupList",
+    "cWidgetMember",
+    "common_r",
+    "cUIInputClear",
+    "cWidgetGeolocation",
+    "cWidgetCalendar",
+    "cUtilityCrypt"
+  ],
+  "version": "0.1.0",
+  "description": "将Grunt部署在现在的项目中做编译",
+  "repository": {
+    "type": "git",
+    "url": "https://gitcafe.com/leewind/leewind-grunt"
+  },
+  "author": "Michael.Lee",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bom2": "~0.1.0",
+    "grunt-combine": "~0.8.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.6.2",
+    "grunt-contrib-htmlmin": "~0.1.3",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt-curl ": "~1.5.1",
+    "grunt-hashify": "~0.0.6",
+    "grunt-jsdoc": "^0.5.7",
+    "grunt-nodemailer": "~0.1.2",
+    "grunt-replace": "~0.6.1",
+    "grunt-shell": "~0.7.0",
+    "grunt-strip": "~0.2.1",
+    "grunt-zip": ""
+  },
+  "dependencies": {
+    "express": "3.x"
+  }
+}

@@ -1,0 +1,1 @@
+define(function(){return ("<h2>index</h2>");});

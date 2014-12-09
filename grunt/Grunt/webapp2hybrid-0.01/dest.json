@@ -1,0 +1,20 @@
+{
+  "hostname":"172.16.140.11:5389",
+  "views":{
+    "/webapp/dest/index": 1,
+    "/webapp/dest/list?cityid=1": 1,
+  },
+  "defaultView":"",
+  "jsMini": false,
+  "channel":"dest",
+  "resource":{
+            "10.2.4.123":{
+     "/images":0
+       },
+      "pic.c-ctrip.com":{
+    "/h5/hhtravel/":0
+      }
+        },
+  "lizardEnv":"ui",
+  "level":3
+}

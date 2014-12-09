@@ -1,0 +1,1 @@
+define(["cBase","cStore"],function(e,t){var n=e.Class(t,{__propertys__:function(){this.lifeTime="30M",this.key="demo_position"}}),r=e.Class(t,{__propertys__:function(){this.key="demo_city"},get:function($super){var e=$super()||[];return e}});return{position:new n,cityHistroy:new r}});

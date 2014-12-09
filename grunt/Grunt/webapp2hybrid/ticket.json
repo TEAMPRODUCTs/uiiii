@@ -1,0 +1,11 @@
+{
+  "hostname": "127.0.0.1:5389",
+  "views": {
+		"/webapp/ticket/index":1		
+	},
+    "channel": "ticket",
+	"lizardEnv":"ui"
+	,"jsMini":true
+	,"isDeleteHtml":false
+}
+

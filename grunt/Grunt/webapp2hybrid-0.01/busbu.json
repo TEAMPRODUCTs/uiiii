@@ -1,0 +1,26 @@
+{
+	"hostname":"localhost",
+	"views":{
+		"/webapp/payment2/index":1,
+		"/webapp/payment2/alipayresult":1,
+		"/webapp/payment2/cardbin":1,
+		"/webapp/payment2/ccbpayresult":1,
+		"/webapp/payment2/creditcardnotice":1,
+		"/webapp/payment2/lipincardpay":1,
+		"/webapp/payment2/nopayment":1,
+		"/webapp/payment2/payid":1,
+		"/webapp/payment2/paymode":1,
+		"/webapp/payment2/paytips":1,
+		"/webapp/payment2/selectbank":1,
+		"/webapp/payment2/selectdpstcard":1,
+		"/webapp/payment2/selectpayment":1,
+		"/webapp/payment2/verfiedpsd":1,
+		"/webapp/payment2/verifyphone":1
+	},
+	"defaultView":"index",
+	"channel":"payment2",
+	"resource":{
+         
+        },
+	"lizardEnv":"ui"
+}

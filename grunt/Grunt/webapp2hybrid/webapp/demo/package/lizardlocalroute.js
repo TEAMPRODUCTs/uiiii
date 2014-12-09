@@ -1,0 +1,1 @@
+window.LizardLocalroute = {"/index":"package/webapp/demo/index.html","/list":"package/webapp/demo/list.html","defaultView":""};

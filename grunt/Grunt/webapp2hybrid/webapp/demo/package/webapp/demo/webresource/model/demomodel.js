@@ -1,0 +1,1 @@
+define(["cBase","cModel"],function(e,t){t.baseurl=function(e){return{domain:Lizard.restfullApi,path:"restapi/soa2/"}};var n=e.Class(t,{__propertys__:function(){this.url="list",this.param={cityid:""}}}),r=e.Class(t,{__propertys__:function(){this.url="detail",this.param={hotelid:"",date:""}}});return{list:new n,detail:new r}});

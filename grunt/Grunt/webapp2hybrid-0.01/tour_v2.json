@@ -1,0 +1,58 @@
+{
+  "hostname": "127.0.0.1:8082",
+  //"hostnameShim":"asset",
+  "views": {
+	"/webapp/tour5.8/index": 1
+//	,
+//	"/webapp/tour5.8/grouptravel": 1,
+//	"/webapp/tour5.8/vacationcity":1,
+//	"/webapp/tour5.8/detail":1,
+//	"/webapp/tour5.8/detail_picture_list":1,
+//	"/webapp/tour5.8/detail_picture_detail":1,
+//	"/webapp/tour5.8/detail_description":1,
+//	"/webapp/tour5.8/detail_booking_note":1,
+//	"/webapp/tour5.8/detail_question":1,
+//	"/webapp/tour5.8/detail_booking_process":1,
+//	"/webapp/tour5.8/booking_step1":1,
+//	"/webapp/tour5.8/booking_step2":1,
+//	"/webapp/tour5.8/order_intention":1,
+//	"/webapp/tour5.8/order":1,
+//	"/webapp/tour5.8/order_contract":1,
+//	"/webapp/tour5.8/Passengerselect":1,
+//	"/webapp/tour5.8/passengerEdit":1,
+//	"/webapp/tour5.8/order_national":1,
+//	"/webapp/tour5.8/order_sback":1,
+//	"/webapp/tour5.8/order_eback":1,
+//	"/webapp/tour5.8/addresslist":1,
+//	"/webapp/tour5.8/addresscreate":1,
+//	"/webapp/tour5.8/order_detail":1,
+//	"/webapp/tour5.8/Order_comment":1,
+//	"/webapp/tour5.8/Order_detail_list":1,
+//	"/webapp/tour5.8/Order_modification":1,
+//	"/webapp/tour5.8/Order_nametip":1,
+//	"/webapp/tour5.8/Order_route":1
+	},
+	resource:{
+		"pic.c-ctrip.com":{
+			"/vacation_v2":1,
+			"/h5/group_travel":0,
+			"/h5/youxue":0
+		},
+		"webresource.c-ctrip.com":{
+			"/styles/h5/common/main.css":1
+		}
+		
+  },
+  "htmlMini":false,
+  "channel": "tour5.8",
+  "lizardEnv":"fws",
+  "level":3,
+  "weinre":false,
+   switch:{
+	web:false,
+	hybrid:true
+  }
+
+
+}
+
