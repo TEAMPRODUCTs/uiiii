@@ -21,10 +21,10 @@ module.exports = function (grunt) {
 	*/
 	 jsdoc : {
         dist : {
-            src: ['src/*.js'], 
+            src: ['src/*.js', "index.md"], 
             options: {
-                destination: 'doc',
-                configure:'conf.json' 
+                 destination: 'doc'
+
             }
         }
     },	
