@@ -1,0 +1,27 @@
+{
+  "name": "sample_package",
+  "version": "1.0.1",
+  "description": "sample package",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test command"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shuiqin/jsShare.git"
+  },
+  "keywords": [
+    "git",
+    "sample"
+  ],
+  "author": "sq_xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shuiqin/jsShare/issues"
+  },
+  "homepage": "https://github.com/shuiqin/jsShare"
+}

@@ -1,0 +1,13 @@
+{
+	"name": "sample",
+	"description":"在Package目录下调用node getpackage.js 运行",
+	"version": "v1.0.0",
+	"maintainers":[
+		{"name":"shuiqin", "email":"sq_xu@ctrip.com"}],
+	"contributors":[
+		{"name":"shuiqin", "email":"sq_xu@ctrip.com"}],
+	"bug": "sq_xu@ctrip.com",
+	"keywords":["sample node package","package" , "sample"],
+	"main":"./lib/index.js",
+	"repositories":[{"type" :"git", "url": "git@github.com:shuiqin/jsShare.git"}] 
+}
