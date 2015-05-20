@@ -35,9 +35,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+/*配置了静态文件服务器，因此stylesheets/style.css 会定向到 app.js 所在目录的子目录中的文件 public/stylesheets/style.css，*/
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', routes.index);
+app.use('/hello', routes.hello);
 app.use('/users', users);//访问路径 fish
 
 // catch 404 and forward to error handler

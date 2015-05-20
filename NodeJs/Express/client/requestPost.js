@@ -5,15 +5,14 @@ var http = require('http');
 var queryStr = require('querystring');
 
 var contents = queryStr.stringify({
-    name: "byvoid",
-    email: "byvoid@byvoid.com",
-    address: 'Zijing 2#， Tsinghua University'
+    title: "byvoid",
+    text: "byvoid@byvoid.com"
 });
 
 
 var options = {
     host: '127.0.0.1',
-    port: '3000',
+    port: '5000',
     path: '/',
     method: "POST",
     headers: {
@@ -23,7 +22,7 @@ var options = {
 };
 
 var req = http.request(options, function(res){
-    res.setEncoding('UTF-8');
+    res.setEncoding('utf8');
     res.on('data', function(data){
         console.log(data);
     });
