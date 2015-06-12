@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html{overflow: hidden;}
+	body{margin: 0;background: #555;}
+	canvas{background: #fff;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="800"></canvas>
+	<script>
+	var canvas = document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	var turret = {x : 400, y : 800, xscale : 100, yscale : 100, angle : 0, power : 0};
+	var bulletArr = [];
+	
+	drawTurret(turret);
+
+	canvas.onmousedown = function(e){
+		
+		e = e || window.event;
+		turret.power ++;
+		
+	} // canvas.onmousedown
+	
+	document.onmousemove = function(e){
+		e = e || window.event;
+		var xdiff = e.clientX- turret.x;
+		var ydiff = e.clientY - turret.y;
+		turret.angle = Math.PI / 2 + Math.atan2(ydiff, xdiff);
+		
+	}
+	
+	document.timer = setInterval(function(){
+		canvas.width = canvas.width; // 清空画布
+		
+		updateTurret();
+		updateBullet();
+		drawTurret();
+		
+	}, 16);
+	
+	function shoot(){
+		
+		turret.power += 5;
+		var vec = [turret.power * Math.cos(turret.angle - Math.PI / 2), turret.power * Math.sin(turret.angle - Math.PI / 2)];
+		var ang_bullet = Math.atan2(vec[1], vec[0]);
+		var bullet = {x : turret.x, y : turret.y, angle : ang_bullet , vec : vec };
+		bullet.path = [{x : bullet.x, y : bullet.y}];
+		
+		bulletArr.push(bullet);
+		
+		turret.power = 0;
+		
+	}// shoot
+	
+	function updateTurret(){
+		
+		if(turret.power){
+			turret.power ++;
+			if( turret.power >= 20  ){
+				shoot();
+			}
+			
+			turret.yscale = 100 - turret.power * 3;
+			turret.xscale = 200 - turret.yscale;
+		}
+		
+	} // updateTurret
+	
+	function drawTurret(){
+		context.beginPath();
+		context.save();
+		
+		context.translate(turret.x, turret.y);
+		context.rotate(turret.angle);
+		context.scale(turret.xscale / 100, turret.yscale / 100);
+		context.strokeStyle = 'green';
+		
+		context.rect(-20, 0, 40, -100);
+		context.stroke();
+		
+		context.restore();
+	}
+	
+	function drawBullet(bullet){ // bullet : {x : x, y : y, angle : angle}
+		
+		context.beginPath();
+		context.save();
+		context.translate(bullet.x, bullet.y);
+		
+		var ang_bullet = Math.atan2(bullet.vec[1], bullet.vec[0]);
+		context.rotate( ang_bullet );
+		context.translate(0, 0);
+		context.moveTo(20, 0);
+		context.lineTo(-10, -10);
+		context.quadraticCurveTo(-5, 0, -10, 10);
+		context.closePath();
+		context.stroke();
+		context.restore();
+		
+		
+		// 绘制子弹路径
+		var len = bullet.path.length - 1;
+		var total = len;
+		
+		context.beginPath();
+		context.save();
+		context.moveTo(bullet.path[len - 1].x, bullet.path[len - 1].y);
+		while(--len){
+			
+			context.lineWidth = 12 * len / total | 0 ;
+			context.globalAlpha = 0.5;
+			context.strokeStyle = 'gray';
+			context.lineTo(bullet.path[len].x, bullet.path[len].y);
+			context.stroke();
+		}
+		
+		context.restore();
+	} // drawBullet
+	
+	function updateBullet(){
+		
+		for(var i = 0; i < bulletArr.length; i ++ ){
+			var bullet = bulletArr[i];
+			bullet.x += bullet.vec[0];
+			bullet.vec[1] += 1;
+			bullet.y += bullet.vec[1];
+			
+			bullet.path.push({x : bullet.x, y : bullet.y});
+			
+			if(bullet.y >= 850){
+				bulletArr.splice(i, 1);
+				i --;
+			}
+			
+			drawBullet(bullet);
+		}
+	}
+	
+	</script>
+</body>
+</html>

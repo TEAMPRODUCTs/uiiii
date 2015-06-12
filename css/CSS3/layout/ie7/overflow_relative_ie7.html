@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <script type="text/javascript" src="../../common/libs/jquery-2.1.1.js"></script>
+       <style type="text/css">
+           div{overflow:auto;width:260px;height:80px;border:1px solid #ddd;position:relative;}
+           p{position:relative;margin:0;}
+       </style>
+       <!--
+       如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto|hidden失效的问题？
+       如上代码，在IE7及更早浏览器下你会看到div的滚动条将无法工作。解决方案是给div也设置相对定位position:relative
+        -->
+    </head>
+    <body>
+      <div>
+        <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+        <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+      </div>
+    </body>
+   
+</html>

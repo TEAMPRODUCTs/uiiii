@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <script type="text/javascript" src="../../common/libs/jquery-2.1.1.js"></script>
+       <style type="text/css">
+          #test{zoom:1;overflow:hidden;border:1px solid #ddd;background:#eee;}
+          #test h1{float:left;}
+          #test .nav{float:right;background:#aaa;}
+          #test .nav ul{zoom:1;overflow:hidden;margin:0;padding:0;list-style:none;}
+          #test .nav li{float:left;margin:0 5px;}
+       </style>
+       <!--
+        如何解决IE6及更早浏览器下未定义宽度的浮动或绝对定位元素会被内部设置了zoom:1的块元素撑开的问题？
+        ************************************************************************************************
+        如上代码，IE6及更早浏览器div.nav会被设置了zoom:1的ul给撑开。
+        列举几个解决方法： 
+      　设置ul为浮动元素； 
+      　设置ul为inline元素； 
+      　设置ul的width
+        -->
+    </head>
+    <body>
+      	<div id="test">
+          <h1>Doyoe</h1>
+          <div class="nav">
+            <ul>
+              <li><a href="../">CSS参考手册</a></li>
+              <li><a href="../">CSS探索之旅</a></li>
+              <li><a href="../">web前端实验室</a></li>
+            </ul>
+          </div>
+        </div>
+    </body>
+   
+</html>

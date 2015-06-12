@@ -1,0 +1,1 @@
+yo init angular_yo
