@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--中文乱码问题-->
+    <title>Untitled Page</title>
+</head>
+<body>
+	<input type="button" id="my-btn" value="my-btn"></input>
+</body>
+<script type="text/javascript">
+	var btn =  document.getElementById("my-btn");
+	var handler = {
+		message: "Event message",
+		handlerClick : function(event){
+			alert(this.message + " " + event.type);
+		}
+	};
+
+	//btn.addEventListener( "click", handler.handlerClick); // alert("undefined")  没有保存handler.handlerClick的环境 this 指向DOM按钮 而非handler, ie8指向window
+
+/*
+//alert("Event message")	
+btn.addEventListener( "click", function(event){
+		handler.handlerClick(event);
+	});*/
+
+
+//自定义bind对象
+/*function bind(fn, context){
+	return function(){
+		return fn.apply(context, arguments);
+	}
+}
+
+
+btn.addEventListener("click", bind(handler.handlerClick, handler));*/
+
+//bind对象
+btn.addEventListener("click", handler.handlerClick.bind(handler));
+
+</script>
+</html>
