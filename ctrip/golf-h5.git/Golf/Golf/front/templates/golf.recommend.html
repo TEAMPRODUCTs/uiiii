@@ -1,0 +1,36 @@
+<div class="recommend_container">
+    <div>
+        <div class="recommend_box">
+            邀请您的朋友一起打高尔夫！下载爱玩高尔夫，注册并绑定手机成功后，进入个人中心->设置->推荐爱玩高尔夫，输入您的推荐码
+            <span class = "recommend_code"><%= data.recommendCode %></span>， 您的朋友就能立即获得<span class="recommend_award"><%= data.award %>元抵用余额</span>。
+        </div>
+
+        <div class="center">
+            <div class="share_icon weixin_share_icon" id="friends_share">
+                <div class="share_title gray_word">微信好友</div>
+            </div>
+            <div class="share_icon friends_share_icon" id="weixin_share">
+                <div class="share_title gray_word">朋友圈</div>
+            </div>
+         <!--   <div class="share_icon email_share_icon" id="email_share">
+                <div class="share_title">邮箱</div>
+            </div>
+            <div class="share_icon message_share_icon" id="message_share">
+                <div class="share_title">短信</div>
+            </div>-->
+        </div>
+
+
+        <%if(!!data.canRecommendCoe && !data.recommendByCode){ %>
+        <div class="share_br"></div>
+        <div class="friend_recommend">
+            <div>
+                <div class="fr_word">输入邀请人推荐码</div>
+                <input type="text" class="input_text" id="recommend_code" placeholder="输入邀请人推荐码">
+                <button href="javascript:;" class="confirm_btn" id="recommend_confirm">确定</button>
+            </div>
+        </div>
+        <%}%>
+    </div>
+    <div class="clear"></div>
+</div>

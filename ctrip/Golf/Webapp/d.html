@@ -32,10 +32,32 @@
 <!-- <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/3rdlibs/bridge.js"></script> -->
 <script type="text/javascript" src="http://www.css88.com/doc/underscore1.8.2/underscore.js"></script>
 <script type="text/javascript" src="./res/libs/backbone.js"></script>
+<script type="text/javascript" src="./res/libs/zepto.js"></script>
 <script type="text/javascript" src="http://requirejs.org/docs/release/2.1.18/minified/require.js"></script>
 <script type="text/javascript" src="./res/libs/golfBridge.js"></script>
 <script type="text/javascript">
     document.write('<script type="text/javascript" src="./main.js?ver=' + GOLF_VER + '"><\/script>');
+
+ Zepto(function ($) {
+
+    var AppRouter = Backbone.Router.extend({
+             routes: {
+                 "/posts/:id" : "getPost",
+                 "*actions" : "defaultRoute"
+             },
+             getPost: function(id) {
+                 alert("post" + id);
+             },
+             defaultRoute : function(actions){
+                 alert("actions " + actions);
+             }
+         });
+ 
+         var app_router = new AppRouter;
+ 
+        Backbone.history.start();
+     });
+
 </script>
 <!-- <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/3rdlibs/include.ubt.js"></script> -->
 
