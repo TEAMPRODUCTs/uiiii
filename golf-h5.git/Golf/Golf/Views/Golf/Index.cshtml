@@ -1,0 +1,37 @@
+﻿@using System.Configuration
+
+<!DOCTYPE html>
+<html>
+<head>
+    @RenderPage("../Shared/Header.cshtml")
+</head>
+<body class="gray" onselectstart="return false">
+    @RenderPage("../Shared/BodyLayout.cshtml")
+
+    <script type="text/lizard-config">
+         {
+            "url_schema": "/index",
+            "model": {
+                "apis": [],
+                "init_data": {}
+            },
+            "view":{
+                "header": Lizard.T("headTmpl"),
+                "viewport": Lizard.T("viewportTmpl")
+            },
+            "controller": "@ConfigurationManager.AppSettings["WebresourcePDBaseUrl"]controllers/index.js"
+        }
+    </script>
+
+    <script id="headTmpl" type="text/lizard-template">
+        <h1>爱玩高尔夫</h1>
+    </script>
+
+    <script id="viewportTmpl" type="text/lizard-template">
+        @RenderPage("templates/index.cshtml")
+    </script>
+    @RenderPage("../Shared/Footer.cshtml")
+</body>
+</html>
+
+

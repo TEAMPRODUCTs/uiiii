@@ -1,0 +1,10 @@
+D:\BaiduYunDownload\Golf\Golf\bin\Golf.dll
+D:\BaiduYunDownload\Golf\Golf\bin\Golf.pdb
+D:\BaiduYunDownload\Golf\Golf\bin\EntityFramework.dll
+D:\BaiduYunDownload\Golf\Golf\bin\EntityFramework.xml
+D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.dll
+D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.pdb
+D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.csprojResolveAssemblyReference.cache
+E:\doc\golf-h5-cf8a30340b315e6bf0f46aa98cc7d0d43ff146d9\golf-h5.git\Golf\Golf\obj\Release\Golf.csprojResolveAssemblyReference.cache
+E:\doc\golf-h5-cf8a30340b315e6bf0f46aa98cc7d0d43ff146d9\golf-h5.git\Golf\Golf\obj\Release\Golf.dll
+E:\doc\golf-h5-cf8a30340b315e6bf0f46aa98cc7d0d43ff146d9\golf-h5.git\Golf\Golf\obj\Release\Golf.pdb

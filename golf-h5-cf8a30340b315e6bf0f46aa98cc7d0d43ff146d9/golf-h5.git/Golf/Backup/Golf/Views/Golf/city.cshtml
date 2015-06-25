@@ -1,0 +1,48 @@
+﻿@using System.Configuration
+
+<!DOCTYPE html>
+<html>
+<head>
+    @RenderPage("../Shared/Header.cshtml")
+</head>
+<body class="gray" onselectstart="return false">
+    @RenderPage("../Shared/BodyLayout.cshtml")
+
+    <script type="text/lizard-config">
+         {
+            "url_schema": "/city",
+            "model": {
+                "apis": [/*{
+                    url:'@ConfigurationManager.AppSettings["restfullApi_Pre"]/v1/tourProducts',
+                    postdata:{
+                        "productCategory": Lizard.P('prdcategory'),
+                        "cityID": Lizard.P('destctyid'),//目的地城市ID
+                        "startCityID": Lizard.P('salecity'),//出发城市id
+                        "sortType": "D",
+                        "sortDirection":"DESC", //排序方向，大写DESC，ASC
+                        "pageIndex":1,  //页码 从1开始
+                        "pageSize":20 //每页大小
+                    }
+                }*/],
+                "init_data": {}
+            },
+            "view":{
+                "header": Lizard.T("headTmpl"),
+                "viewport": Lizard.T("viewportTmpl")
+            },
+            "controller": "@ConfigurationManager.AppSettings["WebresourcePDBaseUrl"]controllers/golf.city.js"
+        }
+    </script>
+
+    <script id="headTmpl" type="text/lizard-template">
+        <h1>爱玩高尔夫</h1>
+    </script>
+
+    <script id="viewportTmpl" type="text/lizard-template">
+       
+    </script>
+    @RenderPage("../Shared/Footer.cshtml")
+</body>
+</html>
+
+

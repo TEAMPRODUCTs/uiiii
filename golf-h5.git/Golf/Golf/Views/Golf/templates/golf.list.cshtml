@@ -1,0 +1,64 @@
+<div class="register_pro content_list" style="padding:0px">
+    <nav class="tpye_tab"  <%if(!!data.isInApp){ %>style="top:0"<%} %>>
+        <li class="vGlobal <% if(data.linetype==1){ %>on<% } %>"   data-linetype="1" >综合</li>
+        <li class="vPrice <% if(data.linetype==2){ %>on<% } %>" data-linetype="2" >价格</li>
+        <li class="vDays <% if(data.linetype==3){ %>on<% } %>" data-linetype="3">游玩天数</li>
+    </nav>
+
+    <!--<div class="scrollproduct" style="overflow:hidden;height:<%=data.scrollproductHeight %>px;">-->
+    <div class="product_list_box" style="padding-top:42px">
+        <div class="product_list">
+            <%_.each(data.products, function(v,k){%>
+            <ul class="hot_list_tab btn_active" data-pid="<%=v.productID %>&saleCityId=<%=v.saleCities[0].cityID %>&departCityId=<%=v.departCities[0].cityID %>">
+                <li class="hot_img">
+                    <img width="142px" height="80px" alt="" src="http://pic.c-ctrip.com/vacation_v2/h5/group_travel/no_product_pic.png"
+                         data-src="<% if(!!data.isAndroid && v.androidPicUrl && !!v.androidPicUrl.trim()){%><%=v.androidPicUrl%>
+                         <%}else if(!data.isAndroid && v.iphonePicUrl && !!v.iphonePicUrl.trim()){%><%=v.iphonePicUrl%><%}else{ %>http://pic.c-ctrip.com/vacation_v2/h5/group_travel/no_product_pic.png<%} %>">
+                </li>
+                <li class="hot_vacation">
+                    <div class="ellipsis"><p class="xname"><%=v.name%></p></div>
+                    <div class="price_wrap">
+                        <div class="pices">
+                            <%if(!!v.price){ %>
+                            <dfn>¥</dfn>
+                            <span><%=v.price%></span>
+                            起
+                            <%}else{ %>
+                            <span class="font14">实时计价</span>
+                            <%} %>
+                        </div>
+
+                        <div class="feature">
+                            <span>产品特色</span><i class=""></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="product_feature">
+                    <%_.each(v.features, function(fv,fk){%>
+                    <p><%=fv%></p>
+                    <%})%>
+                </li>
+            </ul>
+            <%})%>
+        </div>
+        <div class="no_more" style="display:none">没有更多结果了</div>
+        <div class="base_loading" style="display:none"><i></i>加载中</div>
+        <div class="wireless_failure" style="display:none">
+            <div class="no_wifi">
+                <i class="wifi_ico"></i>
+                <p>网络不给力，请稍后再试试吧</p>
+                <a class="try_again" href="javascript:;">重试</a>
+            </div>
+            <div class="dial_service" style="display: none;">
+                <p>或者拨打携程客服电话</p>
+                <a class="dial_btn" data-num="8008206666" href="tel:8008206666">联系客服</a>
+            </div>
+        </div>
+        <div class="error" <%if(data.products) {%>style="display:none"<%} %>>
+            <i class="error_ico"></i>
+            <p>没有找到符合条件的结果，<br>请修改条件重新查询</p>
+        </div>
+</div>
+<!--</div>-->
+<div class="warp_z" style="display:none"></div>
+</div>

@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{27374FFF-9777-40DE-BF7E-11560F0FACEC}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Golf</RootNamespace>
+    <AssemblyName>Golf</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\GolfController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.index.html" />
+    <Content Include="app.main.js" />
+    <Content Include="ConfigProfile.xml" />
+    <Content Include="d.html" />
+    <Content Include="front\models\cpagestore.js" />
+    <Content Include="front\models\golfModel.js" />
+    <Content Include="front\models\golfStore.js" />
+    <Content Include="front\templates\city.html" />
+    <Content Include="front\templates\destinationSearch.html" />
+    <Content Include="front\templates\download.html" />
+    <Content Include="front\templates\golf.list.html" />
+    <Content Include="front\templates\golf.order.sback.html" />
+    <Content Include="front\templates\golf.recommend.html" />
+    <Content Include="front\templates\golf.recommend.landing.html" />
+    <Content Include="front\templates\index.html" />
+    <Content Include="front\templates\leaderboard.award.html" />
+    <Content Include="front\templates\leaderboard.html" />
+    <Content Include="front\templates\leaderboard.summary.html" />
+    <Content Include="front\templates\list.html" />
+    <Content Include="front\templates\loading.html" />
+    <Content Include="front\templates\paytype.before.html" />
+    <Content Include="front\templates\test.html" />
+    <Content Include="front\views\download.js" />
+    <Content Include="front\views\golf.city.js" />
+    <Content Include="front\views\golf.list.js" />
+    <Content Include="front\views\golf.order.eback.js" />
+    <Content Include="front\views\golf.order.sback.js" />
+    <Content Include="front\views\golf.recommend.js" />
+    <Content Include="front\views\golf.recommend.landing.js" />
+    <Content Include="front\views\index.forward.js" />
+    <Content Include="front\views\index.js" />
+    <Content Include="front\views\leaderboard.award.js" />
+    <Content Include="front\views\leaderboard.js" />
+    <Content Include="front\views\leaderboard.summary.js" />
+    <Content Include="front\views\list.js" />
+    <Content Include="front\views\order.detail.js" />
+    <Content Include="front\views\paytype.before.js" />
+    <Content Include="front\views\test.js" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="main.js" />
+    <Content Include="res\img\bg.jpg" />
+    <Content Include="res\img\download.png" />
+    <Content Include="res\img\golf.list.png" />
+    <Content Include="res\img\golf.recommend.png" />
+    <Content Include="res\img\leaderboard.png" />
+    <Content Include="res\img\no_product_pic.png" />
+    <Content Include="res\libs\golfBridge.js" />
+    <Content Include="res\libs\require.text.js" />
+    <Content Include="res\scripts\leaderboard_helper.js" />
+    <Content Include="res\scripts\util.js" />
+    <Content Include="res\scripts\utils\ParseID.js" />
+    <Content Include="res\scripts\views\BaseView.js" />
+    <Content Include="res\scripts\widget\c.ui.imageSlider.js" />
+    <Content Include="res\scripts\widget\Calendar2-day.html" />
+    <Content Include="res\scripts\widget\Calendar2-frame.html" />
+    <Content Include="res\scripts\widget\Calendar2-month.html" />
+    <Content Include="res\scripts\widget\Calendar2.js" />
+    <Content Include="res\scripts\widget\DateChinese.js" />
+    <Content Include="res\scripts\widget\NumberPicker.js" />
+    <Content Include="res\scripts\widget\Switcher.js" />
+    <Content Include="res\scripts\widget\SwitcherStyleIOS.js" />
+    <Content Include="res\scripts\widget\SwitcherStyleSelect.js" />
+    <Content Include="res\style\fun.css" />
+    <Content Include="res\style\leaderboard.award.css" />
+    <Content Include="res\style\leaderboard.css" />
+    <Content Include="res\style\leaderboard.summary.css" />
+    <Content Include="res\style\reset.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="webresource\controllers\download.js" />
+    <Content Include="webresource\controllers\golf.city.js" />
+    <Content Include="webresource\controllers\golf.list.js" />
+    <Content Include="webresource\controllers\golf.order.eback.js" />
+    <Content Include="webresource\controllers\golf.order.sback.js" />
+    <Content Include="webresource\controllers\golf.recommend.js" />
+    <Content Include="webresource\controllers\golf.recommend.landing.js" />
+    <Content Include="webresource\controllers\index.forward.js" />
+    <Content Include="webresource\controllers\index.js" />
+    <Content Include="webresource\controllers\leaderboard.award.js" />
+    <Content Include="webresource\controllers\leaderboard.js" />
+    <Content Include="webresource\controllers\leaderboard.summary.js" />
+    <Content Include="webresource\controllers\order.detail.js" />
+    <Content Include="webresource\controllers\paytype.before.js" />
+    <Content Include="webresource\golfConfig.js" />
+    <Content Include="webresource\models\cpagestore.js" />
+    <Content Include="webresource\models\golfModel.js" />
+    <Content Include="webresource\models\golfStore.js" />
+    <Content Include="webresource\res\img\bg.jpg" />
+    <Content Include="webresource\res\img\download.png" />
+    <Content Include="webresource\res\img\golf.list.png" />
+    <Content Include="webresource\res\img\golf.recommend.png" />
+    <Content Include="webresource\res\img\leaderboard.png" />
+    <Content Include="webresource\res\img\no_product_pic.png" />
+    <Content Include="webresource\res\libs\golfBridge.js" />
+    <Content Include="webresource\res\libs\require.text.js" />
+    <Content Include="webresource\res\scripts\leaderboard_helper.js" />
+    <Content Include="webresource\res\scripts\util.js" />
+    <Content Include="webresource\res\scripts\utils\ParseID.js" />
+    <Content Include="webresource\res\scripts\views\BaseView.js" />
+    <Content Include="webresource\res\scripts\widget\c.ui.imageSlider.js" />
+    <Content Include="webresource\res\scripts\widget\Calendar2-day.html" />
+    <Content Include="webresource\res\scripts\widget\Calendar2-frame.html" />
+    <Content Include="webresource\res\scripts\widget\Calendar2-month.html" />
+    <Content Include="webresource\res\scripts\widget\Calendar2.js" />
+    <Content Include="webresource\res\scripts\widget\DateChinese.js" />
+    <Content Include="webresource\res\scripts\widget\NumberPicker.js" />
+    <Content Include="webresource\res\scripts\widget\Switcher.js" />
+    <Content Include="webresource\res\scripts\widget\SwitcherStyleIOS.js" />
+    <Content Include="webresource\res\scripts\widget\SwitcherStyleSelect.js" />
+    <Content Include="webresource\res\style\fun.css" />
+    <Content Include="webresource\res\style\leaderboard.award.css" />
+    <Content Include="webresource\res\style\leaderboard.css" />
+    <Content Include="webresource\res\style\leaderboard.summary.css" />
+    <Content Include="webresource\res\style\reset.css" />
+    <Content Include="webresource\templates\city.html" />
+    <Content Include="webresource\templates\destinationSearch.html" />
+    <Content Include="webresource\templates\download.html" />
+    <Content Include="webresource\templates\download_test.html" />
+    <Content Include="webresource\templates\golf.list.html" />
+    <Content Include="webresource\templates\golf.order.sback.html" />
+    <Content Include="webresource\templates\golf.recommend.html" />
+    <Content Include="webresource\templates\golf.recommend.landing.html" />
+    <Content Include="webresource\templates\index.html" />
+    <Content Include="webresource\templates\leaderboard.award.html" />
+    <Content Include="webresource\templates\leaderboard.html" />
+    <Content Include="webresource\templates\leaderboard.summary.html" />
+    <Content Include="webresource\templates\list.html" />
+    <Content Include="webresource\templates\loading.html" />
+    <Content Include="webresource\templates\loading_test.html" />
+    <Content Include="webresource\templates\paytype.before.html" />
+    <Content Include="webresource\templates\test.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\AppSetting.config" />
+    <None Include="Config\AppSetting.config.tpl">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Golf\Index.cshtml" />
+    <Content Include="Views\Golf\templates\city.cshtml" />
+    <Content Include="Views\Golf\templates\destinationSearch.cshtml" />
+    <Content Include="Views\Golf\templates\download.cshtml" />
+    <Content Include="Views\Golf\templates\golf.list.cshtml" />
+    <Content Include="Views\Golf\templates\golf.order.sback.cshtml" />
+    <Content Include="Views\Golf\templates\golf.recommend.cshtml" />
+    <Content Include="Views\Golf\templates\golf.recommend.landing.cshtml" />
+    <Content Include="Views\Golf\templates\index.cshtml" />
+    <Content Include="Views\Golf\templates\leaderboard.award.cshtml" />
+    <Content Include="Views\Golf\templates\leaderboard.cshtml" />
+    <Content Include="Views\Golf\templates\leaderboard.summary.cshtml" />
+    <Content Include="Views\Golf\templates\loading.cshtml" />
+    <Content Include="Views\Golf\templates\paytype.before.cshtml" />
+    <Content Include="Views\home\index.cshtml" />
+    <Content Include="Views\Shared\BodyLayout.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\HeaderIPad.cshtml" />
+    <None Include="gruntCfg.json" />
+    <Content Include="Views\Golf\list.cshtml" />
+    <Content Include="Views\Golf\recommlanding.cshtml" />
+    <Content Include="Views\Golf\city.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14847</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>C:\DevTools\ConfigGen\ConfigGen.exe -gd "$(ProjectDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,253 @@
+/*for sprite base css*/
+.icon_data,.GoBack {
+    background: url("../img/leaderboard.png") ;
+    background-size: 200px 100px;
+}
+
+.icon_close,
+.icon_help {
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+}
+
+.icon_close {
+	background-image: url(../img/icon_close.png);
+}
+
+.icon_help {
+	background-image: url(../img/icon_help.png);
+}
+
+.icon_data {
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    background-position: -35px -326px;
+    margin-right: 10px;
+}
+
+.detail_head {
+	padding-bottom: 20px;
+	position: relative;
+	background: url(../img/bg.jpg) repeat;
+}
+.detail_head .title {
+	position: relative;
+	margin: 0 65px 0 125px;
+}
+
+.detail_head .main_title {
+	box-sizing: border-box;
+	width: 100%;
+	line-height: 26px;
+	padding-right: 13px;
+	font-size: 18px;
+	color: #050505;
+	text-align: right;
+}
+
+.detail_head .sub_title {
+	box-sizing: border-box;
+	width: 100%;
+	line-height: 18px;
+	padding-right: 13px;
+	font-size: 13px;
+	color: #46545b;
+	text-align: right;
+}
+
+.detail_head .icon_close,
+.detail_head .icon_help,
+.detail_head .icon_status {
+	position: absolute;
+}
+
+.detail_head .icon_close {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-position: -8px -6px;
+}
+
+.detail_head .icon_help {
+	position: absolute;
+	top: 11px;
+	left: 51px;
+}
+
+.detail_head .icon_data {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+}
+
+.score_table {
+    margin-top: -20px;
+    position: relative;
+    zoom: 1;
+}
+
+.score_table .name {
+	float: left;
+    width: 24%;
+    padding-top: 20px;
+	text-align: center;
+}
+
+.score_table .name_item {
+	height: 58px;
+	line-height: 58px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	border-bottom: 1px solid #DBDBDB;
+	border-right: 1px solid #DBDBDB;
+	font-size: 19px;
+	color: #31393d;
+}
+
+.score_table .score {
+	float: left;
+    width: 15%;
+    padding-top: 20px;
+	text-align: center;
+}
+
+.score_table .score_item {
+	height: 58px;
+	border-bottom: 1px solid #DBDBDB;
+}
+
+.score_table .score_item p {
+	padding-top: 9px;
+	line-height: 24px;
+	font-size: 22px;
+	color: #374044;
+}
+
+.score_table .score_item span {
+	font-size: 15px;
+	color: #586267;
+}
+
+.score_table .score_detail {
+    width: 61%;
+	overflow-x: scroll;
+	z-index: 1;
+}
+
+.score_table .score_detail li:before,
+.score_table .score_detail li:after {
+	display: table;
+	content: '';
+}
+
+.score_table .score_detail li:after {
+	clear: both;
+}
+
+.score_table .hole_number {
+	height: 20px;
+	line-height: 20px;
+}
+
+.score_table .hole_number span {
+	float: left;
+	width: 33px;
+	text-align: center;
+	font-size: 13px;
+	color: #000;
+}
+
+.score_table .hole_number .sum {
+	width: 55px;
+}
+
+.score_table .caption {
+	line-height: 21px;
+	background-color: #535151;
+	color: #fff;
+	font-size: 13px;
+	text-align: center;
+}
+
+.score_table .caption span {
+	float: left;
+	width: 33px;
+}
+
+.score_table .caption .sum {
+	width: 55px;
+}
+
+.score_table .score_hole_item {
+	float: left;
+	width: 33px;
+	text-align: center;
+}
+
+.score_table .score_hole_item.sum {
+	width: 55px;
+}
+
+.score_table .score_single {
+	width: 100%;
+	height: 33px;
+	line-height: 33px;
+	color: #fff;
+	font-size: 21px;
+}
+
+.score_table .sum .score_single {
+	color: #010103;
+}
+
+.score_table  .item_gray {
+	height: 26px;
+	line-height: 26px;
+	background-color: #E5E3E5;
+	font-size: 12px;
+	color: #46545b;
+}
+
+.score_color_plus_1 {
+	background-color: #7cba45;
+}
+
+.score_color_plus_2 {
+	background-color: #8f8f8f;
+}
+
+.score_color_plus_3 {
+	background-color: #5c5c5c;
+}
+
+.score_color_par {
+	background-color: #30b5c4;
+}
+
+.score_color_minus_1 {
+	background-color: #d8525e;
+}
+
+.score_color_minus_2 {
+	background-color: #e6b317;
+}
+
+.score_color_minus_3 {
+    background-color: #e6b317;
+}
+
+.score_empty {
+    background-color : #ffffff;
+}
+
+.GoBack{
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin: 6px 0px 0px 10px;
+    background-position: -72px -1px;
+}

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<profile>
+  <environments>
+    <add name="dev" dataCenter="sh" target="dev" iis="IIS6, IIS7" net="Net2,Net4" />
+    <add name="test" dataCenter="sh" target="test" iis="IIS6, IIS7" net="Net2,Net4" />
+    <add name="fws" dataCenter="sh,nt" target="fws" iis="IIS6, IIS7" net="Net2,Net4" />
+    <add name="fat" dataCenter="sh,nt" target="fat" iis="IIS6, IIS7" net="Net2,Net4" />
+    <add name="uat_nt" dataCenter="nt" target="uat_nt" iis="IIS7" net="Net4" />
+    <add name="lpt" dataCenter="sh,nt" target="lpt" iis="IIS6, IIS7" net="Net2,Net4" />
+    <add name="prd" dataCenter="sh,sh2" target="prd" iis="IIS6, IIS7" net="Net2,Net4" />
+  </environments>
+  
+  <dev>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>ttp://webresource.fat62.qa.nt.ctripcorp.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.uat.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </dev>
+
+  <test>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>http://webresource.fat62.qa.nt.ctripcorp.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.uat.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </test>
+
+  <fws>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://10.8.2.111/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://10.8.2.111/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>http://webresource.fat62.qa.nt.ctripcorp.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.fws.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </fws>
+
+  <fat>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://m.fat.ctripqa.com/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>http://webresource.fat62.qa.nt.ctripcorp.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/webapp/ticket/webresource/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.uat.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </fat>
+  
+  <uat_nt>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://m.uat.ctripqa.com/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://m.uat.ctripqa.com/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>http://webresource.fat62.qa.nt.ctripcorp.com</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.uat.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </uat_nt>
+
+  <lpt>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>http://m.lpt10.qa.nt.ctripcorp.com/restapi/soa2/10131/json</restfullApiHttps>
+    <restfullApi>http://m.lpt10.qa.nt.ctripcorp.com/restapi/soa2/10131/json</restfullApi>
+    <WebresourceBaseUrl>http://webresource.ctrip.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>192.168.82.58</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.lpt.qa.nt.ctripcorp.com/configws/</FxConfigServiceUrl>
+  </lpt>
+
+  <prd>
+    <Debug>false</Debug>
+    <CustomErrorsMode>Off</CustomErrorsMode>
+    <restfullApiHttps>https://sec-m.ctrip.com/restapi/fun-golf-mobile/</restfullApiHttps>
+    <restfullApi>https://sec-m.ctrip.com/restapi/fun-golf-mobile/</restfullApi>
+    <WebresourceBaseUrl>http://webresource.ctrip.com/</WebresourceBaseUrl>
+    <WebresourcePDBaseUrl>/ResFunOnline/R3/mobile_image/</WebresourcePDBaseUrl>
+    <!-- Central Logging配置 -->
+    <LoggingServer.V2.IP>collector.logging.sh.ctriptravel.com</LoggingServer.V2.IP>
+    <LoggingServer.V2.Port>63100</LoggingServer.V2.Port>
+    <FxConfigServiceUrl>http://ws.config.framework.ctripcorp.com/configws</FxConfigServiceUrl>
+  </prd>
+</profile>
