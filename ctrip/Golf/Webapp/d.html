@@ -39,16 +39,29 @@
     document.write('<script type="text/javascript" src="./main.js?ver=' + GOLF_VER + '"><\/script>');
 
  Zepto(function ($) {
+   //http://sun80264629.iteye.com/blog/1883204
 
+    var AppRouter = Backbone.Router.extend({  
+        routes : {  
+            '' : 'main',  
+            'topic' : 'renderList',  
+            'topic/:id' : 'renderDetail',  
+            '*error' : 'renderError'  
+        },  
+        main : function() {  
+            console.log('应用入口方法');  
+        },  
+        renderList : function() {  
+            console.log('渲染列表方法');  
+        },  
+        renderDetail : function(id) {  
+            console.log('渲染详情方法, id为: ' + id);  
+        },  
+        renderError : function(error) {  
+            console.log('URL错误, 错误信息: ' + error);  
+        }  
+    });  
 
-    var AppRouter = Backbone.Router.extend({ 
-        routes : { 
-            renderList : function() { console.log('渲染列表方法'); }, 
-            renderDetail : function(id) { console.log('渲染详情方法, id为: ' + id); },
-            renderError : function(error) { console.log('URL错误, 错误信息: ' + error); } 
-        }
-    }); 
- 
 /*
     var AppRouter = Backbone.Router.extend({
              routes: {
