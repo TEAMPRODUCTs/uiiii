@@ -40,6 +40,16 @@
 
  Zepto(function ($) {
 
+
+    var AppRouter = Backbone.Router.extend({ 
+        routes : { 
+            renderList : function() { console.log('渲染列表方法'); }, 
+            renderDetail : function(id) { console.log('渲染详情方法, id为: ' + id); },
+            renderError : function(error) { console.log('URL错误, 错误信息: ' + error); } 
+        }
+    }); 
+ 
+/*
     var AppRouter = Backbone.Router.extend({
              routes: {
                  "/posts/:id" : "getPost",
@@ -51,7 +61,7 @@
              defaultRoute : function(actions){
                  alert("actions " + actions);
              }
-         });
+         });*/
  
          var app_router = new AppRouter;
  
