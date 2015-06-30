@@ -30,18 +30,71 @@
 <!-- <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/common.js"></script>
  --><!--<script type="text/javascript" src="../../bak/webapp/app/common.js"></script>-->
 <!-- <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/3rdlibs/bridge.js"></script> -->
+
+<!--<script type="text/javascript" src="./res/libs/libs.js"></script>-->
+
+
 <script type="text/javascript" src="http://www.css88.com/doc/underscore1.8.2/underscore.js"></script>
 <script type="text/javascript" src="./res/libs/backbone.js"></script>
 <script type="text/javascript" src="./res/libs/zepto.js"></script>
-<script type="text/javascript" src="http://requirejs.org/docs/release/2.1.18/minified/require.js"></script>
+<script type="text/javascript" src="http://requirejs.org/docs/release/2.1.18/minified/require.js"></script> <!--放最后面-->
+<!--<script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/3rdlibs/libs.js"></script>
+<script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/common.js"></script>-->
+<!--<script type="text/javascript" src="common.js"></script>-->
 <script type="text/javascript" src="./res/libs/golfBridge.js"></script>
 <script type="text/javascript">
     document.write('<script type="text/javascript" src="./main.js?ver=' + GOLF_VER + '"><\/script>');
 
- Zepto(function ($) {
+    var parseQueryString = function( url ){
+        var reg_url =/^[^\?]+\?([\w\W]+)$/,
+            reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
+            arr_url = reg_url.exec( url ),
+            ret        = {};
+        if( arr_url && arr_url[1] ){
+            var str_para = arr_url[1],result;
+            while((result = reg_para.exec(str_para)) != null){
+                ret[result[1]] = result[2];
+            }
+        }
+        return ret;
+    }
+
+
+
+    function buildUrl(e) {
+        this.viewRootPath = 'views/';
+        this.viewMapping = {};
+        var t = this.viewMapping[e];
+        return t ? t : this.viewRootPath + e
+    }
+
+    function loadView (e, t) {
+        var n = this;
+        requirejs([this.buildUrl(e)], function(e) {
+            t && t.call(n, e)
+        })
+    }
+
+    Zepto(function ($) {
    //http://sun80264629.iteye.com/blog/1883204
 
     var AppRouter = Backbone.Router.extend({  
+        initialize: function(options){
+            this.route('topic/:pageno/:pagesize', 'main' , function(pageno, pagesize){
+                loadView("golf.recommend.test");
+                console.log(pageno + " " + pagesize);
+            });
+        },
+
+        execute: function(callback, args, name) {
+            /*if (!loggedIn) {
+              goToLogin();
+              return false;
+            }*/
+            args.push(parseQueryString(args.pop()));
+            if (callback) callback.apply(this, args);
+        },
+
         routes : {  
             '' : 'main',  
             'topic' : 'renderList',  
@@ -59,23 +112,9 @@
         },  
         renderError : function(error) {  
             console.log('URL错误, 错误信息: ' + error);  
-        }  
+        } 
     });  
 
-/*
-    var AppRouter = Backbone.Router.extend({
-             routes: {
-                 "/posts/:id" : "getPost",
-                 "*actions" : "defaultRoute"
-             },
-             getPost: function(id) {
-                 alert("post" + id);
-             },
-             defaultRoute : function(actions){
-                 alert("actions " + actions);
-             }
-         });*/
- 
          var app_router = new AppRouter;
  
         Backbone.history.start();
