@@ -46,19 +46,16 @@
     document.write('<script type="text/javascript" src="./main.js?ver=' + GOLF_VER + '"><\/script>');
 
     var parseQueryString = function( url ){
-        var reg_url =/^[^\?]+\?([\w\W]+)$/,
-            reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
-            arr_url = reg_url.exec( url ),
-            ret        = {};
-        if( arr_url && arr_url[1] ){
-            var str_para = arr_url[1],result;
+        var  reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
+            ret    = {};
+        if( url ){
+            var str_para =url,result;
             while((result = reg_para.exec(str_para)) != null){
                 ret[result[1]] = result[2];
             }
         }
         return ret;
     }
-
 
     function  parseHash(e) {
             function o(e) {
@@ -111,9 +108,13 @@ Backbone.$ = $;
 
     var AppRouter = Backbone.Router.extend({  
         initialize: function(options){
-            this.route('topic/:pageno/:pagesize', 'main' , function(pageno, pagesize){
-                loadView("golf.recommend.test",function(e){new e();});
-                console.log(pageno + " " + pagesize);
+            this.route('*e', 'main' , function(url){
+                //arguments (获取相应参数)
+                if(!url){
+                    url = 'index';
+                }
+                loadView(url,function(e){new e();});
+                //console.log(pageno + " " + pagesize);
             });
         },
 
@@ -127,11 +128,15 @@ Backbone.$ = $;
         },
 
         routes : {  
-            '' : 'main',  
+            '*e' : 'main',  
+            'recommend': 'recommend',
             'topic' : 'renderList',  
             'topic/:id' : 'renderDetail',  
             '*error' : 'renderError'  
         },  
+        recommend : function(){
+            console.log(":sss");
+        },
         main : function() {  
             console.log('应用入口方法');  
         },  

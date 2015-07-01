@@ -26,8 +26,8 @@
       <file leaf-file-name="d.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Golf/Webapp/d.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.25" vertical-offset="1701" max-vertical-offset="4455">
-              <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+            <state vertical-scroll-proportion="-23.25" vertical-offset="1836" max-vertical-offset="4590">
+              <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -76,16 +76,21 @@
       <file leaf-file-name="golf.recommend.test.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Golf/Webapp/views/golf.recommend.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3649" max-vertical-offset="4509">
-              <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4536">
+              <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
               <folding>
-                <marker date="1435719588095" expanded="true" signature="239:6389" placeholder="{...}" />
-                <marker date="1435719588095" expanded="true" signature="542:6333" placeholder="{...}" />
-                <marker date="1435719588095" expanded="true" signature="4814:6290" placeholder="{...}" />
-                <marker date="1435719588095" expanded="true" signature="5412:6278" placeholder="{...}" />
-                <marker date="1435719588095" expanded="true" signature="5452:6142" placeholder="{...}" />
-                <marker date="1435719588095" expanded="true" signature="5583:5883" placeholder="{&quot;award&quot;: 100...}" />
-                <marker date="1435719588095" expanded="true" signature="6146:6262" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="239:6438" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="555:6382" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="1777:4204" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="3703:4116" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="3867:4074" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="4003:4054" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="4306:4826" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="4863:6339" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="5461:6327" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="5501:6191" placeholder="{...}" />
+                <marker date="1435724464689" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
+                <marker date="1435724464689" expanded="true" signature="6195:6311" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -94,8 +99,8 @@
       <file leaf-file-name="backbone_eventBind_Trigger.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Golf/Webapp/backbone_eventBind_Trigger.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7471698" vertical-offset="486" max-vertical-offset="1809">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.81509435" vertical-offset="648" max-vertical-offset="1809">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding>
                 <marker date="1435663703617" expanded="false" signature="1143:1187" placeholder="..." />
                 <marker date="1435663703617" expanded="false" signature="1221:1267" placeholder="..." />
@@ -426,6 +431,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -472,6 +478,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="020a76e2-48b0-49c7-a850-0314fde40f3c" name="Default" comment="" />
@@ -482,7 +491,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -565,32 +574,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Golf/Webapp/views/golf.recommend.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3649" max-vertical-offset="4509">
-          <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4536">
+          <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
           <folding>
-            <marker date="1435719588095" expanded="true" signature="239:6389" placeholder="{...}" />
-            <marker date="1435719588095" expanded="true" signature="542:6333" placeholder="{...}" />
-            <marker date="1435719588095" expanded="true" signature="4814:6290" placeholder="{...}" />
-            <marker date="1435719588095" expanded="true" signature="5412:6278" placeholder="{...}" />
-            <marker date="1435719588095" expanded="true" signature="5452:6142" placeholder="{...}" />
-            <marker date="1435719588095" expanded="true" signature="5583:5883" placeholder="{&quot;award&quot;: 100...}" />
-            <marker date="1435719588095" expanded="true" signature="6146:6262" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="239:6438" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="555:6382" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="1777:4204" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="3703:4116" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="3867:4074" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="4003:4054" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="4306:4826" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="4863:6339" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="5461:6327" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="5501:6191" placeholder="{...}" />
+            <marker date="1435724464689" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
+            <marker date="1435724464689" expanded="true" signature="6195:6311" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Golf/Webapp/d.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.25" vertical-offset="1701" max-vertical-offset="4455">
-          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+        <state vertical-scroll-proportion="-23.25" vertical-offset="1836" max-vertical-offset="4590">
+          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Golf/Webapp/backbone_eventBind_Trigger.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7471698" vertical-offset="486" max-vertical-offset="1809">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.81509435" vertical-offset="648" max-vertical-offset="1809">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
           <folding>
             <marker date="1435663703617" expanded="false" signature="1143:1187" placeholder="..." />
             <marker date="1435663703617" expanded="false" signature="1221:1267" placeholder="..." />
