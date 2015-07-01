@@ -7,7 +7,8 @@ require.config({
         'TourStore': 'models/tourStore', /*TODO*/
         'VaBaseView': 'res/scripts/views/BaseView',
         //公共页面
-        'CPageStore': '../cpage/models/cpagestore'
+        'CPageStore': '../cpage/models/cpagestore',
+        'text':'res/libs/require.text'
     },
     urlArgs: 'v=' + window.TOUR_VER // 修改这里的版本号
 })

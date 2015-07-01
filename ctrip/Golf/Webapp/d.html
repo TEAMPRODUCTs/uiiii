@@ -60,6 +60,37 @@
     }
 
 
+    function  parseHash(e) {
+            function o(e) {
+                var e = e.split("://"),
+                    t = /([^&=?]+)=([^&]+)/g,
+                    n = {},
+                    r, i, s;
+                while (r = t.exec(e[0])) name = r[1], i = r[2], n[name] = i;
+                if (e[1]) {
+                    var o = 0;
+                    s = _.size(n), _.each(n, function(t, r) {
+                        ++o == s && (n[r] += "://" + e[1])
+                    })
+                }
+                return n
+            }
+            var t = e,
+                e = e.replace(/([^\|]*)(?:\|.*)?$/img, "$1"),
+                n = /^([^?&|]*)(.*)?$/i.exec(e),
+                r = n[1] ? n[1].split("!") : [],
+                i = (r.shift() || "").replace(/(^\/+|\/+$)/i, ""),
+                s = r.length ? r.join("!").replace(/(^\/+|\/+$)/i, "").split("/") : this.path;
+            return this.isChangeHash = !this.lastHash && t === this.lashFullHash || !!this.lastHash && this.lastHash !== e, location.hash.indexOf("cui-") != -1 && (this.isChangeHash = !1), this.lastHash = e, this.lashFullHash = t, {
+                viewpath: i,
+                path: s,
+                query: o(t),
+                root: location.pathname + location.search,
+                fullhash: t
+            }
+        }
+
+
 
     function buildUrl(e) {
         this.viewRootPath = 'views/';
@@ -74,14 +105,14 @@
             t && t.call(n, e)
         })
     }
-
+Backbone.$ = $;
     Zepto(function ($) {
    //http://sun80264629.iteye.com/blog/1883204
 
     var AppRouter = Backbone.Router.extend({  
         initialize: function(options){
             this.route('topic/:pageno/:pagesize', 'main' , function(pageno, pagesize){
-                loadView("golf.recommend.test");
+                loadView("golf.recommend.test",function(e){new e();});
                 console.log(pageno + " " + pagesize);
             });
         },

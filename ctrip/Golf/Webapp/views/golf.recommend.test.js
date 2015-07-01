@@ -12,6 +12,10 @@ define([ 'text!templates/golf.recommend.html'],
             "canRecommendCoe" : 1
         };
         var groupView = Backbone.View.extend({
+            el: $('#main'),
+            initialize: function() {  
+                this.render(recommendData);  
+            },
             initTemplate: function () {
                 return _.template(pageTemplate);
             },
@@ -104,6 +108,7 @@ define([ 'text!templates/golf.recommend.html'],
             onShow: function () {},
 
             initShareData : function(){
+                var shareData = {};
                 shareData.title = "邀请朋友一起打高尔夫啦！";
                 var param = encodeURIComponent(JSON.stringify(recommendData));
                 recommendData.downloadLink = 'http://m.ctrip.com/webapp/golf/index.html#golf.recommend.landing?param='+ param;
@@ -150,6 +155,7 @@ define([ 'text!templates/golf.recommend.html'],
             },
             onHide: function () {}
         });
+        console.log(pageTemplate)
         return groupView;
     });
 
