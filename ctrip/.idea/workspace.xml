@@ -66,8 +66,8 @@
       <file leaf-file-name="common.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/golf-h5.git/apprealease/5.6/webapp/app/1.1/hybrid/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="128299" max-vertical-offset="256446">
-              <caret line="4762" column="25" selection-start-line="4762" selection-start-column="19" selection-end-line="4762" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="128515" max-vertical-offset="256662">
+              <caret line="4770" column="25" selection-start-line="4770" selection-start-column="19" selection-end-line="4770" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -79,18 +79,18 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4536">
               <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
               <folding>
-                <marker date="1435724464689" expanded="true" signature="239:6438" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="555:6382" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="1777:4204" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="3703:4116" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="3867:4074" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="4003:4054" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="4306:4826" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="4863:6339" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="5461:6327" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="5501:6191" placeholder="{...}" />
-                <marker date="1435724464689" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
-                <marker date="1435724464689" expanded="true" signature="6195:6311" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="239:6438" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="555:6382" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="1777:4204" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="3703:4116" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="3867:4074" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="4003:4054" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="4306:4826" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="4863:6339" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="5461:6327" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="5501:6191" placeholder="{...}" />
+                <marker date="1435830288078" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
+                <marker date="1435830288078" expanded="true" signature="6195:6311" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -99,8 +99,8 @@
       <file leaf-file-name="backbone_eventBind_Trigger.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Golf/Webapp/backbone_eventBind_Trigger.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55703884" vertical-offset="648" max-vertical-offset="1809">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.58980584" vertical-offset="648" max-vertical-offset="1809">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
               <folding>
                 <marker date="1435663703617" expanded="false" signature="1143:1187" placeholder="..." />
                 <marker date="1435663703617" expanded="false" signature="1221:1267" placeholder="..." />
@@ -429,7 +429,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/test/Payment_WebApp" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
     <property name="FullScreen" value="false" />
   </component>
@@ -577,18 +577,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4536">
           <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
           <folding>
-            <marker date="1435724464689" expanded="true" signature="239:6438" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="555:6382" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="1777:4204" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="3703:4116" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="3867:4074" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4003:4054" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4306:4826" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4863:6339" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5461:6327" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5501:6191" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
-            <marker date="1435724464689" expanded="true" signature="6195:6311" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="239:6438" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="555:6382" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="1777:4204" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="3703:4116" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="3867:4074" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4003:4054" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4306:4826" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4863:6339" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5461:6327" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5501:6191" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
+            <marker date="1435830288078" expanded="true" signature="6195:6311" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -638,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/golf-h5.git/apprealease/5.6/webapp/app/1.1/hybrid/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="128299" max-vertical-offset="256446">
-          <caret line="4762" column="25" selection-start-line="4762" selection-start-column="19" selection-end-line="4762" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="128515" max-vertical-offset="256662">
+          <caret line="4770" column="25" selection-start-line="4770" selection-start-column="19" selection-end-line="4770" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -657,18 +657,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4536">
           <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
           <folding>
-            <marker date="1435724464689" expanded="true" signature="239:6438" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="555:6382" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="1777:4204" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="3703:4116" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="3867:4074" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4003:4054" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4306:4826" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="4863:6339" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5461:6327" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5501:6191" placeholder="{...}" />
-            <marker date="1435724464689" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
-            <marker date="1435724464689" expanded="true" signature="6195:6311" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="239:6438" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="555:6382" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="1777:4204" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="3703:4116" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="3867:4074" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4003:4054" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4306:4826" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="4863:6339" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5461:6327" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5501:6191" placeholder="{...}" />
+            <marker date="1435830288078" expanded="true" signature="5632:5932" placeholder="{&quot;award&quot;: 100...}" />
+            <marker date="1435830288078" expanded="true" signature="6195:6311" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -683,8 +683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Golf/Webapp/backbone_eventBind_Trigger.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55703884" vertical-offset="648" max-vertical-offset="1809">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.58980584" vertical-offset="648" max-vertical-offset="1809">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
             <marker date="1435663703617" expanded="false" signature="1143:1187" placeholder="..." />
             <marker date="1435663703617" expanded="false" signature="1221:1267" placeholder="..." />
