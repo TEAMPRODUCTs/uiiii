@@ -3,3 +3,16 @@ git push origin HEAD:refs/for/Release_Payment_WebApp_SDK_V1.0
 
 createViewPort   --- > AbstractAPP
                  --- > App
+
+
+
+AbstractAPP 
+
+e --- > view 
+t ----> 
+loadView: function(e, t) {
+			var n = this;
+			requirejs([this.buildUrl(e)], function(e) {
+				t && t.call(n, e)
+			})
+		},
