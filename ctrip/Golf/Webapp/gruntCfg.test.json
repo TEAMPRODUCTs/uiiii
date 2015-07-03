@@ -1,0 +1,30 @@
+{
+    "requirejs": {
+        "main": {
+            "options": {
+                "replace": true,
+                "baseUrl": "<%= config.srcDir %>",
+                "paths": {
+                    "text": "res/libs/require.text"                 
+                },
+
+                "web": {
+                    "include": [
+                        "views/index.test",
+                        "views/golf.recommend.test",
+                        "main"
+                    ],
+                    "out": "<%= config.destDir %>/main.h5.js"
+                },
+
+                "app": {
+                    "include": [
+                        "views/index.test",
+                        "views/golf.recommend.test",
+                        "app.main"],
+                    "out": "<%= config.destDir %>/main.app.js"
+                }
+            }
+        }
+    }
+}

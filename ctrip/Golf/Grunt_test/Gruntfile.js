@@ -401,7 +401,7 @@ module.exports = function (grunt) {
      * @returns {boolean}
      */
     function loadRequireTask(platform, application, projectPath) {
-        var fileName = projectPath + "/gruntCfg.json",
+        var fileName = projectPath + "/gruntCfg.test.json",
           optimize = grunt.option('debug') ? "none" : "uglify",
           requireTask;
         grunt.log.debug('read ' + fileName);

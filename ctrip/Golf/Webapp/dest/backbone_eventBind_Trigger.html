@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<script type="text/javascript" src="./res/libs/underscore.js"></script>
+		<script type="text/javascript" src="./res/libs/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="./res/libs/backbone.js"></script>
+		<script type="text/javascript" src="./res/libs/fastclick.js"></script>
+	</head>
+	<body>
+		<div id="body">
+			<script type="text/template" id="backbone_tmp">
+				<div id='father' style="width:50px;height:50px;background-color:red;">
+					<div id="clild" style="width:30px;height:30px;background-color:green;"></div>	
+				</div>
+
+				<div><%=data%></div>
+		    </script>
+		</div>
+		<!-- <div id='father' style="width:50px;height:50px;background-color:red;">
+			<div id="clild" style="width:30px;height:30px;background-color:green;"></div>	
+		</div> -->
+	</body>	
+	<script type="text/javascript">
+		var TestView = Backbone.View.extend({  //  创建一个view，其实就是一个HTML的DOM节点
+			events: {
+				"click #father": "fatherAction",
+				"click #clild": "clildAction"	
+			},
+
+		    initialize: function() {  
+		        this.render();  
+		    },
+		    render: function() {  // 渲染方法
+		    	var tpl = '<div id="father" style="width:50px;height:50px;background-color:red;">'+
+					'<div id="clild" style="width:30px;height:30px;background-color:green;"><%=data%></div></div>';
+				//var template = _.template(tpl)({data:"dataTest"});
+				var template = _.template(this.$el.find("#backbone_tmp").html())({data:"dataTest111"});
+				this.$el.html(template);
+		       // this.$el.html(this.$el.find("#backbone_tmp").html());  //  this.el就是HTML节点，通过jQuery的html方法填充内容
+		        return this;
+		    },
+
+		    fatherAction : function(e){
+		    	alert("father");
+		    },
+
+		    clildAction : function(e){
+		    	alert("child");
+		    	e.stopPropagation();
+           		e.preventDefault();//阻止冒泡
+		    }
+
+		});
+
+		$(function () {
+			FastClick.attach(document.body);
+		    var v = new TestView({el: $('#body')});  //  以目标节点（一个 <div id="body" />）为el参数，创建一个view的实例，render函数将会被自动调用并将渲染结果填充到el中
+		    //v.render(); // 如果没在 initialize 里调用 render 的话，就需要在这里调用一次
+		});
+	</script>
+
+
+</html>
