@@ -9,6 +9,7 @@ require.config({
         //公共页面
         'CPageStore': '../cpage/models/cpagestore',
         'text':'res/libs/require.text'
+
     },
     urlArgs: 'v=' + window.TOUR_VER // 修改这里的版本号
 })

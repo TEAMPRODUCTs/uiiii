@@ -1,16 +1,68 @@
-define(['text!templates/index.html'],
-    function (indexTemplate, cslide) {
+define(['text!templates/index.html','cBase','BusinessModel'],
+    function (indexTemplate, cBase, BusinessModel) {
     "use strict";
     var GeoLocationWidget, getLocation, geoLocation,  $g_depart, $g_dest, prodListParam, imgsData;
     var defaultDepartCity = "上海", defaultDepartCityId = "2";
     var groupView = Backbone.View.extend({
         el: $('#main'),
+        payMentModel: BusinessModel.PayMentModel.getInstance(),
         render: function () {
             this.$el.html(indexTemplate);
+            this.testModel();
         },
-      
-        initialize: function() {  
-            this.render();        
+        testModel : function(){
+            this.payMentModel.excute(function (data) {
+               console.log(JSON.stringify(data));
+            });
+        },
+        initialize: function() {
+            this.render();
+            //
+            var Cat =new  cBase.Class({
+                initialize: function($super , name) {
+                    this.name = name;
+                },
+                eat: function() {
+                    console.log(this.name + " is eating fish.");
+                }
+            });
+
+            var BlackCat = new cBase.Class(Cat, {
+                initialize: function($super, name, age) {
+                    // call the constructor of super class.
+                    //BlackCat.super_.call(this, name);
+                    $super(name, age);
+                    this.age = age;
+
+
+                }/*,
+                 eat: function() {
+                 console.log(this.name + "(" + this.age + ") is eating dog.");
+                 }*/
+            });
+
+            var ccBlackCat =new cBase.Class(BlackCat, {
+                initialize: function($super, name, age) {
+                    // call the constructor of super class.
+                    $super(name, age);
+                    //ccBlackCat.super_.call(this, name);
+                }
+            });
+
+            var c = new Cat('Mao');
+            c.eat();
+
+            var bc = new BlackCat('Hei Mao', 5);
+            bc.eat();
+
+
+            var dd = new ccBlackCat('ccBlackCat',88);
+            dd.eat();
+
+            console.log(c instanceof Cat);
+            console.log(bc instanceof Cat);
+            console.log(bc instanceof BlackCat);
+
         },
         events: {
             "click .golf_tab":"goToGolfLst",

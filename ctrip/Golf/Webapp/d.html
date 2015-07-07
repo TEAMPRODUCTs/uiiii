@@ -13,12 +13,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://res.m.ctrip.com/html5/Content/images/72.png?v=1.0?v=1.0" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://res.m.ctrip.com/html5/Content/images/114.png?v=1.0?v=1.0" />
     <link rel="stylesheet" type="text/css" href="http://webresource.c-ctrip.com/styles/h5/common/main.css" />
-<!--     <link rel="stylesheet" type="text/css" href="./res/style/fun.css">
+     <link rel="stylesheet" type="text/css" href="./res/style/fun.css">
     <link rel="stylesheet"  type="text/css" href="./res/style/leaderboard.summary.css"/>
     <link rel="stylesheet" type="text/css" href="./res/style/leaderboard.css"/>
-    <link rel="stylesheet" type="text/css" href="./res/style/leaderboard.award.css"/> -->
-
-      <link rel="stylesheet" href="./res/style/iwan.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./res/style/leaderboard.award.css"/>
+<!--
+      <link rel="stylesheet" href="./res/style/iwan.min.css"/>-->
 </head>
 <body class="gray" onselectstart="return false">
 <div id="main"></div>
@@ -47,8 +47,10 @@
 <script type="text/javascript" src="http://webresource.c-ctrip.com/code/lizard/1.1/web/common.js"></script>-->
 <!--<script type="text/javascript" src="common.js"></script>-->
 <!-- <script type="text/javascript" src="./res/libs/golfBridge.js"></script> -->
+<script type="text/javascript" src="./util/common.js"></script>
 <script type="text/javascript">
-    document.write('<script type="text/javascript" src="./main.h5.js?ver=' + GOLF_VER + '"><\/script>');
+    /*document.write('<script type="text/javascript" src="./main.h5.js?ver=' + GOLF_VER + '"><\/script>');*/
+    document.write('<script type="text/javascript" src="./main.js?ver=' + GOLF_VER + '"><\/script>');
 
     var parseQueryString = function( url ){
         var  reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important

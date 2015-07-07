@@ -72,7 +72,20 @@
             }
         });
 
-        var BlackCat = Class(Cat, {
+
+           // 下面举例
+        var animal = Class({
+            initialize: function(name) {
+                this.name = name;
+            },
+            eat1: function() {
+                console.log(this.name + " is eating fish.");
+            }
+        });
+        
+
+
+        var BlackCat = Class(Cat, animal, {
             initialize: function(name, age) {
                 // call the constructor of super class.
                 BlackCat.super_.call(this, name);
@@ -92,6 +105,7 @@
 
         console.log(c instanceof Cat);
         console.log(bc instanceof Cat);
+         console.log(bc instanceof animal);
         console.log(bc instanceof BlackCat);
     </script>
 </body>
