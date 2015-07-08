@@ -110,7 +110,7 @@ define("cCoreInherit", [], function() {
         return e
     }, n
 }),
-define("cBase", [/*"libs", */"cCoreInherit"/*, "cUtility"*/], function(/*e,*/ t/*, n*/) {
+define("cBase", [/*"libs", */"cCoreInherit", "cUtility"], function(/*e,*/ t, n) {
     typeof console == "undefined" && (console = {
         log: function() {},
         error: function() {}
@@ -138,11 +138,475 @@ define("cBase", [/*"libs", */"cCoreInherit"/*, "cUtility"*/], function(/*e,*/ t/
             return t
         }
     };
-    return r.extend(r.Object, u),/* r.Date = n.Date, r.Hash = n.Hash,*/ r.getInstance = function() {
+    return r.extend(r.Object, u),r.Date = n.Date,/*  r.Hash = n.Hash,*/ r.getInstance = function() {
         return this.instance || new this
-    }, /*r.getServerDate = n.getServerDate,*/ r
+    }, r.getServerDate = n.getServerDate, r
 }),
-define("cAjax", [], function() {
+define("cAbstractStorage", ["cBase"], function(e) {
+    var t = window.JSON,
+        n = e.Date,
+        r = new e.Class({
+            __propertys__: function() {
+                this.proxy = null
+            },
+            initialize: function($super, e) {},
+            _buildStorageObj: function(e, t, n, r, i) {
+                return {
+                    value: e,
+                    oldvalue: i || null,
+                    timeout: t,
+                    tag: n,
+                    savedate: r
+                }
+            },
+            set: function(e, r, i, s, o, u) {
+                o = o || (new n).format("Y/m/d H:i:s"), i = i ? new n(i) : (new n).addDay(30);
+                var a = this._buildStorageObj(r, i.format("Y/m/d H:i:s"), s, o, u);
+                try {
+                    return this.proxy.setItem(e, t.stringify(a)), !0
+                } catch (f) {
+                    console && 0
+                }
+                return !1
+            },
+            get: function(e, r, i) {
+                var s, o = null;
+                try {
+                    s = this.proxy.getItem(e), s && (s = t.parse(s), n.parse(s.timeout, !0) >= new Date && (r ? r === s.tag && (o = i ? s.oldvalue : s.value) : o = i ? s.oldvalue : s.value))
+                } catch (u) {
+                    console && 0
+                }
+                return o
+            },
+            getTag: function(e) {
+                var n, r = null,
+                    i = null;
+                try {
+                    n = this.proxy.getItem(e), n && (n = t.parse(n), i = n && n.tag)
+                } catch (s) {
+                    console && 0
+                }
+                return i
+            },
+            getSaveDate: function(e, r) {
+                var i, s = null;
+                try {
+                    i = this.proxy.getItem(e), i && (i = t.parse(i), i.savedate && (s = n.parse(i.savedate), r || (s = s.valueOf())))
+                } catch (o) {
+                    console && 0
+                }
+                return s
+            },
+            getExpireTime: function(e) {
+                var n = null,
+                    r = null;
+                try {
+                    n = this.proxy.getItem(e), n && (n = t.parse(n), r = Date.parse(n.timeout))
+                } catch (i) {
+                    console && 0
+                }
+                return r
+            },
+            remove: function(e) {
+                return this.proxy.removeItem(e)
+            },
+            getAll: function() {
+                var e = this.proxy.length,
+                    t = [];
+                for (var n = 0; n < e; n++) {
+                    var r = this.proxy.key(n),
+                        i = {
+                            key: r,
+                            value: this.get(r)
+                        };
+                    t.push(i)
+                }
+                return t
+            },
+            clear: function() {
+                this.proxy.clear()
+            },
+            gc: function() {
+                var e = this.proxy,
+                    t = this.proxy.length;
+                for (var n = 0; n < t; n++) {
+                    var r = e.key(n);
+                    try {
+                        this.get(r) || this.remove(r)
+                    } catch (i) {}
+                }
+            }
+        });
+    return r
+}),
+define("cStorage", ["cBase", "cAbstractStorage"], function(e, t) {
+    var n = new e.Class(t, {
+        __propertys__: function() {},
+        initialize: function($super, e) {
+            this.proxy = window.localStorage, $super(e)
+        },
+        oldGet: function(t) {
+            var n = localStorage.getItem(t),
+                r = n ? JSON.parse(n) : null;
+            if (r && r.timeout) {
+                var i = new Date,
+                    s = e.Date.parse(r.timeout).valueOf();
+                if (r.timeby) {
+                    if (s - i >= 0) return r
+                } else if (s - e.Date.parse(e.Date.format(i, "Y-m-d")).valueOf() >= 0) return r;
+                return localStorage.removeItem(t), null
+            }
+            return r
+        },
+        oldSet: function(e, t) {
+            localStorage.setItem(e, t)
+        },
+        getExpireTime: function(t) {
+            var n = localStorage.getItem(t),
+                r = n ? JSON.parse(n) : null;
+            return r && r.timeout ? r.timeout : (new e.Date(e.getServerDate())).addDay(2).format("Y-m-d")
+        },
+        oldRemove: function(e) {
+            localStorage.removeItem(e)
+        }
+    });
+    return n.getInstance = function() {
+        return this.instance ? this.instance : this.instance = new this
+    }, n.localStorage = n.getInstance(), n
+}),
+define("cUtilityDate", ["cCoreInherit"], function(e) {
+    var n = {};
+    return n.Date = new e.Class({
+        initialize: function(e) {
+            e = e || new Date, this.date = new Date(e)
+        },
+        addDay: function(e) {
+            return e = e || 0, this.date.setDate(this.date.getDate() + e), this
+        },
+        addMonth: function(e) {
+            return e = e || 0, this.date.setMonth(this.date.getMonth() + e), this
+        },
+        addHours: function(e) {
+            return e = e || 0, this.date.setHours(this.date.getHours() + e), this
+        },
+        addMinutes: function(e) {
+            return e = e || 0, this.date.setMinutes(this.date.getMinutes() + e), this
+        },
+        addSeconds: function(e) {
+            return e = e || 0, this.date.setSeconds(this.date.getSeconds() + e), this
+        },
+        addYear: function(e) {
+            return e = e || 0, this.date.setYear(this.date.getFullYear() + e), this
+        },
+        setHours: function() {
+            return this.date.setHours.apply(this.date, arguments), this
+        },
+        valueOf: function() {
+            return this.date
+        },
+        getTime: function() {
+            return this.date.valueOf()
+        },
+        toString: function() {
+            return this.date.toString()
+        },
+        format: function(e) {
+            typeof e != "string" && (e = "");
+            for (var t in this._MAPS) e = this._MAPS[t].call(this, e, this.date, t);
+            return e
+        },
+        diffMonth: function(e) {
+            var t = parseInt(this.format("Y")),
+                r = parseInt(this.format("m")),
+                i = new n.Date(e),
+                s = parseInt(i.format("Y")),
+                o = parseInt(i.format("m"));
+            return (s - t) * 12 + (o - r)
+        },
+        getServerDate: function(){
+          return new Date();
+        },
+        _DAY1: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+        _DAY2: ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+        _MAPS: {
+            d: function(e, t, n) {
+                var r = t.getDate().toString();
+                return r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            j: function(e, t, n) {
+                return e.replace(new RegExp(n, "mg"), t.getDate())
+            },
+            N: function(e, t, n) {
+                var r = t.getDay();
+                return r === 0 && (r = 7), e.replace(new RegExp(n, "mg"), r)
+            },
+            w: function(e, t, n) {
+                var r = t.getDay(),
+                    i = this._DAY1[r];
+                return e.replace(new RegExp(n, "mg"), i)
+            },
+            W: function(e, t, n) {
+                var r = t.getDay(),
+                    i = this._DAY2[r];
+                return e.replace(new RegExp(n, "mg"), i)
+            },
+            m: function(e, t, n) {
+                var r = (t.getMonth() + 1).toString();
+                return r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            n: function(e, t, n) {
+                return e.replace(n, t.getMonth() + 1)
+            },
+            Y: function(e, t, n) {
+                return e.replace(new RegExp(n, "mg"), t.getFullYear())
+            },
+            y: function(e, t, n) {
+                return e.replace(new RegExp(n, "mg"), t.getYear())
+            },
+            g: function(e, t, n) {
+                var r = t.getHours();
+                return r >= 12 && (r -= 12), e.replace(new RegExp(n, "mg"), r)
+            },
+            G: function(e, t, n) {
+                return e.replace(new RegExp(n, "mg"), t.getHours())
+            },
+            h: function(e, t, n) {
+                var r = t.getHours();
+                return r >= 12 && (r -= 12), r += "", r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            H: function(e, t, n) {
+                var r = t.getHours().toString();
+                return r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            i: function(e, t, n) {
+                var r = t.getMinutes().toString();
+                return r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            s: function(e, t, n) {
+                var r = t.getSeconds().toString();
+                return r.length < 2 && (r = "0" + r), e.replace(new RegExp(n, "mg"), r)
+            },
+            I: function(e, t, n) {
+                var r = t.getMinutes().toString();
+                return e.replace(new RegExp(n, "mg"), r)
+            },
+            S: function(e, t, n) {
+                var r = t.getSeconds().toString();
+                return e.replace(new RegExp(n, "mg"), r)
+            },
+            D: function(e, n, r) {
+                var i = this.getServerDate();//TODO CHECK
+                i.setHours(0, 0, 0, 0), n = new Date(n.valueOf()), n.setHours(0, 0, 0, 0);
+                var s = 864e5,
+                    o = "",
+                    u = n - i;
+                return u >= 0 && (u < s ? o = "今天" : u < 2 * s ? o = "明天" : u < 3 * s && (o = "后天")), e.replace(new RegExp(r, "mg"), o)
+            }
+        }
+    }), e.extend(n.Date, {
+        parse: function(e, t) {
+            if (typeof e == "undefined") return new Date;
+            if (typeof e == "string") {
+                e = e || "";
+                var r = /^(\d{4})\-?(\d{1,2})\-?(\d{1,2})/i;
+                e.match(r) && (e = e.replace(r, "$2/$3/$1"));
+                var i = Date.parse(e),
+                    s = new Date(i || new Date);
+                return t ? s : new n.Date(s)
+            }
+            return typeof e == "number" ? new Date(e) : new Date
+        },
+        getHM: function(e) {
+            var t = this._getDate(e),
+                n = t.getHours(),
+                r = t.getMinutes();
+            return (n < 10 ? "0" + n : "" + n) + ":" + (r < 10 ? "0" + r : "" + r)
+        },
+        getIntervalDay: function(e, t) {
+            var n = this._getDate(e),
+                r = this._getDate(t);
+            return n.setHours(0, 0, 0, 0), r.setHours(0, 0, 0, 0), parseInt((r - n) / 864e5)
+        },
+        m2H: function(e) {
+            var t = Math.floor(e / 60),
+                n = e % 60;
+            return (t > 0 ? t + "小时" : "") + (n > 0 ? n + "分钟" : "")
+        },
+        _getDate: function(e) {
+            var t = n.Date.parse(e, !0),
+                r = new Date;
+            return r.setTime(t), r
+        },
+        format: function(e, t) {
+            return (new n.Date(e)).format(t)
+        },
+        weekday: function(e) {
+            var t = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+                n = new Date(e);
+            return t[n.getDay()]
+        },
+        diffMonth: function(e, t) {
+            return e = new n.Date(e), e.diffMonth(t)
+        }
+    }), n.Date
+}),
+    define("cUtility", ["cUtilityDate"], function(n) {
+    var s = function(e) {
+            return Object.prototype.toString.call(e)
+        },
+        o = {};
+    return  o.Object = {}, o.Object.set = function(e, t, n) {
+        if (!t) return null;
+        var r = t.split(".");
+        e = e || {};
+        for (var i = 0, s = r.length, o = Math.max(s - 1, 0); i < s; i++) i < o ? e = e[r[i]] = e[r[i]] || {} : e[r[i]] = n;
+        return e
+    }, o.Object.get = function(e, t) {
+        if (!e || !t) return null;
+        var n = t.split(".");
+        e = e || {};
+        for (var r = 0, i = n.length, s = Math.max(i - 1, 0); r < i; r++) {
+            e = e[n[r]];
+            if (e === null || typeof e == "undefined") return null
+        }
+        return e
+    },o.Date = n,  o.getServerDate = n.getServerDate,  o
+}),
+define("cAbstractStore", ["cBase", "cStorage", "cUtility"], function(e, t, n) {
+    CDate = e.Date, HObject = n.Object;
+    var r = new e.Class({
+        __propertys__: function() {
+            this.NULL = {}, this.key = this.NULL, this.lifeTime = "30M", this.useServerTime = !1, this.defaultData = null, this.rollbackEnabled = !1, this.sProxy = this.NULL
+        },
+        initialize: function(e) {
+            for (var t in e) this[t] = e[t];
+            this.assert()
+        },
+        assert: function() {
+            if (this.key === this.NULL) throw "not override key property"
+        },
+        set: function(e, t, n) {
+            var r = this._getNowTime();
+            r.addSeconds(this._getLifeTime()), this.rollbackEnabled && !n && (n = e), this.sProxy.set(this.key, e, r, t, null, n)
+        },
+        setLifeTime: function(e, t) {
+            this.lifeTime = e;
+            var n = this.getTag(),
+                r = this.get(),
+                i;
+            t ? i = this._getNowTime() : i = this.sProxy.getSaveDate(this.key, !0) || this._getNowTime();
+            var s = (new CDate(i.valueOf())).format("Y/m/d H:i:s");
+            i.addSeconds(this._getLifeTime()), this.sProxy.set(this.key, r, i, n, s)
+        },
+        setAttr: function(e, t, n) {
+            if (_.isObject(e)) {
+                for (var r in e) e.hasOwnProperty(r) && this.setAttr(r, e[r], t);
+                return
+            }
+            n = n || this.getTag();
+            var i = this.get(n) || {},
+                s = {};
+            if (i) {
+                if (this.rollbackEnabled) {
+                    s = this.get(n, !0);
+                    var o = HObject.get(i, e);
+                    HObject.set(s, e, o)
+                }
+                return HObject.set(i, e, t), this.set(i, n, s)
+            }
+            return !1
+        },
+        get: function(t, n) {
+            var r = null,
+                i = !0;
+            Object.prototype.toString.call(this.defaultData) === "[object Array]" ? r = this.defaultData.slice(0) : this.defaultData && (r = _.clone(this.defaultData));
+            var s = this.sProxy.get(this.key, t, n),
+                o = typeof s;
+            if ({
+                string: !0,
+                number: !0,
+                "boolean": !0
+            }[o]) return s;
+            if (s)
+                if (Object.prototype.toString.call(s) == "[object Array]") {
+                    r = [];
+                    for (var u = 0, a = s.length; u < a; u++) r[u] = s[u]
+                } else s && !r && (r = {}), e.extend(r, s);
+            for (var f in r) {
+                i = !1;
+                break
+            }
+            return i ? null : r
+        },
+        getAttr: function(e, t) {
+            var n = this.get(t),
+                r = null;
+            return n && (r = HObject.get(n, e)), r
+        },
+        getTag: function() {
+            return this.sProxy.getTag(this.key)
+        },
+        remove: function() {
+            this.sProxy.remove(this.key)
+        },
+        removeAttr: function(e) {
+            var t = this.get() || {};
+            t[e] && delete t[e], this.set(t)
+        },
+        getExpireTime: function() {
+            var e = null;
+            try {
+                e = this.sProxy.getExpireTime(this.key)
+            } catch (t) {
+                console && 0
+            }
+            return e
+        },
+        setExpireTime: function(e) {
+            var t = this.get(),
+                n = new CDate(e);
+            this.sProxy.set(this.key, t, n)
+        },
+        _getNowTime: function() {
+            return this.useServerTime ? new CDate(e.getServerDate()) : new CDate
+        },
+        _getLifeTime: function() {
+            var e = 0,
+                t = this.lifeTime + "",
+                n = t.charAt(t.length - 1),
+                r = +t.substring(0, t.length - 1);
+            return typeof n == "number" ? n = "M" : n = n.toUpperCase(), n == "D" ? e = r * 24 * 60 * 60 : n == "H" ? e = r * 60 * 60 : n == "M" ? e = r * 60 : n == "S" ? e = r : e = r * 60, e
+        },
+        rollback: function(e) {
+            if (this.rollbackEnabled) {
+                var t = this.getTag(),
+                    n = this.sProxy.get(this.key, t),
+                    r = this.sProxy.get(this.key, t, !0);
+                if (e && e instanceof Array)
+                    for (var i in e) {
+                        var s = e[i],
+                            o = r[s];
+                        typeof o != "undefined" && (n[s] = o)
+                    } else n = r, r = {};
+                this.set(n, t, r)
+            }
+        }
+    });
+    return r.getInstance = function() {
+        return this.instance ? this.instance : this.instance = new this
+    }, r
+}), define("cStore", ["cBase", "cAbstractStore", "cStorage"], function(e, t, n) {
+var r = new e.Class(t, {
+    __propertys__: function() {
+        this.sProxy = n.getInstance()
+    },
+    initialize: function($super, e) {
+        $super(e)
+    }
+});
+return r
+}),
+    define("cAjax", [], function() {
     var t = {
             json: "application/json; charset=utf-8",
             jsonp: "application/json"
@@ -294,7 +758,7 @@ define("cAbstractModel", [/*"libs", */"cBase", "cAjax", /*"cLog"*/], function(/*
         throw "[ERROR]abstract method:baseurl, must be override"
     }, i.CONTENT_TYPE_JSON = "json", i.CONTENT_TYPE_FORM = "form", i.CONTENT_TYPE_JSONP = "jsonp", i
 }),
-define("cModel", [/*"libs",*/ "cBase", /*"cStore", "cUtility","CommonStore",*/  "cAbstractModel"], function(/*e,*/ t, /*n, r, i,*/ s) {
+define("cModel", [/*"libs",*/ "cBase", "cStore", /*"cUtility","CommonStore",*/  "cAbstractModel"], function(/*e,*/ t, n, /*r, i,*/ s) {
     var/* u = r.Object,*/
         a = new t.Class(s, {
             __propertys__: function() {
@@ -351,10 +815,10 @@ define("cModel", [/*"libs",*/ "cBase", /*"cStore", "cUtility","CommonStore",*/  
                     f = this.result && this.result.get(u);
                 !f || this.ajaxOnly || r ? (this.method.toLowerCase() !== "get" && this.usehead && this.contentType !== a.CONTENT_TYPE_JSONP ? o.head = this.head.get() : this.method.toLowerCase() !== "get" && !this.usehead && this.contentType !== a.CONTENT_TYPE_JSONP && this.headinfo && (o.head = this.headinfo), this.onBeforeCompleteCallback = function(e) {
          //TODO 复原store相关
-          /*          if (this.result instanceof n) {
+                    if (this.result instanceof n) {
                         try {} catch (t) {}
                         this.result.set(e, u)
-                    }*/
+                    }
                 }, this.execute(e, t, i, s, o)) : typeof e == "function" && e.call(i || this, f)
             },
             _getResponseHead: function(e) {

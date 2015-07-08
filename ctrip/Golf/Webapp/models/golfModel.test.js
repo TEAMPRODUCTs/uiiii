@@ -1,5 +1,5 @@
-﻿define(['BaseModel', 'cBase'],
-    function (BaseModel, cBase) {
+﻿define(['BaseModel', 'cBase', 'GolfStore'],
+    function (BaseModel, cBase, store) {
         var M = {};
 
         /**
@@ -13,12 +13,14 @@
         M.PayMentModel =new  cBase.Class(BaseModel, {
             __propertys__: function () {
                 this.url = '/json/ListSearch'; //store.LeaderBoardSummaryStore.getInstance();
-                this.result = null;
+                this.result = store.LeaderBoardSummaryStore.getInstance();
                 this.method = "GET";
                 this.protocol = 'http';
             },
             initialize: function ($super, options) {
                 $super(options);
+              /*  M.PayMentModel.super_.call(this, options);
+                M.PayMentModel.__propertys__.call(this);*/
             }
         });
 

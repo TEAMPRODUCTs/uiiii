@@ -1,6 +1,5 @@
-﻿define(["cStore", "cBase", "cUtility"], function(cs, cb, cu) {
+﻿define(["cStore", "cBase"], function(cs, cb) {
     var _ret = {};
-    //var cache = window.TOURCACHE || (window.TOURCACHE = {});
     var _base = new cb.Class(cs, {
         __propertys__: function() {},
         initialize: function($super, options) {

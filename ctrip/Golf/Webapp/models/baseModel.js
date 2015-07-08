@@ -21,6 +21,8 @@ define(['cModel', 'cBase', "Config"],
 
             },
             initialize: function ($super, options) {
+               /* BusinessModel.super_.call(this, options);
+                BusinessModel.super_.__propertys__.call(this);;*/
             },
 
 
