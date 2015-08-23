@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google Visualization API Sample</title>
+    <!--
+      One script tag loads all the required libraries! Do not specify any chart types in the
+      autoload statement.
+    -->
+<!--   <script type="text/javascript" src="gviz_api.js"></script>-->
+    <link href="table.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="visualization.js"></script>
+    <script type="text/javascript" src="table.js"></script>
+    <script type="text/javascript" src="jsapi.js"></script>
+<!--    <script type="text/javascript"
+            src='https://www.google.com/jsapi?autoload={
+        "modules":[{
+        "name":"visualization",
+        "version":"1"
+        }]
+      }'></script>-->
+</head>
+<body>
+<div id="dateformat_div" ></div>
+<input type="button" value="addRow" onclick="addRow();">
+<input type="button" value="deleteRow" onclick="deleteRow();">
+
+<input type="button" value="addRow" onclick="addColumn();">
+<input type="button" value="deleteRow" onclick="deleteColumn();">
+
+</body>
+<script type="text/javascript">
+    function addColumn(){
+    　　//console.log(data.getNumberOfColumns())
+        var index = data.getNumberOfColumns();
+        data.insertColumn(index,"string", "helloColumn"+ index, "helloColumnId");
+
+        var rowindex = data.getNumberOfRows();
+        for(var i = 0 ; i < rowindex; i++){
+            data.setCell( i, index, 'helloRow' + i +  index); //行，列
+        }
+        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    function deleteRow(){
+
+    }
+
+    function addRow(){
+        var rowindex = data.getNumberOfRows();
+        var columnindex = data.getNumberOfColumns();
+        data.addRows(1);
+        for(var i = 0 ; i < columnindex ; i++){
+            if(i == 1){
+                data.setCell(rowindex, i, new Date(2008, 1, 28));
+            }else{
+                data.setCell(rowindex, i, 'helloColumn' + i);
+            }
+        }
+
+    }
+
+    function deleteColumn(){
+
+    }
+
+
+ // google.load('visualization', '1', {'packages':['table ']});
+  //google.setOnLoadCallback(drawChart);
+
+
+/*
+
+    google.visualization.events.addListener(data, 'select', selectHandler);
+
+    function selectHandler() {
+        alert('A table row was selected');
+    }
+*/
+
+
+
+    var table = null;
+    var data = null;
+    drawChart();
+    //new google.visualization.DateFormat
+  function drawChart() {
+
+
+      data = new google.visualization.DataTable();
+      data.addColumn('string', 'Employee Name');
+      data.addColumn('string', 'Start Date');
+      data.addRows(3);
+      data.setCell(0, 0, 'Mike');
+      data.setCell(0, 1,"aa"/* new Date(2008, 1, 28)*/);
+      data.setCell(1, 0, 'Bob');
+      data.setCell(1, 1, "fvv"/*new Date(2007, 5, 1)*/);
+      data.setCell(2, 0, 'Alice');
+      data.setCell(2, 1, "fafdaf"/*new Date(2006, 7, 16)*/);
+
+      // Create a formatter.
+      // This example uses object literal notation to define the options.
+     // var formatter = new google.visualization.DateFormat({formatType: 'long'});
+
+      // Reformat our data.
+     // formatter.format(data, 1);
+
+      // Draw our data
+      var aa = document.getElementById('dateformat_div');
+     //TODO table = new google.visualization.Table(document.getElementById('dateformat_div'));
+      table = new google.visualization.Table(document.getElementById('dateformat_div'));
+      table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+
+
+      google.visualization.events.addListener(table, 'sort',
+              function(event) {
+                  console.log(!event.ascending);
+                  data.sort([{column: event.column, desc: !event.ascending}]);
+                 // chart.draw(view);
+              });
+
+
+    /*  var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Effort');
+      data.addColumn('date','Date');
+      data.addColumn('number', 'Days');
+      data.addColumn('number', 'Share');
+      data.addColumn('number', 'CustomColor');
+
+      data.addRows([
+          ['Job Share',new Date(2010,2,11),11,10,1],
+          ['Applied',new Date(2010,2,11),11,10,2],
+          ['Interested',new Date(2010,2,11),11,10,3.4],
+          ['Refer',new Date(2010,2,11),11,10,4]
+      ]);
+      var chart = new google.visualization.MotionChart(document.getElementById('dateformat_div'));
+      var options = {};
+      options['state'] =
+              '{"iconKeySettings":[{"key":{"dim0":"Job Share"}},{"key":{"dim0":"Applied"}},{"key":{"dim0":"Interested"}},{"key":{"dim0":"Refer"}}],"stateVersion":3,"time":"notime","xAxisOption":"_NOTHING","playDuration":15,"iconType":"LINE","sizeOption":"_NOTHING","xZoomedDataMin":null,"xZoomedIn":false,"duration":{"multiplier":1,"timeUnit":"none"},"yZoomedDataMin":null,"xLambda":1,"colorOption":"4","nonSelectedAlpha":0.4,"dimensions":{"iconDimensions":[]},"yZoomedIn":false,"yAxisOption":"_NOTHING","yLambda":1,"yZoomedDataMax":null,"showTrails":true,"xZoomedDataMax":null};';
+
+      options['width'] = 750;
+      options['height'] = 300;
+
+      chart.draw(data, options);*/
+  }
+</script>
+</html>
