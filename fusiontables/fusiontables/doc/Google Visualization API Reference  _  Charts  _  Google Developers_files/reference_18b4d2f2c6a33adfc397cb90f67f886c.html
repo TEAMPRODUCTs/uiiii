@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- saved from url=(0132)https://google-developers.appspot.com/chart/interactive/docs/reference_18b4d2f2c6a33adfc397cb90f67f886c.frame?hl=zh-cn&redesign=true -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Google Developers</title>
+    
+  
+
+    <script src="jquery.min.js"></script>
+    <script id="jqueryui" src="jquery-ui.min.js" defer="" async=""></script>
+    <script src="jsapi"></script>
+    <script src="framebox.js"></script>
+  <link href="format.css" rel="stylesheet" type="text/css"></head>
+  <body class="devsite-layout-docs devsite-framebox no-touch">
+<meta name="suppress_site_styles" content="true"><p style="display: none; height: 0; width: 0">This is a snippet from developers.google.com</p>
+
+<script src="jsapi(2)"></script><link href="ui+zh_CN,table+zh_CN.css" type="text/css" rel="stylesheet"><script src="format+zh_CN,default+zh_CN,ui+zh_CN,table+zh_CN.I.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  google.setOnLoadCallback(drawArrowFormatTable);
+  function drawArrowFormatTable() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Department');
+    data.addColumn('number', 'Revenues Change');
+    data.addRows([
+      ['Shoes', {v:12, f:'12.0%'}],
+      ['Sports', {v:-7.3, f:'-7.3%'}],
+      ['Toys', {v:0, f:'0%'}],
+      ['Electronics', {v:-2.1, f:'-2.1%'}],
+      ['Food', {v:22, f:'22.0%'}]
+    ]);
+
+    var table = new google.visualization.Table(document.getElementById('arrowtable'));
+
+    var formatter = new google.visualization.ArrowFormat();
+    formatter.format(data, 1); // Apply formatter to second column.
+
+    table.draw(data, {allowHtml: true, showRowNumber: true});
+  }
+
+</script>
+<div id="arrowtable" style="height: 130px"><div class="google-visualization-table" style="position: relative; max-width: 100%; max-height: 100%;"><div style="position: relative; overflow: auto; max-width: 100%; max-height: 100%; height: 100%;"><table class="google-visualization-table-table" cellspacing="0"><thead><tr class="google-visualization-table-tr-head"><th class="google-visualization-table-th gradient unsorted">&nbsp;</th><th class="google-visualization-table-th gradient unsorted">Department<span class="google-visualization-table-sortind"></span></th><th class="google-visualization-table-th gradient unsorted">Revenues Change<span class="google-visualization-table-sortind"></span></th></tr></thead><tbody><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">1</td><td class="google-visualization-table-td">Shoes</td><td class="google-visualization-formatters-arrow-ug">12.0%</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">2</td><td class="google-visualization-table-td">Sports</td><td class="google-visualization-formatters-arrow-dr">-7.3%</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">3</td><td class="google-visualization-table-td">Toys</td><td class="google-visualization-formatters-arrow-empty">0%</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">4</td><td class="google-visualization-table-td">Electronics</td><td class="google-visualization-formatters-arrow-dr">-2.1%</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">5</td><td class="google-visualization-table-td">Food</td><td class="google-visualization-formatters-arrow-ug">22.0%</td></tr></tbody></table></div></div></div></body></html>

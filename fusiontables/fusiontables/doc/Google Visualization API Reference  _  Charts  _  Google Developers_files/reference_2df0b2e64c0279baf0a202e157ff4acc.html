@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- saved from url=(0132)https://google-developers.appspot.com/chart/interactive/docs/reference_2df0b2e64c0279baf0a202e157ff4acc.frame?hl=zh-cn&redesign=true -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Google Developers</title>
+    
+  
+    <link rel="stylesheet" type="text/css" href="css">
+    <link rel="stylesheet" type="text/css" href="devsite-cyan.css">
+    <script src="prettify-bundle.js"></script>
+  
+
+    <script src="jquery.min.js"></script>
+    <script id="jqueryui" src="jquery-ui.min.js" defer="" async=""></script>
+    <script src="jsapi"></script>
+    <script src="framebox.js"></script>
+  <link href="orgchart.css" rel="stylesheet" type="text/css"><link href="annotatedtimeline.css" rel="stylesheet" type="text/css"><link href="imagesparkline.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="tq"></script><link href="tooltip.css" rel="stylesheet" type="text/css"></head>
+  <body class="devsite-layout-docs devsite-framebox no-touch">
+<p style="display: none; height: 0; width: 0">This is a snippet from developers.google.com</p>
+
+<p>
+  Try it out! &nbsp;&nbsp;
+  <input type="submit" name="loadcharteditor" id="loadcharteditor" value="Edit me!" onclick="loadEditor()" style="font-size:18px;">
+</p>
+<script src="jsapi(1)"></script><link href="ui+zh_CN,table+zh_CN,charteditor+zh_CN.css" type="text/css" rel="stylesheet"><script src="format+zh_CN,default+zh_CN,ui+zh_CN,table+zh_CN,orgchart+zh_CN,motionchart+zh_CN,gauge+zh_CN,annotatedtimeline+zh_CN,imagechart+zh_CN,.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var chartEd = null;
+  var wrap = null;
+  var chartEditorDiv = null;
+  // Populates the chart div on startup and initiates global vars. Called on page load.
+  function drawChartEditor(){
+    // Initialize Chart editor handle
+    chartEd = new google.visualization.ChartEditor();
+    google.visualization.events.addListener(chartEd, 'ok', saveChart);
+    chartEditorDiv = document.getElementById('chartEditorDiv');
+
+    // Add the chart to the page
+    wrap = new google.visualization.ChartWrapper({
+       'chartType':'LineChart',
+       'dataSourceUrl':'http://spreadsheets.google.com/tq?key=pCQbetd-CptGXxxQIG7VFIQ&pub=1',
+       'query':'SELECT A,D WHERE D > 100 ORDER BY D',
+       'options': {'title':'Population Density (people/km^2)', 'legend':'none'}
+    });
+    wrap.draw(chartEditorDiv);
+  }
+
+  // User clicked 'ok' to save chart
+  function saveChart(){
+    chartEd.getChartWrapper().draw(chartEditorDiv);
+  }
+
+  // Onclick handler, opens the editor
+  function loadEditor() {
+    chartEd.openDialog(wrap, {});
+  }
+
+  google.setOnLoadCallback(drawChartEditor);
+</script>
+<div id="chartEditorDiv" style="width:500px; height:400px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 500px; height: 400px;"><div aria-label="一个图表。" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="500" height="400" aria-label="一个图表。" style="overflow: hidden;"><defs id="defs"><clippath id="_ABSTRACT_RENDERER_ID_0"><rect x="96" y="77" width="309" height="247"></rect></clippath></defs><rect x="0" y="0" width="500" height="400" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><text text-anchor="start" x="96" y="56.2" font-family="Arial" font-size="12" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">Population Density (people/km^2)</text></g><g><rect x="96" y="77" width="309" height="247" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(#_ABSTRACT_RENDERER_ID_0)"><g><rect x="96" y="323" width="309" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="96" y="262" width="309" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="96" y="200" width="309" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="96" y="139" width="309" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="96" y="77" width="309" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect></g><g><rect x="96" y="323" width="309" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g><g><path d="M118.5,299.515L162.5,295.415L206.5,294.39L250.5,282.91L294.5,254.62L338.5,254.005L382.5,109.275" stroke="#3366cc" stroke-width="2" fill-opacity="1" fill="none"></path></g></g><g></g><g><g><text text-anchor="middle" x="118.5" y="341.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Indonesia</text></g><g><text text-anchor="middle" x="162.5" y="357.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">China</text></g><g><text text-anchor="middle" x="206.5" y="341.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Nigeria</text></g><g><text text-anchor="middle" x="250.5" y="357.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Pakistan</text></g><g><text text-anchor="middle" x="294.5" y="341.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">India</text></g><g><text text-anchor="middle" x="338.5" y="357.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Japan</text></g><g><text text-anchor="middle" x="382.5" y="341.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Bangladesh</text></g><g><text text-anchor="end" x="84" y="327.7" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="end" x="84" y="266.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">300</text></g><g><text text-anchor="end" x="84" y="204.7" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">600</text></g><g><text text-anchor="end" x="84" y="143.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">900</text></g><g><text text-anchor="end" x="84" y="81.70000000000003" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">1200</text></g></g></g><g></g></svg><div aria-label="以表格形式表示的图表数据。" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>A</th><th>Population Density</th></tr></thead><tbody><tr><td>Indonesia</td><td>117</td></tr><tr><td>China</td><td>137</td></tr><tr><td>Nigeria</td><td>142</td></tr><tr><td>Pakistan</td><td>198</td></tr><tr><td>India</td><td>336</td></tr><tr><td>Japan</td><td>339</td></tr><tr><td>Bangladesh</td><td>1045</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 410px; left: 510px; white-space: nowrap; font-family: Arial; font-size: 12px; font-weight: bold;">Population Density (people/km^2)</div><div></div></div></div>
+
+
+    <script>
+      
+      
+        window.prettyPrint();
+      
+      devsite.permissions.init({"722f3a06f031e904ae074aa731257435": false, "6749dcb526ce9bde6993550c7d928d24": true, "993b1906435224595bd618f6f331ee45": true, "b8feb4e3293a0e503a7ce02689f5de25": false});
+      devsite.base.init();
+      devsite.clickToCopy.init();
+      
+    </script>
+  
+
+
+</body></html>

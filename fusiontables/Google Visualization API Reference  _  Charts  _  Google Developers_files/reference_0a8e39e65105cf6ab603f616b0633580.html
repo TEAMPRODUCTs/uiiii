@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0132)https://google-developers.appspot.com/chart/interactive/docs/reference_0a8e39e65105cf6ab603f616b0633580.frame?hl=zh-cn&redesign=true -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Google Developers</title>
+    
+  
+
+    <script src="jquery.min.js"></script>
+    <script id="jqueryui" src="jquery-ui.min.js" defer="" async=""></script>
+    <script src="jsapi"></script>
+    <script src="framebox.js"></script>
+  <link href="orgchart.css" rel="stylesheet" type="text/css"><link href="annotatedtimeline.css" rel="stylesheet" type="text/css"><link href="imagesparkline.css" rel="stylesheet" type="text/css"></head>
+  <body class="devsite-layout-docs devsite-framebox no-touch">
+<meta name="suppress_site_styles" content="true"><p style="display: none; height: 0; width: 0">This is a snippet from developers.google.com</p>
+
+<script src="jsapi(3)"></script><link href="ui+zh_CN,table+zh_CN,charteditor+zh_CN.css" type="text/css" rel="stylesheet"><script src="format+zh_CN,default+zh_CN,ui+zh_CN,table+zh_CN,orgchart+zh_CN,motionchart+zh_CN,gauge+zh_CN,annotatedtimeline+zh_CN,imagechart+zh_CN,corechart+zh_CN,c.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+  google.setOnLoadCallback(drawPatternFormatTable);
+
+  function drawPatternFormatTable() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Name');
+    data.addColumn('string', 'Email');
+    data.addRows([
+      ['John Lennon', 'john@beatles.co.uk'],
+      ['Paul McCartney', 'paul@beatles.co.uk'],
+      ['George Harrison', 'george@beatles.co.uk'],
+      ['Ringo Starr', 'ringo@beatles.co.uk']
+    ]);
+
+    var table = new google.visualization.Table(document.getElementById('patternformat_div'));
+
+    var formatter = new google.visualization.PatternFormat('<a href="mailto:{1}">{0}</a>');
+    // Apply formatter and set the formatted value of the first column.
+    formatter.format(data, [0, 1]);
+
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0]); // Create a view with the first column only.
+
+    table.draw(view, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+  }
+</script>
+<div id="patternformat_div" style="height: 120px"><div class="google-visualization-table content" style="position: relative; max-height: 100%; width: 100%; height: 100%;"><div class="top-level" style="position: relative; overflow: auto; max-width: 100%; max-height: 100%;"><table class="google-visualization-table-table" cellspacing="0" style="width: 840px;"><thead><tr class="google-visualization-table-tr-head"><th class="google-visualization-table-th gradient unsorted">&nbsp;</th><th class="google-visualization-table-th gradient unsorted">Name<span class="google-visualization-table-sortind"></span></th></tr></thead><tbody><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">1</td><td class="google-visualization-table-td"><a href="mailto:john@beatles.co.uk">John Lennon</a></td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">2</td><td class="google-visualization-table-td"><a href="mailto:paul@beatles.co.uk">Paul McCartney</a></td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">3</td><td class="google-visualization-table-td"><a href="mailto:george@beatles.co.uk">George Harrison</a></td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">4</td><td class="google-visualization-table-td"><a href="mailto:ringo@beatles.co.uk">Ringo Starr</a></td></tr></tbody></table></div></div></div></body></html>

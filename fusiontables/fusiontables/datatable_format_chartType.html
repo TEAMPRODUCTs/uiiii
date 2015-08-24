@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google Visualization API Sample</title>
+    <script type="text/javascript" src="gviz_api.js"></script>
+    <link href="table.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="visualization.js"></script>
+    <script type="text/javascript" src="table.js"></script>
+    <script type="text/javascript" src="jsapi.js"></script>
+    <script type="text/javascript"
+            src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="fix_table.js"></script>
+</head>
+<body>
+<div id="dateformat_div" ></div>
+<div style="clear:both;"></div>
+<div>
+<input type="button" value="addRow" onclick="addRow();">
+<input type="button" value="deleteRow" onclick="deleteRow();">
+
+<input type="button" value="addColumn" onclick="addColumn();">
+<input type="button" value="deleteColumn" onclick="deleteColumn();">
+</div>
+
+</body>
+<script type="text/javascript">
+    function addColumn(){
+    　　//console.log(data.getNumberOfColumns())
+        var index = data.getNumberOfColumns();
+        data.insertColumn(index,"string", "helloColumn"+ index, "helloColumnId");
+
+        var rowindex = data.getNumberOfRows();
+        for(var i = 0 ; i < rowindex; i++){
+            data.setCell( i, index, 'helloRow' + i +  index); //行，列
+        }
+        table =  drawTable(data);
+        //table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    function deleteColumn(){
+        var index = data.getNumberOfColumns();
+        data.removeColumn(index - 1);
+        table =  drawTable(data);
+       // table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    function deleteRow(){
+        var index = data.getNumberOfRows();
+        data.removeRow(index - 1);
+        table =  drawTable(data);
+       // table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    function addRow(){
+        var rowindex = data.getNumberOfRows();
+        var columnindex = data.getNumberOfColumns();
+        data.addRows(1);
+        for(var i = 0 ; i < columnindex ; i++){
+
+            var  type = data.getColumnType(i);
+            console.log(type);
+            if(i == 1 && type == 'date'){
+                data.setCell(rowindex, i, new Date(2008, 1, 28));
+            }else if(type == 'number'){
+                data.setCell(rowindex, i, i + 1);
+            } else{
+                data.setCell(rowindex, i, 'helloColumn' + i);
+            }
+        }
+
+        table =  drawTable(data);
+    }
+
+    var table = null;
+    var data = null;
+    drawVisualization();
+    //new google.visualization.DateFormat
+
+    //配置类型
+    function drawVisualization() {
+       /* var dataTable = [
+            ["Country", "Population Density"],
+            ["Indonesia", 117],
+            ["China", 137],
+            ["Nigeria", 142],
+            ["Pakistan", 198],
+            ["India", 336],
+            ["Japan", 339],
+            ["Bangladesh", 1045]
+        ];*/
+
+
+        data = google.visualization.arrayToDataTable([
+            [{label: 'Country', type: 'string'},
+                {label: 'Population', type: 'number'},
+                {label: 'Area', type: 'number'}],
+            /*     ['Year', 'Sales', 'Expenses'],*/
+            ['2004',  1000,      400],
+            ['2005',  1170,      460],
+            ['2006',  660,       1120],
+            ['2007',  1030,      540]  ]);
+
+
+       table =  drawTable(data);
+    }
+    function drawTable(data){
+        google.visualization.drawChart({
+            "containerId": "dateformat_div",
+            "dataTable": data,
+            "refreshInterval": 5,
+            "chartType": "Table",
+            "options": {
+                "alternatingRowStyle": true,
+                "showRowNumber" : true,
+            }
+        });
+    }
+</script>
+</html>

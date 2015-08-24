@@ -3,10 +3,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Google Visualization API Sample</title>
-    <link href="table.css" type="text/css" rel="stylesheet" />
-    <link href="custom_table.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="gviz_api.js"></script>
-
+    <link href="table.css" type="text/css" rel="stylesheet" />
 
     <script type="text/javascript" src="visualization.js"></script>
     <script type="text/javascript" src="table.js"></script>
@@ -24,26 +22,10 @@
 
 <input type="button" value="addColumn" onclick="addColumn();">
 <input type="button" value="deleteColumn" onclick="deleteColumn();">
-
-    <input type="button" value="filterValue" onclick="filterValue();">
-
-    <input type="button" value="group" onclick="group()">
 </div>
 
 </body>
 <script type="text/javascript">
-    function group(){
-        google.visualization.data.group(table, [0,1], [{'column': 1, 'aggregation': google.visualization.data.sum, 'type': 'number'}])
-    }
-
-    function filterValue(){
-        var view = new google.visualization.DataView(data);
-        view.setRows(view.getFilteredRows([{column: 1, minValue: new Date(2007, 0, 1)}]));
-        var table = new google.visualization.Table(document.getElementById('dateformat_div'));
-        table.draw(view, {sortColumn: 1, showRowNumber: true, width: '100%', height: '100%',allowHtml: true, });
-       // drawTable(table, data);
-    }
-
     function addColumn(){
     　　//console.log(data.getNumberOfColumns())
         var index = data.getNumberOfColumns();
@@ -53,22 +35,19 @@
         for(var i = 0 ; i < rowindex; i++){
             data.setCell( i, index, 'helloRow' + i +  index); //行，列
         }
-       // table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
-        drawTable(table, data);
+        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
     }
 
     function deleteColumn(){
         var index = data.getNumberOfColumns();
         data.removeColumn(index - 1);
-       // table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
-        drawTable(table, data);
+        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
     }
 
     function deleteRow(){
         var index = data.getNumberOfRows();
         data.removeRow(index - 1);
-        drawTable(table, data);
-        //table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
     }
 
     function addRow(){
@@ -81,59 +60,46 @@
             console.log(type);
             if(i == 1 && type == 'date'){
                 data.setCell(rowindex, i, new Date(2008, 1, 28));
-            }else{
+            }else if(type == 'number'){
+                data.setCell(rowindex, i, i + 1);
+            } else{
                 data.setCell(rowindex, i, 'helloColumn' + i);
             }
         }
-        drawTable(table, data);
+
+        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
     }
 
     var table = null;
     var data = null;
     drawChart();
-
-    function drawTable(table, data){
-        var cssClassNames = {
-            'headerRow': 'italic-darkblue-font large-font bold-font',
-            'tableRow': '',
-            'oddTableRow': 'beige-background',
-            'selectedTableRow': 'orange-background',
-            'hoverTableRow': '',
-            'headerCell': 'gold-border',
-            'tableCell': '',
-            'rowNumberCell': 'underline-blue-font'};
-        table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%','cssClassNames': cssClassNames});
-    }
-
-
     //new google.visualization.DateFormat
   function drawChart() {
-      data = new google.visualization.DataTable();
-      data.addColumn('string', 'Employee Name');
-      data.addColumn('date', 'Start Date');
-      data.addRows(3);
-      data.setCell(0, 0, 'Mike');
-      data.setCell(0, 1, new Date(2008, 1, 28));
-      data.setCell(1, 0, 'Bob');
-      data.setCell(1, 1, new Date(2007, 5, 1));
-      data.setCell(2, 0, 'Alice');
-      data.setCell(2, 1, new Date(2006, 7, 16));
+   /*   data = new google.visualization.DataTable({
+          cols: [{id: 'task', label: 'Task', type: 'string'},
+              {id: 'hours', label: 'Hours per Day', type: 'number'}],
+          rows: [{c:[{v: 'Work'}, {v: 11}]},
+              {c:[{v: 'Eat'}, {v: 2}]},
+              {c:[{v: 'Commute'}, {v: 2}]},
+              {c:[{v: 'Watch TV'}, {v:2}]},
+              {c:[{v: 'Sleep'}, {v:7, f:'7.000'}]}],
+          p:{style: 'border: 1px solid green;'}
+      }, 0.6);
+
+
+*/
+      data = google.visualization.arrayToDataTable([
+               ['Year', 'Sales', 'Expenses'],
+               ['2004',  1000,      400],
+               ['2005',  1170,      460],
+                ['2006',  660,       1120],
+                ['2007',  1030,      540]  ]);
 
 
 
-      // Create a formatter.
-      // This example uses object literal notation to define the options.
-      var formatter = new google.visualization.DateFormat({formatType: 'long'});
-
-      // Reformat our data.
-     formatter.format(data, 1);
-
-      // Draw our data
-      var aa = document.getElementById('dateformat_div');
-     //TODO table = new google.visualization.Table(document.getElementById('dateformat_div'));
       table = new google.visualization.Table(document.getElementById('dateformat_div'));
+      table.draw(data,  {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
 
-      drawTable(table, data);
     /*  $(".google-visualization-table-table").attr("id", "MyTable");
       FixTable("MyTable", 1, "100%", "100%"/!*, 600, 300*!/);*/
       google.visualization.events.addListener(table, 'sort',
@@ -141,12 +107,7 @@
                   console.log(!event.ascending);
                   data.sort([{column: event.column, desc: !event.ascending}]);
                  // chart.draw(view);
-       });
-
-      google.visualization.events.addListener(table, 'select', function(event) {
-          console.log(event);
-         // var row = table.getSelection()[0].row;
-      });
+              });
 
 
     /*  var data = new google.visualization.DataTable();
