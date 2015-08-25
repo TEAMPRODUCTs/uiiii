@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css">
+   <!-- <script src="http://handsontable.com/dist/handsontable.full.js"></script>-->
+    <script src="res/libs/handsontable.js"></script>
+</head>
+<body>
+<div id="example"></div>
+</body>
+<script type="text/javascript">
+    var data = [
+        ["2014", 10, 11, 12, 13],
+        ["2015", 20, 11, 14, 13],
+        ["2016", 30, 15, 12, 13]
+    ];
+
+/*
+    var mockdata = {
+        "R":["D1","D2"],
+        "C1":[
+        A:{E:["E1","E2"]},
+        B:{E:["E1","E2"]},
+        C:{E:["E1","E2"]}
+        ]
+    };
+*/
+
+    var container = document.getElementById('example');
+    var hot = new Handsontable(container, {
+        data: data,
+        debug: true,
+        readOnly: true, //修改单元格数据
+        minSpareRows: 0,
+        autoWrapCol:true, //down arrow in the last row will move to first row in next column
+        autoWrapRow:true,
+        cells: function (row, col, prop) {
+            var cellProperties = {};
+
+            if (row === 0 && col === 0) {
+                cellProperties.readOnly = true;
+            }
+
+            return cellProperties;
+        },
+        colHeaders: function(index) {
+            return index + ': AB';
+        },
+        mergeCells:[{row:1,rowspan:2, cols:1, colspan:2}],
+      //  groups:[{cols:[0,1]},{cols:[2,4]}],
+        mergeHeaders:[[
+            {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
+            {field:'productid',title:'Product ID',rowspan:2,width:80,sortable:true},
+            {title:'Item Details',colspan:5}
+        ],[
+            {field:'listprice',title:'List Price',width:80,align:'right',sortable:true},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right',sortable:true},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:60},
+            {field:'status1',title:'Status',width:60}
+        ]],
+        colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
+        columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
+        rowHeaders: true,
+       // colHeaders: false,
+        contextMenu: true,
+        manualColumnResize: true,
+        manualRowResize: true,
+        manualColumnMove: true,//拖拉行列
+        manualRowMove: true,//拖拉行列
+        stretchH: 'all',//自动填充
+        fixedRowsTop: 2, //固定行列
+        currentRowClassName: 'currentRow', //高亮显示当前行
+        currentColClassName: 'currentCol', //高亮显示当前列
+        columnSorting:true,//columnSorting plugin enabled 只对当前页排序 需定制
+        sortIndicatorBoolean:true,
+        fixedColumnsLeft: 2,
+        afterChange: function () {
+            var tmpData = JSON.parse(JSON.stringify(data));
+            console.log(tmpData);
+            // now tmpData has a copy of data3 that can be manipulated
+            // without breaking the Handsontable data source object
+        }
+    });
+</script>
+</html>

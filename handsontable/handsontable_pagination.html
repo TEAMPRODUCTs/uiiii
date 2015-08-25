@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css">
+    <script src="http://handsontable.com/dist/handsontable.full.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<div class="pagination">
+    <a href="#1">1</a>
+    <a href="#2">2</a>
+    <a href="#3">3</a>
+    <a href="#4">4</a>
+    <a href="#5">5</a>
+    <a href="#6">6</a>
+    <a href="#7">7</a>
+    <a href="#8">8</a>
+</div>
+</body>
+<script type="text/javascript">
+    var getData = (function () {
+        var data = [
+            [1,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],
+            [1,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],//#1
+            [2,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],//#2
+            [3,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],
+            [1,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],//#3
+            [4,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],//#4
+            [5,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],
+            [1,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],//#5
+            [6,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],//#6
+            [7,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],
+            [1,2,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],//#7
+            [8,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0],[1,2,3,4,5,6,7,8,9,0],[0,0,0,0,0,0,0,0,0,0]//#8
+        ];
+
+        return function () {
+            var page  = parseInt(window.location.hash.replace('#', ''), 10) || 1,
+                limit = 6,
+                row   = (page - 1) * limit,
+                count = page * limit,
+                part  = [];
+
+            for (;row < count;row++) {
+                part.push(data[row]);
+            }
+
+            return part;
+        }
+    })();
+
+    var container = document.getElementById('example'),
+        hot;
+
+    hot = new Handsontable(container, {
+        data: getData(),
+       // columnSorting:true,
+        colHeaders: true
+    });
+
+    Handsontable.Dom.addEvent(window, 'hashchange', function (event) {
+        hot.loadData(getData());
+    });
+</script>
+</html>
