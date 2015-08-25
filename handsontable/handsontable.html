@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css">
+    <link rel="stylesheet" media="screen" href="res/css/handsontable.css">
    <!-- <script src="http://handsontable.com/dist/handsontable.full.js"></script>-->
     <script src="res/libs/handsontable.js"></script>
 </head>
@@ -12,7 +12,8 @@
 </body>
 <script type="text/javascript">
     var data = [
-        ["2014", 10, 11, 12, 13],
+        ["year", 10, 1, 12, 2],
+        ["", 'A1', 'A2', 'A3', 'A4'],
         ["2015", 20, 11, 14, 13],
         ["2016", 30, 15, 12, 13]
     ];
@@ -27,28 +28,40 @@
         ]
     };
 */
+  var headerRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    Handsontable.renderers.TextRenderer.apply(this, arguments);
+    td.style.fontWeight = 'bold';
+    td.style.textAlign = 'center';
+    td.style.backgroundColor = '#EEE';
+  };
 
     var container = document.getElementById('example');
     var hot = new Handsontable(container, {
         data: data,
         debug: true,
-        readOnly: true, //修改单元格数据
+        //readOnly: true, //修改单元格数据
         minSpareRows: 0,
         autoWrapCol:true, //down arrow in the last row will move to first row in next column
         autoWrapRow:true,
         cells: function (row, col, prop) {
             var cellProperties = {};
 
-            if (row === 0 && col === 0) {
+            if (row === 0 || col === 0 || row === 1) {//todo 1为复合标题时
                 cellProperties.readOnly = true;
+                cellProperties.renderer = headerRenderer;
             }
 
             return cellProperties;
         },
-        colHeaders: function(index) {
+        mergeCells:[
+        {row:0,rowspan:2, col:0, colspan:1},
+        {row:0,rowspan:1, col:1, colspan:2},
+        {row:0,rowspan:1, col:3, colspan:2}
+        ],
+ /*       colHeaders: function(index) {
             return index + ': AB';
-        },
-        mergeCells:[{row:1,rowspan:2, cols:1, colspan:2}],
+        },*/
+        //mergeCells:[{row:0,rowspan:1, cols:0, colspan:2}],
       //  groups:[{cols:[0,1]},{cols:[2,4]}],
         mergeHeaders:[[
             {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
@@ -61,9 +74,9 @@
             {field:'status',title:'Status',width:60},
             {field:'status1',title:'Status',width:60}
         ]],
-        colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
-        columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
-        rowHeaders: true,
+        /*colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
+        columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],*/
+        //rowHeaders: true,
        // colHeaders: false,
         contextMenu: true,
         manualColumnResize: true,

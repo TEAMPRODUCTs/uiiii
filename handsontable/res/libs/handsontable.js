@@ -3168,7 +3168,7 @@ window.Handsontable = {
         adjustAvailableNodes: function() {
             this.adjustColGroups();
             this.adjustThead();
-            this.ajustTheadCustome();//TODO
+            //this.ajustTheadCustome();//TODO
         },
         renderColumnHeaders: function() {
             var overlayName = this.wot.getOverlayName();
