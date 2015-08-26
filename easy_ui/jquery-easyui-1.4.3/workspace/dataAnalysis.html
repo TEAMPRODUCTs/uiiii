@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="res/css/data_analysis.css"/>
+    <link rel="stylesheet" href="res/css/style.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../demo/demo.css">
+    <!-- Latest compiled and minified JavaScript -->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+</head>
+<body>
+<div class="container_div">
+    <div class="leftbar">
+        <section class="section_left">
+            <h2 class="leftbar_title">维度</h2>
+            <div class="section_detail_cont">
+                <ul class="section_ul" id="dimension_sec">
+                    <li>维度1</li>
+                    <li>维度2</li>
+                    <li>维度3</li>
+                    <li>维度v</li>
+                </ul>
+
+                <ul class="section_ul new_sec" id="new_dimension_sec">
+                    <li>维度new</li>
+                    <li>维度new</li>
+                    <li>维度3</li>
+                    <li>维度v</li>
+                </ul>
+            </div>
+
+
+            <h2 class="leftbar_title">度量</h2>
+            <div class="section_detail_cont">
+                <ul class="section_ul" id="metric_sec">
+                    <li>度量</li>
+                    <li>度量2</li>
+                    <li>度量3</li>
+                    <li>度量v</li>
+                </ul>
+
+                <ul class="section_ul new_sec" id="new_metric_sec">
+                    <li>度量new</li>
+                    <li>度量new</li>
+                    <li>度量3</li>
+                    <li>度量v</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="rightbar">
+        <div class="tabs_wrap">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a href="#">访问分析 </a></li>
+                <li role="presentation"><a href="#">+</a></li>
+            </ul>
+
+            <table class="easyui-datagrid" style="width:700px;height:250px"
+                   data-options="rownumbers:true,singleSelect:true,url:'../demo/datagrid/datagrid_data1.json',method:'get'">
+                <thead>
+                <tr>
+                    <th data-options="field:'itemid',width:80" rowspan="2">Item ID</th>
+                    <th data-options="field:'productid',width:100" rowspan="2">Product</th>
+                    <th colspan="4">Item Details</th>
+                </tr>
+                <tr>
+                    <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                    <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                    <th data-options="field:'attr1',width:240">Attribute</th>
+                    <th data-options="field:'status',width:60,align:'center'">Status</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+</body>
+<!--<script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script>-->
+<!--<script type="text/javascript" src="res/libs/require.js"></script>-->
+<script type="text/javascript" src="res/libs/avalon.js"></script>
+<script type="text/javascript" src="res/js/main.js"></script>
+<script type="text/javascript" src="res/js/data_analysis.js"></script>
+</html>

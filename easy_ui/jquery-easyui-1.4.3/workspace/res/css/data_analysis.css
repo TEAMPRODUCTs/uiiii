@@ -1,0 +1,48 @@
+.leftbar{
+    background-color: #F2F4F9;
+    -webkit-box-flex:initial;
+    -moz-box-flex: initial;
+    -webkit-flex: initial;
+    -ms-flex: initial;
+    flex:  initial;
+    width: 300px;
+    min-width: 200px;
+    overflow: auto;
+}
+
+.container_div {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display:-ms-flexbox;
+    display: flex;
+    flex-direction: row;
+}
+
+.rightbar{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex:  1;
+    -ms-flex: 1;
+    flex:  1;
+}
+
+.leftbar_title{
+    background-color: #687993;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.leftbar .section_ul{
+    padding: 10px 0px;
+    margin: 0 20px;
+    line-height: 28px;
+}
+
+.leftbar_title{
+    padding-left: 20px;
+}
+
+.new_sec{
+    border-top:1px solid;
+}

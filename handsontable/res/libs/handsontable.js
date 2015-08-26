@@ -3168,7 +3168,7 @@ window.Handsontable = {
         adjustAvailableNodes: function() {
             this.adjustColGroups();
             this.adjustThead();
-            //this.ajustTheadCustome();//TODO
+           // this.ajustTheadCustome();//TODO
         },
         renderColumnHeaders: function() {
             var overlayName = this.wot.getOverlayName();
@@ -3246,6 +3246,9 @@ window.Handsontable = {
             return this.THEAD.childNodes[index];
         },
         renderColumnHeader: function(row, col, TH) {
+            if(!TH){
+                return ;
+            }
             TH.className = '';
             TH.removeAttribute('style');
             return this.columnHeaders[row](col, TH, row);
@@ -5849,7 +5852,7 @@ window.Handsontable = {
             if (className === '') {
                 return false;
             }
-            return element.classList.contains(className);
+            return element.classList ? element.classList.contains(className): false;//TODO
         };
         _addClass = function _addClass(element, className) {
             var len = 0;

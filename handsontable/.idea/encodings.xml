@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/dataAnalysis.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/css/data_analysis.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/js/data_analysis.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/js/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/js/test.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/libs/require.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/jquery-easyui-1.4.3/workspace/res/local/mockdata.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../easy_ui/readMe.md" charset="UTF-8" />
     <file url="file://D:/workspace/handsontable-0.16.1/handsontable-0.16.1/src/demo.html" charset="UTF-8" />
   </component>
 </project>

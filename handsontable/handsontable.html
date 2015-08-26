@@ -6,16 +6,18 @@
     <link rel="stylesheet" media="screen" href="res/css/handsontable.css">
    <!-- <script src="http://handsontable.com/dist/handsontable.full.js"></script>-->
     <script src="res/libs/handsontable.js"></script>
+    <style type="text/css">
+    </style>
 </head>
 <body>
 <div id="example"></div>
 </body>
 <script type="text/javascript">
     var data = [
-        ["year", 10, 1, 12, 2],
-        ["", 'A1', 'A2', 'A3', 'A4'],
-        ["2015", 20, 11, 14, 13],
-        ["2016", 30, 15, 12, 13]
+        ["year", 1,1, 12, 2, 3,4,5,6,7],
+        ['', 'A1', 'A2', 'A3', 'A4','A2', 'A3', 'A4','A5','A6'],
+        ["2015", 20, 11, 14, 13, 1,2,3,4,5],
+        ["2016", 30, 15, 12, 13,1,2,3,4,5]
     ];
 
 /*
@@ -47,7 +49,7 @@
             var cellProperties = {};
 
             if (row === 0 || col === 0 || row === 1) {//todo 1为复合标题时
-                cellProperties.readOnly = true;
+                //cellProperties.readOnly = true;
                 cellProperties.renderer = headerRenderer;
             }
 
@@ -55,14 +57,14 @@
         },
         mergeCells:[
         {row:0,rowspan:2, col:0, colspan:1},
-        {row:0,rowspan:1, col:1, colspan:2},
-        {row:0,rowspan:1, col:3, colspan:2}
+        {row:0,rowspan:1, col:1, colspan:3},
+        {row:0,rowspan:1, col:5, colspan:2}
         ],
  /*       colHeaders: function(index) {
             return index + ': AB';
         },*/
         //mergeCells:[{row:0,rowspan:1, cols:0, colspan:2}],
-      //  groups:[{cols:[0,1]},{cols:[2,4]}],
+        groups:[{cols:[0,1]},{cols:[2,4]}],
         mergeHeaders:[[
             {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
             {field:'productid',title:'Product ID',rowspan:2,width:80,sortable:true},
@@ -74,10 +76,10 @@
             {field:'status',title:'Status',width:60},
             {field:'status1',title:'Status',width:60}
         ]],
-        /*colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
-        columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],*/
-        //rowHeaders: true,
-       // colHeaders: false,
+        //colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
+        /*columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],*/
+        rowHeaders: true,
+        colHeaders: true,
         contextMenu: true,
         manualColumnResize: true,
         manualRowResize: true,
