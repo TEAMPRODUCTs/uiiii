@@ -2566,7 +2566,8 @@ window.Handsontable = {
         this.alignOverlaysWithTrimmingContainer();
         this.fixTableDomTree();
         this.colgroupChildrenLength = this.COLGROUP.childNodes.length;
-        this.theadChildrenLength = this.THEAD.firstChild ? this.THEAD.firstChild.childNodes.length : 0;
+        //TODO REVERT this.theadChildrenLength = this.THEAD.firstChild ? this.THEAD.firstChild.childNodes.length : 0;
+        this.theadChildrenLength = this.THEAD.lastChild ? this.THEAD.lastChild.childNodes.length : 0;
         this.tbodyChildrenLength = this.TBODY.childNodes.length;
         this.rowFilter = null;
         this.columnFilter = null;
@@ -3201,8 +3202,9 @@ window.Handsontable = {
             //TODO CUSTOME
             ajustTheadCustome: function(){
                 var columnCount = this.wtTable.getRenderedColumnsCount();
-                var TR = this.THEAD.firstChild;
-                var trcreate =  document.createElement('TR');
+                var TR = this.THEAD.firstChild;//TODO REVERT
+              
+                //var trcreate =  document.createElement('TR');
 
                var th = document.createElement('TH');
                 th.setAttribute("colspan", 6);
@@ -3213,7 +3215,8 @@ window.Handsontable = {
             },
             adjustThead: function() {
             var columnCount = this.wtTable.getRenderedColumnsCount();
-            var TR = this.THEAD.firstChild
+            //var TR = this.THEAD.firstChild;//TODO REVERT
+            var TR = this.THEAD.lastChild
             if (this.columnHeaders.length) {
                 for (var i = 0,
                          len = this.columnHeaders.length; i < len; i++) {
@@ -5852,7 +5855,12 @@ window.Handsontable = {
             if (className === '') {
                 return false;
             }
-            return element.classList ? element.classList.contains(className): false;//TODO
+
+            if(!element.classList){
+                debugger;
+            }//TODO REVERT
+            return element.classList.contains(className);
+           // return element.classList ? element.classList.contains(className): false;//TODO
         };
         _addClass = function _addClass(element, className) {
             var len = 0;
@@ -17658,6 +17666,7 @@ window.Handsontable = {
         this.wt.scrollViewport(coords);
     };
     TableView.prototype.appendRowHeader = function(row, TH) {
+        //TODO REVERT  TH.firstChild
         if (TH.firstChild) {
             var container = TH.firstChild;
             if (!dom.hasClass(container, 'relative')) {

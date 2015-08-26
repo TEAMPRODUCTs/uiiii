@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" media="screen" href="res/css/handsontable.css">
-   <!-- <script src="http://handsontable.com/dist/handsontable.full.js"></script>-->
-    <script src="res/libs/handsontable.js"></script>
+    <script src="http://handsontable.com/dist/handsontable.full.js"></script>
+    <!---<script src="res/libs/handsontable.js"></script>-->
+    <script type="text/javascript" src="res/libs/jquery.js"></script>
     <style type="text/css">
     </style>
 </head>
@@ -55,16 +56,16 @@
 
             return cellProperties;
         },
-        mergeCells:[
+       /* mergeCells:[
         {row:0,rowspan:2, col:0, colspan:1},
         {row:0,rowspan:1, col:1, colspan:3},
         {row:0,rowspan:1, col:5, colspan:2}
-        ],
+        ],*/
  /*       colHeaders: function(index) {
             return index + ': AB';
         },*/
         //mergeCells:[{row:0,rowspan:1, cols:0, colspan:2}],
-        groups:[{cols:[0,1]},{cols:[2,4]}],
+        //groups:[{cols:[0,1]},{cols:[2,4]}],
         mergeHeaders:[[
             {field:'itemid',title:'Item ID',rowspan:2,width:80,sortable:true},
             {field:'productid',title:'Product ID',rowspan:2,width:80,sortable:true},
@@ -76,7 +77,7 @@
             {field:'status',title:'Status',width:60},
             {field:'status1',title:'Status',width:60}
         ]],
-        //colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
+        colHeaders: ["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],
         /*columnHeaders:["Column1", "Colcumn2","Cloumns3","Colcumn4","Cloumns5"],*/
         rowHeaders: true,
         colHeaders: true,
@@ -99,5 +100,6 @@
             // without breaking the Handsontable data source object
         }
     });
+$('table.htCore thead').prepend('<tr><th colspan=1>.</th><th colspan=5> Group 1</th><th colspan=5> Group 2</th></tr>');
 </script>
 </html>
