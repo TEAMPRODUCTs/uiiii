@@ -46,3 +46,63 @@
 .new_sec{
     border-top:1px solid;
 }
+.tabs{
+    border-color: #ddd;
+}
+.tabs-wrap{
+    margin-bottom: 10px;
+}
+
+#tabs_wrap .tabs-inner{
+    height: 27px;
+    line-height: 25px;
+}
+
+.rightbar .tabs-header, .tabs-tool{
+    background-color: transparent;
+}
+
+.input-div{
+    height: 27px;
+    line-height: 27px;
+    border:1px solid #ddd;
+    position:relative;
+    margin: 10px 0;
+}
+.input-label{
+    width: 58px;
+    background-color: #F2F4F9;
+    display: inline-block;
+}
+
+.input-content{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 0px 30px 0 58px;
+    height: inherit;
+}
+
+/*
+.tabs_wrap .tabs{
+    height: 27px;
+    line-height: 27px;
+    padding-left: 4px;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    margin-bottom: 10px;
+    border-color:#EEE;
+}
+
+.tabs li.tabs-selected a.tabs-inner {
+    border-bottom: 1px solid #fff;
+}
+
+.tabs li {
+    /!* float: left; *!/
+    display: inline-block;
+    margin: 0 4px -1px 0;
+    /!* padding: 0; *!/
+    position: relative;
+    /!* border: 0; *!/
+}*/

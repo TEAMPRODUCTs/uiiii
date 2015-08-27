@@ -1,5 +1,6 @@
-require(["jquery","easyui"],function($){
-    alert($("#new_metric_sec").length);
+require(["easyui","../js/data_analysis_controller", "../js/analysis_tab"/*,"jquery.droppable""easyui"*/],function(easyui, analysis_controller){
+    resizeLayout();
+    analysis_controller.init();
     $(".section_ul li").draggable({
         proxy:'clone',
         revert:true,
@@ -27,10 +28,19 @@ require(["jquery","easyui"],function($){
         }
     });
 
+
     //监控window高度变化 设置左栏高度
     $(window).resize(function() {
-        console.log(window.innerHeight);
-        $('.leftbar').css("height", window.innerHeight);
+        resizeLayout();
     });
+
+    function resizeLayout(){
+        $('.leftbar').css("height", window.innerHeight);
+        $(".input-content").width($(".input-div").width()-88);
+    }
+
+
+    var pp = $('#tt').tabs('getSelected');
+    var tab = pp.panel('options').tab;    // the corresponding tab object
 
 });
