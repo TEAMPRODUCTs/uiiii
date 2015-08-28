@@ -83,6 +83,23 @@
     height: inherit;
 }
 
+.selected-dimension{
+    border-radius: 75px;
+    background-color: #F2F4F9;
+    display: inline-block;
+    margin: 0 5px;
+    height: 23px;
+    padding: 0 12px;
+    line-height: 23px;
+}
+.rightbar #tab-tools{
+    border-style: none;
+}
+
+.input-div .tips{
+    padding-left:8px;
+    color: grey;
+}
 /*
 .tabs_wrap .tabs{
     height: 27px;
