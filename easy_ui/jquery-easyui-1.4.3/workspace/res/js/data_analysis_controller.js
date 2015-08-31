@@ -33,29 +33,99 @@ define(["underscore", "easyui"], function (_,easyui) {
             addtab:function(e){
 
             },
+            drag: function(ev){
+                ev.dataTransfer.effectAllowed = "move";
+                var elem = ev.target
+                ev.dataTransfer.setData("type", $(elem).parent(".dimension-content").data("type"));
+                ev.dataTransfer.setData("id",$(elem).data("id"));
+                ev.dataTransfer.setData("index",$(elem).data("index"));
+                ev.dataTransfer.setData("name",ev.target.innerHTML);
+            },
+            drop : function (ev) {
+                var id = ev.dataTransfer.getData("id");
+                var name = ev.dataTransfer.getData("name");
+                var elem = $(ev.currentTarget);
+                var type = elem.data("type");
+                var type_from = ev.dataTransfer.getData("type");
+                var index = NaN;
+                if(!!type && type_from != 'null'){
+                    if(type === type_from){
+                        index = parseInt(ev.dataTransfer.getData("index"), 10);
+                    }else{
+                        var index_from = parseInt(ev.dataTransfer.getData("index"), 10);
+                        vm.data.selected_den[type_from].splice(index_from, 1);
+                    }
+                }
+
+                if(!id || !name){
+                    return;
+                }
+                var xpos = ev.offsetX;
+                var target_index = null;
+
+
+                var selectedElem = elem.find(".selected-dimension");
+                for(var i = 0 ; i < selectedElem.length ; i++){
+                    var elem_i = selectedElem[i];
+                    var left = elem_i.offsetLeft  + elem_i.offsetWidth/2; //通过坐标判断位置 只判一层
+                    if(xpos < left){
+                        target_index = i;
+                        break;
+                    }
+                }
+
+                var type = elem.data("type");
+                var arr = _.findWhere( vm.data.selected_den[type], {"id": id});
+
+                target_index = target_index === null ? selectedElem.length  : target_index;
+                if(!(index == NaN && !!arr)){
+                    vm.data.selected_den[type].splice(target_index, 0 , {"id": id, "name": name});
+                }else{
+                    return;
+                }
+                if(!!arr && index != NaN){
+                    //内部调位置
+                    if(target_index <= index){
+                        index += 1;
+                    }
+                    vm.data.selected_den[type].splice(index , 1);
+                }
+
+                vm.$fire("data.selected_den",vm.data.selected_den);
+            },
+            allowDrop: function(ev){
+                ev.preventDefault();
+            },
             clear:function(e){
                var type =  $(e.currentTarget).parent().prev().data("type");
                 vm.data.selected_den[type].clear();//TODO 同步记录态
             },
             selected_column: []//所选维度列
         });
+
+
         vm.init = function(){
             var tabdata  = _.filter(window.Mockdata, function(data){ return data.tabid === 0; });//TODO 初始化是空
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data;
             tabInit();
             avalon.nextTick(function() {
                 registerEvent();
-            })
+            });
+            vm.$watch("data.selected_den",function(){
+                console.log("刷新table");//TODO 请求后台 刷新table
+            });
         }
 
       function registerEvent(){
           $(document).ready(function(){
-              draggableInit();
-              droppableInit();
+              //draggableInit();
+             // droppableInit();
           });
       }
 
+       function draggableh5init(){
 
+       }
 
        function  draggableInit(){
            $(".section_ul li").draggable({

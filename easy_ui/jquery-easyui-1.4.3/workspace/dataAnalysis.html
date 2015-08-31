@@ -18,20 +18,20 @@
             <h2 class="leftbar_title">维度</h2>
             <div class="section_detail_cont">
                 <ul class="section_ul" id="dimension_sec">
-                    <li  ms-repeat="data.dimension" ms-if-loop="el"   ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
+                    <li  ms-repeat="data.dimension" ms-if-loop="el" title="拖拽我"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
                 </ul>
                 <ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length"><!--ms-each-el="data.dimension_new"-->
-                    <li ms-repeat="data.dimension_new" ms-if-loop="el"   ms-attr-id="{{el.id}}">{{el.label}}</li>
+                    <li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
                 </ul>
             </div>
 
             <h2 class="leftbar_title">度量</h2>
             <div class="section_detail_cont">
                 <ul class="section_ul" id="metric_sec">
-                    <li>度量</li>
-                    <li>度量2</li>
-                    <li>度量3</li>
-                    <li>度量v</li>
+                    <li  draggable="true">度量</li>
+                    <li  draggable="true">度量2</li>
+                    <li  draggable="true">度量3</li>
+                    <li  draggable="true">度量v</li>
                 </ul>
 
                 <ul class="section_ul new_sec" id="new_metric_sec">
@@ -53,22 +53,34 @@
 
                 <div class="input-div">
                     <span class="input-label">列</span>
-                    <div class="input-content dimension-content" data-type="column">
+                    <div class="input-content dimension-content" data-type="column"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
                         <span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
-                        <span class="selected-dimension" ms-repeat-el="data.selected_den.column" ms-attr-id={{el.id}}>{{el.name}}</span>
+                        <span class="selected-dimension" ms-repeat-el="data.selected_den.column" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
                     </div>
                     <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
-                    <input type="hidden" id="column_value" >
                 </div>
 
                 <div class="input-div">
                     <span class="input-label">行</span>
-                    <div class="input-content dimension-content" data-type="row">dfsfds</div>
-                    <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                    <div class="input-content dimension-content" data-type="row"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
+                        <span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
+                        <span class="selected-dimension" ms-repeat-el="data.selected_den.row" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
+                    </div>
+                      <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" style="width: 27px; height: 27px;"></a></span>
-                    <input type="hidden" id="row_value" >
                 </div>
+
+                <div class="input-div">
+                    <span class="input-label">度量</span>
+                    <div class="input-content magnanimity-content" data-type="magnanimity"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
+                        <span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
+                        <span class="selected-dimension" ms-repeat-el="data.selected_den.magnanimity" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
+                    </div>
+                      <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                     <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" style="width: 27px; height: 27px;"></a></span>
+                </div>
+
             </div>
             <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
                 tab2fdsfds

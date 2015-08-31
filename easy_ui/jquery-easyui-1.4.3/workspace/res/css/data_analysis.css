@@ -5,7 +5,7 @@
     -webkit-flex: initial;
     -ms-flex: initial;
     flex:  initial;
-    width: 300px;
+    width: 200px;
     min-width: 200px;
     overflow: auto;
 }
