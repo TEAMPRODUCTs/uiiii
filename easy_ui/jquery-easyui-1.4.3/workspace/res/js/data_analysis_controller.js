@@ -36,7 +36,7 @@ define(["underscore", "easyui"], function (_,easyui) {
                 ev.dataTransfer.effectAllowed = "move";
                 var elem = ev.target
                 ev.dataTransfer.setData("typede",$(elem).data("typede"));//维度度量 大类分
-                ev.dataTransfer.setData("type", $(elem).parent(".dimension-content").data("type")); //行列分类
+                ev.dataTransfer.setData("type", $(elem).parent(".input-content").data("type")); //行列分类
                 ev.dataTransfer.setData("id",$(elem).data("id"));
                 ev.dataTransfer.setData("index",$(elem).data("index"));
                 ev.dataTransfer.setData("name",ev.target.innerHTML);
@@ -61,8 +61,8 @@ define(["underscore", "easyui"], function (_,easyui) {
                     if(type === type_from){
                         index = parseInt(ev.dataTransfer.getData("index"), 10);
                     }else{
-                        var index_from = parseInt(ev.dataTransfer.getData("index"), 10);
-                        vm.data.selected_den[type_from].splice(index_from, 1);
+                        var index = parseInt(ev.dataTransfer.getData("index"), 10);
+                        vm.data.selected_den[type_from].splice(index, 1);
                     }
                 }
                 if(!id || !name){
@@ -80,7 +80,6 @@ define(["underscore", "easyui"], function (_,easyui) {
                         break;
                     }
                 }
-
                 var type = elem.data("type");
                 var arr = _.findWhere( vm.data.selected_den[type], {"id": id});
 
@@ -133,69 +132,6 @@ define(["underscore", "easyui"], function (_,easyui) {
 
        }
 
-       /*function  draggableInit(){
-           $(".section_ul li").draggable({
-               proxy:'clone',
-               revert:true,
-               onStartDrag:function(){
-                   $(this).draggable('options').cursor = 'not-allowed';
-                   $(this).draggable('proxy').css('z-index',10);
-               },
-               onStopDrag:function(){
-                   $(this).draggable('options').cursor='move';
-               }
-           });
-
-           $(".dimension-content .selected-dimension").draggable({
-               proxy:'clone',
-               revert:true,
-               onStartDrag:function(){
-                   $(this).draggable('options').cursor = 'not-allowed';
-                   $(this).draggable('proxy').css('z-index',10);
-               },
-               onStopDrag:function(){
-                   $(this).draggable('options').cursor='move';
-               }
-           });
-
-       }
-
-       function droppableInit(){
-           //TODO 维度 进度接受栏
-           $('.input-content').droppable({
-               accept:'.section_ul li',
-               onDragEnter:function(e,source){
-                   $(source).draggable('options').cursor='auto';
-               },
-               onDragLeave:function(e,source){
-                   console.log("dragLeave")
-                   $(source).draggable('options').cursor='not-allowed';
-               },
-               onDrop:function(e,source){
-                   var id = $(source).attr("id");
-                   var name =  $(source).html();
-                   var elem = $(e.currentTarget);
-                   var type = elem.data("type");
-                   var arr = _.findWhere( vm.data.selected_den[type], {"id": id});
-                   if(!arr){
-                       vm.data.selected_den[type].push({"id": id, "name": name});
-                   }
-               }
-           });
-       }*/
-
-        /*维度 度量 **/
-      /*  function inputInit(){
-            $(".textbox-input").textbox({
-                icons: [{
-                    iconCls:'icon-clear',
-                    handler: function(e){
-                        $(e.data.target).textbox('setValue', '');//清楚input框
-                    }
-                }]
-            });
-        }*/
-
         function tabInit(){
             $('#tt').tabs({
                 border:false,
@@ -203,25 +139,17 @@ define(["underscore", "easyui"], function (_,easyui) {
                 content:"content:'Tab Body',",
                 onSelect:function(title, index){
                     if(title == '+'){
-                        $('#tt').tabs('add',{
-                            title:'New Tab',
+                        alert("do something");
+                        //function showAlter(mes,headerMes,isconfirm,fn,cancel_fn){
+                        showAlter("mes","headerMes",true);
+                        /*$('#tt').tabs('add',{
+                            title:'访问/sheet2',
                             content:'Tab Body',
                             index : 0,
                             closable:true,
-                            tools:[{
-                                iconCls:'icon-mini-refresh',
-                                handler:function(){
-                                    alert('refresh');
-                                }
-                            },
-                            {
-                                iconCls: 'icon-save',
-                                handler: function () {
-                                    alert('save')
-                                }
-                            }
+                            tools:[
                             ]
-                        });
+                        });*/
                     }else{//tab切换数据同步
                         //TODO replace mockdata with real data
                         var tabdata  = _.filter(window.Mockdata, function(data){ return data.tabid === index; });//TODO

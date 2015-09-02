@@ -51,7 +51,7 @@
 
                 <div class="input-div">
                     <span class="input-label">行</span>
-                    <div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
+                    <div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
                         <span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
                         <span class="selected-dimension" ms-repeat-el="data.selected_den.row" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
                     </div>
@@ -61,7 +61,7 @@
 
                 <div class="input-div">
                     <span class="input-label">度量</span>
-                    <div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
+                    <div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
                         <span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
                         <span class="selected-magnanimity" ms-repeat-el="data.selected_den.magnanimity" draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
                     </div>
@@ -71,7 +71,7 @@
 
                 <div class="input-div">
                     <span class="input-label">筛选</span>
-                    <div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
+                    <div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
                         <span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
                         <span class="selected-filter" ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-attr-id={{el.id}}>
                            <a href="javascript:void(0)">
@@ -108,8 +108,8 @@
             <div title="Tab3" data-options="closable:true" >
                 tab3fdsfds
             </div>
-            <div title="+">
-
+            <div title="+"  style="display:none;">
+                +
             </div>
         </div>
 
@@ -129,9 +129,11 @@
 <script type="text/javascript" src="res/local/mockdata.js"></script>
 <script type="text/javascript" src="res/libs/underscore-min.js"></script>
 <script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="res/libs/jquery.panel.js"></script>
+<script type="text/javascript" src="res/libs/jquery.datagrid.js"></script>
+<!--<script type="text/javascript" src="res/libs/require.js"></script>-->
 <script type="text/javascript" src="res/libs/avalon.js"></script>
 <script type="text/javascript" src="res/js/main.js"></script>
-<script type="text/javascript" src="res/js/vma.js"></script>
 <script type="text/javascript" src="res/js/data_analysis.js"></script>
 <script type="text/javascript">
 /*    var vm = avalon.define({

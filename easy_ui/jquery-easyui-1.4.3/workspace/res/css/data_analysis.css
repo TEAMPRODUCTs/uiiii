@@ -58,8 +58,9 @@
     line-height: 25px;
 }
 
-.rightbar .tabs-header, .tabs-tool{
+.rightbar .tabs-header, .tabs-tool, .rightbar .tabs-panels{
     background-color: transparent;
+    border:none;
 }
 
 .input-div{
@@ -82,6 +83,7 @@
     top: 0px;
     padding: 0px 30px 0 58px;
     height: inherit;
+    overflow-x: auto;
 }
 
 .selected-magnanimity{
@@ -89,6 +91,13 @@
 }
 .selected-dimension{
     background-color: #F2F4F9;
+}
+.selected-filter{
+    margin: 0 5px;
+}
+
+.selected-filter a{
+    text-decoration: underline;
 }
 .selected-dimension, .selected-magnanimity{
     border-radius: 75px;

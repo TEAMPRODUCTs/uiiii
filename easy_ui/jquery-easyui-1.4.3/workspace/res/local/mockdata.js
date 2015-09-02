@@ -10,7 +10,7 @@ window.Mockdata =
                     "column":[{"id": "address", "name": "城市11"}],
                     "row":[{"id": "address", "name": "城市"}],
                     "magnanimity":[{"id": "address", "name": "城市"}], //度量
-                    "filter":[{label:"访问日期", id:"date", value:{}}]
+                    "filter":[{name:"访问日期", id:"date", value:{}}]
                 },
                 dimension:[//维度
                     {label:"日期", id:"date", data:[2011,2012,2013,2014,2015]},
