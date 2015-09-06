@@ -11,8 +11,8 @@ require(["easyui","../js/data_analysis_controller", "../js/analysis_tab","ready!
     });
 
     function resizeLayout(){
-        $('.leftbar').css("height", window.innerHeight);
-        $(".input-content").width($(".input-div").width()-108);
+      //  $('.leftbar').css("height", window.innerHeight);
+     //   $(".input-content").width($(".input-div").width()-108);
     }
 
 

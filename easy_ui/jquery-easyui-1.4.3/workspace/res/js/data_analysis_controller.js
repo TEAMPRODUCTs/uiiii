@@ -1,4 +1,4 @@
-define(["underscore", "easyui"], function (_,easyui) {
+define(["underscore", "easyui", "../js/component/add_dlg_component","../js/component/database_op"], function (_,easyui, dlg_component , databse_op) {
         var initial_data = {
             selected_den:{
                 "column":[],
@@ -114,23 +114,35 @@ define(["underscore", "easyui"], function (_,easyui) {
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data;
             tabInit();
             avalon.nextTick(function() {
-                registerEvent();
+               //console.log($("#tpl").html());
             });
+            databse_op.select();
             vm.$watch("data.selected_den",function(){
                 console.log("刷新table");//TODO 请求后台 刷新table
             });
         }
 
-      function registerEvent(){
-          $(document).ready(function(){
-              //draggableInit();
-             // droppableInit();
-          });
-      }
-
        function draggableh5init(){
 
        }
+
+        var  newAnaylsis = function(){
+            alert("new anyaysis");
+        };
+
+        var dlgDateInit = function(){
+            console.log("data init");
+            $('#from_date').datebox({
+                required:true,
+                width:"110px"
+            });
+
+            $('#to_date').datebox({
+                required:true,
+                width:"110px"
+            });
+
+        };
 
         function tabInit(){
             $('#tt').tabs({
@@ -139,17 +151,14 @@ define(["underscore", "easyui"], function (_,easyui) {
                 content:"content:'Tab Body',",
                 onSelect:function(title, index){
                     if(title == '+'){
-                        alert("do something");
-                        //function showAlter(mes,headerMes,isconfirm,fn,cancel_fn){
-                        showAlter("mes","headerMes",true);
-                        /*$('#tt').tabs('add',{
-                            title:'访问/sheet2',
-                            content:'Tab Body',
-                            index : 0,
-                            closable:true,
-                            tools:[
-                            ]
-                        });*/
+                        var option = {
+                            title:"新建分析主题",
+                            container: "new_analysis_dlg",
+                            content:"tpl",
+                            initHandlers:[dlgDateInit],
+                            buttons:[{text: "新建分析主题", handler:newAnaylsis}]
+                        }
+                        dlg_component.showDlg(option);
                     }else{//tab切换数据同步
                         //TODO replace mockdata with real data
                         var tabdata  = _.filter(window.Mockdata, function(data){ return data.tabid === index; });//TODO

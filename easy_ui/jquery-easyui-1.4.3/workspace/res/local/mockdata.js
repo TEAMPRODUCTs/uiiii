@@ -5,6 +5,7 @@ window.Mockdata =
     [
         {
             tabid:0,
+            tabname:"访问1/sheet1",
             tabcontent:{
                 selected_den:{
                     "column":[{"id": "address", "name": "城市11"}],
@@ -36,6 +37,7 @@ window.Mockdata =
         },
         {
             tabid:1,
+            tabname:"访问2/sheet2",
             tabcontent:{
                 selected_den:{
                     "column":[{"id": "address", "name": "城市"}],

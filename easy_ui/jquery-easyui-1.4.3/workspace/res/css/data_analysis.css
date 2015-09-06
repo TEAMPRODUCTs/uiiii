@@ -1,12 +1,12 @@
 .leftbar{
     background-color: #F2F4F9;
-    -webkit-box-flex:initial;
+    /*  -webkit-box-flex:initial;
     -moz-box-flex: initial;
     -webkit-flex: initial;
     -ms-flex: initial;
     flex:  initial;
-    width: 200px;
-    min-width: 200px;
+  width: 200px;
+    min-width: 200px;*/
     overflow: auto;
 }
 
@@ -20,11 +20,11 @@
 }
 
 .rightbar{
-    -webkit-box-flex: 1;
+/*    -webkit-box-flex: 1;
     -moz-box-flex: 1;
     -webkit-flex:  1;
     -ms-flex: 1;
-    flex:  1;
+    flex:  1;*/
 }
 
 .leftbar_title{
@@ -126,4 +126,20 @@ h2 {
     font-size: 18px;
     font-weight: bold;
     margin: 0;
+}
+
+.dlg-div.alertDiv .alert_header{
+    background-color: #687993;
+}
+
+.field-div{
+    margin: 5px 0;
+}
+.field-label{
+    width: 30%;
+}
+
+.field-value{
+    width: 70%;
+    display: inline-block;
 }

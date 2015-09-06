@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title></title>
     <!-- Latest compiled and minified CSS -->
-
     <link rel="stylesheet" href="res/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="res/css/custome_dlg.css">
     <link rel="stylesheet" href="res/css/data_analysis.css"/>
 </head>
-<body>
-<div class="container_div" ms-controller="test">
-    <div class="leftbar">
+<body class="easyui-layout">
+<div class="container_div" ms-controller="test" >
+    <div class="leftbar"  data-options="region:'west',split:true">
         <section class="section_left">
             <h2 class="leftbar_title">维度</h2>
             <div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
@@ -36,12 +36,12 @@
             </div>
         </section>
     </div>
-    <div class="rightbar">
+    <div class="rightbar"  data-options="region:'center'" >
         <div id="tt" class="easyui-tabs" style="width:100%;">
             <div title="Tab1" style="padding:20px;" data-options="closable:true" >
                 <div class="input-div">
                     <span class="input-label">列</span>
-                    <div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)">
+                    <div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
                         <span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
                         <span class="selected-dimension" ms-repeat-el="data.selected_den.column" draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  ms-attr-id={{el.id}}>{{el.name}}</span>
                     </div>
@@ -109,7 +109,6 @@
                 tab3fdsfds
             </div>
             <div title="+">
-
             </div>
         </div>
 
@@ -117,26 +116,39 @@
         </div>
 
     </div>
+
+<div id="new_analysis_dlg"></div>
+
+<script type="avalon" id="tpl">
+      <div class="field-div">
+           <label class="field-label">选择分析主题: </label>
+             <div  class="field-value" >
+               <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
+                    <option value="visit1">访问1</option>
+                    <option value="visit2">访问2</option>
+                    <option value="visit3">访问3</option>
+               </select>
+             </div>
+      </div>
+      <div  class="field-div">
+            <label class="field-label">选择数据时段:</label>
+            <div  class="field-value" >
+                  <input id="from_date" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
+                  <input id="to_date" type="text" class="easyui-datebox" required="required">
+            </div>
+
+      </div>
+
+ </script>
+
+<div ms-include-src="'addSubjectDlg.html'"> </div>
 </div>
 
 </body>
-
-<!--TODO avalon template tab_panel_temp-->
-<script type="avalon" id="tab_panel_temp">
-            here, {{ 3 + 6 * 5  }}
-</script>
-
 <script type="text/javascript" src="res/local/mockdata.js"></script>
 <script type="text/javascript" src="res/libs/underscore-min.js"></script>
-<script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
 <script type="text/javascript" src="res/libs/avalon.js"></script>
 <script type="text/javascript" src="res/js/main.js"></script>
-<script type="text/javascript" src="res/js/vma.js"></script>
 <script type="text/javascript" src="res/js/data_analysis.js"></script>
-<script type="text/javascript">
-/*    var vm = avalon.define({
-        $id:   "test",
-        test1: "点击测试按钮没反应 绑定失败"
-    });*/
-</script>
 </html>
