@@ -115,17 +115,81 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             tabInit();
             avalon.nextTick(function() {
                //console.log($("#tpl").html());
+                renderTable();
             });
-            databse_op.select();
             vm.$watch("data.selected_den",function(){
                 console.log("刷新table");//TODO 请求后台 刷新table
+                renderTable();
             });
         }
 
-       function draggableh5init(){
+    function renderTable(){
+        // var query = "SELECT * FROM ANALYSIS2 group by ";
+        var data = vm.data;
+        var columns = _.pluck(data.selected_den.column, 'id');
+        var key = columns.join("");
+        var rows = _.pluck(data.selected_den.row, 'id');
+        key += "_" + rows.join("");
+        var magnanimitu = _.pluck(data.selected_den.magnanimity, 'id');
+        key += "_" + magnanimitu.join("");
+        var resultset = window.Mockdata[0].tabcontent.data[key] || {};//后端返回结果
+        var data_rows =resultset ?  resultset.rows : [];
 
-       }
+        var rowspan = columns.length;
+        var columns_total = [];//总的
+        var columns = [];//第一层coulmn title
 
+        /*         for(var i = 0 ; i < resultset.row_selected.length; i++){
+         var row_i = resultset.row_selected[i];
+         var obj = {field:row_i.id,title:row_i.label,width:100, rowspan: rowspan};
+         columns.push(obj);
+         }*/
+        var frozenColumns = [];
+        var column_selected =  resultset.column_selected || [];
+        //添加列
+        for(var j = 0; j <  column_selected.length; j++){
+            var column_j = column_selected[j];
+            var column_next = null;
+            var colspan = 1;
+            var columns_j = [];
+
+            if(j == 0){
+                //添加行\
+                var row_selected = resultset.row_selected || {};
+                for(var i = 0 ; i < row_selected.length; i++){
+                    var row_i = row_selected[i];
+                    var obj = {field:row_i.id,title:row_i.label, rowspan: rowspan,frozen:true};
+                    frozenColumns.push(obj);
+                    columns_j.push(obj);
+                }
+            }
+
+            if(j != column_selected.length -1){
+                var data_j = column_j.data;
+                for(var z = 0 ; z < data_j.length; z++){
+                    var obj = {title:data_j[z],colspan:column_j.colspan};
+                    columns_j.push(obj);
+                }
+
+            }else{
+                var fields = column_j.field;
+                for(var x = 0;  x < fields.length; x++){
+                    var data_j = column_j.data;
+                    //console.log(x%data_j.length + " jjj " + data_j[x/data_j.length]);//取模取title
+                    var obj = {title:data_j[x%data_j.length],field:fields[x],width:100,  colspan:column_j.colspan};
+                    columns_j.push(obj);
+                }
+            }
+
+            columns_total.push(columns_j);
+        }
+        $('#dg').datagrid({
+            data: data_rows,
+            width:"100%",
+            columns:columns_total
+        });
+
+    }
         var  newAnaylsis = function(){
             alert("new anyaysis");
         };
@@ -158,6 +222,12 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
                             initHandlers:[dlgDateInit],
                             buttons:[{text: "新建分析主题", handler:newAnaylsis}]
                         }
+
+                        $('#tt').tabs('add',{
+                            title: 'inserted tab',
+                            index: 2
+                        })
+
                         dlg_component.showDlg(option);
                     }else{//tab切换数据同步
                         //TODO replace mockdata with real data

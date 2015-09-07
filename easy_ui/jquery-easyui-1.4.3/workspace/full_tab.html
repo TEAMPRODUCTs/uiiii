@@ -43,6 +43,21 @@
 		</section>
 	</div>
 	<div data-options="region:'center'" class="rightbar">
+
+		<ul id="mytab" class="nav nav-tabs">
+			<li class="active"><a href="#home" data-toggle="tab">首页</a></li>
+			<li><a href="#profile" data-toggle="tab">介绍</a></li>
+			<li><a href="#messages" data-toggle="tab">消息</a></li>
+			<li><a href="#settings" data-toggle="tab">设置</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="home">111</div>
+			<div class="tab-pane" id="profile">2222</div>
+			<div class="tab-pane" id="messages">333</div>
+			<div class="tab-pane" id="settings">444.</div>
+		</div>
+
 		<div id="tt" class="easyui-tabs" style="width:100%;">
 			<div title="Tab1" style="padding:20px;" data-options="closable:true" >
 				<div class="input-div">
@@ -90,21 +105,6 @@
 				</div>
 
 				<table id="dg"></table>
-				<!--table-->
-<!--				<table class="easyui-datagrid" style="width:100%;margin-top:10px;"
-					   data-options="url:'../demo/datagrid/data.json',method:'get'">
-
-					<thead>
-						<tr>
-							<th data-options="field:'platform',align:'right'"></th>
-							<th data-options="field:'上海'">上海</th>
-							<th data-options="field:'北京'">北京</th>
-							<th data-options="field:'广州'">广州</th>
-							<th data-options="field:'成都'">成都</th>
-							<th data-options="field:'武汉'">武汉</th>
-						</tr>
-					</thead>
-				</table>-->
 
 			</div>
 			<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
@@ -137,7 +137,6 @@
                   <input id="from_date" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
                   <input id="to_date" type="text" class="easyui-datebox" required="required">
             </div>
-
       </div>
 
  </script>

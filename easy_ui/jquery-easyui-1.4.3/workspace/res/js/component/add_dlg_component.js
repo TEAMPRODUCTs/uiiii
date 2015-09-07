@@ -7,6 +7,7 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
         container: "",//容器 id
         content:"",//content html id
         width:'500px',
+        inited:false,
         css:[],//css 设置
         initHandlers:[],
         buttons:[{text: "确定", handler:"okHandler"}, {text: "取消",  handler:"cancleHandler"}],//自定义按钮
@@ -20,6 +21,10 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             var bg = "<div class='modal-bg'></div>";//添加遮罩层
             $("body").append(bg);
             $("#" + self.container).show();
+            if(!!self.inited){ //防止多次创建dialog
+                return;
+            }
+            self.inited = true;
             var dlgDiv = $("<div class='alertDiv dlg-div'></div>");
             dlgDiv.css("width",this.width);
             dlgDiv.css("height", this.height);
@@ -52,6 +57,7 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             dlgDiv.append(head).append(body).append(foot).appendTo($("#" + self.container));
 
             var initHandlers = self.initHandlers;
+            console.log("initHandlers")
             for(var i = 0 ; i < initHandlers.length; i ++){
                 var fn =  initHandlers[i];
                 if(fn && typeof fn === 'function'){
@@ -64,59 +70,6 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             var self = this;
             $(".modal-bg").remove();
             $("#" +self.container).hide();
-        },
-
-
-
-        showAlter: function (mes,headerMes,isconfirm,fn,cancel_fn){
-            var alertDiv = $("<div class='alertDiv'></div>");
-            alertDiv.css("width",this.width);
-            alertDiv.css("height", this.height);
-            var head = $("<div class='alert_header'></div>");
-            var closeI = $("<i class='fa fa-times-circle'>X</i>");
-            closeI.on("click",function(){
-                hideAlert();
-            });
-            closeI.appendTo(head);
-            var body = "<div class='alert_body'>" + $("#" + mes).html() + "</div>";
-            var bg = "<div class='modal-bg'></div>"
-            $("body").append(bg);
-            if(isconfirm){
-                var foot = $("<div class='alert_foot'></div>");
-                var sure = $("<em>确定</em>");
-                var cancel = $("<em>取消</em>");
-                sure.on("click",function(){
-                    hideAlert();
-                    if(fn && typeof fn === 'function'){
-                        fn();
-                    }
-                });
-                cancel.on("click",function(){
-                    hideAlert();
-                    if(cancel_fn && typeof cancel_fn === 'function'){
-                        cancel_fn();
-                    }
-
-                });
-                foot.append(sure).append(cancel);
-                alertDiv.append(head).append(body).append(foot).appendTo($("body"));
-            }else{
-                alertDiv.append(head).append(body).appendTo($("body"));
-            }
-
-            $('#from_date').datebox({
-                required:true
-            });
-
-            $('#to_date').datebox({
-                required:true
-            });
-
-            function hideAlert(){
-                $(".modal-bg").remove();
-                var allAlertDiv = $(".alertDiv");
-                allAlertDiv.remove();
-            }
         }
     };
 

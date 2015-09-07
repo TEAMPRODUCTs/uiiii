@@ -36,7 +36,7 @@
            }
          });
      db.transaction(function (tx) {
-            tx.executeSql('select platform , pv  ,address from ANALYSIS2 group by address , platform', [], function (tx, results) {
+            tx.executeSql('select platform , pv  ,address , date from ANALYSIS2 group by address , platform ,date', [], function (tx, results) {
                 var len = results.rows.length, i;
                 console.log(JSON.stringify(results.rows));
                 //column address
