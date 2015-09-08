@@ -52,6 +52,7 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
                     if(fn && typeof fn === 'function'){
                         fn();
                     }
+                    self.closeDlg();//关闭dlg
                 });
             }
             dlgDiv.append(head).append(body).append(foot).appendTo($("#" + self.container));

@@ -147,3 +147,49 @@ h2 {
 .section_ul  li, .selected-dimension, .selected-magnanimity{
     cursor: move;
 }
+
+.nodata{
+    text-align: center;
+    color: red;
+    padding: 5px;
+}
+
+.tab-pane{
+    display: none;
+}
+
+.tab-pane.active{
+    display: block;
+}
+
+.nav-tabs li.active{
+    border-bottom: 1px solid #ffffff;
+}
+
+.nav-tabs li{
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 3px 5px;
+    margin: 0 3px -1px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nav-tabs li a{
+    color: #000000;
+}
+.nav-tabs{
+    padding-left: 4px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs .add-btn{
+    padding: 3px 8px;
+}
+
+.tabs-container{
+    margin-top:6px;
+}
+
+.body-content .panel-body-noheader{
+    border-color: transparent;
+}

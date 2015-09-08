@@ -1,11 +1,12 @@
 /**
  * Created by fiona.xu on 2015/8/26.
  */
-window.Mockdata =
-    [
+window.Mockdata ={
+    current_tabid: 0,
+    tabs: [
         {
             tabid:0,
-            tabname:"访问1/sheet1",
+            tabname:"访问1",
             tabcontent:{
                 selected_den:{
                     "column":[{"id": "address", "name": "城市11",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}],// TODO
@@ -78,8 +79,8 @@ window.Mockdata =
                     platformaddress_date_pv:{
                         "total":4,
                         "column_selected":[{"id": "platform", "name": "平台","data":["Android","IOS","PAD","PCS"], "colspan":5},{"id": "address", "name": "城市11","data":["上海","北京","广州","成都","武汉"], "colspan":1,
-                        "field": ["上海_Android","北京_Android", "广州_Android","成都_Android","武汉_Android" , "上海_IOS", "北京_IOS", "广州_IOS","成都_IOS" , "武汉_IOS", "上海_PAD", "北京_PAD", "广州_PAD","成都_PAD", "武汉_PAD",
-                            "上海_PCS", "北京_PCS","广州_PCS","成都_PCS","武汉_PCS"]}],// TODO
+                            "field": ["上海_Android","北京_Android", "广州_Android","成都_Android","武汉_Android" , "上海_IOS", "北京_IOS", "广州_IOS","成都_IOS" , "武汉_IOS", "上海_PAD", "北京_PAD", "广州_PAD","成都_PAD", "武汉_PAD",
+                                "上海_PCS", "北京_PCS","广州_PCS","成都_PCS","武汉_PCS"]}],// TODO
                         "row_selected":[ {label:"日期", id:"date", data:[2011,2012,2013,2014,2015]}],//用户选择的行
                         "rows": [
                             {
@@ -217,9 +218,9 @@ window.Mockdata =
                     addressplatform_date_pv:{
                         "total":4,
                         "column_selected":[{"id": "address", "name": "城市11","data":["上海","北京","广州","成都","武汉"], "colspan":4,
-                            },{"id": "platform", "name": "平台","data":["Android","IOS","PAD","PCS"], "colspan":1,
+                        },{"id": "platform", "name": "平台","data":["Android","IOS","PAD","PCS"], "colspan":1,
                             "field": ["上海_Android","北京_Android", "广州_Android","成都_Android","武汉_Android" , "上海_IOS", "北京_IOS", "广州_IOS","成都_IOS" , "武汉_IOS", "上海_PAD", "北京_PAD", "广州_PAD","成都_PAD", "武汉_PAD",
-                            "上海_PCS", "北京_PCS","广州_PCS","成都_PCS","武汉_PCS"]
+                                "上海_PCS", "北京_PCS","广州_PCS","成都_PCS","武汉_PCS"]
                         }],// TODO
                         "row_selected":[ {label:"日期", id:"date", data:[2011,2012,2013,2014,2015]}],//用户选择的行
                         "rows": [
@@ -360,7 +361,7 @@ window.Mockdata =
         },
         {
             tabid:1,
-            tabname:"访问2/sheet2",
+            tabname:"访问2",
             tabcontent:{
                 selected_den:{
                     "column":[{"id": "address", "name": "城市"}],
@@ -389,4 +390,5 @@ window.Mockdata =
                 ]
             }
         }
-    ];
+    ]
+};

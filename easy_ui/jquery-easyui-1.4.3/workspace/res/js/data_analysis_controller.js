@@ -1,4 +1,4 @@
-define(["underscore", "easyui", "../js/component/add_dlg_component","../js/component/database_op"], function (_,easyui, dlg_component , databse_op) {
+define(["underscore", "easyui", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp"], function (_,easyui, dlg_component , databse_op, Tab) {
         var initial_data = {
             selected_den:{
                 "column":[],
@@ -15,6 +15,10 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
         };
         var vm = avalon.define({
             $id:   "test",
+            data_all :{
+                current_tabid:"",//当前的tab
+                tabs:[]
+            },
             data:{
                 //column , row , magnanimity
                 selected_den:{
@@ -105,16 +109,39 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             clear:function(e){
                var type =  $(e.currentTarget).parent().prev().data("type");
                 vm.data.selected_den[type].clear();//TODO 同步记录态
+                vm.$fire("data.selected_den",vm.data.selected_den);
+            },
+            setActiveTab: function(id, e){
+                Tab.setActiveTab(id, e);
+                var tabdata =  _.filter(vm.data_all.tabs, function(data){ return data.tabid === id; });//设置当前tab
+                vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
+                vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
+            },
+            showDlg:function(){
+                var option = {
+                    title:"新建分析主题",
+                    container: "new_analysis_dlg",
+                    content:"tpl",
+                    initHandlers:[dlgDateInit],
+                    buttons:[{text: "新建分析主题", handler:newAnaylsis}]
+                }
+                dlg_component.showDlg(option);
+            },
+            addPanel: function(){
+                console.log("add");
+            },
+            removePanel:function(){
+
             },
             selected_column: []//所选维度列
         });
 
         vm.init = function(){
-            var tabdata  = _.filter(window.Mockdata, function(data){ return data.tabid === 0; });//TODO 初始化是空
-            vm.data =tabdata ? tabdata[0].tabcontent : vm.data;
-            tabInit();
+            var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
+            vm.data =tabdata ? tabdata[0].tabcontent : vm.data; //TODO REMOVE
+            vm.data_all = window.Mockdata;
+            //tabInit(); tab generated
             avalon.nextTick(function() {
-               //console.log($("#tpl").html());
                 renderTable();
             });
             vm.$watch("data.selected_den",function(){
@@ -132,18 +159,12 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
         key += "_" + rows.join("");
         var magnanimitu = _.pluck(data.selected_den.magnanimity, 'id');
         key += "_" + magnanimitu.join("");
-        var resultset = window.Mockdata[0].tabcontent.data[key] || {};//后端返回结果
+        var resultset = window.Mockdata.tabs[0].tabcontent.data[key] || {};//后端返回结果
         var data_rows =resultset ?  resultset.rows : [];
 
         var rowspan = columns.length;
         var columns_total = [];//总的
         var columns = [];//第一层coulmn title
-
-        /*         for(var i = 0 ; i < resultset.row_selected.length; i++){
-         var row_i = resultset.row_selected[i];
-         var obj = {field:row_i.id,title:row_i.label,width:100, rowspan: rowspan};
-         columns.push(obj);
-         }*/
         var frozenColumns = [];
         var column_selected =  resultset.column_selected || [];
         //添加列
@@ -154,7 +175,7 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             var columns_j = [];
 
             if(j == 0){
-                //添加行\
+                //添加行
                 var row_selected = resultset.row_selected || {};
                 for(var i = 0 ; i < row_selected.length; i++){
                     var row_i = row_selected[i];
@@ -184,18 +205,44 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             columns_total.push(columns_j);
         }
         $('#dg').datagrid({
-            data: data_rows,
+            data: data_rows || [],
             width:"100%",
-            columns:columns_total
+            columns:columns_total,
+            onBeforeLoad:function(){
+                $("#dg").css("display","");
+            },
+            onLoadSuccess:function(data){
+                if(data.total == 0)
+                {
+                    $("#dg").css("display","none");
+                    $(".nodata").css("display","");
+                }else
+                {
+                    $("#dg").css("display","");
+                    $(".nodata").css("display","none");
+                }
+            }
         });
 
     }
         var  newAnaylsis = function(){
-            alert("new anyaysis");
+            var id = Tab.addTab();//tabid generated
+            var name = $("#anlysis_theme").val(),
+                fromdate = $('#from_date').datebox("getValue"),//TODO
+                todate = $("#to_date").datebox("getValue");
+            var tab = {
+                tabid: id,
+                tabname: name,
+                tabcontent:window.Mockdata.tabs[0].tabcontent//TODO 初始化initial_data
+            };
+            vm.data_all.current_tabid = id;
+            vm.data_all.tabs.push(tab);
+            var tabdata =  _.filter(vm.data_all.tabs, function(data){ return data.tabid === id; });//设置当前tab
+            vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
+            vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
         };
 
         var dlgDateInit = function(){
-            console.log("data init");
             $('#from_date').datebox({
                 required:true,
                 width:"110px"
@@ -205,38 +252,29 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
                 required:true,
                 width:"110px"
             });
-
         };
 
-        function tabInit(){
+/*        function tabInit(){
             $('#tt').tabs({
                 border:false,
                 tools:'#tab-tools',
                 content:"content:'Tab Body',",
                 onSelect:function(title, index){
                     if(title == '+'){
-                        var option = {
-                            title:"新建分析主题",
-                            container: "new_analysis_dlg",
-                            content:"tpl",
-                            initHandlers:[dlgDateInit],
-                            buttons:[{text: "新建分析主题", handler:newAnaylsis}]
-                        }
-
                         $('#tt').tabs('add',{
                             title: 'inserted tab',
+                            id:'__11',
                             index: 2
                         })
-
-                        dlg_component.showDlg(option);
-                    }else{//tab切换数据同步
+                        vm.showDlg();
+                    }else{//tab切换数据同步 TODO
                         //TODO replace mockdata with real data
-                        var tabdata  = _.filter(window.Mockdata, function(data){ return data.tabid === index; });//TODO
+                        var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === index; });//TODO
                         vm.data = (tabdata && tabdata.length )? tabdata[0].tabcontent :initial_data;
                     }
                 }
             });
-        }
+        }*/
         avalon.scan(); //初始化数据
         return vm;
 });
