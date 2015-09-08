@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src="res/libs/avalon.js"></script>
+    <style>
+        .id2013716 {
+            width: 200px;
+            float:left;
+        }
+    </style>
+    <script>
+        var a = avalon.define({
+            $id: "array",
+            array: ["1", "2", "3", "4"]
+        })
+        setTimeout(function() {
+            a.array.set(0, 7)
+        }, 1000);
+        var b = avalon.define({
+            $id: "complex",
+            array: [{name: "xxx", sex: "aaa", c: {number: 2}}, {name: "yyy", sex: "bbb", c: {number: 4}}]//
+        });
+        setTimeout(function() {
+            b.array[0].c.number = 9
+            b.array[0].name = "1000"
+        }, 1000)
+
+        setTimeout(function() {
+            a.array.push(5, 6, 7, 8, 9)
+        }, 1000)
+        setTimeout(function() {
+            a.array.unshift("a", "b", "c", "d")
+        }, 2000)
+        setTimeout(function() {
+            a.array.shift()
+            b.array[1].name = 7
+        }, 3000)
+        setTimeout(function() {
+            a.array.pop()
+        }, 4000)
+        setTimeout(function() {
+            a.array.splice(1, 3, "x", "y", "z")
+            b.array[1].name = "5000"
+        }, 5000)
+    </script>
+</head>
+<body>
+<fieldset class="id2013716" ms-controller="array">
+    <legend>例子</legend>
+    <ul ms-each="array">
+        <li >数组的第{{$index+1}}个元素为{{el}}</li>
+    </ul>
+    <p>size: <b style="color:red">{{array.size()}}</b></p>
+</fieldset>
+
+<fieldset  class="id2013716" ms-controller="complex">
+    <legend>例子</legend>
+    <ul >
+        <li ms-repeat-el="array">{{el.name+" "+el.sex}}它的内容为 number:{{el.c.number}}</li>
+    </ul>
+</fieldset>
+</body>
+</html>

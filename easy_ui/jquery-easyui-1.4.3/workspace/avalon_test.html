@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="res/libs/avalon.js" ></script>
+    <script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
+    <script>
+        var model = avalon.define({
+            $id: "test",
+            array: ["aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"],
+            delete:function(e){
+                console.log("ss");
+                var index = $(e).data("index");
+                model.array.splice(index,1);
+            }
+        })
+    </script>
+    <style>
+        .last{
+            background: purple;
+        }
+        .first{
+            background:violet;
+        }
+    </style>
+</head>
+<body ms-controller="test">
+<ul>
+    <li ms-repeat-xx="array"
+        ms-class="last: $last"
+        ms-class-1="first: $first"
+        ms-click-0="delete(this)" ms-data-index=$index>{{xx}}:{{$index}}</li>
+</ul>
+</body>
+</html>

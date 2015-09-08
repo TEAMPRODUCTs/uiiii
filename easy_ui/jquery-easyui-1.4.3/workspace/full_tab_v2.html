@@ -44,12 +44,21 @@
 	</div>
 	<div data-options="region:'center'" class="rightbar">
 
+
 		<div class="tabs-container">
+			<!------右栏tab 开始----->
 			<ul id="mytab" class="nav nav-tabs" ms-each-el="data_all.tabs">
-				<li  class="active"  ms-if="data_all.current_tabid  == el.tabid" ><a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)">{{el.tabname}}/sheet{{$index + 1}}</a></li>
-				<li  ms-if="data_all.current_tabid  != el.tabid"><a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)"   >{{el.tabname}}/sheet{{$index + 1}}</a></li>
-				<li ms-if="data_all.tabs.length -1  == $index" ><a  class="add-btn"  href="javascript:void (0)" ms-click="showDlg(event);">+</a></li>
+				<li  class="active"  ms-if="data_all.current_tabid  == el.tabid" >
+					<a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)" class="tab_title">{{el.tabname}}/sheet{{$index + 1}}</a>
+					<a href="javascript:void(0)" class="tabs-close" ms-click-0="closeTab(el.tabid, this)"   ms-data-index=$index >&nbsp;</a>
+				</li>
+				<li  ms-if="data_all.current_tabid  != el.tabid">
+					<a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)"  class="tab_title" >{{el.tabname}}/sheet{{$index + 1}}</a>
+					<a href="javascript:void(0)" class="tabs-close"  ms-click-0="closeTab(el.tabid, this)"  ms-data-index=$index >&nbsp;</a>
+				</li>
+				<li ms-if="$last" ><a  class="add-btn"  href="javascript:void (0)" ms-click="showDlg(event);">+</a></li>
 			</ul>
+			<!------右栏tab 结束----->
 
 			<div class="tab-content" id="tab_content">
 				<div class="input-div">

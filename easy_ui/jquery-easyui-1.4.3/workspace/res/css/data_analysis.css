@@ -173,6 +173,7 @@ h2 {
     margin: 0 3px -1px 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    position: relative;
 }
 .nav-tabs li a{
     color: #000000;
@@ -192,4 +193,17 @@ h2 {
 
 .body-content .panel-body-noheader{
     border-color: transparent;
+}
+
+.nav-tabs .tab_title{
+    position: relative;
+    padding: 5px 8px 5px 5px;
+}
+
+.nav-tabs .tabs-close{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    padding: 3px 4px;
+    background: url('../img//tabs_icons.png') no-repeat -34px center;
 }
