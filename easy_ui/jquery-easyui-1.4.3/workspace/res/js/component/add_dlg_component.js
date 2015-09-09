@@ -17,6 +17,7 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
 
         showDlg: function(option){
             var self = this;
+            $("#" + self.container).empty();//清空dialog container
             avalon.mix(self, option);//优先使用用户的配置
             var bg = "<div class='modal-bg'></div>";//添加遮罩层
             $("body").append(bg);

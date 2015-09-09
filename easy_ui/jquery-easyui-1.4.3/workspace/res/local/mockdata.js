@@ -15,24 +15,24 @@ window.Mockdata ={
                     "filter":[{name:"访问日期", id:"date", value:{}}]
                 },
                 dimension:[//维度
-                    {label:"日期", id:"date", data:[2011,2012,2013,2014,2015]},
-                    {label:"平台",id:"platform", data:["Android","IOS","PAD","PCS"]},
-                    {label:"城市",id:"address", data:["上海","北京","广州","成都","武汉"]}
+                    {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
+                    {label:"平台",id:"platform", detail:"平台",data:["Android","IOS","PAD","PCS"]},
+                    {label:"城市",id:"address", detail:"城市", data:["上海","北京","广州","成都","武汉"]}
                 ],
                 dimension_new:[//新增维度
-                    {label:"日期1", id:"date1", data:[2011,2012,2013,2014,2015]},
-                    {label:"平台1",id:"platform1", data:["Android","IOS","PAD","PCS"]},
-                    {label:"城市1",id:"address1", data:["上海","北京","广州","成都","武汉"]}
+                    {label:"日期1", id:"date1",detail:"日期1", data:[2011,2012,2013,2014,2015]},
+                    {label:"平台1",id:"platform1",detail:"平台1", data:["Android","IOS","PAD","PCS"]},
+                    {label:"城市1",id:"address1",detail:"城市1", data:["上海","北京","广州","成都","武汉"]}
                 ],
                 magnanimity : [//度量
-                    {label:"PV", id:"pv"},
-                    {label:"新访客", id:"visitor"},
-                    {label:"访客数", id:"visitorNum"}
+                    {label:"PV", id:"pv",detail:"PV"},
+                    {label:"新访客", id:"visitor",detail:"新访客"},
+                    {label:"访客数", id:"visitorNum",detail:"访客数"}
                 ],
                 magnanimity_new : [//新增度量
-                    {label:"PV1", id:"pv1"},
-                    {label:"新访客1", id:"visitior1"},
-                    {label:"访客数1", id:"visitiorNum1"}
+                    {label:"PV1", id:"pv1",detail:"PV1"},
+                    {label:"新访客1", id:"visitior1",detail:"新访客1"},
+                    {label:"访客数1", id:"visitiorNum1",detail:"访客数1"}
                 ],
                 data:{
                     //mockdata 行， 列 度量
@@ -369,24 +369,24 @@ window.Mockdata ={
                     "magnanimity":[{"id": "address", "name": "城市"}] //度量
                 },
                 dimension:[//维度
-                    {label:"日期_1", id:"date", data:[2011,2012,2013,2014,2015]},
-                    {label:"平台1",id:"platform", data:["Android","IOS","PAD","PCS"]},
-                    {label:"城市1",id:"address", data:["上海","北京","广州","成都","武汉"]}
+                    {label:"日期_1", id:"date",detail:"日期_1", data:[2011,2012,2013,2014,2015]},
+                    {label:"平台1",id:"platform",detail:"平台1", data:["Android","IOS","PAD","PCS"]},
+                    {label:"城市1",id:"address", detail:"城市1",data:["上海","北京","广州","成都","武汉"]}
                 ],
                 dimension_new:[//新增维度
-                    {label:"日期21", id:"date1", data:[2011,2012,2013,2014,2015]},
-                    {label:"平台21",id:"platform1", data:["Android","IOS","PAD","PCS"]},
-                    {label:"城市21",id:"address1", data:["上海","北京","广州","成都","武汉"]}
+                    {label:"日期21", id:"date1", detail:"日期21",data:[2011,2012,2013,2014,2015]},
+                    {label:"平台21",id:"platform1",detail:"平台21", data:["Android","IOS","PAD","PCS"]},
+                    {label:"城市21",id:"address1",detail:"城市21", data:["上海","北京","广州","成都","武汉"]}
                 ],
                 magnanimity : [//度量
-                    {label:"PV", id:"pv"},
-                    {label:"新访客", id:"visitor"},
-                    {label:"访客数", id:"visitorNum"}
+                    {label:"PV",detail:"PV", id:"pv"},
+                    {label:"新访客",detail:"新访客", id:"visitor"},
+                    {label:"访客数",detail:"访客数", id:"visitorNum"}
                 ],
                 magnanimity_new : [//新增度量
-                    {label:"PV1", id:"pv1"},
-                    {label:"新访客1", id:"visitior1"},
-                    {label:"访客数1", id:"visitiorNum1"}
+                    {label:"PV1", detail:"PV1",id:"pv1"},
+                    {label:"新访客1",detail:"新访客1", id:"visitior1"},
+                    {label:"访客数1", detail:"访客数1",id:"visitiorNum1"}
                 ]
             }
         }

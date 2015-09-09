@@ -207,3 +207,20 @@ h2 {
     padding: 3px 4px;
     background: url('../img//tabs_icons.png') no-repeat -34px center;
 }
+
+.dropdown-menu{
+    position: absolute;
+    padding: 5px 10px;
+    background-color: #F2F4F9;
+    z-index: 10001;
+    border: 1px solid #CDDAF0;
+}
+
+.dropdown-menu li{
+    padding:5px;
+    cursor: pointer;
+}
+
+.dropdown-menu li a{
+    color: black;
+}

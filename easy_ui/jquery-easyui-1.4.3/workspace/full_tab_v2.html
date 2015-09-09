@@ -17,27 +17,36 @@
 	<script type="text/javascript" src="res/js/data_analysis.js"></script>
 
 </head>
-<body class="easyui-layout body-content"  ms-controller="test" >
+<body class="easyui-layout body-content"  ms-controller="test"  ms-click="bodyClick()">
 	<div data-options="region:'west',split:true" class="leftbar" style="width:150px;padding:4px;">
+		<!---dropdown dimension-->
+		<div class="dropdown-menu dropdown-dimension" >
+			<ul>
+				<li><a href="javascript:void(0)" ms-click="createDimension()">创建维度</a></li>
+				<li><a href="javascript:void(0)" ms-click="createMetric()">创建度量</a></li>
+				<li><a href="javascript:void(0)" ms-click="copyDimen()">复制</a></li>
+			</ul>
+		</div>
+
 		<section class="section_left">
 			<h2 class="leftbar_title">维度</h2>
 			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
 				<ul class="section_ul" id="dimension_sec">
-					<li  ms-repeat="data.dimension" ms-if-loop="el" title="拖拽我" data-typede = "dimension"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
+					<li  ms-repeat="data.dimension" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "dimension" ms-mousedown="rightClickDem(event)"  oncontextmenu="return false" ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
 				</ul>
-				<ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length"><!--ms-each-el="data.dimension_new"-->
-					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
+				<ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length">
+					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-mousedown="rightClickDem()" oncontextmenu="return false" ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
 				</ul>
 			</div>
 
 			<h2 class="leftbar_title">度量</h2>
 			<div class="section_detail_cont"  ><!--拖拽适用范围 度量-->
 				<ul class="section_ul" id="metric_sec">
-					<li  ms-repeat="data.magnanimity" ms-if-loop="el" title="拖拽我" data-typede = "magnanimity"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "magnanimity"  ms-mousedown="rightClickMetric(event)"   oncontextmenu="return false" ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 
 				<ul class="section_ul new_sec" id="new_metric_sec" ms-if="data.magnanimity_new.length">
-					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" data-typede = "magnanimity"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" ms-title="{{el.detail}}" data-typede = "magnanimity" ms-mousedown="rightClickMetric(event)"  oncontextmenu="return false"  ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 			</div>
 		</section>
@@ -47,16 +56,20 @@
 
 		<div class="tabs-container">
 			<!------右栏tab 开始----->
-			<ul id="mytab" class="nav nav-tabs" ms-each-el="data_all.tabs">
-				<li  class="active"  ms-if="data_all.current_tabid  == el.tabid" >
-					<a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)" class="tab_title">{{el.tabname}}/sheet{{$index + 1}}</a>
+			<div class="dropdown-menu dropdown-tab" >
+				<ul>
+					<li><a href="javascript:void(0)" ms-click="editTab()">编辑</a></li>
+					<li><a href="javascript:void(0)" ms-click="copyTab()">复制</a></li>
+				</ul>
+			</div>
+			<ul id="mytab" class="nav nav-tabs" >
+				<li  class="tab_li" ms-class="active:data_all.current_tabid  == el.tabid" ms-repeat-el="data_all.tabs"  ms-mousedown="rightClickTab(event, el.tabid)" oncontextmenu="return false" >
+					<a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)"  class="tab_title">{{el.tabname}}/sheet{{$index + 1}}</a>
 					<a href="javascript:void(0)" class="tabs-close" ms-click-0="closeTab(el.tabid, this)"   ms-data-index=$index >&nbsp;</a>
 				</li>
-				<li  ms-if="data_all.current_tabid  != el.tabid">
-					<a href="javascript:void(0)" ms-click="setActiveTab(el.tabid, this)"  class="tab_title" >{{el.tabname}}/sheet{{$index + 1}}</a>
-					<a href="javascript:void(0)" class="tabs-close"  ms-click-0="closeTab(el.tabid, this)"  ms-data-index=$index >&nbsp;</a>
+				<li>
+					<a  class="add-btn"  href="javascript:void (0)" ms-click="showDlg(event);">+</a>
 				</li>
-				<li ms-if="$last" ><a  class="add-btn"  href="javascript:void (0)" ms-click="showDlg(event);">+</a></li>
 			</ul>
 			<!------右栏tab 结束----->
 
@@ -118,6 +131,7 @@
            <label class="field-label">选择分析主题: </label>
              <div  class="field-value" >
                <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
+                	<option value="visit1">data_all.current_tabid</option>
                     <option value="visit1">访问1</option>
                     <option value="visit2">访问2</option>
                     <option value="visit3">访问3</option>
@@ -131,8 +145,25 @@
                   <input id="to_date" type="text" class="easyui-datebox" required="required">
             </div>
       </div>
-
  </script>
+
+
+	<script type="avalon" id="create_dimension">
+      <div  class="field-div">
+      		<label class="field-label">名称:</label>
+            <div  class="field-value" >
+                  <input id="dimen_name" type="text" required="required" title="请填写名称">
+            </div>
+
+            <label class="field-label">字段类型:</label>
+            <div  class="field-value" >
+                  <input name="diemn_type" type="radio" required="required" >自动
+                  <input name="diemn_type" type="radio" required="required" >百分比
+            </div>
+
+      </div>
+ </script>
+
 </body>
 
 </html>

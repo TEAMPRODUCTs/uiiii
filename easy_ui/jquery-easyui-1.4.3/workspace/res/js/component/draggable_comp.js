@@ -14,7 +14,6 @@ define([], function () {
             ev.dataTransfer.setData("isMagnanmity",ev.target.innerHTML);
         },
         drop : function (ev, vm) {
-            console.log("dsds");
             var id = ev.dataTransfer.getData("id");
             var name = ev.dataTransfer.getData("name");
             var typede_from = ev.dataTransfer.getData("typede");

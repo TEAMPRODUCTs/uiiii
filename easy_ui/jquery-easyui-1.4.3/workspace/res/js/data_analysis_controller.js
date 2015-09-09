@@ -1,5 +1,5 @@
-define(["underscore", "easyui", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp"],
-    function (_,easyui, dlg_component , databse_op, Tab, Datatable, Draggable) {
+define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp"],
+    function (_,easyui, util, dlg_component , databse_op, Tab, Datatable, Draggable) {
         var initial_data = {
             selected_den:{
                 "column":[],
@@ -16,6 +16,9 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
         };
         var vm = avalon.define({
             $id:   "test",
+            right_click_tabid:"",//记录右击tab
+            right_click_demid:"",//记录右击维度 id
+            right_click_metricid:"",//记录右击度量id
             data_all :{
                 current_tabid:"",//当前的tab
                 tabs:[]
@@ -37,8 +40,6 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             },
             addtab:function(e){
             },
-
-
             drag: function(ev){
                 Draggable.drag(ev);
             },
@@ -54,33 +55,37 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
                 vm.$fire("data.selected_den",vm.data.selected_den);
             },
             setActiveTab: function(id, e){
-                if(id !=0 && !id){
+                if((id !=0 && !id) || id == vm.data_all.current_tabid){
                     return;
                 }
                 Tab.setActiveTab(id, e);
-                var tabdata =  _.filter(vm.data_all.tabs.$model, function(data){ return data.tabid === id; });//设置当前tab
-                vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
+                vm.setActive(id);
+            },
+            setActive: function(id){
+                vm.data_all.current_tabid = id; //设置当前tab
+                var tabdata =  vm.getTabdataById(id);//设置当前tab
+                vm.data =tabdata ? tabdata.tabcontent : initial_data;
                 vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
             },
+
+            getTabdataById: function(id){
+                var tabdata =  _.filter(vm.data_all.tabs.$model, function(data){ return data.tabid === id; });//设置当前tab
+                return tabdata[0];
+            },
+
             closeTab:function(id, e){
                 var data_all = vm.data_all;
                 var index = $(e).data("index");
+                var id_active = null;
                 if(id == data_all.current_tabid){//若删除的是当前tab， 则
                     if(index < data_all.tabs.length -1){
-                        data_all.current_tabid = data_all.tabs[index + 1].tabid;
+                        id_active = data_all.tabs[index + 1].tabid;
                     }else if(index > 0){
-                        data_all.current_tabid = data_all.tabs[index - 1].tabid;
-                    }else{
-                        data_all.current_tabid = null;
+                        id_active = data_all.tabs[index - 1].tabid;
                     }
-                    var tabdata =  _.filter(vm.data_all.tabs.$model, function(data){ return data.tabid === data_all.current_tabid; });//设置当前tab
-                    vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
-                    vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
+                    vm.setActive(id_active);
                 }
-                // vm.data_all.tabs.removeAt(index);
-/*                var temp = data_all.tabs.$model.splice(index, 1 );
-                data_all.tabs.clear();
-                data_all.tabs =temp;*/
+                 vm.data_all.tabs.removeAt(index);
             },
             showDlg:function(){
                 var option = {
@@ -91,6 +96,69 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
                     buttons:[{text: "新建分析主题", handler:newAnaylsis}]
                 }
                 dlg_component.showDlg(option);
+            },
+            bodyClick: function(e){
+                console.log("body click");
+                $(".dropdown-menu").hide();
+            },
+            rightClickTab: function(e, id){ //event tabid
+                var  obj = e.currentTarget;
+                if(e.button == 2){
+                    vm.right_click_tabid = id;
+                    vm.showDropdown("dropdown-tab", obj);
+                }
+            },
+            showDropdown: function(cls , obj){//class object
+                var left = obj.offsetWidth/3 + obj.offsetLeft;
+                var top =obj.offsetTop + obj.offsetHeight;
+                var elem = $("." + cls);
+                elem.css("left", left);
+                elem.css("top", top );
+                elem.show();
+            },
+
+            rightClickDem:function(e){
+                var  obj = e.currentTarget;
+                var id = $(obj).data("id"); //维度id
+                if(e.button == 2){
+                    vm.right_click_demid = id;
+                    vm.showDropdown("dropdown-dimension", obj);
+                }
+            },
+
+            rightClickMetric:function(e){
+                var  obj = e.currentTarget;
+                var id = $(obj).data("id"); //维度id
+                if(e.button == 2){
+                    vm.right_click_metricid = id;
+
+                }
+            },
+            createDimension:function(e){//创建维度
+                var option = {
+                    title:"创建维度字段",
+                    container: "new_analysis_dlg",
+                    content:"create_dimension",
+                    buttons:[{text: "确定", handler:newDimension}]
+                }
+                dlg_component.showDlg(option);
+            },
+            createMetric: function(e){//创建度量
+
+            },
+            copyDimen: function(e){//复制维度
+
+            },
+            editTab: function(){//右键编辑tab功能
+                var  tabdata = vm.getTabdataById(vm.right_click_tabid);
+                //TODO Dlg show
+            },
+            copyTab: function(){//右键copy tab
+                var  tabdata = util.cloneObject(vm.getTabdataById(vm.right_click_tabid), true); //deep copy tabcontent
+                tabdata.tabid = Tab.addTab();
+                vm.data_all.current_tabid = tabdata.tabid;
+                vm.data_all.tabs.push(tabdata);
+                vm.data =tabdata ? tabdata.tabcontent : initial_data;
             },
             addPanel: function(){
                 console.log("add");
@@ -110,6 +178,9 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
                 //renderTable();
                 Datatable.renderTable( vm.data);
             });
+            vm.$watch("data", function(){
+                console.log("test111")
+            });
             vm.$watch("data.selected_den",function(){
                 console.log("刷新table");//TODO 请求后台 刷新table
               //  renderTable();
@@ -117,6 +188,12 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             });
         }
 
+        //创建维度
+        var newDimension = function(){
+
+        };
+
+        //创建分析主题
         var  newAnaylsis = function(){
             var id = Tab.addTab();//tabid generated
             var name = $("#anlysis_theme").val(),
@@ -129,7 +206,7 @@ define(["underscore", "easyui", "../js/component/add_dlg_component","../js/compo
             };
             vm.data_all.current_tabid = id;
             vm.data_all.tabs.push(tab);
-            var tabdata =  _.filter(vm.data_all.tabs, function(data){ return data.tabid === id; });//设置当前tab
+            var tabdata =  _.filter(vm.data_all.tabs.$model, function(data){ return data.tabid === id; });//设置当前tab
             vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
             vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
         };
