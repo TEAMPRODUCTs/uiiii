@@ -72,7 +72,6 @@
 }
 .input-label{
     width: 58px;
-    background-color: #F2F4F9;
     display: inline-block;
     text-align: center;
 }
@@ -87,13 +86,15 @@
 }
 
 .selected-magnanimity{
-    background-color: greenyellow;
+    background-color: #3c8b3c;
 }
-.selected-dimension{
-    background-color: #F2F4F9;
+.selected-dimension, .input-label{
+    background-color: #dddfe4;
 }
 .selected-filter{
     margin: 0 5px;
+    display: inline-block;
+    height: 27px;
 }
 
 .selected-filter a{
@@ -104,7 +105,7 @@
     display: inline-block;
     margin: 0 5px;
     height: 23px;
-    padding: 0 12px;
+    padding: 0 16px 0 12px;
     line-height: 23px;
 }
 .rightbar #tab-tools{
@@ -135,12 +136,24 @@ h2 {
 .field-div{
     margin: 5px 0;
 }
+.field-div input[type=text] {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    text-indent: 10px;
+}
+
 .field-label{
     width: 30%;
 }
 
 .field-value{
-    width: 70%;
+  /*  width: 70%;*/
+    width: 80%;
+    display: inline-block;
+}
+
+.field-mid-value{
     display: inline-block;
 }
 
@@ -200,12 +213,15 @@ h2 {
     padding: 5px 8px 5px 5px;
 }
 
-.nav-tabs .tabs-close{
+ .tabs-close{ /*.nav-tabs*/
     position: absolute;
     right: 0;
     top: 0px;
     padding: 3px 4px;
     background: url('../img//tabs_icons.png') no-repeat -34px center;
+}
+.input-content  .tabs-close{
+    padding: 0px 5px;
 }
 
 .dropdown-menu{
@@ -215,12 +231,51 @@ h2 {
     z-index: 10001;
     border: 1px solid #CDDAF0;
 }
-
 .dropdown-menu li{
     padding:5px;
+}
+.dropdown-menu li, .func-area li
+{
     cursor: pointer;
 }
 
 .dropdown-menu li a{
     color: black;
 }
+
+.title-tip{
+    color: grey;
+}
+
+.formula-textarea{
+    width: 100%;
+}
+
+.func-area , .func-detail {
+    width: 210.5px;
+    height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    float: left;
+    padding: 6.2px;
+}
+
+.clear{
+    clear: both;
+}
+
+.selected-dimension{
+    position: relative;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+

@@ -4,7 +4,7 @@
 define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], function (_,easyui, addSubjectDlghtml) {
     var dlg = {
         title:"Dlg", //dlg
-        container: "",//容器 id
+        container: "new_analysis_dlg",//容器 id
         content:"",//content html id
         width:'500px',
         inited:false,
@@ -22,9 +22,9 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             var bg = "<div class='modal-bg'></div>";//添加遮罩层
             $("body").append(bg);
             $("#" + self.container).show();
-            if(!!self.inited){ //防止多次创建dialog
+     /*       if(!!self.inited){ //防止多次创建dialog
                 return;
-            }
+            }*/
             self.inited = true;
             var dlgDiv = $("<div class='alertDiv dlg-div'></div>");
             dlgDiv.css("width",this.width);

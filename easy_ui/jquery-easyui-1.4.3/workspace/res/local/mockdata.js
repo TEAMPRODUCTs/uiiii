@@ -3,11 +3,17 @@
  */
 window.Mockdata ={
     current_tabid: 0,
+    func:[{"label": "+", id:"add", "sample":"不同度量值相加 <br/>示例:<br/> sales1 + sales2"},
+          {"label": "-", id:"minus", "sample":"不同度量值相减 <br/>示例:<br/> sales1 - sales2"},
+        ],
     tabs: [
         {
             tabid:0,
             tabname:"访问1",
             tabcontent:{
+                filter:{
+                    "visitdate":{"fromdate":"2014-01-13", "todate":"2014-02-13"}
+                },
                 selected_den:{
                     "column":[{"id": "address", "name": "城市11",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}],// TODO
                     "row":[{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}],

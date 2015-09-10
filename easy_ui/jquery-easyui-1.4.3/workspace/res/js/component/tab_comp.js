@@ -11,8 +11,18 @@ define([], function () {
             var id = this.idPrefix + timestamp;
             return id;
         },
-        deleteTab: function(){
-
+        deleteTab: function(index, vm){
+            var data_all = vm.data_all;
+            var id_active = null;
+            if(id == data_all.current_tabid){//若删除的是当前tab， 则
+                if(index < data_all.tabs.length -1){
+                    id_active = data_all.tabs[index + 1].tabid;
+                }else if(index > 0){
+                    id_active = data_all.tabs[index - 1].tabid;
+                }
+                vm.setActive(id_active);
+            }
+            vm.data_all.tabs.removeAt(index);
         },
 
         setActiveTab:function(id ,e){

@@ -22,9 +22,13 @@
 		<!---dropdown dimension-->
 		<div class="dropdown-menu dropdown-dimension" >
 			<ul>
-				<li><a href="javascript:void(0)" ms-click="createDimension()">创建维度</a></li>
-				<li><a href="javascript:void(0)" ms-click="createMetric()">创建度量</a></li>
-				<li><a href="javascript:void(0)" ms-click="copyDimen()">复制</a></li>
+				<li ms-click="createDimension()"><a href="javascript:void(0)" >创建维度</a></li>
+				<li  ms-click="createMetric()"><a href="javascript:void(0)">创建度量</a></li>
+				<li ms-click="copy()"><a href="javascript:void(0)" >复制</a></li>
+
+				<li ms-if="type== 2 || type ==4" ms-click="edit()"><a href="javascript:void(0)" >编辑</a></li>
+				<li ms-if="type== 2 || type ==4" ms-click="deleteitem()"><a href="javascript:void(0)" >删除</a></li>
+				<li ms-if="type== 2 || type ==4" ms-click="rename()"><a href="javascript:void(0)" >重命名</a></li>
 			</ul>
 		</div>
 
@@ -32,28 +36,26 @@
 			<h2 class="leftbar_title">维度</h2>
 			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
 				<ul class="section_ul" id="dimension_sec">
-					<li  ms-repeat="data.dimension" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "dimension" ms-mousedown="rightClickDem(event)"  oncontextmenu="return false" ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
+					<li  ms-repeat="data.dimension" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "dimension" ms-mousedown="rightClickDem(event)"  data-type="1" oncontextmenu="return false" ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
 				</ul>
 				<ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length">
-					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-mousedown="rightClickDem()" oncontextmenu="return false" ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
+					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-mousedown="rightClickDem()" data-type="2" oncontextmenu="return false" ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
 				</ul>
 			</div>
 
 			<h2 class="leftbar_title">度量</h2>
 			<div class="section_detail_cont"  ><!--拖拽适用范围 度量-->
 				<ul class="section_ul" id="metric_sec">
-					<li  ms-repeat="data.magnanimity" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "magnanimity"  ms-mousedown="rightClickMetric(event)"   oncontextmenu="return false" ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "magnanimity"  ms-mousedown="rightClickMetric(event)" data-type="3"  oncontextmenu="return false" ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 
 				<ul class="section_ul new_sec" id="new_metric_sec" ms-if="data.magnanimity_new.length">
-					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" ms-title="{{el.detail}}" data-typede = "magnanimity" ms-mousedown="rightClickMetric(event)"  oncontextmenu="return false"  ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" ms-title="{{el.detail}}" data-typede = "magnanimity" ms-mousedown="rightClickMetric(event)" data-type="4"  oncontextmenu="return false"  ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 			</div>
 		</section>
 	</div>
 	<div data-options="region:'center'" class="rightbar">
-
-
 		<div class="tabs-container">
 			<!------右栏tab 开始----->
 			<div class="dropdown-menu dropdown-tab" >
@@ -78,7 +80,13 @@
 					<span class="input-label">列</span>
 					<div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
 						<span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
-						<span class="selected-dimension" ms-repeat-el="data.selected_den.column" draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
+						<span ms-repeat-el="data.selected_den.column"  class="selected-dimension">
+							<span draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
+							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('column', el.id)" data-index="0">&nbsp;</a>
+							<!--<span class="caret"></span>-->
+						</span>
+
+
 					</div>
                     <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
@@ -108,8 +116,8 @@
 					<span class="input-label">筛选</span>
 					<div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
 						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
-                        <span class="selected-filter" ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index> <!--  ms-attr-id={{el.id}}-->
-                           <a href="javascript:void(0)">
+                        <span class="selected-filter"   ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  title="2014-1-1~2015-6-5"> <!--  ms-attr-id={{el.id}}-->
+                           <a href="javascript:void(0)"  ms-click="editfilter()">
 							   {{el.name}}
 						   </a>
                         </span>
@@ -126,12 +134,13 @@
 
 	<div id="new_analysis_dlg"></div>
 
+
+	<!----dlg html start--->
 	<script type="avalon" id="tpl">
       <div class="field-div">
            <label class="field-label">选择分析主题: </label>
              <div  class="field-value" >
                <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
-                	<option value="visit1">data_all.current_tabid</option>
                     <option value="visit1">访问1</option>
                     <option value="visit2">访问2</option>
                     <option value="visit3">访问3</option>
@@ -148,22 +157,89 @@
  </script>
 
 
-	<script type="avalon" id="create_dimension">
+	<div id="create_dimension">
       <div  class="field-div">
       		<label class="field-label">名称:</label>
-            <div  class="field-value" >
-                  <input id="dimen_name" type="text" required="required" title="请填写名称">
+            <div  class="field-mid-value" >
+                  <input id="dimen_name" class="edit-name" type="text" required="required" placeholder="请填写名称" title="请填写名称">
             </div>
-
-            <label class="field-label">字段类型:</label>
-            <div  class="field-value" >
-                  <input name="diemn_type" type="radio" required="required" >自动
-                  <input name="diemn_type" type="radio" required="required" >百分比
-            </div>
-
       </div>
- </script>
 
+       <div  class="field-div">
+      		 <label class="field-label">公式:<span class="title-tip">（拖动需要的字段到公式框内）</span></label>
+            <div  class="" > <!---拖动交互-->
+                 <textarea rows="8" class="formula-textarea" placeholder="拖动需要的字段到公式框内">
+				 </textarea>
+            </div>
+       </div>
+
+       <div  class="field-div">
+      		 <label class="field-label">函数:</span></label>
+            <div  class="func-container" > <!---拖动交互-->
+				<div class="func-area">
+					<ul>
+						<li> + </li>
+						<li> - </li>
+					</ul>
+				</div>
+				<div class="func-detail">不同度量值相加 <br/>示例:<br/> sales1 + sales2"</div>
+            </div>
+       </div>
+
+       <div class="clear"></div>
+ </div>
+
+	<div id="create_metric">
+		<div  class="field-div">
+			<label class="field-label">名称:</label>
+			<div  class="field-mid-value" >
+				<input id="metric_name" type="text" required="required" placeholder="请填写名称" title="请填写名称">
+			</div>
+
+			<label >字段类型:</label>
+			<div  class="field-mid-value" >
+				<input name="diemn_type" type="radio" required="required" >自动
+				<input name="diemn_type" type="radio" required="required" >百分比
+			</div>
+
+		</div>
+
+		<div  class="field-div">
+			<label class="field-label">公式:<span class="title-tip">（拖动需要的字段到公式框内）</span></label>
+			<div  class="" > <!---拖动交互-->
+                 <textarea rows="8" class="formula-textarea" placeholder="拖动需要的字段到公式框内">
+				 </textarea>
+			</div>
+		</div>
+
+		<div  class="field-div">
+			<label class="field-label">函数:</span></label>
+			<div  class="func-container" > <!---拖动交互-->
+				<div class="func-area">
+					<ul>
+						<li> + </li>
+						<li> - </li>
+					</ul>
+				</div>
+				<div class="func-detail">不同度量值相加 <br/>示例:<br/> sales1 + sales2"</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div id="date_filter">
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			<div  class="field-value" >
+			<!--	<input id="from_date_filter" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="text" class="easyui-datebox" required="required">-->
+				<input id="from_date_filter" type="date" value="2014-01-13" required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="date" value="2014-02-13" required="required">
+			</div>
+		</div>
+	</div>
+	<!----dlg html end--->
 </body>
 
 </html>

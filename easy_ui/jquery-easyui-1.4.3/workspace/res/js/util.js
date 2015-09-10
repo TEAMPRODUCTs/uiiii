@@ -43,6 +43,11 @@ define([], function () {
             }
 
             return cloned;
+        },
+        generateId: function(idPrefix){
+            var timestamp=new Date().getTime();//获取当前时间戳 生成id
+            var id = idPrefix + timestamp;
+            return id;
         }
     };
 
