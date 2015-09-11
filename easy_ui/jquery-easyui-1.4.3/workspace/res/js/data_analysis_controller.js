@@ -1,17 +1,34 @@
 define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp"],
     function (_,easyui, util, dlg_component , databse_op, Tab, Datatable, Draggable) {
         var initial_data = {
+            filter:{
+                "visitdate":{"fromdate":"2014-01-13", "todate":"2014-02-13"}
+            },
             selected_den:{
-                "column":[],
-                "row":[]
+                "column":[],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
+                "row":[],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
+                "magnanimity":[], //度量{"id": "pv", "name": "PV"}
+                "filter":[{name:"访问日期", id:"date", value:{}}]
             },
             dimension:[//维度
+                {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
+                {label:"平台",id:"platform", detail:"平台",data:["Android","IOS","PAD","PCS"]},
+                {label:"城市",id:"address", detail:"城市", data:["上海","北京","广州","成都","武汉"]}
             ],
             dimension_new:[//新增维度
+                {label:"日期1", id:"date1",detail:"日期1", data:[2011,2012,2013,2014,2015]},
+                {label:"平台1",id:"platform1",detail:"平台1", data:["Android","IOS","PAD","PCS"]},
+                {label:"城市1",id:"address1",detail:"城市1", data:["上海","北京","广州","成都","武汉"]}
             ],
             magnanimity : [//度量
+                {label:"PV", id:"pv",detail:"PV"},
+                {label:"新访客", id:"visitor",detail:"新访客"},
+                {label:"访客数", id:"visitorNum",detail:"访客数"}
             ],
             magnanimity_new : [//新增度量
+                {label:"PV1", id:"pv1",detail:"PV1"},
+                {label:"新访客1", id:"visitior1",detail:"新访客1"},
+                {label:"访客数1", id:"visitiorNum1",detail:"访客数1"}
             ]
         };
         var vm = avalon.define({
@@ -43,6 +60,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             remove: function(type, id){
                 var obj =  _.find(vm.data.selected_den[type],function(data){return data.id == id});
                 vm.data.selected_den[type].remove(obj);
+                vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
             },
             drag: function(ev){
                 Draggable.drag(ev);
@@ -255,7 +273,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 //renderTable();
                 Datatable.renderTable( vm.data);
             });
-            vm.$watch("data", function(){
+            vm.$watch("data.selected_den", function(){
                 console.log("test111")
             });
             vm.$watch("data.selected_den",function(){
@@ -286,7 +304,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             var tab = {
                 tabid: id,
                 tabname: name,
-                tabcontent:window.Mockdata.tabs[0].tabcontent//TODO 初始化initial_data
+                tabcontent:initial_data//window.Mockdata.tabs[0].tabcontent//TODO 初始化initial_data
             };
             vm.data_all.current_tabid = id;
             vm.data_all.tabs.push(tab);

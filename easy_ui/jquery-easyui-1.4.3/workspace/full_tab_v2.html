@@ -31,7 +31,6 @@
 				<li ms-if="type== 2 || type ==4" ms-click="rename()"><a href="javascript:void(0)" >重命名</a></li>
 			</ul>
 		</div>
-
 		<section class="section_left">
 			<h2 class="leftbar_title">维度</h2>
 			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
@@ -96,7 +95,10 @@
 					<span class="input-label">行</span>
 					<div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
 						<span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
-						<span class="selected-dimension" ms-repeat-el="data.selected_den.row" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
+						<span ms-repeat-el="data.selected_den.row"  class="selected-dimension">
+							<span draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
+							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('row', el.id)" data-index="0">&nbsp;</a>
+						</span>
 					</div>
                       <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear"  style="width: 27px; height: 27px;"></a></span>

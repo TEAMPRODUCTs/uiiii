@@ -153,6 +153,10 @@ h2 {
     display: inline-block;
 }
 
+#new_analysis_dlg .field-value{
+    width: 70%;
+}
+
 .field-mid-value{
     display: inline-block;
 }

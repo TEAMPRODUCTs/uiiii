@@ -9,7 +9,7 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             ev.dataTransfer.effectAllowed = "move";
             var elem = ev.target
             ev.dataTransfer.setData("typede", $(elem).data("typede"));//维度度量 大类分
-            ev.dataTransfer.setData("type", $(elem).parent(".input-content").data("type")); //行列分类
+            ev.dataTransfer.setData("type", $(elem).parents(".input-content").data("type")); //行列分类
             ev.dataTransfer.setData("id", $(elem).data("id"));
             ev.dataTransfer.setData("index", $(elem).data("index"));
             ev.dataTransfer.setData("name", ev.target.innerHTML);
