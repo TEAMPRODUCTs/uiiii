@@ -35,21 +35,21 @@
 			<h2 class="leftbar_title">维度</h2>
 			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
 				<ul class="section_ul" id="dimension_sec">
-					<li  ms-repeat="data.dimension" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "dimension" ms-mousedown="rightClickDem(event)"  data-type="1" oncontextmenu="return false" ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
+					<li  ms-repeat="data.dimension" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "dimension" ms-mousedown="rightClickDem(event)"  data-type="1" oncontextmenu="return false" ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-data-name=el.label ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
 				</ul>
 				<ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length">
-					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-mousedown="rightClickDem()" data-type="2" oncontextmenu="return false" ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
+					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-mousedown="rightClickDem()" data-type="2" oncontextmenu="return false" ms-on-dragstart="drag(event)" ms-data-name=el.label ms-data-id=el.id>{{el.label}}</li>
 				</ul>
 			</div>
 
 			<h2 class="leftbar_title">度量</h2>
 			<div class="section_detail_cont"  ><!--拖拽适用范围 度量-->
 				<ul class="section_ul" id="metric_sec">
-					<li  ms-repeat="data.magnanimity" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "magnanimity"  ms-mousedown="rightClickMetric(event)" data-type="3"  oncontextmenu="return false" ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity" ms-if-loop="el" ms-title="{{el.detail}}" data-typede = "magnanimity"  ms-mousedown="rightClickMetric(event)" data-type="3"  oncontextmenu="return false" ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-data-name=el.label ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 
 				<ul class="section_ul new_sec" id="new_metric_sec" ms-if="data.magnanimity_new.length">
-					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" ms-title="{{el.detail}}" data-typede = "magnanimity" ms-mousedown="rightClickMetric(event)" data-type="4"  oncontextmenu="return false"  ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" ms-title="{{el.detail}}" data-typede = "magnanimity" ms-mousedown="rightClickMetric(event)" data-type="4"  oncontextmenu="return false"  ms-on-dragstart="drag(event)" oncontextmenu="return false" draggable="true" ms-data-id=el.id ms-data-name=el.label ms-attr-id={{el.id}}>{{el.label}}</li>
 				</ul>
 			</div>
 		</section>
@@ -79,8 +79,8 @@
 					<span class="input-label">列</span>
 					<div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
 						<span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
-						<span ms-repeat-el="data.selected_den.column"  class="selected-dimension">
-							<span draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
+						<span ms-repeat-el="data.selected_den.column"  class="selected-dimension" draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index ms-data-name=el.name>
+							<span  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('column', el.id)" data-index="0">&nbsp;</a>
 							<!--<span class="caret"></span>-->
 						</span>
@@ -95,8 +95,8 @@
 					<span class="input-label">行</span>
 					<div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
 						<span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
-						<span ms-repeat-el="data.selected_den.row"  class="selected-dimension">
-							<span draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
+						<span ms-repeat-el="data.selected_den.row"  class="selected-dimension" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-data-name=el.name>
+							<span >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('row', el.id)" data-index="0">&nbsp;</a>
 						</span>
 					</div>
@@ -108,7 +108,12 @@
 					<span class="input-label">度量</span>
 					<div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
 						<span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
-						<span class="selected-magnanimity" ms-repeat-el="data.selected_den.magnanimity" draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index>{{el.name}}</span><!--  ms-attr-id={{el.id}}-->
+						<span ms-repeat-el="data.selected_den.magnanimity"  class="selected-magnanimity"  draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index ms-data-name=el.name>
+							<span class="">{{el.name}}</span><!--  ms-attr-id={{el.id}}-->
+							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('magnanimity', el.id)" data-index="0">&nbsp;</a>
+						</span>
+					<!--	<span class="" ms-repeat-el="data.selected_den.magnanimity" draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index>{{el.name}}</span>--><!--  ms-attr-id={{el.id}}-->
+
 					</div>
                       <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0"ms-click="clear" style="width: 27px; height: 27px;"></a></span>

@@ -14,6 +14,9 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             ev.dataTransfer.setData("index", $(elem).data("index"));
             ev.dataTransfer.setData("name", ev.target.innerHTML);
             ev.dataTransfer.setData("isMagnanmity", ev.target.innerHTML);
+
+            ev.dataTransfer.setData("name", $(elem).data("name"));
+            ev.dataTransfer.setData("isMagnanmity", $(elem).data("name"));
         },
         drop: function (ev, vm) {
             var id = ev.dataTransfer.getData("id");

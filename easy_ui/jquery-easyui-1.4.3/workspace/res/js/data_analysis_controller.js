@@ -337,8 +337,8 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 width:"110px"
             });
 
-            var today = new Date();
-            $('#to_date').datebox('setValue', today);
+          /*  var today = new Date();*/
+           // $('#to_date').datebox('setValue', "2015-9-10");
         };
 
         avalon.scan(); //初始化数据

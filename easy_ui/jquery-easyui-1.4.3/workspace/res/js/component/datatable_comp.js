@@ -38,12 +38,13 @@ define([], function () {
             if(columns_j.length != 0){
                 columns_total.push(columns_j);
             }
-
+            var fields = [];
             for(var j = 0; j <  column_selected.length; j++){
                 var column_j = column_selected[j];
                 var column_next = null;
                 var colspan = 1;
                 columns_j = [];
+
                 if(j == 0){
                     //添加行
                     var row_selected = resultset.row_selected || {};
@@ -63,7 +64,7 @@ define([], function () {
                     }
 
                 }else{
-                    var fields = column_j.field;
+                    fields = column_j.field;
                     for(var x = 0;  x < fields.length; x++){
                         var data_j = column_j.data;
                         //console.log(x%data_j.length + " jjj " + data_j[x/data_j.length]);//取模取title
@@ -75,16 +76,36 @@ define([], function () {
                 columns_total.push(columns_j);
                 console.log(JSON.stringify(columns_total));
             }
+            console.log(fields.join(","));
+            var row_selected = resultset.row_selected || {};
+            var total_rows = 1;
+            var rows = [];
+            var filed = [];
+            for(var i = 0 ; i < row_selected.length; i++){
+                rows.push(row_selected[i].data.length);
+                filed.push(row_selected[i].id);
+                total_rows = total_rows * row_selected[i].data.length;
+            }
+
             $(self.elemid).datagrid({
                 data: data_rows || [],
                 width:"100%",
                 columns:columns_total,
+               // frozenColumns:frozenColumns,
+                sortName:fields.join(","),
               //  pagination:true,
                 freezeRow: 0,
                 onBeforeLoad:function(){
                     $(self.elemid).css("display","");
                 },
                 onLoadSuccess:function(data){
+
+                    //TODO 合并单元格具体实现
+/*
+                    for(var j = 0 ; j < rows.length ; j++){
+                        $(self.elemid).datagrid('frozenColumns',j);
+                    }
+*/
                     if(data.total == 0)
                     {
                         $(self.elemid).css("display","none");
@@ -97,16 +118,7 @@ define([], function () {
                 }
             });
 
-            //TODO 合并单元格具体实现
-            var row_selected = resultset.row_selected || {};
-            var total_rows = 1;
-            var rows = [];
-            var filed = [];
-            for(var i = 0 ; i < row_selected.length; i++){
-                rows.push(row_selected[i].data.length);
-                filed.push(row_selected[i].id);
-                total_rows = total_rows * row_selected[i].data.length;
-            }
+
 
             if(rows.length > 1){
                 for(var i = 0; i < rows[0]; i++){
@@ -116,10 +128,9 @@ define([], function () {
                         rowspan: rows[1],
                         colspan:1
                     });
-
                 }
-
             }
+
 
         }
     }
