@@ -13,9 +13,6 @@ define([], function () {
             var magnanimitu = _.pluck(data.selected_den.magnanimity, 'id');
             key += "_" + magnanimitu.join("");
 
-            console.log("############################################");
-            console.log(key);
-
             var resultset = window.Mockdata.tabs[0].tabcontent.data[key] || {};//TODO后端返回结果
             var data_rows =resultset ?  resultset.rows : [];
 
@@ -74,9 +71,7 @@ define([], function () {
                 }
 
                 columns_total.push(columns_j);
-                console.log(JSON.stringify(columns_total));
             }
-            console.log(fields.join(","));
             var row_selected = resultset.row_selected || {};
             var total_rows = 1;
             var rows = [];

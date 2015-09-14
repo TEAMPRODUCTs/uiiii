@@ -290,3 +290,8 @@ h2 {
 .tabs-container{
     margin-right: 15px;
 }
+
+.selected-container-div{
+    hight:34px;
+    line-height: 34px;
+}

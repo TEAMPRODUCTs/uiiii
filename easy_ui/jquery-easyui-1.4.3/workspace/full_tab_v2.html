@@ -77,16 +77,16 @@
 			<div class="tab-content" id="tab_content">
 				<div class="input-div">
 					<span class="input-label">列</span>
-					<div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
-						<span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
+					<div class="selected-container-div input-content">
+						<div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
+							<span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
 						<span ms-repeat-el="data.selected_den.column"  class="selected-dimension" draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index ms-data-name=el.name>
-							<span  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
+							<span  >{{el.name}}</span>
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('column', el.id)" data-index="0">&nbsp;</a>
-							<!--<span class="caret"></span>-->
 						</span>
-
-
+						</div>
 					</div>
+
                     <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
 				</div>

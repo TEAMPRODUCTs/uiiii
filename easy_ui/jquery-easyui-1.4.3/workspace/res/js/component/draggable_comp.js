@@ -43,13 +43,22 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
                 return;
             }
             var xpos = ev.offsetX;
+            var ypos = ev.offsetY;
+
+            console.log("xpos:" + xpos + " ypos:" + ypos);
             var target_index = null;
 
             var selectedElem = elem.find(".selected-" + typede);
+
+            console.log("111#################################################################");
             for (var i = 0; i < selectedElem.length; i++) {
                 var elem_i = selectedElem[i];
-                var left = elem_i.offsetLeft + elem_i.offsetWidth / 2; //通过坐标判断位置 只判一层
-                if (xpos < left) {
+                var left = elem_i.offsetX + elem_i.offsetWidth / 2; //通过坐标判断位置 只判一层
+                var top = elem_i.offsetY  + elem_i.offsetHeight;
+                console.log("left: " + left + " right:" + top);
+                console.log("#################################################################");
+                console.log("__________________" + i + "_" + left);
+                if (xpos < left && ( elem_i.offsetTop < ypos < top)) {
                     target_index = i;
                     break;
                 }
