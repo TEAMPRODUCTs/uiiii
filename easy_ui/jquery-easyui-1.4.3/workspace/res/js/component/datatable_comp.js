@@ -3,7 +3,8 @@
  */
 define([], function () {
     var table = {
-        elemid : "#dg",//table 宿主容器
+        elemid : "#dg",//table
+        height:"150px",
         renderTable : function(data){
             var self  =this;
             var columns = _.pluck(data.selected_den.column, 'id');
@@ -27,9 +28,9 @@ define([], function () {
                 var row_selected = resultset.row_selected || {};
                 for(var i = 0 ; i < row_selected.length; i++){
                     var row_i = row_selected[i];
-                    var obj = {field:row_i.id,title:row_i.label,frozen:true}; // rowspan: row_i.rowspan,
+                    var obj = {field:row_i.id,title:row_i.label}; // , rowspan: row_i.rowspan
                     frozenColumns.push(obj);
-                    columns_j.push(obj);
+                   // columns_j.push(obj);
                 }
             }
             if(columns_j.length != 0){
@@ -47,9 +48,9 @@ define([], function () {
                     var row_selected = resultset.row_selected || {};
                     for(var i = 0 ; i < row_selected.length; i++){
                         var row_i = row_selected[i];
-                        var obj = {field:row_i.id,title:row_i.label,frozen:true, rowspan: row_i.rowspan}; //
+                        var obj = {field:row_i.id,title:row_i.label}; //,rowspan: row_i.rowspan
                         frozenColumns.push(obj);
-                        columns_j.push(obj);
+                       // columns_j.push(obj);
                     }
                 }
 
@@ -59,13 +60,12 @@ define([], function () {
                         var obj = {title:data_j[z],colspan:column_j.colspan};
                         columns_j.push(obj);
                     }
-
                 }else{
                     fields = column_j.field;
                     for(var x = 0;  x < fields.length; x++){
                         var data_j = column_j.data;
                         //console.log(x%data_j.length + " jjj " + data_j[x/data_j.length]);//取模取title
-                        var obj = {title:data_j[x%data_j.length],field:fields[x],width:100,  colspan:column_j.colspan};
+                        var obj = {title:data_j[x%data_j.length],field:fields[x],  width:100, colspan:column_j.colspan};
                         columns_j.push(obj);
                     }
                 }
@@ -82,14 +82,15 @@ define([], function () {
                 total_rows = total_rows * row_selected[i].data.length;
             }
 
+            var frozenColumns_table = [];
+            frozenColumns_table.push(frozenColumns);
             $(self.elemid).datagrid({
                 data: data_rows || [],
                 width:"100%",
                 columns:columns_total,
-               // frozenColumns:frozenColumns,
+                frozenColumns:frozenColumns_table,
                 sortName:fields.join(","),
               //  pagination:true,
-                freezeRow: 0,
                 onBeforeLoad:function(){
                     $(self.elemid).css("display","");
                 },

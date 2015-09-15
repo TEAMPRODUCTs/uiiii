@@ -93,12 +93,14 @@
 
 				<div class="input-div">
 					<span class="input-label">行</span>
-					<div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
-						<span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
+					<div class="selected-container-div input-content">
+						<div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragenter="dragenter(event)"   ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
+							<span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
 						<span ms-repeat-el="data.selected_den.row"  class="selected-dimension" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-data-name=el.name>
 							<span >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('row', el.id)" data-index="0">&nbsp;</a>
 						</span>
+						</div>
 					</div>
                       <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear"  style="width: 27px; height: 27px;"></a></span>
@@ -106,15 +108,16 @@
 
 				<div class="input-div">
 					<span class="input-label">度量</span>
-					<div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
-						<span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
+					<div class="selected-container-div input-content">
+						<div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
+							<span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
 						<span ms-repeat-el="data.selected_den.magnanimity"  class="selected-magnanimity"  draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index ms-data-name=el.name>
 							<span class="">{{el.name}}</span><!--  ms-attr-id={{el.id}}-->
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('magnanimity', el.id)" data-index="0">&nbsp;</a>
 						</span>
-					<!--	<span class="" ms-repeat-el="data.selected_den.magnanimity" draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index>{{el.name}}</span>--><!--  ms-attr-id={{el.id}}-->
-
+						</div>
 					</div>
+
                       <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0"ms-click="clear" style="width: 27px; height: 27px;"></a></span>
 				</div>
@@ -133,7 +136,7 @@
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
 				</div>
 
-				<table id="dg"></table>
+				<table id="dg" style="height: 150px;"></table>
 				<div class="nodata">未查询到数据</div>
 			</div>
 		</div>

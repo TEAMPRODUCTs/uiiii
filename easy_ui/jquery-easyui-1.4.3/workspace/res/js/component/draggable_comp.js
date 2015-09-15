@@ -6,8 +6,10 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
         vm:"",
         fileterobj:"",
         drag: function (ev) {
-            ev.dataTransfer.effectAllowed = "move";
             var elem = ev.target
+            //ev.dataTransfer.effectAllowed = "copy";
+            ev.dataTransfer.effectAllowed = "copy"; //该属性只在dragstart中起作用
+
             ev.dataTransfer.setData("typede", $(elem).data("typede"));//维度度量 大类分
             ev.dataTransfer.setData("type", $(elem).parents(".input-content").data("type")); //行列分类
             ev.dataTransfer.setData("id", $(elem).data("id"));
@@ -18,6 +20,26 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             ev.dataTransfer.setData("name", $(elem).data("name"));
             ev.dataTransfer.setData("isMagnanmity", $(elem).data("name"));
         },
+        dragenter: function(ev, vm){
+        },
+        dragover: function(ev, vm){
+            var id = ev.dataTransfer.getData("id");
+            var name = ev.dataTransfer.getData("name");
+            var typede_from = ev.dataTransfer.getData("typede");
+            var elem = $(ev.currentTarget);
+            var type = elem.data("type");
+            var typede = elem.data("typede");
+            var data = ev.dataTransfer.getData("data");
+            ev.dataTransfer.dropEffect ="copy";
+            if (typede_from != typede || (!id || !name)) {//维度 度量大类需一致
+              //  ev.dataTransfer.dropEffect ="none";
+            }else{
+               // ev.dataTransfer.dropEffect ="copy";
+            }
+        },
+        noDrop: function (elem) {
+            elem.css("")
+        },
         drop: function (ev, vm) {
             var id = ev.dataTransfer.getData("id");
             var name = ev.dataTransfer.getData("name");
@@ -27,7 +49,7 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             var typede = elem.data("typede");
             var data = ev.dataTransfer.getData("data");
             if (typede_from != typede) {//维度 度量大类需一致
-                return;
+                return false;
             }
             var type_from = ev.dataTransfer.getData("type");
             var index = NaN;
@@ -40,27 +62,23 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
                 }
             }
             if (!id || !name) {
-                return;
+                return false;
             }
             var xpos = ev.offsetX;
-            var ypos = ev.offsetY;
-
-            console.log("xpos:" + xpos + " ypos:" + ypos);
             var target_index = null;
 
             var selectedElem = elem.find(".selected-" + typede);
-
-            console.log("111#################################################################");
             for (var i = 0; i < selectedElem.length; i++) {
                 var elem_i = selectedElem[i];
-                var left = elem_i.offsetX + elem_i.offsetWidth / 2; //通过坐标判断位置 只判一层
-                var top = elem_i.offsetY  + elem_i.offsetHeight;
-                console.log("left: " + left + " right:" + top);
-                console.log("#################################################################");
-                console.log("__________________" + i + "_" + left);
-                if (xpos < left && ( elem_i.offsetTop < ypos < top)) {
-                    target_index = i;
-                    break;
+                var left = elem_i.offsetLeft + elem.scrollLeft()+ elem_i.offsetWidth / 2; //通过坐标判断位置 只判一层
+               // var top = elem_i.offsetTop  + elem.scrollTop() + elem_i.offsetHeight;
+                var offsetTop = elem_i.offsetTop;
+                var elem_scrollTop = elem[0].scrollTop;
+                if((offsetTop > elem_scrollTop)){//处在第一层
+                    if (xpos < left ) {
+                        target_index = i;
+                        break;
+                    }
                 }
             }
             var type = elem.data("type");
@@ -70,7 +88,7 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             if (!(isNaN(index) && !!arr)) {
                 vm.data.selected_den[type].splice(target_index, 0, {"id": id, "name": name});
             } else {
-                return;
+                return false;
             }
             if (!!arr && !isNaN(index)) {
                 //内部调位置
@@ -81,6 +99,7 @@ define(["../util","../component/add_dlg_component"], function (util,dlg_componen
             }
 
             vm.$fire("data.selected_den", vm.data.selected_den);
+
         },
         copy: function (vm) {
             var type = parseInt(vm.type, 10);

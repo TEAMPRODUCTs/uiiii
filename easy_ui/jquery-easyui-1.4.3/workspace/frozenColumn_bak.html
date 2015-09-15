@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <script type="text/javascript" src="res/libs/jquery.js"></script>
+    <script type="text/javascript" src="res/libs/easyui.js"></script>
+</head>
+<body>
+    <div id="tt"></div>
+</body>
+<script>
+/*    $('#tt').datagrid({
+        title:'Frozen Columns',
+        iconCls:'icon-save',
+        width:500,
+        height:250,
+        url:'res/data/datagrid_data.json',
+        frozenColumns:[
+            {field:'itemid',title:'Item ID'},//,width:80
+            {field:'productid',title:'Product ID'},//,width:80
+        ],
+        columns:[
+            {field:'listprice',title:'List Price',width:80,align:'right'},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:100}
+        ]
+    });*/
+var frozenColumns = [[{"field":"date","title":"日期"}]];//,"rowspan":2
+var columns = [
+    [{"title":"上海","colspan":4},{"title":"北京","colspan":4},{"title":"广州","colspan":4},{"title":"成都","colspan":4},{"title":"武汉","colspan":4}],
+    [{"title":"Android","field":"上海_Android","width":100,"colspan":1},
+        {"title":"IOS","field":"北京_Android","width":100,"colspan":1},
+        {"title":"PAD","field":"广州_Android","width":100,"colspan":1},
+        {"title":"PCS","field":"成都_Android","width":100,"colspan":1},
+        {"title":"Android","field":"武汉_Android","width":100,"colspan":1},
+        {"title":"IOS","field":"上海_IOS","width":100,"colspan":1},
+        {"title":"PAD","field":"北京_IOS","width":100,"colspan":1},
+        {"title":"PCS","field":"广州_IOS","width":100,"colspan":1},
+        {"title":"Android","field":"成都_IOS","width":100,"colspan":1},
+        {"title":"IOS","field":"武汉_IOS","width":100,"colspan":1},
+        {"title":"PAD","field":"上海_PAD","width":100,"colspan":1},
+        {"title":"PCS","field":"北京_PAD","width":100,"colspan":1},
+        {"title":"Android","field":"广州_PAD","width":100,"colspan":1},
+        {"title":"IOS","field":"成都_PAD","width":100,"colspan":1},{"title":"PAD","field":"武汉_PAD","width":100,"colspan":1},{"title":"PCS","field":"上海_PCS","width":100,"colspan":1},{"title":"Android","field":"北京_PCS","width":100,"colspan":1},{"title":"IOS","field":"广州_PCS","width":100,"colspan":1},{"title":"PAD","field":"成都_PCS","width":100,"colspan":1},{"title":"PCS","field":"武汉_PCS","width":100,"colspan":1}]];
+
+$('#tt').datagrid({
+    title:'Frozen Columns',
+    iconCls:'icon-save',
+    width:500,
+    height:250,
+    url:'res/data/datagrid_data1.json',
+    frozenColumns:frozenColumns,
+    columns:columns
+});
+
+</script>
+</html>

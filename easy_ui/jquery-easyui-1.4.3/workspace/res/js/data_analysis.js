@@ -13,8 +13,9 @@ require(["easyui","../js/data_analysis_controller", "../js/analysis_tab","ready!
     function resizeLayout(){
         $('.leftbar').css("height", window.innerHeight);
 
-        $(".input-content").width($(".input-div").width()-158);
-        $(".selected-container-div").width($(".input-div").width()-148);
+        console.log('nnih' +( $(".input-div").width()-158));
+        $(".input-content").width($(".input-div").width()-188);
+        $(".selected-container-div").width($(".input-div").width()-168);
     }
 
 });

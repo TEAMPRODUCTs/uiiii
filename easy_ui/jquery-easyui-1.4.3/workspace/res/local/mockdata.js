@@ -15,8 +15,8 @@ window.Mockdata ={
                     "visitdate":{"fromdate":"2014-01-13", "todate":"2014-02-13"}
                 },
                 selected_den:{
-                    "column":[],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
-                    "row":[],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
+                    "column":[{"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
+                    "row":[{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
                     "magnanimity":[], //度量{"id": "pv", "name": "PV"}
                     "filter":[{name:"访问日期", id:"date", value:{}}]
                 },

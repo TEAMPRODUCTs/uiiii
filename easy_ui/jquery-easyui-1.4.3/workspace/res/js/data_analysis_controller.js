@@ -68,11 +68,15 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             drop : function (ev) {
                 Draggable.drop(ev, vm);
             },
+            dragenter : function(ev){
+                Draggable.dragenter(ev, vm);
+            },
             allowDrop: function(ev){
-                ev.preventDefault();
+                Draggable.dragover(ev, vm);
+                ev.preventDefault();//dropEffect默认设置为none  无法触发drop 事件 需要阻止默认事件触发后续drop事件
             },
             clear:function(e){
-               var type =  $(e.currentTarget).parent().prev().data("type");
+               var type =  $(e.currentTarget).parent().prev().find(".input-content").data("type");
                 vm.data.selected_den[type].clear();//TODO 同步记录态
                 vm.$fire("data.selected_den",vm.data.selected_den);
             },
