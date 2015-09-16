@@ -95,13 +95,6 @@ define([], function () {
                     $(self.elemid).css("display","");
                 },
                 onLoadSuccess:function(data){
-
-                    //TODO 合并单元格具体实现
-/*
-                    for(var j = 0 ; j < rows.length ; j++){
-                        $(self.elemid).datagrid('frozenColumns',j);
-                    }
-*/
                     if(data.total == 0)
                     {
                         $(self.elemid).css("display","none");

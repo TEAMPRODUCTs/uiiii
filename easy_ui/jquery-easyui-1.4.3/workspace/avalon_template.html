@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="res/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="res/css/custome_dlg.css">
+    <link rel="stylesheet" href="res/css/data_analysis.css"/>
+    <script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
+    <script type="text/javascript" src="res/libs/avalon.js"></script>
+    <script>
+        require(["../js/component/add_dlg_component","avalpn.testui","../js/component/dlg_comp"],function(dlg, ui, dlg_comp){
+            var model = avalon.define({
+                $id: "test",
+                content: "引入内部模板",
+                name: "司徒正美",
+                opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
+                eee: "lala",
+                change: function() {
+                    model.eee = model.eee === "lala" ? "hehe" : "lala"
+                },
+                test14: function(e){
+
+                    var opts = {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"ni年会",
+                        data:["fromdate","todate","include_tpl", "title"],
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter114"
+                    }
+                    dlg_comp.init(opts);
+                    return;
+
+
+
+
+                    var opts = {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"hello",
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter114",
+                        //initHandler:
+                        data:["fromdate","todate","include_tpl", "title"],
+                        close:function(){alert("hi" + opts.container);$("#" + opts.container).hide();},
+                        okBtnClick:function(){alert("ok");},
+                        cacenlBtnClick:function(){alert("cancel");},
+                        footerBtns:[{"label":"确定", "handler":"okBtnClick"},{"label":"取消", "handler":"cacenlBtnClick"}]
+                    }
+                   $("#" + opts.container).show()
+                    avalon.define({
+                        $id: "test13",
+                        $opts:opts
+                    })
+                    avalon.scan(); //初始化数据
+
+                },
+
+            test12: function(e){
+                var opts = {
+                    fromdate:"2015-04-09",
+                    todate:"2015-06-11",
+                    title:"hello",
+                    data:["include_tpl"],
+                    include_tpl:"date_filter111",
+                }
+                dlg_comp.init(opts);
+                return ;
+                    var opts = {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"hello",
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter111",
+                        //initHandler:
+                        close:function(){$("#" + opts.container).hide();},
+                        okBtnClick:function(){alert("ok");},
+                        cacenlBtnClick:function(){alert("cancel");},
+                        footerBtns:[{"label":"确定", "handler":"okBtnClick"},{"label":"取消", "handler":"cacenlBtnClick"}]
+                    }
+                   $("#" + opts.container).show();
+                    avalon.define({
+                        $id: "test13",
+                        $opts:opts
+                    })
+                    avalon.scan(); //初始化数据
+
+                },
+
+                testok: function(e){
+                    var opts = {
+                        fromdate:"2015-02-15",
+                        todate:"2015-06-08",
+                        title:"hello",
+                        close:function(){$("#new_analysis_dlg1").hide();},
+                        okBtnClick:function(){alert("ok");},
+                        cacenlBtnClick:function(){alert("cancel");},
+                        footerBtns:[{"label":"确定", "handler":"okBtnClick"},{"label":"取消", "handler":"cacenlBtnClick"}]
+
+                    }
+                    $("#new_analysis_dlg1").show();
+                    avalon.define({
+                        $id: "test11",
+                        $opts:opts
+                    })
+                    avalon.scan(); //初始化数据
+                },
+
+                test: function(e){
+                    var opts = {
+                        fromdate:"2015-02-09",
+                        todate:"2015-06-08",
+                        title:"hello",
+                        okBtnClick:function(){alert("ok");},
+                        cacenlBtnClick:function(){alert("cancel");},
+                        footerBtns:[{"label":"确定", "handler":"okBtnClick"},{"label":"取消", "handler":"cacenlBtnClick"}]
+
+                    }
+                    avalon.define({
+                        $id: "test11",
+                        $opts:opts
+                    })
+                    avalon.scan(); //初始化数据
+                },
+
+                editfilter: function(e){
+                    var option = {
+                        title:"视图筛选器",
+                        content:"date_filter",
+                    }
+
+                    dlg.showDlg(option);
+                    avalon.define({
+                        $id: "test1",
+                        $opts:model.opts
+                    })
+                   avalon.scan(); //初始化数据
+                },
+            })
+            avalon.scan(); //初始化数据
+            return model;
+
+            avalon.ready(function() {
+               // analysis_controller.init();
+            });
+        });
+
+
+    </script>
+</head>
+<body ms-controller="test">
+<script type="avalon" id="tpl">
+here, {{ 3 + 6 * 5  }}
+</script>
+<script type="avalon" id="lala">
+<strong>{{name}}</strong>!!!
+</script>
+<script type="avalon" id="hehe">
+<em>{{content}}</em>!!!
+</script>
+
+<!--<input ms-duplex="value" />
+<button type="button" ms-click="plus">ClickMe</button>-->
+
+<script type="avalon" id="date_filter">
+<div ms-controller="test1" ms-widget="testui,ddd,$opts" >
+      <div  class="field-div">
+        <label class="field-label">访问日期</label>
+        <div  class="field-value" >
+
+            <input id="from_date_filter" type="date" ms-value=fromdate required="required">&nbsp;至&nbsp;
+            <input id="to_date_filter" type="date"  ms-value=todate required="required">
+        </div>
+    </div>
+</div>
+</script>
+
+<p>{{content}}<button ms-click="change" type="button">切换子模板</button></p>
+<div ms-include="'tpl'"></div><!--注意这里-->
+<div ms-include="eee"></div>
+<div id="new_analysis_dlg" >
+
+</div>
+
+<!--dlg-->
+<div ms-controller="test11" ms-widget="testui,ddd,$opts" >
+    <div id="new_analysis_dlg1">
+        <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{title}}<i class="fa fa-times-circle" ms-click="close">X</i></div><div class="dlg_body">
+            <div avalonctrl="datefilter">
+                <div class="field-div">
+                    <label class="field-label">访问日期</label>
+                    <div class="field-value">
+                        <input id="from_date_filter" ms-value=fromdate required="required">&nbsp;至&nbsp;
+                        <input id="to_date_filter" ms-value=todate required="required">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="alert_foot">
+                <em ms-repeat="footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--dlg template--->
+<div ms-controller="test13" ms-widget="testui,ddd" data-testui-data="opts">
+    <div id="dlg_container">
+        <div class="modal-bg"></div>
+        <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{title}}<i class="fa fa-times-circle" ms-click="close">X</i></div>
+            <div class="dlg_body">
+                <div ms-include="include_tpl"></div>
+            </div>
+            <div class="alert_foot">
+                <em ms-repeat="footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="avalon" id="date_filter111">
+	<div >
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			<div  class="field-value" >
+				<input id="from_date_filter" type="date" ms-value=fromdate required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="date" ms-value=todate required="required">
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<script type="avalon" id="date_filter114">
+	<div >
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			testsssss
+		</div>
+	</div>
+</script>
+
+
+
+
+<button ms-click="editfilter" type="button">editfilter</button></p>
+<button ms-click="test" type="button">test</button>
+<button ms-click="testok" type="button">testok</button>
+
+</p>
+<button ms-click="test12" type="button">test12</button>
+<button ms-click="test14" type="button">test14</button>
+</body>
+</html>

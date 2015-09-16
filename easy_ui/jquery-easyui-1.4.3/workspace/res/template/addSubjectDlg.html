@@ -1,12 +1,33 @@
-<div class="alertDiv">
-    <div class="alert_header">新建分析主题<i class="fa fa-times-circle"></i></div>
-    <div class="alert_body">
-        <label>选择分析主题</label>
-        <input>
 
-        <label>选择数据时段</label>
-        <input id="from_date" type="text" class="easyui-datebox" required="required">
-        <input id="to_date" type="text" class="easyui-datebox" required="required">
-    </div>
-    <div class="alert_foot"><em>确定</em><em>取消</em></div>
-</div>
+<!----dlg html start--->
+<script type="avalon" id="tpl">
+      <div class="field-div">
+           <label class="field-label">选择分析主题: </label>
+             <div  class="field-value" >
+               <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
+                    <option value="visit1">访问1</option>
+                    <option value="visit2">访问2</option>
+                    <option value="visit3">访问3</option>
+               </select>
+             </div>
+      </div>
+      <div  class="field-div">
+            <label class="field-label">选择数据时段:</label>
+            <div  class="field-value" >
+                  <input id="from_date" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
+                  <input id="to_date" type="text" class="easyui-datebox" required="required">
+            </div>
+      </div>
+ </script>
+
+<script type="avalon" id="date_filter">
+	<div ms-controller="datefilter" ms-widget="ui,ddd,opts" >
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			<div  class="field-value" >
+				<input id="from_date_filter" type="date" ms-value=fromdate required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="date" ms-value=todate required="required">
+			</div>
+		</div>
+	</div>
+	</script>

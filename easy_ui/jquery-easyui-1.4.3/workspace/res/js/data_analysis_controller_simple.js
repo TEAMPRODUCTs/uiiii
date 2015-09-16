@@ -1,13 +1,13 @@
-define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp"],
+define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp","avalon.ui"],
     function (_,easyui, util, dlg_component , databse_op, Tab, Datatable, Draggable) {
         var initial_data = {
             filter:{
                 "visitdate":{"fromdate":"2014-01-13", "todate":"2014-02-13"}
             },
             selected_den:{
-                "column":[],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
-                "row":[],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
-                "magnanimity":[], //度量{"id": "pv", "name": "PV"}
+                "column":[],
+                "row":[],
+                "magnanimity":[],
                 "filter":[{name:"访问日期", id:"date", value:{}}]
             },
             dimension:[//维度
@@ -37,6 +37,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             right_click_tabid:"",//记录右击tab
             right_click_demid:"",//记录右击维度 id
             right_click_metricid:"",//记录右击度量id
+            opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
             data_all :{
                 current_tabid:"",//当前的tab
                 tabs:[]
@@ -134,51 +135,57 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             },
 
             rightClickDem:function(e){
-                var  obj = e.currentTarget;
+               /* var  obj = e.currentTarget;
                 var id = $(obj).data("id"); //维度id
                 if(e.button == 2){
                     vm.right_click_demid = id;
                     vm.type = $(obj).data("type");
                     vm.showDropdown("dropdown-dimension", obj);
-                }
+                }*/
             },
 
             rightClickMetric:function(e){
-                var  obj = e.currentTarget;
+               /* var  obj = e.currentTarget;
                 var id = $(obj).data("id"); //维度id
                 if(e.button == 2){
                     vm.right_click_metricid = id;
                     vm.type = $(obj).data("type");
                     vm.showDropdown("dropdown-dimension", obj);
-                }
+                }*/
             },
             createDimension:function(e){//创建维度
-                var option = {
+            /*    var option = {
                     title:"创建维度字段",
                     content:"create_dimension",
                     buttons:[{text: "确定", handler:newDimension},{text: "取消", handler:dlg_component.closeDlg}]
                 }
-                dlg_component.showDlg(option);
+                dlg_component.showDlg(option);*/
             },
             createMetric: function(e){//创建度量
-                var option = {
+                /*var option = {
                     title:"创建度量字段",
                     content:"create_metric",
                     buttons:[{text: "确定", handler:newMetric},{text: "取消", handler:dlg_component.closeDlg}]
                 }
-                dlg_component.showDlg(option);
+                dlg_component.showDlg(option);*/
             },
             copy: function(e){//复制维度
-                Draggable.copy(vm);
+              /*  Draggable.copy(vm);*/
             },
             editfilter: function(e){
                 var option = {
                     title:"视图筛选器",
                     content:"date_filter",
                     //initHandlers:[dlgDateFilterInit],
-                    buttons:[{text: "确定", handler:newMetric},{text: "取消", handler:dlg_component.closeDlg}]
+                    buttons:[/*{text: "确定", handler:dateFilterCallback},*/{text: "取消", handler:dlg_component.closeDlg}]
                 }
                 dlg_component.showDlg(option);
+
+                avalon.define({
+                    $id: "datefilter",
+                    opts:vm.opts
+                })
+                avalon.scan(); //初始化数据
             },
             getFilterObj: function(type,vm){
                 switch (type) {
@@ -204,46 +211,6 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
 
             edit : function(e){
                 Draggable.edit(vm);
-              /*  var type = parseInt(vm.type, 10);
-                switch (type) {
-                    case 2:
-                        var content = "create_dimension";
-                        var handler = vm.updateDiemen;
-                        break;
-                    case 4:
-                        var content = "create_metric";
-                        var handler = vm.undateMetric;
-                        break;
-                }
-                var filterObj = vm.getFilterObj(type,vm);
-                var option = {
-                    title:"编辑字段",
-                    content:content,
-                    initHandlers:[function(){$(".edit-name").val(filterObj.label);console.log(filterObj.label)}],
-                    buttons:[{text: "确定", handler:handler},{text: "取消", handler:dlg_component.closeDlg}]
-                }
-                dlg_component.showDlg(option);
-
-*/
-
-               /* var type = parseInt(vm.type, 10);
-                switch (type) {
-                    case 2:
-                        var content = "create_dimension";
-                        var handler = Draggable.updateDiemen;
-                        break;
-                    case 4:
-                        var content = "create_metric";
-                        var handler = Draggable.undateMetric;
-                        break;
-                }
-                var option = {
-                    title:"编辑字段",
-                    content:content,
-                    initHandlers:function(){$(".edit-name").val();},
-                    buttons:[{text: "确定", handler:handler},{text: "取消", handler:dlg_component.closeDlg}]
-                }
-                dlg_component.showDlg(option);*/
             },
             deleteitem: function(e){
                 Draggable.delete(vm);
@@ -272,10 +239,8 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data; //TODO REMOVE
             vm.data_all = window.Mockdata;
-
-            //tabInit(); tab generated
+            initDateRange();
             avalon.nextTick(function() {
-                //renderTable();
                 Datatable.renderTable( vm.data);
             });
             vm.$watch("data.selected_den", function(){
@@ -288,13 +253,21 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             });
         }
 
+        function initDateRange(){
+            var today = new Date();
+            vm.opts.todate = util.formateDate(today, "yyyy-MM-dd");
+            var  fromdate = new Date();
+            fromdate.setDate(fromdate.getDate() - 30);
+            vm.opts.fromdate = util.formateDate(fromdate,"yyyy-MM-dd" );
+        }
+
         //创建维度
         var newDimension = function(){
             var dimension = $("#dimen_name").val();
             vm.data.dimension_new.push({"label":dimension, "id": util.generateId("dimension_"),"detail": dimension});
         };
 
-        //创建维度
+        //创建量度
         var newMetric = function(){
             var metric = $("#metric_name").val();
             vm.data.magnanimity_new.push({"label":metric, "id": util.generateId("metric_"),"detail": metric});

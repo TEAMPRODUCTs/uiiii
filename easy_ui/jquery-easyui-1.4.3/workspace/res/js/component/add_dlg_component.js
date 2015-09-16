@@ -59,7 +59,6 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             dlgDiv.append(head).append(body).append(foot).appendTo($("#" + self.container));
 
             var initHandlers = self.initHandlers;
-            console.log("initHandlers")
             for(var i = 0 ; i < initHandlers.length; i ++){
                 var fn =  initHandlers[i];
                 if(fn && typeof fn === 'function'){
