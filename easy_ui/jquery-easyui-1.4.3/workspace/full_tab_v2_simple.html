@@ -125,12 +125,15 @@
 				<div class="input-div">
 					<span class="input-label">筛选</span>
 					<div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
-						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
-                        <span class="selected-filter"   ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  title="2014-1-1~2015-6-5"> <!--  ms-attr-id={{el.id}}-->
+<!--
+						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.size" class="tips">拖动到这里，增加数据</span>
+-->
+						 <span class="selected-filter"   ms-repeat="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=$val.id  ms-data-index=$key  ms-title=$val.title> <!--  ms-attr-id={{el.id}}-->
                            <a href="javascript:void(0)"  ms-click="editfilter()">
-							   {{el.name}}
+							   {{$val.name}}
 						   </a>
                         </span>
+
 					</div>
                       <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
                      <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>

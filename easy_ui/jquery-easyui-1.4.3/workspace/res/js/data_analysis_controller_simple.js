@@ -8,7 +8,8 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 "column":[],
                 "row":[],
                 "magnanimity":[],
-                "filter":[{name:"访问日期", id:"date", value:{}}]
+                "filter":{date:{name:"访问日期", id:"date", value:{},title:"2014-1-1~2015-6-5"},
+                    date1:{name:"访问日期1", id:"date1", value:{},title:"2014-11-1~2015-16-5"}}
             },
             dimension:[//维度
                 {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
@@ -37,17 +38,18 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             right_click_tabid:"",//记录右击tab
             right_click_demid:"",//记录右击维度 id
             right_click_metricid:"",//记录右击度量id
-            opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
+            initialdate:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
             data_all :{
                 current_tabid:"",//当前的tab
                 tabs:[]
             },
             data:{
-                filter:{},
                 //column , row , magnanimity
                 selected_den:{
                     "column":[],
-                    "row":[]
+                    "row":[],
+                    "magnanimity":[],
+                    "filter":{date:{name:"", id:"", fromdate:"", todate:"", value:{},title:""}}
                 },
                 dimension:[//维度
                 ],
@@ -177,13 +179,13 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                     title:"视图筛选器",
                     content:"date_filter",
                     //initHandlers:[dlgDateFilterInit],
-                    buttons:[/*{text: "确定", handler:dateFilterCallback},*/{text: "取消", handler:dlg_component.closeDlg}]
+                    buttons:[{text: "确定", handler:dateFilterCallback},{text: "取消", handler:dlg_component.closeDlg}]
                 }
                 dlg_component.showDlg(option);
 
                 avalon.define({
                     $id: "datefilter",
-                    opts:vm.opts
+                    opts: vm.data.selected_den.filter.date.$model
                 })
                 avalon.scan(); //初始化数据
             },
@@ -255,10 +257,25 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
 
         function initDateRange(){
             var today = new Date();
-            vm.opts.todate = util.formateDate(today, "yyyy-MM-dd");
             var  fromdate = new Date();
             fromdate.setDate(fromdate.getDate() - 30);
-            vm.opts.fromdate = util.formateDate(fromdate,"yyyy-MM-dd" );
+            setDateRange(fromdate, today);
+        }
+
+        function setDateRange(fromdate, todate){
+            var date = vm.data.selected_den.filter.date
+            date.todate = util.formateDate(todate, "yyyy-MM-dd");
+            date.fromdate = util.formateDate(fromdate,"yyyy-MM-dd" );
+            date.title =  date.fromdate + " ~ " + date.todate;
+            date.name = "访问日期";
+            date.id = "date";
+        }
+
+        //TODO
+        var dateFilterCallback = function(){
+            var date = vm.data.filter.date;
+            date.todate = $("#to_date_filter").val();
+            date.fromdate = $("#from_date_filter").val();
         }
 
         //创建维度
@@ -292,15 +309,6 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
         };
 
         var dlgDateFilterInit = function(){
-            $('#from_date_filter').datebox({
-                required:true,
-                width:"110px"
-            });
-
-            $('#to_date_filter').datebox({
-                required:true,
-                width:"110px"
-            });
         }
 
         //TODO 初始化化日期
@@ -314,9 +322,6 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 required:true,
                 width:"110px"
             });
-
-          /*  var today = new Date();*/
-           // $('#to_date').datebox('setValue', "2015-9-10");
         };
 
         avalon.scan(); //初始化数据

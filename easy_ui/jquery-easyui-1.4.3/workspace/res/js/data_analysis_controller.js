@@ -8,7 +8,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 "column":[],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
                 "row":[],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
                 "magnanimity":[], //度量{"id": "pv", "name": "PV"}
-                "filter":[{name:"访问日期", id:"date", value:{}}]
+                "filter":[{name:"访问日期", id:"date", value:{},title:"2014-1-1~2015-6-5"}]
             },
             dimension:[//维度
                 {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
@@ -42,11 +42,12 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 tabs:[]
             },
             data:{
-                filter:{},
                 //column , row , magnanimity
                 selected_den:{
                     "column":[],
-                    "row":[]
+                    "row":[],
+                    "magnanimity":[],
+                    "filter":[]
                 },
                 dimension:[//维度
                 ],

@@ -17,12 +17,12 @@ define(["avalon","avalonHelper"], function(avalon, avalonHelper) {
                 vm.test(); //调用传进来的参数
             }
             vm.$init = function(){
-               // avalon.mix( vm, data.testuiOptions)//优先添加用户的配置，防止它覆盖掉widget的一些方法与属性
-                //savalonHelper.access( data.testuiOptions.data,vmodels)()
+                avalon.mix( vm, data.testuiOptions)//优先添加用户的配置，防止它覆盖掉widget的一些方法与属性
+              /*  //savalonHelper.access( data.testuiOptions.data,vmodels)()
                 avalonHelper.watch( data.testuiOptions.data,vmodels,function(){
                     model.data=avalonHelper.access( data.testuiOptions.data,vmodels)();
                     console.log("data changed");
-                })
+                })*/
             },
             vm.clickBind = function(el){
                 var fn = vm[el.handler];

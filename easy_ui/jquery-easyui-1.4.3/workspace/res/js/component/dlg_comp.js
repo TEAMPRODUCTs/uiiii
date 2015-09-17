@@ -18,11 +18,24 @@ define(["text!../../template/addSubjectDlg.html","avalpn.testui","avalonHelper"]
         init:function(opts){
             avalon.mix(this.opts, opts)//优先添加用户的配置，防止它覆盖掉widget的一些方法与属性
             $("#" + this.opts.container).show();
-            avalon.define({
+            var vm = avalon.define({
                 $id: "test13",
-                opts:this.opts
+                opts:this.opts,
+                clickBind : function(el){//调用bind函数
+                    var fn = vm.opts[el.handler];
+                    if(fn && typeof fn === 'function'){
+                        fn();
+                    }
+                },
+                $init: function () {
+                  console.log("init");
+                },
+                close : function(){
+                    $("#" + vm.opts.container).hide();
+                }
             })
-
+            vm.$init = function(){console.log("sss")}
+            avalon.mix( vm, opts)
             avalon.nextTick(function() {
                 //widget的VM已经生成，可以添加回去让它被扫描
                 avalon.scan(); //初始化数据

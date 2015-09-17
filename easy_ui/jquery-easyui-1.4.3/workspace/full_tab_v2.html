@@ -126,7 +126,7 @@
 					<span class="input-label">筛选</span>
 					<div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
 						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
-                        <span class="selected-filter"   ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  title="2014-1-1~2015-6-5"> <!--  ms-attr-id={{el.id}}-->
+                     	<span class="selected-filter"   ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  title="2014-1-1~2015-6-5"> <!--  ms-attr-id={{el.id}}-->
                            <a href="javascript:void(0)"  ms-click="editfilter()">
 							   {{el.name}}
 						   </a>

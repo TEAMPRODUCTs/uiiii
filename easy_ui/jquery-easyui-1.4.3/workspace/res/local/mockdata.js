@@ -18,7 +18,7 @@ window.Mockdata ={
                     "column":[{"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}],// TODO {"id": "address", "name": "城市",data:["上海","北京","广州","成都","武汉"]},{"id": "platform", "name": "平台",data:["Android","IOS","PAD","PCS"]}
                     "row":[{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}],//{"id": "date", "name": "日期",data:[2011,2012,2013,2014,2015]}
                     "magnanimity":[], //度量{"id": "pv", "name": "PV"}
-                    "filter":[{name:"访问日期", id:"date", value:{}}]
+                    "filter":{date:{name:"访问日期", id:"date",fromdate:"2014-1-1", todate:"2015-6-5", value:{},title:"2014-1-1~2015-6-5"}}
                 },
                 dimension:[//维度
                     {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
@@ -4975,7 +4975,7 @@ window.Mockdata ={
                         ]
                     },
                     addressplatform_date_:{
-                        "total":4,
+                        "total":5,
                         "column_selected":[{"id": "address", "name": "城市11","data":["上海","北京","广州","成都","武汉"], "colspan":4,
                         },{"id": "platform", "name": "平台","data":["Android","IOS","PAD","PCS"], "colspan":1,
                             "field": ["上海_Android","北京_Android", "广州_Android","成都_Android","武汉_Android" , "上海_IOS", "北京_IOS", "广州_IOS","成都_IOS" , "武汉_IOS", "上海_PAD", "北京_PAD", "广州_PAD","成都_PAD", "武汉_PAD",

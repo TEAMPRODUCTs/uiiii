@@ -65,7 +65,7 @@ define([], function () {
                     for(var x = 0;  x < fields.length; x++){
                         var data_j = column_j.data;
                         //console.log(x%data_j.length + " jjj " + data_j[x/data_j.length]);//取模取title
-                        var obj = {title:data_j[x%data_j.length],field:fields[x],  width:100, colspan:column_j.colspan};
+                        var obj = {title:data_j[x%data_j.length],field:fields[x],  width:100,sortable:true, colspan:column_j.colspan,sorter:function(a,b){console.log(a + " " + b);}};
                         columns_j.push(obj);
                     }
                 }
@@ -89,8 +89,14 @@ define([], function () {
                 width:"100%",
                 columns:columns_total,
                 frozenColumns:frozenColumns_table,
-                sortName:fields.join(","),
-              //  pagination:true,
+               // multiSort:false,
+                //sortName:fields.join(","),
+                pagination:true,
+                singleSelect:true,
+                pageList:[2,3,4,5],
+                onSortColumn:function(){
+                  console.log("sort");//TODO SORT
+                },
                 onBeforeLoad:function(){
                     $(self.elemid).css("display","");
                 },
