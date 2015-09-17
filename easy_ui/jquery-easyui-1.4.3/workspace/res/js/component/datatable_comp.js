@@ -82,20 +82,23 @@ define([], function () {
                 total_rows = total_rows * row_selected[i].data.length;
             }
 
+            if((!columns_total || !columns_total.length) && (!frozenColumns || !frozenColumns.length)){
+                return;
+            }
             var frozenColumns_table = [];
             frozenColumns_table.push(frozenColumns);
             $(self.elemid).datagrid({
                 data: data_rows || [],
                 width:"100%",
                 columns:columns_total,
-                pageSize:2,
                 total: resultset.total,
                 frozenColumns:frozenColumns_table,
+                loadMsg:'数据装载中......',
                // multiSort:false,
                 //sortName:fields.join(","),
                 pagination:true,
                 singleSelect:true,
-                pageList:[2,3,4,5],
+
                 onSortColumn:function(){
                   console.log("sort");//TODO SORT
                 },
@@ -113,8 +116,24 @@ define([], function () {
                         $(".nodata").css("display","none");
                     }
                 }
+            })
+            var p = $(self.elemid).datagrid('getPager');
+            $(p).pagination({
+                pageList:[2,3,4,5],
+                pageSize:2,
+              //  displayMsg:'当前显示从{from}到{to}共{total}记录',
+                onBeforeRefresh:function(pageNumber, pageSize){
+                    $(this).pagination('loading');
+                    $(this).pagination('loaded');
+                },
+                onSelectPage: function(pageNumber, pageSize){
+                    console.log(pageNumber + " " + pageSize );//TODO 调后台
+                    // $('#content').panel('refresh', 'show_content.php?page='+pageNumber);
+                },
+                onChangePageSize: function(pageSize){
+                    console.log(pageSize);
+                }
             });
-
 
 
             if(rows.length > 1){
