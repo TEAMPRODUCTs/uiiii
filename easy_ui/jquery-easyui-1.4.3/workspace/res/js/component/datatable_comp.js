@@ -88,6 +88,8 @@ define([], function () {
                 data: data_rows || [],
                 width:"100%",
                 columns:columns_total,
+                pageSize:2,
+                total: resultset.total,
                 frozenColumns:frozenColumns_table,
                // multiSort:false,
                 //sortName:fields.join(","),
