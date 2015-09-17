@@ -1,11 +1,26 @@
 
 <!----dlg html start--->
+
+<!---TODO  REMOVE template dropdown dimension
+<div class="dropdown-menu dropdown-dimension" >
+    <ul>
+        <li ms-click="createDimension()"><a href="javascript:void(0)" >创建维度</a></li>
+        <li  ms-click="createMetric()"><a href="javascript:void(0)">创建度量</a></li>
+        <li ms-click="copy()"><a href="javascript:void(0)" >复制</a></li>
+
+        <li ms-if="type== 2 || type ==4" ms-click="edit()"><a href="javascript:void(0)" >编辑</a></li>
+        <li ms-if="type== 2 || type ==4" ms-click="deleteitem()"><a href="javascript:void(0)" >删除</a></li>
+        <li ms-if="type== 2 || type ==4" ms-click="rename()"><a href="javascript:void(0)" >重命名</a></li>
+    </ul>
+</div>-->
+
 <script type="avalon" id="tpl">
+<div ms-controller="new_date" ms-widget="ui,ddd,opts" >
       <div class="field-div">
            <label class="field-label">选择分析主题: </label>
              <div  class="field-value" >
                <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
-                    <option value="visit1">访问1</option>
+                    <option value="visit1">访问_44</option>
                     <option value="visit2">访问2</option>
                     <option value="visit3">访问3</option>
                </select>
@@ -14,10 +29,11 @@
       <div  class="field-div">
             <label class="field-label">选择数据时段:</label>
             <div  class="field-value" >
-                  <input id="from_date" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
-                  <input id="to_date" type="text" class="easyui-datebox" required="required">
+            	<input id="from_date" type="date" ms-value=fromdate required="required">&nbsp;至&nbsp;
+				<input id="to_date" type="date" ms-value=todate required="required">
             </div>
       </div>
+  </div>
  </script>
 
 <script type="avalon" id="date_filter">

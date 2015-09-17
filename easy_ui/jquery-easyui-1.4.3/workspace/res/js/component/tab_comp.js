@@ -1,7 +1,7 @@
 /**
  * Created by fiona.xu on 2015/9/8.
  */
-define([], function () {
+define(["../common/constant"], function (constant) {
     var tab = {
         elemid:"mytab",
         content:"tab_content",
@@ -14,13 +14,18 @@ define([], function () {
         deleteTab: function(index, vm){
             var data_all = vm.data_all;
             var id_active = null;
-            if(index == data_all.current_tabid){//若删除的是当前tab， 则
+            var deleteId = data_all.tabs[index ].tabid;
+            if(deleteId == data_all.current_tabid){//若删除的是当前tab， 则
                 if(index < data_all.tabs.length -1){
                     id_active = data_all.tabs[index + 1].tabid;
                 }else if(index > 0){
                     id_active = data_all.tabs[index - 1].tabid;
                 }
-                vm.setActive(id_active);
+                if(!id_active){
+                    vm.data = constant.getInitial_data();
+                }else{
+                    vm.setActive(id_active);
+                }
             }
             vm.data_all.tabs.removeAt(index);
         },

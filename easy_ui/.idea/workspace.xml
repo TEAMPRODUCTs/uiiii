@@ -23,8 +23,8 @@
             <file leaf-file-name="avalon_template.html" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_template.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.26673865">
-                    <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+                  <state vertical-scroll-proportion="1.1715246">
+                    <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
                     <folding>
                       <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                       <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -33,17 +33,13 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="data_analysis_controller.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller.js">
+            <file leaf-file-name="add_dlg_component.js" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/add_dlg_component.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
-                    <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+                    <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
                     <folding>
-                      <element signature="e#908#1193#0" expanded="false" />
-                      <element signature="e#1221#1516#0" expanded="false" />
-                      <element signature="e#1544#1732#0" expanded="false" />
-                      <element signature="e#7851#8452#0" expanded="false" />
-                      <element signature="e#8491#8682#0" expanded="false" />
+                      <element signature="e#0#43#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -60,11 +56,21 @@
             <file leaf-file-name="full_tab_v2_simple.html" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2_simple.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.7812142">
-                    <caret line="143" column="18" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
+                  <state vertical-scroll-proportion="0.062870696">
+                    <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
                     <folding>
                       <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="addSubjectDlg.html" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="-6.785714">
+                    <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -83,11 +89,11 @@
       <file leaf-file-name="mockdata.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/local/mockdata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.933333">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+            <state vertical-scroll-proportion="-0.6333333">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
               <folding>
                 <element signature="e#0#44#0" expanded="false" />
-                <element signature="e#69360#77820#0" expanded="false" />
+                <element signature="e#69355#77815#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -96,8 +102,8 @@
       <file leaf-file-name="avalon_controller.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_controller.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.362069">
-              <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state vertical-scroll-proportion="-2.2413793">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -105,76 +111,107 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dlg_comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/dlg_comp.js">
+      <file leaf-file-name="tab_comp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/tab_comp.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="50" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
               <folding>
-                <element signature="e#0#44#0" expanded="false" />
+                <element signature="e#0#43#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_analysis_controller_simple.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_analysis_controller_simple.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5072303">
-              <caret line="51" column="29" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="29" />
+            <state vertical-scroll-proportion="-4.4333334">
+              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
               <folding>
-                <element signature="e#3595#3841#0" expanded="false" />
-                <element signature="e#5332#5563#0" expanded="false" />
-                <element signature="e#5610#5910#0" expanded="false" />
-                <element signature="e#5950#6279#0" expanded="false" />
-                <element signature="e#6322#6654#0" expanded="false" />
-                <element signature="e#6695#7010#0" expanded="false" />
-                <element signature="e#7049#7358#0" expanded="false" />
-                <element signature="e#7389#7450#0" expanded="false" />
-                <element signature="e#8953#9004#0" expanded="false" />
+                <element signature="e#738#819#0" expanded="false" />
+                <element signature="e#2189#2435#0" expanded="false" />
+                <element signature="e#4000#4231#0" expanded="false" />
+                <element signature="e#4278#4578#0" expanded="false" />
+                <element signature="e#4618#4947#0" expanded="false" />
+                <element signature="e#4990#5322#0" expanded="false" />
+                <element signature="e#5363#5678#0" expanded="false" />
+                <element signature="e#5717#6026#0" expanded="false" />
+                <element signature="e#6057#6118#0" expanded="false" />
+                <element signature="e#6155#6619#0" expanded="false" />
+                <element signature="e#6664#7265#0" expanded="false" />
+                <element signature="e#7528#7579#0" expanded="false" />
+                <element signature="e#8697#8925#0" expanded="false" />
+                <element signature="e#10759#10940#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="datatable_comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/datatable_comp.js">
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/base.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+              <caret line="165" column="18" selection-start-line="137" selection-start-column="3" selection-end-line="165" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="avalpn.testui.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalpn.testui.js">
+      <file leaf-file-name="constant.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/constant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6932185">
+              <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/util.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="28" />
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="avalon_module.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_module.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.25">
+              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="avalon.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalon.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.866667">
+              <caret line="349" column="35" selection-start-line="349" selection-start-column="29" selection-end-line="349" selection-end-column="35" />
               <folding>
-                <element signature="e#0#44#0" expanded="false" />
+                <element signature="e#142088#142249#0" expanded="false" />
+                <element signature="e#142275#142400#0" expanded="false" />
+                <element signature="e#143637#143792#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addSubjectDlg.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html">
+      <file leaf-file-name="full_tab_v2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.172414">
-              <caret line="28" column="70" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="avalon.ui.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalon.ui.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="-18.178572">
+              <caret line="134" column="61" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -186,16 +223,17 @@
       <list>
         <option value="CSS File" />
         <option value="package_json" />
-        <option value="JavaScript File" />
         <option value="Html5" />
+        <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SORT_ALPHABETICALLY" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/data_analysis.js" />
-        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/test.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/require.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/main.js" />
         <option value="$USER_HOME$/Downloads/easyui-shopping-demo/dnd2_demo.html" />
@@ -221,7 +259,6 @@
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/right_test.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/css/custome_dlg.css" />
-        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/tab_comp.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/scroll.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/css/data_analysis.css" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/draggable_comp.js" />
@@ -234,7 +271,6 @@
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/add_dlg_component.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/util.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_template.html" />
-        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalon.ui.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/datatable_comp.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalpn.testui.js" />
@@ -242,9 +278,13 @@
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_controller.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller.js" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2.html" />
+        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/local/mockdata.js" />
+        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_module.html" />
+        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2_simple.html" />
         <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js" />
-        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/local/mockdata.js" />
+        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/tab_comp.js" />
+        <option value="$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/constant.js" />
       </list>
     </option>
   </component>
@@ -256,8 +296,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-33" />
-    <option name="y" value="10" />
+    <option name="x" value="7" />
+    <option name="y" value="42" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
@@ -431,7 +471,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easy_ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easy_ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-easyui-1.4.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easy_ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="easy_ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-easyui-1.4.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -447,7 +543,7 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/github/jsShare/easy_ui/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller.js" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -518,11 +614,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-33" y="10" width="1936" height="1066" extended-state="0" />
+    <frame x="7" y="42" width="1936" height="1066" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12864584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -535,7 +632,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12212943" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -630,12 +726,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
-          <line>157</line>
+          <line>129</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
-          <line>165</line>
+          <line>137</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -645,29 +741,35 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
-          <line>258</line>
+          <line>233</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
+          <line>19</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
+          <line>259</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
+          <line>16</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js</url>
+          <line>279</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/demo/tabs/tabstools.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.892858">
-          <caret line="19" column="131" selection-start-line="19" selection-start-column="120" selection-end-line="19" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/demo/tabs/tabposition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.035715">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/src/jquery.tabs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.76084536">
@@ -700,13 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.392857">
           <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.6">
-          <caret line="2516" column="0" selection-start-line="2516" selection-start-column="0" selection-end-line="2516" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -765,16 +860,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/tab_comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,30 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.466667">
-          <caret line="165" column="18" selection-start-line="137" selection-start-column="3" selection-end-line="165" selection-end-column="18" />
-          <folding>
-            <marker date="1440126661016" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440126661016" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440126661016" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440126661016" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440126661016" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="19" />
-          <folding>
-            <element signature="e#201#963#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalonHelper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -956,16 +1017,6 @@
         <state vertical-scroll-proportion="-12.214286">
           <caret line="18" column="28" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/add_dlg_component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,10 +1056,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.178572">
+          <caret line="134" column="61" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_module.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.25">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.525">
+          <caret line="334" column="12" selection-start-line="334" selection-start-column="12" selection-end-line="334" selection-end-column="12" />
           <folding>
             <element signature="e#908#1193#0" expanded="false" />
             <element signature="e#1221#1516#0" expanded="false" />
@@ -1019,22 +1090,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2.html">
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/add_dlg_component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17887029">
-          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_controller.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2413793">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/libs/avalon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.866667">
+          <caret line="349" column="35" selection-start-line="349" selection-start-column="29" selection-end-line="349" selection-end-column="35" />
+          <folding>
+            <element signature="e#142088#142249#0" expanded="false" />
+            <element signature="e#142275#142400#0" expanded="false" />
+            <element signature="e#143637#143792#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="18" selection-start-line="137" selection-start-column="3" selection-end-line="165" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/local/mockdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6333333">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
+            <element signature="e#69355#77815#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26673865">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        <state vertical-scroll-proportion="1.1715246">
+          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1042,60 +1160,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/full_tab_v2_simple.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7812142">
-          <caret line="143" column="18" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.062870696">
+          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/template/addSubjectDlg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.172414">
-          <caret line="28" column="70" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/avalon_controller.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.362069">
-          <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/local/mockdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.933333">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#44#0" expanded="false" />
-            <element signature="e#69360#77820#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/data_analysis_controller_simple.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5072303">
-          <caret line="51" column="29" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="29" />
+        <state vertical-scroll-proportion="-4.4333334">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
           <folding>
-            <element signature="e#3595#3841#0" expanded="false" />
-            <element signature="e#5332#5563#0" expanded="false" />
-            <element signature="e#5610#5910#0" expanded="false" />
-            <element signature="e#5950#6279#0" expanded="false" />
-            <element signature="e#6322#6654#0" expanded="false" />
-            <element signature="e#6695#7010#0" expanded="false" />
-            <element signature="e#7049#7358#0" expanded="false" />
-            <element signature="e#7389#7450#0" expanded="false" />
-            <element signature="e#8953#9004#0" expanded="false" />
+            <element signature="e#738#819#0" expanded="false" />
+            <element signature="e#2189#2435#0" expanded="false" />
+            <element signature="e#4000#4231#0" expanded="false" />
+            <element signature="e#4278#4578#0" expanded="false" />
+            <element signature="e#4618#4947#0" expanded="false" />
+            <element signature="e#4990#5322#0" expanded="false" />
+            <element signature="e#5363#5678#0" expanded="false" />
+            <element signature="e#5717#6026#0" expanded="false" />
+            <element signature="e#6057#6118#0" expanded="false" />
+            <element signature="e#6155#6619#0" expanded="false" />
+            <element signature="e#6664#7265#0" expanded="false" />
+            <element signature="e#7528#7579#0" expanded="false" />
+            <element signature="e#8697#8925#0" expanded="false" />
+            <element signature="e#10759#10940#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/component/tab_comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery-easyui-1.4.3/workspace/res/js/common/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6932185">
+          <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>

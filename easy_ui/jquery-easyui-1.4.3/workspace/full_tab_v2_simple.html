@@ -19,18 +19,6 @@
 </head>
 <body class="easyui-layout body-content"  ms-controller="test"  ms-click="bodyClick()">
 	<div data-options="region:'west',split:true" class="leftbar" style="width:150px;padding:4px;">
-		<!---TODO  REMOVE template dropdown dimension
-		<div class="dropdown-menu dropdown-dimension" >
-			<ul>
-				<li ms-click="createDimension()"><a href="javascript:void(0)" >创建维度</a></li>
-				<li  ms-click="createMetric()"><a href="javascript:void(0)">创建度量</a></li>
-				<li ms-click="copy()"><a href="javascript:void(0)" >复制</a></li>
-
-				<li ms-if="type== 2 || type ==4" ms-click="edit()"><a href="javascript:void(0)" >编辑</a></li>
-				<li ms-if="type== 2 || type ==4" ms-click="deleteitem()"><a href="javascript:void(0)" >删除</a></li>
-				<li ms-if="type== 2 || type ==4" ms-click="rename()"><a href="javascript:void(0)" >重命名</a></li>
-			</ul>
-		</div>-->
 		<section class="section_left">
 			<h2 class="leftbar_title">维度</h2>
 			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
@@ -112,7 +100,7 @@
 						<div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
 							<span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
 						<span ms-repeat-el="data.selected_den.magnanimity"  class="selected-magnanimity"  draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index ms-data-name=el.name>
-							<span class="">{{el.name}}</span><!--  ms-attr-id={{el.id}}-->
+							<span class="">{{el.name}}</span>
 							<a href="javascript:void(0)" class="tabs-close" ms-click="remove('magnanimity', el.id)" data-index="0">&nbsp;</a>
 						</span>
 						</div>
@@ -125,12 +113,10 @@
 				<div class="input-div">
 					<span class="input-label">筛选</span>
 					<div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
-<!--
-						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.size" class="tips">拖动到这里，增加数据</span>
--->
-						 <span class="selected-filter"   ms-repeat="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=$val.id  ms-data-index=$key  ms-title=$val.title> <!--  ms-attr-id={{el.id}}-->
+						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
+						<span class="selected-filter"   ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index  ms-title=el.title> <!--  ms-attr-id={{el.id}}-->
                            <a href="javascript:void(0)"  ms-click="editfilter()">
-							   {{$val.name}}
+							   {{el.name}}
 						   </a>
                         </span>
 

@@ -1,37 +1,7 @@
-define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp","../js/component/draggable_comp","avalon.ui"],
-    function (_,easyui, util, dlg_component , databse_op, Tab, Datatable, Draggable) {
-        var initial_data = {
-            filter:{
-                "visitdate":{"fromdate":"2014-01-13", "todate":"2014-02-13"}
-            },
-            selected_den:{
-                "column":[],
-                "row":[],
-                "magnanimity":[],
-                "filter":{date:{name:"访问日期", id:"date", value:{},title:"2014-1-1~2015-6-5"},
-                    date1:{name:"访问日期1", id:"date1", value:{},title:"2014-11-1~2015-16-5"}}
-            },
-            dimension:[//维度
-                {label:"日期", id:"date",detail:"日期", data:[2011,2012,2013,2014,2015]},
-                {label:"平台",id:"platform", detail:"平台",data:["Android","IOS","PAD","PCS"]},
-                {label:"城市",id:"address", detail:"城市", data:["上海","北京","广州","成都","武汉"]}
-            ],
-            dimension_new:[//新增维度
-                {label:"日期1", id:"date1",detail:"日期1", data:[2011,2012,2013,2014,2015]},
-                {label:"平台1",id:"platform1",detail:"平台1", data:["Android","IOS","PAD","PCS"]},
-                {label:"城市1",id:"address1",detail:"城市1", data:["上海","北京","广州","成都","武汉"]}
-            ],
-            magnanimity : [//度量
-                {label:"PV", id:"pv",detail:"PV"},
-                {label:"新访客", id:"visitor",detail:"新访客"},
-                {label:"访客数", id:"visitorNum",detail:"访客数"}
-            ],
-            magnanimity_new : [//新增度量
-                {label:"PV1", id:"pv1",detail:"PV1"},
-                {label:"新访客1", id:"visitior1",detail:"新访客1"},
-                {label:"访客数1", id:"visitiorNum1",detail:"访客数1"}
-            ]
-        };
+define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/database_op","../js/component/tab_comp","../js/component/datatable_comp",
+        "../js/component/draggable_comp","../js/common/constant","avalon.ui"],
+    function (_,easyui, util, dlg_component , databse_op, Tab, Datatable, Draggable, constant) {
+        var initial_data = constant.getInitial_data();
         var vm = avalon.define({
             $id:   "test",
             type:1, //1：维度 2：新增维度 3：度量 4：新增度量
@@ -43,13 +13,14 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 current_tabid:"",//当前的tab
                 tabs:[]
             },
+            initialdate:{fromdate:"", todate:""},
             data:{
                 //column , row , magnanimity
                 selected_den:{
                     "column":[],
                     "row":[],
                     "magnanimity":[],
-                    "filter":{date:{name:"", id:"", fromdate:"", todate:"", value:{},title:""}}
+                    "filter":[{name:"", id:"", fromdate:"", todate:"", value:{},title:""}]
                 },
                 dimension:[//维度
                 ],
@@ -87,7 +58,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 if((id !=0 && !id) || id == vm.data_all.current_tabid){
                     return;
                 }
-                Tab.setActiveTab(id, e);
+               // Tab.setActiveTab(id, e);
                 vm.setActive(id);
             },
             setActive: function(id){
@@ -115,6 +86,7 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                     buttons:[{text: "新建分析主题", handler:newAnaylsis}]
                 }
                 dlg_component.showDlg(option);
+                dateControllerInit("new_date",vm.initialdate);//初始化date
             },
             bodyClick: function(e){
                 console.log("body click");
@@ -182,12 +154,8 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                     buttons:[{text: "确定", handler:dateFilterCallback},{text: "取消", handler:dlg_component.closeDlg}]
                 }
                 dlg_component.showDlg(option);
-
-                avalon.define({
-                    $id: "datefilter",
-                    opts: vm.data.selected_den.filter.date.$model
-                })
-                avalon.scan(); //初始化数据
+                var date = getDateFilterObj();
+                dateControllerInit("datefilter", date);
             },
             getFilterObj: function(type,vm){
                 switch (type) {
@@ -236,11 +204,18 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             },
             selected_column: []//所选维度列
         });
-
+        function dateControllerInit(id, date){
+           // var date = getDateFilterObj();
+            avalon.define({
+                $id: id,
+                opts: date
+            })
+            avalon.scan(); //初始化数据
+        }
         vm.init = function(){
-            var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
+           /* var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data; //TODO REMOVE
-            vm.data_all = window.Mockdata;
+            vm.data_all = window.Mockdata;*/
             initDateRange();
             avalon.nextTick(function() {
                 Datatable.renderTable( vm.data);
@@ -259,11 +234,21 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             var today = new Date();
             var  fromdate = new Date();
             fromdate.setDate(fromdate.getDate() - 30);
-            setDateRange(fromdate, today);
+            //TODO
+            vm.initialdate.todate = util.formateDate(today, "yyyy-MM-dd");
+            vm.initialdate.fromdate = util.formateDate(fromdate,"yyyy-MM-dd" );
+            var date = getDateFilterObj();//返回日期对象
+            setDateRange(fromdate, today, date);
         }
 
-        function setDateRange(fromdate, todate){
-            var date = vm.data.selected_den.filter.date
+        function getDateFilterObj(){
+            var date = _.find(vm.data.selected_den.filter,function(data){return data.id == "date"});
+            return date;
+        }
+        function setDateRange(fromdate, todate, date){
+            if(!date){
+                return;
+            }
             date.todate = util.formateDate(todate, "yyyy-MM-dd");
             date.fromdate = util.formateDate(fromdate,"yyyy-MM-dd" );
             date.title =  date.fromdate + " ~ " + date.todate;
@@ -271,11 +256,12 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             date.id = "date";
         }
 
-        //TODO
+        //TODO datefilter obj
         var dateFilterCallback = function(){
-            var date = vm.data.filter.date;
+            var date =getDateFilterObj();
             date.todate = $("#to_date_filter").val();
             date.fromdate = $("#from_date_filter").val();
+            date.title =  date.fromdate + " ~ " + date.todate;
         }
 
         //创建维度
@@ -294,17 +280,31 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
         var  newAnaylsis = function(){
             var id = Tab.addTab();//tabid generated
             var name = $("#anlysis_theme").val(),
-                fromdate = $('#from_date').datebox("getValue"),//TODO
-                todate = $("#to_date").datebox("getValue");
+                fromdate = $('#from_date').val(),//TODO
+                todate = $("#to_date").val();
+
+            var newnitial_data = util.cloneObject(initial_data,true);//深度copy出来
+            var date = _.find(newnitial_data.selected_den.filter,function(data){return data.id == "date"}) ;
+            if(!date){ //若默认没date push
+                date = {};
+                newnitial_data.selected_den.filter.push(date) ;
+            }
+            date.todate = todate;
+            date.fromdate = fromdate;
+            date.title =  date.fromdate + " ~ " + date.todate;
+            date.name = "访问日期";
+            date.id = "date";
+            newnitial_data.dimension = constant.getDimension();
+            newnitial_data.magnanimity = constant.getMagnanimity();
             var tab = {
                 tabid: id,
                 tabname: name,
-                tabcontent:initial_data//window.Mockdata.tabs[0].tabcontent//TODO 初始化initial_data
+                tabcontent:newnitial_data
             };
             vm.data_all.current_tabid = id;
             vm.data_all.tabs.push(tab);
             var tabdata =  _.filter(vm.data_all.tabs.$model, function(data){ return data.tabid === id; });//设置当前tab
-            vm.data =tabdata ? tabdata[0].tabcontent : initial_data;
+            vm.data =tabdata ? tabdata[0].tabcontent : newnitial_data;
             vm.$fire("data.selected_den",vm.data.selected_den);//刷新table
         };
 
@@ -313,15 +313,6 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
 
         //TODO 初始化化日期
         var dlgDateInit = function(){
-            $('#from_date').datebox({
-                required:true,
-                width:"110px"
-            });
-
-            $('#to_date').datebox({
-                required:true,
-                width:"110px"
-            });
         };
 
         avalon.scan(); //初始化数据
