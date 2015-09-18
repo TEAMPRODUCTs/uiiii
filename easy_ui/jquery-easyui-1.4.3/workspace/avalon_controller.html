@@ -15,6 +15,7 @@
                 $id: "test",
                 content: "引入内部模板",
                 name: "司徒正美",
+                dlgvm:null,
                 opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
                 eee: "lala",
                 change: function() {
@@ -29,7 +30,7 @@
                         container: "dlg_container",//容器 id
                         include_tpl:"date_filter114"
                     }
-                    dlg_comp.init(opts);
+                    model.dlgvm = dlg_comp.init(opts);
                     return;
                 },
 
@@ -41,7 +42,9 @@
                         container: "dlg_container",//容器 id
                         include_tpl:"date_filter111"
                     }
-                    dlg_comp.init(opts);
+                    model.include_tpl= "date_filter111";
+                    model.title = "title";
+                   // dlg_comp.init(opts);
                 }
             })
             avalon.scan(); //初始化数据
@@ -63,7 +66,7 @@
         <div class="modal-bg"></div>
         <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{opts.title}}<i class="fa fa-times-circle" ms-click="close">X</i></div>
             <div class="dlg_body">
-                <div ms-include="include_tpl"></div>
+                <div ms-include="'date_filter111'"></div>
             </div>
             <div class="alert_foot">
                 <em ms-repeat="opts.footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
@@ -93,6 +96,7 @@
 		</div>
 	</div>
 </script>
+
 </div>
 
 

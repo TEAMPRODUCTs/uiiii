@@ -17,10 +17,29 @@
                 name: "司徒正美",
                 opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
                 eee: "lala",
+                opts: {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"ni年会",
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter114"
+                 },
                 change: function() {
                     model.eee = model.eee === "lala" ? "hehe" : "lala"
                 },
+
+
                 test14: function(e){
+                    model.opts =  {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"ni年会",
+                        data:["fromdate","todate","include_tpl", "title"],
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter114"
+                    };
+                    return;
+
 
                     var opts = {
                         fromdate:"2015-04-09",
@@ -34,31 +53,17 @@
                     return;
 
 
-
-
-                    var opts = {
-                        fromdate:"2015-04-09",
-                        todate:"2015-06-11",
-                        title:"hello",
-                        container: "dlg_container",//容器 id
-                        include_tpl:"date_filter114",
-                        //initHandler:
-                        data:["fromdate","todate","include_tpl", "title"],
-                        close:function(){alert("hi" + opts.container);$("#" + opts.container).hide();},
-                        okBtnClick:function(){alert("ok");},
-                        cacenlBtnClick:function(){alert("cancel");},
-                        footerBtns:[{"label":"确定", "handler":"okBtnClick"},{"label":"取消", "handler":"cacenlBtnClick"}]
-                    }
-                   $("#" + opts.container).show()
-                    avalon.define({
-                        $id: "test13",
-                        $opts:opts
-                    })
-                    avalon.scan(); //初始化数据
-
                 },
 
             test12: function(e){
+                model.opts =  {
+                    fromdate:"2015-04-09",
+                    todate:"2015-06-11",
+                    title:"hello",
+                    data:["include_tpl"],
+                    include_tpl:"date_filter111",
+                };
+                return;
                 var opts = {
                     fromdate:"2015-04-09",
                     todate:"2015-06-11",
@@ -161,6 +166,14 @@ here, {{ 3 + 6 * 5  }}
 <em>{{content}}</em>!!!
 </script>
 
+
+<p>{{content}}<button ms-click="change" type="button">切换子模板</button></p>
+<div ms-include="'tpl'"></div><!--注意这里-->
+<div ms-include="eee"></div>
+
+
+
+
 <!--<input ms-duplex="value" />
 <button type="button" ms-click="plus">ClickMe</button>-->
 
@@ -177,9 +190,6 @@ here, {{ 3 + 6 * 5  }}
 </div>
 </script>
 
-<p>{{content}}<button ms-click="change" type="button">切换子模板</button></p>
-<div ms-include="'tpl'"></div><!--注意这里-->
-<div ms-include="eee"></div>
 <div id="new_analysis_dlg" >
 
 </div>
@@ -208,15 +218,15 @@ here, {{ 3 + 6 * 5  }}
 
 
 <!--dlg template--->
-<div ms-controller="test13" ms-widget="testui,ddd" data-testui-data="opts">
+<div>
     <div id="dlg_container">
         <div class="modal-bg"></div>
-        <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{title}}<i class="fa fa-times-circle" ms-click="close">X</i></div>
+        <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{opts.title}}<i class="fa fa-times-circle" ms-click="close">X</i></div>
             <div class="dlg_body">
-                <div ms-include="include_tpl"></div>
+                <div ms-include="'include_tpl'"></div>
             </div>
             <div class="alert_foot">
-                <em ms-repeat="footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
+                <em ms-repeat="opts.footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
             </div>
         </div>
     </div>
@@ -229,8 +239,8 @@ here, {{ 3 + 6 * 5  }}
 		<div  class="field-div">
 			<label class="field-label">访问日期</label>
 			<div  class="field-value" >
-				<input id="from_date_filter" type="date" ms-value=fromdate required="required">&nbsp;至&nbsp;
-				<input id="to_date_filter" type="date" ms-value=todate required="required">
+				<input id="from_date_filter" type="date" ms-value=opts.fromdate required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="date" ms-value=opts.todate required="required">
 			</div>
 		</div>
 	</div>

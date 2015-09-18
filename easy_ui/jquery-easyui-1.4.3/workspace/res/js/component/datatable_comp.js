@@ -4,20 +4,11 @@
 define([], function () {
     var table = {
         elemid : "#dg",//table
-        height:"150px",
-        renderTable : function(data){
-            var self  =this;
-            var columns = _.pluck(data.selected_den.column, 'id');
-            var key = columns.join("");
-            var rows = _.pluck(data.selected_den.row, 'id');
-            key += "_" + rows.join("");
-            var magnanimitu = _.pluck(data.selected_den.magnanimity, 'id');
-            key += "_" + magnanimitu.join("");
-
-            var resultset = window.Mockdata.tabs[0].tabcontent.data[key] || {};//TODO后端返回结果
+        height:"450px",
+        renderTableResultset: function(resultset , pageSize,pageNumber){
+            var self = this;
             var data_rows =resultset ?  resultset.rows : [];
-
-            var rowspan = columns.length;
+          //  var rowspan = columns.length;
             var columns_total = [];//总的
             var columns = [];//第一层coulmn title
             var frozenColumns = [];
@@ -30,7 +21,6 @@ define([], function () {
                     var row_i = row_selected[i];
                     var obj = {field:row_i.id,title:row_i.label}; // , rowspan: row_i.rowspan
                     frozenColumns.push(obj);
-                   // columns_j.push(obj);
                 }
             }
             if(columns_j.length != 0){
@@ -39,10 +29,7 @@ define([], function () {
             var fields = [];
             for(var j = 0; j <  column_selected.length; j++){
                 var column_j = column_selected[j];
-                var column_next = null;
-                var colspan = 1;
                 columns_j = [];
-
                 if(j == 0){
                     //添加行
                     var row_selected = resultset.row_selected || {};
@@ -50,7 +37,6 @@ define([], function () {
                         var row_i = row_selected[i];
                         var obj = {field:row_i.id,title:row_i.label}; //,rowspan: row_i.rowspan
                         frozenColumns.push(obj);
-                       // columns_j.push(obj);
                     }
                 }
 
@@ -64,12 +50,10 @@ define([], function () {
                     fields = column_j.field;
                     for(var x = 0;  x < fields.length; x++){
                         var data_j = column_j.data;
-                        //console.log(x%data_j.length + " jjj " + data_j[x/data_j.length]);//取模取title
                         var obj = {title:data_j[x%data_j.length],field:fields[x],  width:100,sortable:true, colspan:column_j.colspan,sorter:function(a,b){console.log(a + " " + b);}};
                         columns_j.push(obj);
                     }
                 }
-
                 columns_total.push(columns_j);
             }
             var row_selected = resultset.row_selected || {};
@@ -94,13 +78,12 @@ define([], function () {
                 total: resultset.total,
                 frozenColumns:frozenColumns_table,
                 loadMsg:'数据装载中......',
-               // multiSort:false,
                 //sortName:fields.join(","),
                 pagination:true,
                 singleSelect:true,
 
                 onSortColumn:function(){
-                  console.log("sort");//TODO SORT
+                    console.log("sort");//TODO SORT
                 },
                 onBeforeLoad:function(){
                     $(self.elemid).css("display","");
@@ -120,23 +103,26 @@ define([], function () {
             var p = $(self.elemid).datagrid('getPager');
             $(p).pagination({
                 pageList:[2,3,4,5],
-                pageSize:2,
-              //  displayMsg:'当前显示从{from}到{to}共{total}记录',
+                pageSize:pageSize,
+                pageNumber:pageNumber, //TODO后台取
+                displayMsg:'当前显示从{from}到{to}共{total}记录',
                 onBeforeRefresh:function(pageNumber, pageSize){
                     $(this).pagination('loading');
                     $(this).pagination('loaded');
                 },
                 onSelectPage: function(pageNumber, pageSize){
-                    console.log(pageNumber + " " + pageSize );//TODO 调后台
+                    console.log(pageNumber + " " + pageSize + "onSelectPage");//TODO 调后台 分页 翻页 ok
+                    var key = "platformaddress_date_pv_5";
+                    var resultset = window.Mockdata.tabs[0].tabcontent.data[key] || {};//TODO后端返回结果
+                    self.renderTableResultset(resultset, pageSize, pageNumber);
                     // $('#content').panel('refresh', 'show_content.php?page='+pageNumber);
                 },
                 onChangePageSize: function(pageSize){
-                    console.log(pageSize);
+                    console.log(pageSize + "onChangePageSize");
                 }
             });
 
-
-            if(rows.length > 1){
+            if(rows.length > 1){ //两行固定
                 for(var i = 0; i < rows[0]; i++){
                     $(self.elemid).datagrid('mergeCells', {
                         index: i*rows[1],
@@ -146,8 +132,19 @@ define([], function () {
                     });
                 }
             }
+        },
+        renderTable : function(data, option) {
+            var self = this;
+            avalon.mix(self, option);//优先使用用户的配置
+            var columns = _.pluck(data.selected_den.column, 'id');
+            var key = columns.join("");
+            var rows = _.pluck(data.selected_den.row, 'id');
+            key += "_" + rows.join("");
+            var magnanimitu = _.pluck(data.selected_den.magnanimity, 'id');
+            key += "_" + magnanimitu.join("");
 
-
+            var resultset = window.Mockdata.tabs[0].tabcontent.data[key] || {};//TODO后端返回结果
+            self.renderTableResultset(resultset, 5, 1);
         }
     }
 

@@ -213,9 +213,10 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             avalon.scan(); //初始化数据
         }
         vm.init = function(){
-           /* var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
+            var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data; //TODO REMOVE
-            vm.data_all = window.Mockdata;*/
+            vm.data_all = window.Mockdata;
+
             initDateRange();
             avalon.nextTick(function() {
                 Datatable.renderTable( vm.data);
