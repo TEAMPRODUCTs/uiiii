@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+ <html>
+ <head>
+     <meta charset="UTF-8">
+     <script type="text/javascript">
+
+     var initdata = {"date": [2011,2012,2013,2014,2015], "platform":["Android","IOS","PAD","PCS"],"address": ["上海","北京","广州","成都","武汉"],"visitor": ['Ella', 'Fiona', 'Fish', 'Betty'],"PV":[],
+         "visitorNum":[] };
+     var rows = [];
+     for(var i = 0 ; i < 1000; i++){
+         var obj = {};
+
+         for(var key in initdata){
+             var Rand1 = Math.random();
+             var value = initdata[key];
+             if(!!value.length){
+                 var index = Math.floor(Rand1 * (value.length));
+                 obj[key] = value[index];
+             }else{
+                 obj[key] =  Math.floor(Rand1 * 1000);
+             }
+
+         }
+         rows.push(obj);
+
+     }//生成1000条数据
+
+
+     var db = openDatabase('mydb1', '1.0', 'Test DB', 10 * 1024 * 1024);
+     var msg;
+     db.transaction(function (tx) {
+           tx.executeSql('CREATE TABLE IF NOT EXISTS ANALYSIS2 (id unique, date, platform, address, visitor, pv, visitornum)'); //,visitornum
+           for(var i = 0; i< rows.length; i++){
+               var row = rows[i];
+              tx.executeSql('INSERT INTO ANALYSIS2 (id, date, platform, address, visitor, pv, visitornum) VALUES ("' + i + '","'+ row['date']  +'","'+ row['platform']  + '","' + row['address']  + '","'+ row['visitor']  + '","' + row['PV']  + '","' + row['visitorNum']  +'")');
+           }
+         });
+     db.transaction(function (tx) {
+            tx.executeSql('select platform , pv  ,address , date from ANALYSIS2 group by address , platform ,date', [], function (tx, results) {
+                var len = results.rows.length, i;
+                console.log(JSON.stringify(results.rows));
+                //column address
+                var rows = results.rows;
+                var resultdata ;
+                for(var i = 0; i < rows.length; i++){
+                  //  resultdata[rows[i].platform]=
+                }
+             }, null);
+         });
+
+
+     </script>
+     </head>
+<body>
+<div id="status" name="status">Status Message</div>
+ </body>
+ <script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
+. </html>

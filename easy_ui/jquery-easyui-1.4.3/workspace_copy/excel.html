@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="tableExcel">je hello test</div>
+    <button onclick="exportExcel();">导出</button>
+</body>
+<script>
+    function exportExcel() {
+        var winname = window.open('', '_blank', 'top=10000');
+
+        //获得页面上需要导出的数据内容
+        var strHTML = document.all.tableExcel.innerHTML; //其中tableExcel是需要导出数据的div的id或者表的id
+
+
+        winname.document.open('text/html', 'replace');
+
+
+        winname.document.writeln(strHTML);
+
+
+        winname.document.execCommand('saveas',true,'excel.txt'); //excel是导出excel的默认名称\
+        winname.document.execCommand("print");
+
+
+      //  winname.close();
+    }
+</script>
+</html>

@@ -71,11 +71,16 @@ define([], function () {
             }
             var frozenColumns_table = [];
             frozenColumns_table.push(frozenColumns);
+            data_rows = data_rows || [];
+            var height =window.innerHeight/* $(".tab-content").height()*/ - 200 -35 ;//减去行列 度量 pv 筛选器 分页高度
+            console.log(height + "height");
             $(self.elemid).datagrid({
-                data: data_rows || [],
+                data: data_rows,
                 width:"100%",
+                height:data_rows.length > 50 ? height: "auto",//TODO
                 columns:columns_total,
                 total: resultset.total,
+                rownumbers:4,
                 frozenColumns:frozenColumns_table,
                 loadMsg:'数据装载中......',
                 //sortName:fields.join(","),

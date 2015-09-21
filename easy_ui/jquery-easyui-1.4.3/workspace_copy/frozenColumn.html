@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <script type="text/javascript" src="res/libs/jquery.js"></script>
+    <script type="text/javascript" src="res/libs/easyui.js"></script>
+</head>
+<body>
+    <div id="tt"></div>
+</body>
+<script>
+    $('#tt').datagrid({
+        title:'Frozen Columns',
+        iconCls:'icon-save',
+        width:500,
+        height:250,
+        url:'res/data/datagrid_data.json',
+        frozenColumns:[[
+            {field:'itemid',title:'Item ID'},//,width:80
+            {field:'productid',title:'Product ID'},//,width:80
+            ]
+        ],
+        columns:[[
+            {field:'listprice',title:'List Price',width:80,align:'right'},
+            {field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+            {field:'attr1',title:'Attribute',width:100},
+            {field:'status',title:'Status',width:100}
+        ]
+        ]
+    });
+</script>
+</html>

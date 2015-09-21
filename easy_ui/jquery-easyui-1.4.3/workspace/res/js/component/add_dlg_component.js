@@ -1,7 +1,8 @@
 /**
  * Created by fiona.xu on 2015/9/6.
  */
-define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], function (_,easyui, addSubjectDlghtml) {
+/*define(["underscore-min", "easyui","text!../../template/addSubjectDlg.html"], function (_,easyui, addSubjectDlghtml) {*/
+define([], function () {
     var dlg = {
         title:"Dlg", //dlg
         container: "new_analysis_dlg",//容器 id
@@ -22,10 +23,6 @@ define(["underscore", "easyui","text!../../template/addSubjectDlg.html"], functi
             var bg = "<div class='modal-bg'></div>";//添加遮罩层
             $("body").append(bg);
             $("#" + self.container).show();
-     /*       if(!!self.inited){ //防止多次创建dialog
-                return;
-            }*/
-            self.inited = true;
             var dlgDiv = $("<div class='alertDiv dlg-div'></div>");
             dlgDiv.css("width",this.width);
             dlgDiv.css("height", this.height);

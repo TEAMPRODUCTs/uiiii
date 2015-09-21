@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>by 司徒正美</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="res/libs/avalon.js"></script>
+    <script>
+        var vm1 = avalon.define({
+            $id: "ancestor",
+            aaa : '1111111111',
+            click : function() {
+                console.log("向下广播")
+                vm1.$fire("down!aaa", "capture")
+            }
+        })
+        vm1.$watch("aaa", function(v) {
+            avalon.log(v)
+            console.log("ancestor.aaa事件被触发了")
+
+        })
+        var vm2 = avalon.define({
+            $id: "parent",
+            text : "222222222",
+            aaa : '3333333333',
+            click : function() {
+                console.log("全局扩播")
+                vm2.$fire("all!aaa", "broadcast")
+            }
+        })
+        vm2.$watch("aaa", function(v) {
+            avalon.log(v)
+            console.log("parent.aaa事件被触发了")
+        })
+        var vm3 = avalon.define({
+            $id: "son",
+            click: function () {
+                console.log("向上冒泡");
+                vm3.$fire("up!aaa", "bubble");
+            }
+        });
+        vm3.$watch("aaa", function(v) {
+            avalon.log(v)
+            console.log("son.aaa事件被触发了")
+        })
+    </script>
+    <style>
+
+    </style>
+</head>
+<body class="ms-controller"   ms-controller="ancestor">
+<h3>avalon vm.$fire的升级版 </h3>
+<button type="button" ms-click="click">
+    capture
+</button>
+<div ms-controller="parent">
+    <button type="button" ms-click="click">broadcast</button>
+    <div ms-controller="son">
+        <button type="button" ms-click="click">
+            bubble
+        </button>
+    </div>
+</div>
+</body>
+</html>

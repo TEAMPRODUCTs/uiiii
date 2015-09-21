@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="res/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="res/css/custome_dlg.css">
+    <link rel="stylesheet" href="res/css/data_analysis.css"/>
+    <script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
+    <script type="text/javascript" src="res/libs/avalon.js"></script>
+    <script>
+        require(["../js/component/add_dlg_component","avalpn.testui","../js/component/dlg_comp"],function(dlg, ui, dlg_comp){
+            var model = avalon.define({
+                $id: "test",
+                content: "引入内部模板",
+                name: "司徒正美",
+                dlgvm:null,
+                opts:{ fromdate:"2015-02-09",  todate:"2015-06-08"},
+                eee: "lala",
+                change: function() {
+                    model.eee = model.eee === "lala" ? "hehe" : "lala"
+                },
+                test14: function(e){
+
+                    var opts = {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"ni年会",
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter114"
+                    }
+                    model.dlgvm = dlg_comp.init(opts);
+                    return;
+                },
+
+                test12: function(e){
+                    var opts = {
+                        fromdate:"2015-04-09",
+                        todate:"2015-06-11",
+                        title:"hello",
+                        container: "dlg_container",//容器 id
+                        include_tpl:"date_filter111"
+                    }
+                    model.include_tpl= "date_filter111";
+                    model.title = "title";
+                   // dlg_comp.init(opts);
+                }
+            })
+            avalon.scan(); //初始化数据
+            return model;
+
+            avalon.ready(function() {
+                // analysis_controller.init();
+            });
+        });
+
+
+    </script>
+</head>
+<body ms-controller="test">
+
+<!--dlg template--->
+<div ms-controller="test13">
+    <div id="dlg_container">
+        <div class="modal-bg"></div>
+        <div class="alertDiv dlg-div" style="width: 500px;"><div class="dlg_header">{{opts.title}}<i class="fa fa-times-circle" ms-click="close">X</i></div>
+            <div class="dlg_body">
+                <div ms-include="'date_filter111'"></div>
+            </div>
+            <div class="alert_foot">
+                <em ms-repeat="opts.footerBtns"  ms-click=clickBind(el)>{{el.label}} {{el.handler}}</em>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="avalon" id="date_filter111">
+	<div >
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			<div  class="field-value" >
+				<input id="from_date_filter" type="date" ms-value=opts.fromdate required="required">&nbsp;至&nbsp;
+				<input id="to_date_filter" type="date" ms-value=opts.todate required="required">
+			</div>
+		</div>
+	</div>
+</script>
+
+
+    <script type="avalon" id="date_filter114">
+	<div >
+		<div  class="field-div">
+			<label class="field-label">访问日期</label>
+			testsssss
+		</div>
+	</div>
+</script>
+
+</div>
+
+
+
+<button ms-click="test12" type="button">test12</button>
+<button ms-click="test14" type="button">test14</button>
+</body>
+</html>

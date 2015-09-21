@@ -1,4 +1,5 @@
-define(["avalon"],function(avalon){
+/*define(["avalon"],function(avalon){*/
+define(["avalon.modern"],function(avalon){
      var avalonHelper={
          access:function(el,vms){
              if(!vms)avalon.error("access need vmodels")

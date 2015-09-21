@@ -1,4 +1,4 @@
-require(["easyui","../js/data_analysis_controller_simple", "../js/analysis_tab","ready!"/*,"jquery.droppable""easyui"*/],function(easyui, analysis_controller){
+require(["../js/data_analysis_controller_simple"/*, "domReady!","jquery.droppable""easyui"*/],function( analysis_controller){
     resizeLayout();
     avalon.ready(function() {
         analysis_controller.init();

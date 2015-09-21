@@ -1,0 +1,20 @@
+.dlg_header{
+    line-height: 40px;
+    height: 40px;
+    background-color: #687993;
+    text-align: center;
+    color: white;
+}
+
+.dlg-div.alertDiv{
+    border:none;
+}
+
+.dlg-div .fa{
+    float: right;
+    padding: 0 8px;
+    cursor: pointer;
+}
+.dlg_body{
+    padding:15px 25px;
+}

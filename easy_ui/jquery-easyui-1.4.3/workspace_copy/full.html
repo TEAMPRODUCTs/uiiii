@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Full Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" href="res/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="res/css/custome_dlg.css">
+	<link rel="stylesheet" href="res/css/data_analysis.css"/>
+
+	<script type="text/javascript" src="res/local/mockdata.js"></script>
+	<script type="text/javascript" src="res/libs/underscore-min.js"></script>
+	<script type="text/javascript" src="res/libs/jquery-1.10.2.min.js"></script><!--TODO avalon template tab_panel_temp-->
+	<script type="text/javascript" src="res/libs/avalon.js"></script>
+	<script type="text/javascript" src="res/js/main.js"></script>
+	<script type="text/javascript" src="res/js/data_analysis.js"></script>
+
+</head>
+<body class="easyui-layout"  ms-controller="test" >
+	<div data-options="region:'west',split:true" class="leftbar" style="width:150px;padding:4px;">
+		<section class="section_left">
+			<h2 class="leftbar_title">维度</h2>
+			<div class="section_detail_cont"  > <!--拖拽适用范围 行列-->
+				<ul class="section_ul" id="dimension_sec">
+					<li  ms-repeat="data.dimension" ms-if-loop="el" title="拖拽我" data-typede = "dimension"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li> <!--ms-repeat-el="data.dimension"-->
+				</ul>
+				<ul class="section_ul new_sec" id="new_dimension_sec"  ms-if="data.dimension_new.length"><!--ms-each-el="data.dimension_new"-->
+					<li ms-repeat="data.dimension_new" ms-if-loop="el" title="拖拽我" data-typede = "dimension" draggable="true"  ms-on-dragstart="drag(event)"  ms-data-id=el.id>{{el.label}}</li>
+				</ul>
+			</div>
+
+			<h2 class="leftbar_title">度量</h2>
+			<div class="section_detail_cont"  ><!--拖拽适用范围 度量-->
+				<ul class="section_ul" id="metric_sec">
+					<li  ms-repeat="data.magnanimity" ms-if-loop="el" title="拖拽我" data-typede = "magnanimity"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+				</ul>
+
+				<ul class="section_ul new_sec" id="new_metric_sec" ms-if="data.magnanimity_new.length">
+					<li  ms-repeat="data.magnanimity_new" ms-if-loop="el" title="拖拽我" data-typede = "magnanimity"  ms-on-dragstart="drag(event)" draggable="true" ms-data-id=el.id ms-attr-id={{el.id}}>{{el.label}}</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div data-options="region:'center'" class="rightbar">
+		<div id="tt" class="easyui-tabs" style="width:100%;">
+			<div title="Tab1" style="padding:20px;" data-options="closable:true" >
+				<div class="input-div">
+					<span class="input-label">列</span>
+					<div class="input-content dimension-content" data-type="column"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加列" class="easyui-tooltip">
+						<span ms-if="!data.selected_den.column || !data.selected_den.column.length" class="tips">拖动维度到这里，增加列</span>
+						<span class="selected-dimension" ms-repeat-el="data.selected_den.column" draggable="true"  data-typede = "dimension" ms-on-dragstart="drag(event)"  ms-data-id=el.id ms-data-index=$index  >{{el.name}}</span><!--ms-attr-id={{el.id}}-->
+					</div>
+                    <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                     <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
+				</div>
+
+				<div class="input-div">
+					<span class="input-label">行</span>
+					<div class="input-content dimension-content" data-type="row"  data-typede = "dimension"  ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动维度到这里，增加行" class="easyui-tooltip">
+						<span ms-if="!data.selected_den.row || !data.selected_den.row.length" class="tips">拖动维度到这里，增加行</span>
+						<span class="selected-dimension" ms-repeat-el="data.selected_den.row" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index >{{el.name}}</span><!-- ms-attr-id={{el.id}}-->
+					</div>
+                      <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                     <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear"  style="width: 27px; height: 27px;"></a></span>
+				</div>
+
+				<div class="input-div">
+					<span class="input-label">度量</span>
+					<div class="input-content magnanimity-content" data-type="magnanimity" data-typede = "magnanimity" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" title="拖动度量到这里，增加数据" class="easyui-tooltip">
+						<span ms-if="!data.selected_den.magnanimity || !data.selected_den.magnanimity.length" class="tips">拖动度量到这里，增加数据</span>
+						<span class="selected-magnanimity" ms-repeat-el="data.selected_den.magnanimity" draggable="true" data-typede = "magnanimity"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index>{{el.name}}</span><!--  ms-attr-id={{el.id}}-->
+					</div>
+                      <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                     <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0"ms-click="clear" style="width: 27px; height: 27px;"></a></span>
+				</div>
+
+				<div class="input-div">
+					<span class="input-label">筛选</span>
+					<div class="input-content magnanimity-content" data-type="filter" data-typede = "dimension" ms-on-drop="drop(event)" ms-on-dragover="allowDrop(event)" class="easyui-tooltip"  title="拖动到这里，增加数据">
+						<span ms-if="!data.selected_den.filter || !data.selected_den.filter.length" class="tips">拖动到这里，增加数据</span>
+                        <span class="selected-filter" ms-repeat-el="data.selected_den.filter" draggable="true" data-typede = "dimension"  ms-on-dragstart="drag(event)"  ms-data-id=el.id  ms-data-index=$index> <!--  ms-attr-id={{el.id}}-->
+                           <a href="javascript:void(0)">
+							   {{el.name}}
+						   </a>
+                        </span>
+					</div>
+                      <span class="textbox-addon textbox-addon-right" style="right: 0px;top:0px;">
+                     <a href="javascript:void(0)" class="textbox-icon icon-clear" icon-index="0" ms-click="clear" style="width: 27px; height: 27px;"></a></span>
+				</div>
+
+				<table id="dg"></table>
+				<!--table-->
+<!--				<table class="easyui-datagrid" style="width:100%;margin-top:10px;"
+					   data-options="url:'../demo/datagrid/data.json',method:'get'">
+
+					<thead>
+						<tr>
+							<th data-options="field:'platform',align:'right'"></th>
+							<th data-options="field:'上海'">上海</th>
+							<th data-options="field:'北京'">北京</th>
+							<th data-options="field:'广州'">广州</th>
+							<th data-options="field:'成都'">成都</th>
+							<th data-options="field:'武汉'">武汉</th>
+						</tr>
+					</thead>
+				</table>-->
+
+			</div>
+			<div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;">
+				tab2fdsfds
+			</div>
+			<div title="Tab3" data-options="closable:true" >
+				tab3fdsfds
+			</div>
+			<div title="+">
+			</div>
+		</div>
+	</div>
+
+	<div id="new_analysis_dlg"></div>
+
+	<script type="avalon" id="tpl">
+      <div class="field-div">
+           <label class="field-label">选择分析主题: </label>
+             <div  class="field-value" >
+               <select id="anlysis_theme" class="easyui-combobox" name="dept" style="width:110px;">
+                    <option value="visit1">访问1</option>
+                    <option value="visit2">访问2</option>
+                    <option value="visit3">访问3</option>
+               </select>
+             </div>
+      </div>
+      <div  class="field-div">
+            <label class="field-label">选择数据时段:</label>
+            <div  class="field-value" >
+                  <input id="from_date" type="text" class="easyui-datebox" required="required">&nbsp;至&nbsp;
+                  <input id="to_date" type="text" class="easyui-datebox" required="required">
+            </div>
+
+      </div>
+
+ </script>
+</body>
+
+</html>
