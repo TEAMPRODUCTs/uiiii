@@ -174,7 +174,9 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
                 }
                 return this.fileterobj;
             },
-
+            render:function(){
+              console.log("render");
+            },
             updateDiemen: function(){//TODO 调用后端
                 var type = parseInt(vm.type, 10);
                 var filterObj = vm.getFilterObj(type,vm);
