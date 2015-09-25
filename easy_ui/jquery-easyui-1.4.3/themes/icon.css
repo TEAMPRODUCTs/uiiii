@@ -22,6 +22,10 @@
 .icon-ok{
 	background:url('icons/ok.png') no-repeat center center;
 }
+
+.icon-excel{
+	background:url('icons/icon-excel.png') no-repeat center center;
+}
 .icon-no{
 	background:url('icons/no.png') no-repeat center center;
 }

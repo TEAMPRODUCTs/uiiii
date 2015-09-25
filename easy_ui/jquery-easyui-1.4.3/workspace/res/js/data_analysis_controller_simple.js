@@ -1,7 +1,5 @@
 define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/tab_comp","../js/component/datatable_comp",
         "../js/component/draggable_comp","../js/common/constant","avalon.ui"],
-/*define(["underscore-min", "easyui","../js/util", "../js/component/add_dlg_component","../js/component/tab_comp","../js/component/datatable_comp",
-        "js/component/draggable_comp","js/common/constant","libs/avalon.ui"],*/
     function (_,easyui, util, dlg_component , Tab, Datatable, Draggable, constant) {
         var initial_data = constant.getInitial_data();
         var vm = avalon.define({
@@ -206,21 +204,23 @@ define(["underscore", "easyui","../js/util", "../js/component/add_dlg_component"
             removePanel:function(){
 
             },
+            Export:function(){
+                Datatable.Export("SS", $("#dg"));
+            },
             selected_column: []//所选维度列
         });
         function dateControllerInit(id, date){
            // var date = getDateFilterObj();
             avalon.define({
-                $id: id,
+            $id: id,
                 opts: date
-            })
-            avalon.scan(); //初始化数据
+        })
+        avalon.scan(); //初始化数据
         }
         vm.init = function(){
             var tabdata  = _.filter(window.Mockdata.tabs, function(data){ return data.tabid === 0; });//TODO 初始化是空
             vm.data =tabdata ? tabdata[0].tabcontent : vm.data; //TODO REMOVE
             vm.data_all = window.Mockdata;
-
             initDateRange();
             avalon.nextTick(function() {
                 Datatable.renderTable( vm.data);
