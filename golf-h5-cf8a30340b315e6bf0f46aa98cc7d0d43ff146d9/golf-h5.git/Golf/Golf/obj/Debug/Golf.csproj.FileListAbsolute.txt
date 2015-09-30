@@ -1,6 +1,0 @@
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\bin\Golf.dll
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\bin\Golf.pdb
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\bin\EntityFramework.dll
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\bin\EntityFramework.xml
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\obj\Debug\Golf.dll
-E:\workspace\golf-h5\bak\LIZARD2\Golf\Golf\obj\Debug\Golf.pdb
