@@ -1,7 +1,0 @@
-D:\BaiduYunDownload\Golf\Golf\bin\Golf.dll
-D:\BaiduYunDownload\Golf\Golf\bin\Golf.pdb
-D:\BaiduYunDownload\Golf\Golf\bin\EntityFramework.dll
-D:\BaiduYunDownload\Golf\Golf\bin\EntityFramework.xml
-D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.dll
-D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.pdb
-D:\BaiduYunDownload\Golf\Golf\obj\Release\Golf.csprojResolveAssemblyReference.cache
