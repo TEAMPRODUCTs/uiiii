@@ -1,1 +1,0 @@
-define(function(){return'﻿ <article class="cont_wrap">\r\n        <p class="mt10 js_content"></p>\r\n    </article>'})

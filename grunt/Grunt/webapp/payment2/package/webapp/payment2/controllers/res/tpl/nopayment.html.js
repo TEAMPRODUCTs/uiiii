@@ -1,1 +1,0 @@
-define(function(){return ("<article class=\"cont_wrap middle w100\">\r\n        <p class=\"cgray p10 cui-text-center\">您预订的<span class=\"cblack\"><%- PDName %></span>无法进行支付，请至网站订购或电话联系我们。</p><br /><br /><br />\r\n        <button class=\"backbtn\" id=\"c_payment_nopayment_homebtn\">返回首页</button>\r\n</article>");});

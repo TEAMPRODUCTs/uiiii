@@ -1,1 +1,0 @@
-require.config({"paths":{"demoModel":"package/webapp/demo/webresource/model/demomodel","demoStore":"package/webapp/demo/webresource/model/demostore","indexHtml":"package/webapp/demo/webresource/templates/index.html"}});

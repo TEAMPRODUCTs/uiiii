@@ -1,5 +1,0 @@
-﻿app:   "noHtmlMin": ["clean", "requirejs", "addBuildVersion", "addVersion", "copy:app_sbu", "htmlmin:app", "replace:templates", 
-"strip", "curl", "unzip", "compress:app", "compress:com_app", "compress:com_res", "hashify", "formatMD5"]
-
-
-"noHtmlMin": ["clean", "copy:web_sbu", "uglify", "cssmin:minify", "replace:web_app_css", "requirejs", "replace:templates", "strip", "compress:web"],
